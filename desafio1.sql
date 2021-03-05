@@ -89,7 +89,7 @@ insert into SpotifyClone.cancoes values
 (default, "Rocks His Everything", 4),
 (default, "Home Forever", 4),
 (default, "Diamond Power", 4),
-(default, "Honey, Let's be Silly", 4),
+(default, "Honey, Let's Be Silly", 4),
 (default, "Thang Of Thunder", 5),
 (default, "Words Of Her Life", 5),
 (default, "Without My Streets", 5);
