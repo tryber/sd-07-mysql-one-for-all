@@ -15,6 +15,8 @@ describe('Queries de seleção', () => {
     }
     catch(error) {
       console.log('Erro ao restaurar o dump!');
+      console.log(error);
+
     }
 
     importer.disconnect();
