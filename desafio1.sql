@@ -2,8 +2,6 @@ DROP DATABASE IF EXISTS SpotifyClone;
 
 CREATE DATABASE SpotifyClone;
 
-USE SpotifyClone;
-
 CREATE TABLE spotifyclone.plano(
 id INT PRIMARY KEY AUTO_INCREMENT,
 nome VARCHAR(100) NOT NULL,
