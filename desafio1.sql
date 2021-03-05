@@ -2,6 +2,8 @@ DROP DATABASE IF EXISTS SpotifyClone;
 
 CREATE DATABASE SpotifyClone;
 
+USE SpotifyClone;
+
 
 CREATE TABLE artistas (
 artista_id INT PRIMARY KEY AUTO_INCREMENT,
@@ -33,7 +35,7 @@ CONSTRAINT `album_id_musicas` FOREIGN KEY (album_id) REFERENCES SpotifyClone.alb
 CREATE TABLE seguidores (
 usuario_id INT NOT NULL,
 artista_id INT NOT NULL,
-PRIMARY KEY (user_id, artist_id),
+PRIMARY KEY (usuario_id, artista_id),
 CONSTRAINT `fk_usuarios_seguidores` FOREIGN KEY (usuario_id) REFERENCES SpotifyClone.usuarios (usuario_id),
 CONSTRAINT `fk_artistas_seguidores` FOREIGN KEY (artista_id) REFERENCES SpotifyClone.artistas (artista_id)
 );
@@ -41,9 +43,9 @@ CONSTRAINT `fk_artistas_seguidores` FOREIGN KEY (artista_id) REFERENCES SpotifyC
 CREATE TABLE historico (
 usuario_id INT NOT NULL,
 musicas_id INT NOT NULL,
-PRIMARY KEY (user_id, music_id),
-CONSTRAINT `fk_user_history` FOREIGN KEY (user_id) REFERENCES SpotifyClone.usuarios (user_id),
-CONSTRAINT `fk_music_history` FOREIGN KEY (music_id) REFERENCES SpotifyClone.musicas (music_id)
+PRIMARY KEY (usuario_id, musicas_id),
+CONSTRAINT `fk_user_history` FOREIGN KEY (usuario_id) REFERENCES SpotifyClone.usuarios (usuario_id),
+CONSTRAINT `fk_music_history` FOREIGN KEY (musicas_id) REFERENCES SpotifyClone.musicas (musicas_id)
 );
 
 CREATE TABLE planos (
@@ -72,7 +74,7 @@ INSERT INTO musicas (musica, album_id) VALUES
 ('Home Forever', 4), ('Diamond Power', 4), ('Honey, Let''s Be Silly', 4),
 ('Thang Of Thunder', 5), ('Words Of Her Life', 5), ('Without My Streets', 5);
 
-INSERT INTO following (usuario_id, artista_id) VALUES
+INSERT INTO seguidores (usuario_id, artista_id) VALUES
 (1, 1), (1, 4), (1, 3),
 (2,1), (2, 3),
 (3, 2), (3, 1),
