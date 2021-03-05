@@ -20,7 +20,7 @@ CREATE TABLE following_artists(user_id INTEGER NOT NULL, artist_id INTEGER NOT N
 
 INSERT INTO SpotifyClone.plans(account, price)
 VALUES
-('gratuito', 9), ('familiar', 7.99), ('universitário', 5.99);
+('gratuito', 0), ('familiar', 7.99), ('universitário', 5.99);
 
 INSERT INTO SpotifyClone.singers(name)
 VALUES
