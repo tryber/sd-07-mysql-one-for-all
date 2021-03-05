@@ -40,9 +40,11 @@ DEFAULT CHARACTER SET = utf8;
 CREATE TABLE IF NOT EXISTS `SpotifyClone`.`historico_de_reproducao` (
   `usuario_id` INT(11) NOT NULL,
   `musica_id` INT(11) NOT NULL,
+  PRIMARY KEY (usuario_id,musica_id),
   INDEX `fk_historico_de_reproducao_1_idx` (`usuario_id` ASC) VISIBLE,
   INDEX `fk_historico_de_reproducao_2_idx` (`musica_id` ASC) VISIBLE,
   CONSTRAINT `fk_historico_de_reproducao_1`
+  
     FOREIGN KEY (`usuario_id`)
     REFERENCES `SpotifyClone`.`usuarios` (`usuario_id`)
     ON DELETE NO ACTION
@@ -101,6 +103,7 @@ DEFAULT CHARACTER SET = utf8;
 CREATE TABLE IF NOT EXISTS `SpotifyClone`.`historico_de_seguidores` (
   `usuario_id` INT(11) NOT NULL,
   `artista_id` INT(11) NOT NULL,
+  PRIMARY KEY (usuario_id,artista_id),
   INDEX `fk_historico_de_seguidores_1_idx` (`usuario_id` ASC) VISIBLE,
   INDEX `fk_historico_de_seguidores_2_idx` (`artista_id` ASC) VISIBLE,
   CONSTRAINT `fk_historico_de_seguidores_1`
