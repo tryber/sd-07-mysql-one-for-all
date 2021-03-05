@@ -29,7 +29,7 @@ describe('Queries de seleção', () => {
     sequelize.close();
   });
 
-  describe.only('Normalize as tabelas para a 3ª Forma Normal', () => {
+  describe('Normalize as tabelas para a 3ª Forma Normal', () => {
     const hasForeignKey = async (table, referencedTable) => {
       const [{ REFERENCE_COUNT: referenceCount }] = await sequelize.query(
         `SELECT COUNT(COLUMN_NAME) AS REFERENCE_COUNT
