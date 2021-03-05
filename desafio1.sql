@@ -105,6 +105,7 @@ CREATE TABLE IF NOT EXISTS `SpotifyClone`.`cancoes` (
 ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8;
 
+
 -- -----------------------------------------------------
 -- Table `SpotifyClone`.`historico_reproducoes`
 -- -----------------------------------------------------
