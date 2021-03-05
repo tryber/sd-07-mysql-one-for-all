@@ -3,18 +3,6 @@ DROP DATABASE IF EXISTS SpotifyClone;
 CREATE DATABASE SpotifyClone;
 USE SpotifyClone;
 
-
--- CREATE TABLE funcionarios(
--- 	funcionario_id INT PRIMARY KEY auto_increment,
---     nome varchar(100) not null,
---     sobrenome varchar(100) not null,
---     email varchar(100) not null,
---     numero_cell INT not null,
---     data_cadastro DATE not null,
---     setor_id INT not null,
---     FOREIGN KEY (setor_id) REFERENCES setor(setor_id)
--- )engine=InnoDB;
-
 CREATE TABLE planos(
 plano_id INT PRIMARY KEY auto_increment,
 plano varchar(100) not null,
@@ -110,6 +98,3 @@ FOREIGN KEY (cancao_id) REFERENCES cancoes(cancao_id)
 INSERT INTO hist_reproducoes (usuario_id, cancao_id)
 VALUES (1,1),(1,6),(1,14),(1,16),(2,13),(2,17),(2,2),(2,15),(3,4),(3,16),(3,6),(4,3),(4,18),(4,11);
 -- select * from hist_reproducoes;
-
-
-
