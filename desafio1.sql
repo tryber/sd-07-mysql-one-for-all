@@ -265,4 +265,3 @@ INSERT INTO `SpotifyClone`.`usuarios_cancoes` (`usuario_id`, `cancao_id`) VALUES
 INSERT INTO `SpotifyClone`.`usuarios_cancoes` (`usuario_id`, `cancao_id`) VALUES (4, 11);
 
 COMMIT;
-
