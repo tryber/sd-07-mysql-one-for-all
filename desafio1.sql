@@ -35,17 +35,17 @@ create table SpotifyClone.musicas(
 );
 
 create table SpotifyClone.seguidores(
-  seguidor_id int primary key auto_increment,
   cantor_id int not null,
   usuario_id int not null,
+  primary key (cantor_id, usuario_id),
   foreign key (usuario_id) references SpotifyClone.usuarios(usuario_id),
   foreign key (cantor_id) references SpotifyClone.cantores(cantor_id)
 ) engine = InnoDB;
 
 create table SpotifyClone.historiocos(
-  historico_id int primary key auto_increment,
   musica_id int not null,
   usuario_id int not null,
+  primary key (musica_id, usuario_id),
   foreign key (usuario_id) references SpotifyClone.usuarios(usuario_id),
   foreign key (musica_id) references SpotifyClone.musicas(musica_id)
 ) engine = InnoDB;
