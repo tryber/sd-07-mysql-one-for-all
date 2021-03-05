@@ -78,11 +78,10 @@ ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8;
 
 CREATE TABLE IF NOT EXISTS `SpotifyClone`.`historico` (
-  `historico_id` INT(11) NOT NULL AUTO_INCREMENT,
   `usuario_id` INT(11) NOT NULL,
   `cancao_id` INT(11) NOT NULL,
-  PRIMARY KEY (`historico_id`),
   INDEX `fk_historico_cancoes_idx` (`cancao_id` ASC) VISIBLE,
+  PRIMARY KEY (`usuario_id`, `cancao_id`),
   CONSTRAINT `fk_historico_usuarios`
     FOREIGN KEY (`usuario_id`)
     REFERENCES `SpotifyClone`.`usuarios` (`usuario_id`)
@@ -126,20 +125,20 @@ INSERT INTO `SpotifyClone`.`cancoes` (`cancao_id`, `cancao`, `album_id`) VALUES 
 INSERT INTO `SpotifyClone`.`cancoes` (`cancao_id`, `cancao`, `album_id`) VALUES (DEFAULT, 'Words Of Her Life', 5);
 INSERT INTO `SpotifyClone`.`cancoes` (`cancao_id`, `cancao`, `album_id`) VALUES (DEFAULT, 'Without My Streets', 5);
 
-INSERT INTO `SpotifyClone`.`historico` (`historico_id`, `usuario_id`, `cancao_id`) VALUES (DEFAULT, 1, 1);
-INSERT INTO `SpotifyClone`.`historico` (`historico_id`, `usuario_id`, `cancao_id`) VALUES (DEFAULT, 1, 6);
-INSERT INTO `SpotifyClone`.`historico` (`historico_id`, `usuario_id`, `cancao_id`) VALUES (DEFAULT, 1, 14);
-INSERT INTO `SpotifyClone`.`historico` (`historico_id`, `usuario_id`, `cancao_id`) VALUES (DEFAULT, 1, 16);
-INSERT INTO `SpotifyClone`.`historico` (`historico_id`, `usuario_id`, `cancao_id`) VALUES (DEFAULT, 2, 13);
-INSERT INTO `SpotifyClone`.`historico` (`historico_id`, `usuario_id`, `cancao_id`) VALUES (DEFAULT, 2, 17);
-INSERT INTO `SpotifyClone`.`historico` (`historico_id`, `usuario_id`, `cancao_id`) VALUES (DEFAULT, 2, 2);
-INSERT INTO `SpotifyClone`.`historico` (`historico_id`, `usuario_id`, `cancao_id`) VALUES (DEFAULT, 2, 15);
-INSERT INTO `SpotifyClone`.`historico` (`historico_id`, `usuario_id`, `cancao_id`) VALUES (DEFAULT, 3, 4);
-INSERT INTO `SpotifyClone`.`historico` (`historico_id`, `usuario_id`, `cancao_id`) VALUES (DEFAULT, 3, 16);
-INSERT INTO `SpotifyClone`.`historico` (`historico_id`, `usuario_id`, `cancao_id`) VALUES (DEFAULT, 3, 6);
-INSERT INTO `SpotifyClone`.`historico` (`historico_id`, `usuario_id`, `cancao_id`) VALUES (DEFAULT, 4, 3);
-INSERT INTO `SpotifyClone`.`historico` (`historico_id`, `usuario_id`, `cancao_id`) VALUES (DEFAULT, 4, 18);
-INSERT INTO `SpotifyClone`.`historico` (`historico_id`, `usuario_id`, `cancao_id`) VALUES (DEFAULT, 4, 11);
+INSERT INTO `SpotifyClone`.`historico` (`usuario_id`, `cancao_id`) VALUES (1, 1);
+INSERT INTO `SpotifyClone`.`historico` (`usuario_id`, `cancao_id`) VALUES (1, 6);
+INSERT INTO `SpotifyClone`.`historico` (`usuario_id`, `cancao_id`) VALUES (1, 14);
+INSERT INTO `SpotifyClone`.`historico` (`usuario_id`, `cancao_id`) VALUES (1, 16);
+INSERT INTO `SpotifyClone`.`historico` (`usuario_id`, `cancao_id`) VALUES (2, 13);
+INSERT INTO `SpotifyClone`.`historico` (`usuario_id`, `cancao_id`) VALUES (2, 17);
+INSERT INTO `SpotifyClone`.`historico` (`usuario_id`, `cancao_id`) VALUES (2, 2);
+INSERT INTO `SpotifyClone`.`historico` (`usuario_id`, `cancao_id`) VALUES (2, 15);
+INSERT INTO `SpotifyClone`.`historico` (`usuario_id`, `cancao_id`) VALUES (3, 4);
+INSERT INTO `SpotifyClone`.`historico` (`usuario_id`, `cancao_id`) VALUES (3, 16);
+INSERT INTO `SpotifyClone`.`historico` (`usuario_id`, `cancao_id`) VALUES (3, 6);
+INSERT INTO `SpotifyClone`.`historico` (`usuario_id`, `cancao_id`) VALUES (4, 3);
+INSERT INTO `SpotifyClone`.`historico` (`usuario_id`, `cancao_id`) VALUES (4, 18);
+INSERT INTO `SpotifyClone`.`historico` (`usuario_id`, `cancao_id`) VALUES (4, 11);
 
 INSERT INTO `SpotifyClone`.`planos` (`id_plano`, `plano`, `preco`) VALUES (DEFAULT, 'gratuito', 0);
 INSERT INTO `SpotifyClone`.`planos` (`id_plano`, `plano`, `preco`) VALUES (DEFAULT, 'universitário', 5.99);
