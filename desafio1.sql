@@ -1,3 +1,5 @@
+DELIMITER &&
+
 CREATE DATABASE IF NOT EXISTS SpotifyClone;
 
 CREATE TABLE SpotifyClone.planos(
@@ -116,3 +118,6 @@ VALUES (1, 1),
 (4, 3),
 (4, 18),
 (4, 11);
+&&
+
+DELIMITER ;
