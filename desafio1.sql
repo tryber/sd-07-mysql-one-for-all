@@ -97,7 +97,7 @@ INSERT INTO usuario(nome, idade, plano_id)
 VALUES
 ('Thati', 23, 1),
 ('Cintia', 35, 3),
-('Bill Steam', 20, 2),
+('Bill', 20, 2),
 ('Roger', 45, 1);
 
 INSERT INTO seguindo_artista(usuario_id, artista_id)
