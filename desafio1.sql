@@ -1,13 +1,12 @@
-CREATE SCHEMA IF NOT EXISTS `SpotifyClone` ;
+DROP DATABASE IF EXISTS `SpotifyClone`;
+CREATE SCHEMA `SpotifyClone` ;
 USE `SpotifyClone` ;
 
 -- -----------------------------
 -- Table `SpotifyClone`.`album`
 -- -----------------------------
 
-DROP TABLE IF EXISTS `SpotifyClone`.`album` ;
-
-CREATE TABLE `SpotifyClone`.`album` (
+CREATE TABLE `album` (
   `album_id` INT NOT NULL AUTO_INCREMENT,
   `album_nome` VARCHAR(200) NOT NULL,
   `artista_id` INT NOT NULL,
@@ -29,10 +28,7 @@ VALUES
 -- Table `SpotifyClone`.`artista`
 -- -------------------------------
 
-
-DROP TABLE IF EXISTS `SpotifyClone`.`artista` ;
-
-CREATE TABLE `SpotifyClone`.`artista` (
+CREATE TABLE `artista` (
   `artista_id` INT NOT NULL AUTO_INCREMENT,
   `artista_nome` VARCHAR(100) NOT NULL,
   PRIMARY KEY (`artista_id`))
@@ -50,9 +46,7 @@ VALUES
 -- Table `SpotifyClone`.`artistas_seguidos`
 -- -----------------------------------------
 
-DROP TABLE IF EXISTS `SpotifyClone`.`artistas_seguidos` ;
-
-CREATE TABLE `SpotifyClone`.`artistas_seguidos` (
+CREATE TABLE `artistas_seguidos` (
   `artista_id` INT NOT NULL,
   `usuario_id` INT NOT NULL,
   PRIMARY KEY (`artista_id`, `usuario_id`),
@@ -78,9 +72,7 @@ VALUES
 -- Table `SpotifyClone`.`cancoes`
 -- -------------------------------
 
-DROP TABLE IF EXISTS `SpotifyClone`.`cancoes` ;
-
-CREATE TABLE `SpotifyClone`.`cancoes` (
+CREATE TABLE `cancoes` (
   `cancoes_id` INT NOT NULL AUTO_INCREMENT,
   `cancoes_nome` VARCHAR(200) NOT NULL,
   `album_id` INT NOT NULL,
@@ -115,10 +107,7 @@ VALUES
 -- Table `SpotifyClone`.`historico_reproducoes`
 -- ---------------------------------------------
 
-
-DROP TABLE IF EXISTS `SpotifyClone`.`historico_reproducoes` ;
-
-CREATE TABLE `SpotifyClone`.`historico_reproducoes` (
+CREATE TABLE `historico_reproducoes` (
   `usuario_id` INT NOT NULL,
   `cancoes_id` INT NOT NULL,
   PRIMARY KEY (`usuario_id`, `cancoes_id`),
@@ -150,10 +139,7 @@ VALUES
 -- Table `SpotifyClone`.`plano`
 -- -----------------------------
 
-
-DROP TABLE IF EXISTS `SpotifyClone`.`plano` ;
-
-CREATE TABLE IF NOT EXISTS `SpotifyClone`.`plano` (
+CREATE TABLE IF NOT EXISTS `plano` (
   `plano_id` INT NOT NULL AUTO_INCREMENT,
   `tipo_plano` VARCHAR(45) NOT NULL,
   `valor_plano` FLOAT NOT NULL,
@@ -171,9 +157,7 @@ VALUES
 -- Table `SpotifyClone`.`usuario`
 -- -------------------------------
 
-DROP TABLE IF EXISTS `SpotifyClone`.`usuario` ;
-
-CREATE TABLE  `SpotifyClone`.`usuario` (
+CREATE TABLE `usuario` (
   `usuario_id` INT NOT NULL AUTO_INCREMENT,
   `usuario_nome` VARCHAR(100) NOT NULL,
   `idade` INT,
