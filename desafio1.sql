@@ -87,3 +87,45 @@ VALUES
 ('Thang Of Thunder', 5, 4),
 ('Words Of Her Life', 5, 4),
 ('Without My Streets', 5, 4);
+
+CREATE TABLE reproducoes (
+usuario_id INT,
+cancoe_id INT,
+FOREIGN KEY (usuario_id) REFERENCES usuarios(usuario_id),
+FOREIGN KEY (cancoe_id) REFERENCES cancoes(cancoe_id)
+) ENGINE = InnoDB;
+
+INSERT INTO reproducoes (usuario_id, cancoe_id)
+VALUES
+(1, 1),
+(1, 6),
+(1,	14), 
+(1,	16), 
+(2, 13),
+(2, 17),
+(2, 2),
+(2, 15),
+(3, 4),
+(3, 16),
+(3, 6),
+(4, 3),
+(4, 18),
+(4, 11);
+
+CREATE TABLE seguindo (
+usuario_id INT,
+artista_id INT,
+FOREIGN KEY (usuario_id) REFERENCES usuarios(usuario_id),
+FOREIGN KEY (artista_id) REFERENCES artistas(artista_id)
+) ENGINE = InnoDB;
+
+INSERT INTO seguindo (usuario_id, artista_id)
+VALUES
+(1, 1),		
+(1, 3),
+(1,	4), 
+(2,	1),
+(2,	3), 
+(3, 1),
+(3, 2),
+(4, 4);
