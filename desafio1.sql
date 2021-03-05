@@ -34,17 +34,19 @@ CREATE TABLE IF NOT EXISTS SpotifyClone.cancoes (
 ) ENGINE=InnoDB;
 
 CREATE TABLE IF NOT EXISTS SpotifyClone.historico_de_reproducoes (
-	historico_de_reproducoes_id INT PRIMARY KEY AUTO_INCREMENT,
+	historico_de_reproducoes_id INT AUTO_INCREMENT,
     usuario_id INT NOT NULL,
 	cancao_id INT NOT NULL,
+    PRIMARY KEY(historico_de_reproducoes_id, usuario_id, cancao_id),
     FOREIGN KEY (usuario_id) REFERENCES SpotifyClone.usuarios(usuario_id),
     FOREIGN KEY (cancao_id) REFERENCES SpotifyClone.cancoes(cancao_id)
 ) ENGINE=InnoDB;
 
 CREATE TABLE IF NOT EXISTS SpotifyClone.seguindo (
-	seguindo_id INT PRIMARY KEY AUTO_INCREMENT,
+	seguindo_id INT AUTO_INCREMENT,
     usuario_id INT NOT NULL,
     artista_id INT NOT NULL,
+    PRIMARY KEY(seguindo_id, usuario_id, artista_id),
     FOREIGN KEY (usuario_id) REFERENCES SpotifyClone.usuarios(usuario_id),
     FOREIGN KEY (artista_id) REFERENCES SpotifyClone.artistas(artista_id)
 ) ENGINE=InnoDB;
@@ -118,4 +120,3 @@ VAlUES (1, 1),
 (3, 2),
 (3, 1),
 (4, 4);
-
