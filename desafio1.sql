@@ -4,19 +4,19 @@ CREATE DATABASE SpotifyClone;
 
 USE SpotifyClone;
 
-CREATE TABLE plans( id INTEGER PRIMARY KEY AUTO_INCREMENT, account VARCHAR(100) NOT NULL, price DOUBLE(6,2) NOT NULL) engine = InnoDB;
+CREATE TABLE IF NOT EXISTS plans( id INTEGER PRIMARY KEY AUTO_INCREMENT, account VARCHAR(100) NOT NULL, price DOUBLE(6,2) NOT NULL) engine = InnoDB;
 
-CREATE TABLE singers( id INTEGER PRIMARY KEY AUTO_INCREMENT, name VARCHAR(100) NOT NULL) engine = InnoDB;
+CREATE TABLE IF NOT EXISTS singers( id INTEGER PRIMARY KEY AUTO_INCREMENT, name VARCHAR(100) NOT NULL) engine = InnoDB;
 
-CREATE TABLE users( id INTEGER PRIMARY KEY AUTO_INCREMENT, name VARCHAR(100) NOT NULL, age INTEGER NOT NULL, plan_id INTEGER NOT NULL, FOREIGN KEY(plan_id) REFERENCES plans(id)) engine = InooDB;
+CREATE TABLE IF NOT EXISTS users( id INTEGER PRIMARY KEY AUTO_INCREMENT, name VARCHAR(100) NOT NULL, age INTEGER NOT NULL, plan_id INTEGER NOT NULL, FOREIGN KEY(plan_id) REFERENCES plans(id)) engine = InooDB;
 
-CREATE TABLE albuns(id INTEGER PRIMARY KEY AUTO_INCREMENT, name VARCHAR(100) NOT NULL, artist_id INTEGER  NOT NULL, FOREIGN KEY(artist_id) REFERENCES singers(id)) engin = InnoDB;
+CREATE TABLE IF NOT EXISTS albuns(id INTEGER PRIMARY KEY AUTO_INCREMENT, name VARCHAR(100) NOT NULL, artist_id INTEGER  NOT NULL, FOREIGN KEY(artist_id) REFERENCES singers(id)) engin = InnoDB;
 
-CREATE TABLE musical_track(id INTEGER PRIMARY KEY AUTO_INCREMENT, name VARCHAR(100) NOT NULL, album_id INTEGER NOT NULL, FOREIGN KEY(album_id) REFERENCES albuns(id)) engine = InnoDB;
+CREATE TABLE IF NOT EXISTS musical_track(id INTEGER PRIMARY KEY AUTO_INCREMENT, name VARCHAR(100) NOT NULL, album_id INTEGER NOT NULL, FOREIGN KEY(album_id) REFERENCES albuns(id)) engine = InnoDB;
 
-CREATE TABLE user_history_songs(user_id INTEGER NOT NULL, songs_id INTEGER NOT NULL, PRIMARY KEY(user_id, songs_id), FOREIGN KEY(user_id) REFERENCES user(id), FOREIGN KEY(songs_id) REFERENCES musical_track(id)) engine = InnoDB;
+CREATE TABLE IF NOT EXISTS user_history_songs(user_id INTEGER NOT NULL, songs_id INTEGER NOT NULL, PRIMARY KEY(user_id, songs_id), FOREIGN KEY(user_id) REFERENCES user(id), FOREIGN KEY(songs_id) REFERENCES musical_track(id)) engine = InnoDB;
 
-CREATE TABLE following_artists(user_id INTEGER NOT NULL, artist_id INTEGER NOT NULL, PRIMARY KEY(user_id, artist_id), FOREIGN KEY(user_id) REFERENCES user(id), FOREIGN KEY(artist_id) REFERENCES singers(id)) engine = InnoDB;
+CREATE TABLE IF NOT EXISTS following_artists(user_id INTEGER NOT NULL, artist_id INTEGER NOT NULL, PRIMARY KEY(user_id, artist_id), FOREIGN KEY(user_id) REFERENCES user(id), FOREIGN KEY(artist_id) REFERENCES singers(id)) engine = InnoDB;
 
 INSERT INTO plans(account, price)
 VALUES
