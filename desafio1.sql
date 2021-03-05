@@ -68,27 +68,29 @@ CREATE TABLE cancoes(
 cancao_id INT PRIMARY KEY,
 nome_cancao VARCHAR(200) NOT NULL,
 album_id INT NOT NULL,
-FOREIGN KEY (album_id) REFERENCES album(album_id)
+FOREIGN KEY (album_id) REFERENCES album(album_id),
+artista_id INT NOT NULL,
+FOREIGN KEY (artista_id) REFERENCES album(artista_id)
 ) ENGINE = InnoDB;
 
-INSERT INTO cancoes(cancao_id, nome_cancao, album_id) VALUES(1, "Dance With Her Own", 1);
-INSERT INTO cancoes(cancao_id, nome_cancao, album_id) VALUES(2, "Soul For Us", 1);
-INSERT INTO cancoes(cancao_id, nome_cancao, album_id) VALUES(3,  "Reflections Of Magic", 1);
-INSERT INTO cancoes(cancao_id, nome_cancao, album_id) VALUES(4, "Troubles Of My Inner Fire", 2);
-INSERT INTO cancoes(cancao_id, nome_cancao, album_id) VALUES(5,  "Time Fireworks", 2);
-INSERT INTO cancoes(cancao_id, nome_cancao, album_id) VALUES(6, "Magic Circus", 3);
-INSERT INTO cancoes(cancao_id, nome_cancao, album_id) VALUES(7, "Honey, So Do I", 3);
-INSERT INTO cancoes(cancao_id, nome_cancao, album_id) VALUES(8, "Sweetie, Let's Go Wild", 3);
-INSERT INTO cancoes(cancao_id, nome_cancao, album_id) VALUES(9,  "She Knows", 3);
-INSERT INTO cancoes(cancao_id, nome_cancao, album_id) VALUES(10, "Fantasy For Me", 4);
-INSERT INTO cancoes(cancao_id, nome_cancao, album_id) VALUES(11, "Celebration Of More", 4);
-INSERT INTO cancoes(cancao_id, nome_cancao, album_id) VALUES(12, "Rock His Everything", 4);
-INSERT INTO cancoes(cancao_id, nome_cancao, album_id) VALUES(13,  "Home Forever", 4);
-INSERT INTO cancoes(cancao_id, nome_cancao, album_id) VALUES(14,  "Diamond Power", 4);
-INSERT INTO cancoes(cancao_id, nome_cancao, album_id) VALUES(15,  "Honey, Let's Be Silly", 4);
-INSERT INTO cancoes(cancao_id, nome_cancao, album_id) VALUES(16, "Thang Of Thunder", 5);
-INSERT INTO cancoes(cancao_id, nome_cancao, album_id) VALUES(17, "Words Of Her Life", 5);
-INSERT INTO cancoes(cancao_id, nome_cancao, album_id) VALUES(18, "Without My Streets", 5);
+INSERT INTO cancoes(cancao_id, nome_cancao, album_id, artista_id) VALUES(1, "Dance With Her Own", 1, 1);
+INSERT INTO cancoes(cancao_id, nome_cancao, album_id, artista_id) VALUES(2, "Soul For Us", 1, 1);
+INSERT INTO cancoes(cancao_id, nome_cancao, album_id, artista_id) VALUES(3,  "Reflections Of Magic", 1, 1);
+INSERT INTO cancoes(cancao_id, nome_cancao, album_id, artista_id) VALUES(4, "Troubles Of My Inner Fire", 2, 1);
+INSERT INTO cancoes(cancao_id, nome_cancao, album_id, artista_id)VALUES(5,  "Time Fireworks", 2, 1);
+INSERT INTO cancoes(cancao_id, nome_cancao, album_id, artista_id) VALUES(6, "Magic Circus", 3, 2);
+INSERT INTO cancoes(cancao_id, nome_cancao, album_id, artista_id) VALUES(7, "Honey, So Do I", 3, 2);
+INSERT INTO cancoes(cancao_id, nome_cancao, album_id, artista_id) VALUES(8, "Sweetie, Let's Go Wild", 3, 2);
+INSERT INTO cancoes(cancao_id, nome_cancao, album_id, artista_id) VALUES(9,  "She Knows", 3, 2);
+INSERT INTO cancoes(cancao_id, nome_cancao, album_id, artista_id) VALUES(10, "Fantasy For Me", 4, 3);
+INSERT INTO cancoes(cancao_id, nome_cancao, album_id, artista_id) VALUES(11, "Celebration Of More", 4, 3);
+INSERT INTO cancoes(cancao_id, nome_cancao, album_id, artista_id) VALUES(12, "Rock His Everything", 4, 3);
+INSERT INTO cancoes(cancao_id, nome_cancao, album_id, artista_id) VALUES(13,  "Home Forever", 4, 3);
+INSERT INTO cancoes(cancao_id, nome_cancao, album_id, artista_id) VALUES(14,  "Diamond Power", 4, 3);
+INSERT INTO cancoes(cancao_id, nome_cancao, album_id, artista_id) VALUES(15,  "Honey, Let's Be Silly", 4, 3);
+INSERT INTO cancoes(cancao_id, nome_cancao, album_id, artista_id) VALUES(16, "Thang Of Thunder", 5, 4);
+INSERT INTO cancoes(cancao_id, nome_cancao, album_id, artista_id) VALUES(17, "Words Of Her Life", 5, 4);
+INSERT INTO cancoes(cancao_id, nome_cancao, album_id, artista_id) VALUES(18, "Without My Streets", 5, 4);
 
 CREATE TABLE historico(
 usuario_id INT NOT NULL,
