@@ -45,19 +45,17 @@ CREATE TABLE musicas (
 ) ENGINE = InnoDB;
 
 CREATE TABLE inscricoes (
-  inscricao_id INT NOT NULL AUTO_INCREMENT,
   usuario_id INT NOT NULL,
   artista_id INT NOT NULL,
-  PRIMARY KEY (inscricao_id),
+  PRIMARY KEY (usuario_id, artista_id),
   FOREIGN KEY (usuario_id) REFERENCES usuarios (usuario_id),
   FOREIGN KEY (artista_id) REFERENCES artistas (artista_id)
 ) ENGINE = InnoDB;
 
 CREATE TABLE historicos (
-  historico_id INT NOT NULL AUTO_INCREMENT,
   usuario_id INT NOT NULL,
   musica_id INT NOT NULL,
-  PRIMARY KEY (historico_id),
+  PRIMARY KEY (usuario_id, musica_id),
   FOREIGN KEY (usuario_id) REFERENCES usuarios (usuario_id),
   FOREIGN KEY (musica_id) REFERENCES musicas (musica_id)
 ) ENGINE = InnoDB;
