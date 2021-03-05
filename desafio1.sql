@@ -1,22 +1,15 @@
--- MySQL Workbench Synchronization
--- Generated: 2021-03-05 18:05
--- Model: New Model
--- Version: 1.0
--- Project: Name of the project
--- Author: Ander
-
 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0;
 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0;
 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION';
 
 DROP DATABASE IF EXISTS `SpotifyClone`;
-CREATE DATABASE IF NOT EXISTS `SpotifyClone` DEFAULT CHARACTER SET utf8 ;
+CREATE DATABASE IF NOT EXISTS `SpotifyClone`;
 USE `SpotifyClone`;
 
 CREATE TABLE IF NOT EXISTS `SpotifyClone`.`albuns` (
-  `album_id` INT(11) NOT NULL AUTO_INCREMENT,
+  `album_id` INT NOT NULL AUTO_INCREMENT,
   `album` VARCHAR(45) NULL DEFAULT NULL,
-  `artista_id` INT(11) NULL DEFAULT NULL,
+  `artista_id` INT NULL DEFAULT NULL,
   PRIMARY KEY (`album_id`),
   INDEX `artista_id_idx` (`artista_id` ASC) VISIBLE,
   CONSTRAINT `fk_albuns_artistas`
@@ -25,55 +18,49 @@ CREATE TABLE IF NOT EXISTS `SpotifyClone`.`albuns` (
 ENGINE = InnoDB;
 
 CREATE TABLE IF NOT EXISTS `SpotifyClone`.`artistas` (
-  `artista_id` INT(11) NOT NULL AUTO_INCREMENT,
+  `artista_id` INT NOT NULL AUTO_INCREMENT,
   `artista` VARCHAR(45) NULL DEFAULT NULL,
   PRIMARY KEY (`artista_id`))
-ENGINE = InnoDB
-DEFAULT CHARACTER SET = utf8;
+ENGINE = InnoDB;
 
 CREATE TABLE IF NOT EXISTS `SpotifyClone`.`cancoes` (
-  `cancao_id` INT(11) NOT NULL AUTO_INCREMENT,
+  `cancao_id` INT NOT NULL AUTO_INCREMENT,
   `cancao` VARCHAR(45) NULL DEFAULT NULL,
-  `album_id` INT(11) NULL DEFAULT NULL,
+  `album_id` INT NULL DEFAULT NULL,
   PRIMARY KEY (`cancao_id`),
   INDEX `fk_albuns_album_id_idx` (`album_id` ASC) VISIBLE,
   CONSTRAINT `fk_cancoes_albuns`
     FOREIGN KEY (`album_id`)
     REFERENCES `SpotifyClone`.`albuns` (`album_id`))
-ENGINE = InnoDB
-DEFAULT CHARACTER SET = utf8;
+ENGINE = InnoDB;
 
 CREATE TABLE IF NOT EXISTS `SpotifyClone`.`planos` (
-  `id_plano` INT(11) NOT NULL AUTO_INCREMENT,
+  `id_plano` INT NOT NULL AUTO_INCREMENT,
   `plano` VARCHAR(45) NULL DEFAULT NULL,
   `preco` DECIMAL(10,2) NULL DEFAULT NULL,
   PRIMARY KEY (`id_plano`),
   UNIQUE INDEX `id_plano_UNIQUE` (`id_plano` ASC) VISIBLE)
-ENGINE = InnoDB
-DEFAULT CHARACTER SET = utf8;
+ENGINE = InnoDB;
 
 CREATE TABLE IF NOT EXISTS `SpotifyClone`.`seguidores` (
-  `usuario_id` INT(11) NOT NULL,
-  `artista_id` INT(11) NOT NULL,
+  `usuario_id` INT NOT NULL,
+  `artista_id` INT NOT NULL,
   PRIMARY KEY (`usuario_id`, `artista_id`),
   INDEX `usuario_id_idx` (`usuario_id` ASC) VISIBLE,
   INDEX `artista_id_idx` (`artista_id` ASC) VISIBLE,
   CONSTRAINT `fk_seguidores_artistas`
     FOREIGN KEY (`artista_id`)
-    REFERENCES `SpotifyClone`.`artistas` (`artista_id`)
-    ON DELETE RESTRICT
-    ON UPDATE RESTRICT,
+    REFERENCES `SpotifyClone`.`artistas` (`artista_id`),
   CONSTRAINT `fk_seguidores_usuarios`
     FOREIGN KEY (`usuario_id`)
     REFERENCES `SpotifyClone`.`usuarios` (`usuario_id`))
-ENGINE = InnoDB
-DEFAULT CHARACTER SET = utf8;
+ENGINE = InnoDB;
 
 CREATE TABLE IF NOT EXISTS `SpotifyClone`.`usuarios` (
-  `usuario_id` INT(11) NOT NULL AUTO_INCREMENT,
+  `usuario_id` INT NOT NULL AUTO_INCREMENT,
   `usuario` VARCHAR(45) NOT NULL,
-  `idade` INT(11) NULL DEFAULT NULL,
-  `id_plano` INT(11) NULL DEFAULT NULL,
+  `idade` INT NULL DEFAULT NULL,
+  `id_plano` INT NULL DEFAULT NULL,
   PRIMARY KEY (`usuario_id`),
   UNIQUE INDEX `usuario_UNIQUE` (`usuario` ASC) VISIBLE,
   UNIQUE INDEX `usuario_id_UNIQUE` (`usuario_id` ASC) VISIBLE,
@@ -81,26 +68,20 @@ CREATE TABLE IF NOT EXISTS `SpotifyClone`.`usuarios` (
   CONSTRAINT `fk_usuarios_planos`
     FOREIGN KEY (`id_plano`)
     REFERENCES `SpotifyClone`.`planos` (`id_plano`))
-ENGINE = InnoDB
-DEFAULT CHARACTER SET = utf8;
+ENGINE = InnoDB;
 
 CREATE TABLE IF NOT EXISTS `SpotifyClone`.`historico` (
-  `usuario_id` INT(11) NOT NULL,
-  `cancao_id` INT(11) NOT NULL,
+  `usuario_id` INT NOT NULL,
+  `cancao_id` INT NOT NULL,
   INDEX `fk_historico_cancoes_idx` (`cancao_id` ASC) VISIBLE,
   PRIMARY KEY (`usuario_id`, `cancao_id`),
   CONSTRAINT `fk_historico_usuarios`
     FOREIGN KEY (`usuario_id`)
-    REFERENCES `SpotifyClone`.`usuarios` (`usuario_id`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION,
+    REFERENCES `SpotifyClone`.`usuarios` (`usuario_id`),
   CONSTRAINT `fk_historico_cancoes`
     FOREIGN KEY (`cancao_id`)
-    REFERENCES `SpotifyClone`.`cancoes` (`cancao_id`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
-ENGINE = InnoDB
-DEFAULT CHARACTER SET = utf8;
+    REFERENCES `SpotifyClone`.`cancoes` (`cancao_id`))
+ENGINE = InnoDB;
 
 INSERT INTO `SpotifyClone`.`albuns` (`album_id`, `album`, `artista_id`) VALUES (DEFAULT, 'Envious', 1);
 INSERT INTO `SpotifyClone`.`albuns` (`album_id`, `album`, `artista_id`) VALUES (DEFAULT, 'Exuberant', 1);
