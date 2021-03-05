@@ -36,17 +36,17 @@ FOREIGN KEY (plano_id) REFERENCES spotifyclone.plano(id)
 ) ENGINE = InnoDB;
 
 CREATE TABLE spotifyclone.seguindo_artista(
-id INT PRIMARY KEY AUTO_INCREMENT,
 usuario_id INT NOT NULL,
 artista_id INT NOT NULL,
+PRIMARY KEY (artista_id, usuario_id),
 FOREIGN KEY (usuario_id) REFERENCES spotifyclone.usuario(id),
 FOREIGN KEY (artista_id) REFERENCES spotifyclone.artista(id)
 ) ENGINE = InnoDB;
 
 CREATE TABLE spotifyclone.historico_reproducao(
-id INT PRIMARY KEY AUTO_INCREMENT,
 usuario_id INT NOT NULL,
 cancao_id INT NOT NULL,
+PRIMARY KEY (cancao_id, usuario_id),
 FOREIGN KEY (usuario_id) REFERENCES spotifyclone.usuario(id),
 FOREIGN KEY (cancao_id) REFERENCES spotifyclone.cancao(id)
 ) ENGINE = InnoDB;
