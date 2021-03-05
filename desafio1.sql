@@ -174,10 +174,3 @@ CREATE TABLE IF NOT EXISTS `seguindo_artistas` (
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
-
-
-
-
-
-
-
