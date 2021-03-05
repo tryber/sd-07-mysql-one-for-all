@@ -256,7 +256,7 @@ COMMIT;
 
 -- -----------------------------------------------------
 -- Data for table `SpotifyClone`.`usuarios_cancoes`
--- -----------------------------------------------------
+-- ------------------------------------------------------
 START TRANSACTION;
 USE `SpotifyClone`;
 INSERT INTO `SpotifyClone`.`usuarios_cancoes` (`usuario_id`, `cancao_id`) VALUES (1, 1);
