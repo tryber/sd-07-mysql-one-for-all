@@ -111,7 +111,7 @@ INSERT INTO cancao (nome_cancao, album_id) VALUES
 INSERT INTO historico (cancao_id, usuario_id) VALUES
 (1,1),
 (6,1),
-(7,1),
+(14,1),
 (16,1),
 (13,2),
 (17,2),
