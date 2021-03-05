@@ -1,15 +1,10 @@
 CREATE DATABASE SpotifyClone;
--- -----------------------------------------------------
--- Table SpotifyClone.artistas
--- -----------------------------------------------------
+
 CREATE TABLE SpotifyClone.artistas (
   id_artista INT NOT NULL AUTO_INCREMENT,
   artista VARCHAR(100) NOT NULL,
   PRIMARY KEY (id_artista));
 
--- -----------------------------------------------------
--- Table SpotifyClone.albuns
--- -----------------------------------------------------
 CREATE TABLE SpotifyClone.albuns (
   id_album INT NOT NULL AUTO_INCREMENT,
   album VARCHAR(100) NOT NULL,
@@ -21,9 +16,6 @@ CREATE TABLE SpotifyClone.albuns (
     REFERENCES SpotifyClone.artistas (id_artista)) engine = InnoDB;
 
 
--- -----------------------------------------------------
--- Table SpotifyClone.cancoes
--- -----------------------------------------------------
 CREATE TABLE SpotifyClone.cancoes (
   id_cancao INT NOT NULL AUTO_INCREMENT,
   nome VARCHAR(100) NOT NULL,
@@ -35,18 +27,12 @@ CREATE TABLE SpotifyClone.cancoes (
     REFERENCES SpotifyClone.albuns (id_album));
 
 
--- -----------------------------------------------------
--- Table SpotifyClone.planos
--- -----------------------------------------------------
 CREATE TABLE SpotifyClone.planos (
   id_plano INT NOT NULL AUTO_INCREMENT,
   plano VARCHAR(100) NOT NULL,
   valor_plano FLOAT NOT NULL,
   PRIMARY KEY (id_plano));
 
--- -----------------------------------------------------
--- Table SpotifyClone.usuarios
--- -----------------------------------------------------
 CREATE TABLE SpotifyClone.usuarios (
   id_usuario INT NOT NULL AUTO_INCREMENT,
   nome VARCHAR(100) NOT NULL,
@@ -58,9 +44,6 @@ CREATE TABLE SpotifyClone.usuarios (
     FOREIGN KEY (id_plano)
     REFERENCES SpotifyClone.planos (id_plano));
 
--- -----------------------------------------------------
--- Table SpotifyClone.historico_reproducoes
--- -----------------------------------------------------
 CREATE TABLE SpotifyClone.historico_reproducoes (
   id_usuario INT NOT NULL,
   id_cancao INT NOT NULL,
@@ -73,10 +56,6 @@ CREATE TABLE SpotifyClone.historico_reproducoes (
     FOREIGN KEY (id_cancao)
     REFERENCES SpotifyClone.cancoes (id_cancao));
 
-
--- -----------------------------------------------------
--- Table SpotifyClone.seguindo_artistas
--- -----------------------------------------------------
 CREATE TABLE SpotifyClone.seguindo_artistas (
   id_usuario INT NOT NULL,
   id_artista INT NOT NULL,
