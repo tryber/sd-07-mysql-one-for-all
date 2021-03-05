@@ -6,17 +6,72 @@ USE SpotifyClone;
 -- -----------------------------------------------------
 -- Table SpotifyClone.artistas
 -- -----------------------------------------------------
-CREATE TABLE artistas (
-  id_artista INT NOT NULL AUTO_INCREMENT,
-  artista VARCHAR(100) NOT NULL,
-  PRIMARY KEY (id_artista)) engine = InnoDB;
+CREATE TABLE planos (
+  id_plano INT NOT NULL AUTO_INCREMENT,
+  plano VARCHAR(100) NOT NULL,
+  valor_plano FLOAT NOT NULL,
+  PRIMARY KEY (id_plano)) engine = InnoDB;
 
-INSERT INTO artistas (artista)
+INSERT INTO planos (valor_plano, plano)
 VALUES 
-('Walter Phoenix'),
-('Peter Strong'),
-('Lance Day'),
-('Freedie Shannon');
+(0, 'gratuito'),
+(5.99, 'universitário'),
+(7.99, 'familia');
+
+CREATE TABLE historico_reproducoes (
+  id_usuario INT NOT NULL,
+  id_cancao INT NOT NULL,
+  PRIMARY KEY (id_usuario, id_cancao),
+  INDEX cancao_id (id_cancao ASC) VISIBLE,
+  CONSTRAINT hist_reproducoes_ibfk_1
+    FOREIGN KEY (id_usuario)
+    REFERENCES usuarios (id_usuario),
+  CONSTRAINT hist_reproducoes_ibfk_2
+    FOREIGN KEY (id_cancao)
+    REFERENCES cancoes (id_cancao)) engine = InnoDB;
+
+INSERT INTO historico_reproducoes (id_usuario, id_cancao)
+VALUES 
+(1,1),
+(1,6),
+(1,14),
+(1,16),
+(2,13),
+(2,17),
+(2,2),
+(2,15),
+(3,4),
+(3,16),
+(3,6),
+(4,3),
+(4,18),
+(4,11);
+
+CREATE TABLE seguindo_artistas (
+  id_usuario INT NOT NULL,
+  id_artista INT NOT NULL,
+  PRIMARY KEY (id_usuario, id_artista),
+  INDEX seguindo_artista (id_artista ASC) VISIBLE,
+  CONSTRAINT usuario_artista_ibfk_1
+    FOREIGN KEY (id_usuario)
+    REFERENCES usuarios (id_usuario),
+  CONSTRAINT usuario_artista_ibfk_2
+    FOREIGN KEY (id_artista)
+    REFERENCES artistas (id_artista)) engine = InnoDB;
+
+INSERT INTO seguindo_artistas (id_usuario, id_artista)
+VALUES 
+(1,1),
+(1,4),
+(1,3),
+(2,1),
+(2,3),
+(3,2),
+(3,1),
+(4,4);
+
+
+
 
 -- -----------------------------------------------------
 -- Table SpotifyClone.albuns
@@ -78,17 +133,6 @@ VALUES
 -- -----------------------------------------------------
 -- Table SpotifyClone.planos
 -- -----------------------------------------------------
-CREATE TABLE planos (
-  id_plano INT NOT NULL AUTO_INCREMENT,
-  plano VARCHAR(100) NOT NULL,
-  valor_plano FLOAT NOT NULL,
-  PRIMARY KEY (id_plano)) engine = InnoDB;
-
-INSERT INTO planos (valor_plano, plano)
-VALUES 
-(0, 'gratuito'),
-(5.99, 'universitário'),
-(7.99, 'familia');
 
 -- -----------------------------------------------------
 -- Table SpotifyClone.usuarios
@@ -111,60 +155,24 @@ VALUES
 ('Bill', 20, 2),
 ('Roger', 45, 1);
 
+CREATE TABLE artistas (
+  id_artista INT NOT NULL AUTO_INCREMENT,
+  artista VARCHAR(100) NOT NULL,
+  PRIMARY KEY (id_artista)) engine = InnoDB;
+
+INSERT INTO artistas (artista)
+VALUES 
+('Walter Phoenix'),
+('Peter Strong'),
+('Lance Day'),
+('Freedie Shannon');
+
+
 -- -----------------------------------------------------
 -- Table SpotifyClone.historico_reproducoes
 -- -----------------------------------------------------
-CREATE TABLE historico_reproducoes (
-  id_usuario INT NOT NULL,
-  id_cancao INT NOT NULL,
-  PRIMARY KEY (id_usuario, id_cancao),
-  INDEX cancao_id (id_cancao ASC) VISIBLE,
-  CONSTRAINT hist_reproducoes_ibfk_1
-    FOREIGN KEY (id_usuario)
-    REFERENCES usuarios (id_usuario),
-  CONSTRAINT hist_reproducoes_ibfk_2
-    FOREIGN KEY (id_cancao)
-    REFERENCES cancoes (id_cancao)) engine = InnoDB;
 
-INSERT INTO historico_reproducoes (id_usuario, id_cancao)
-VALUES 
-(1,1),
-(1,6),
-(1,14),
-(1,16),
-(2,13),
-(2,17),
-(2,2),
-(2,15),
-(3,4),
-(3,16),
-(3,6),
-(4,3),
-(4,18),
-(4,11);
 
 -- -----------------------------------------------------
 -- Table SpotifyClone.seguindo_artistas
 -- -----------------------------------------------------
-CREATE TABLE seguindo_artistas (
-  id_usuario INT NOT NULL,
-  id_artista INT NOT NULL,
-  PRIMARY KEY (id_usuario, id_artista),
-  INDEX seguindo_artista (id_artista ASC) VISIBLE,
-  CONSTRAINT usuario_artista_ibfk_1
-    FOREIGN KEY (id_usuario)
-    REFERENCES usuarios (id_usuario),
-  CONSTRAINT usuario_artista_ibfk_2
-    FOREIGN KEY (id_artista)
-    REFERENCES artistas (id_artista)) engine = InnoDB;
-
-INSERT INTO seguindo_artistas (id_usuario, id_artista)
-VALUES 
-(1,1),
-(1,4),
-(1,3),
-(2,1),
-(2,3),
-(3,2),
-(3,1),
-(4,4);
