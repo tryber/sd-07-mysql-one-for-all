@@ -14,6 +14,7 @@ describe('Queries de seleção', () => {
       await importer.import('./desafio1.sql');
     }
     catch(error) {
+      console.log(error, "--- AQUI ---");
       console.log('Erro ao restaurar o dump!');
     }
 
