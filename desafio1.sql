@@ -25,6 +25,7 @@ CREATE TABLE IF NOT EXISTS `SpotifyClone`.`usuarios` (
   `usuario_id` INT NOT NULL AUTO_INCREMENT,
   `usuario_nome` VARCHAR(45) NOT NULL,
   `idade` INT NOT NULL,
+  `plano_id` INT NOT NULL,
   PRIMARY KEY (`usuario_id`))
 ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8;
@@ -174,12 +175,12 @@ VALUES
 ("Without My Streets", 5);
 
 
-INSERT INTO usuarios(usuario_nome, idade)
+INSERT INTO usuarios(usuario_nome, idade, plano_id)
 VALUES
-("Thati", 23),
-("Cintia", 35),
-("Bill", 20),
-("Roger", 45);
+("Thati", 23, 1),
+("Cintia", 35, 3),
+("Bill", 20, 2),
+("Roger", 45, 1);
 
 INSERT INTO historico_reproducoes(usuario_id, cancao_id)
 VALUES
