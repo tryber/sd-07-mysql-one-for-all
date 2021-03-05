@@ -44,7 +44,7 @@ VALUES
 ('Freedie Shannon');
 
 CREATE TABLE albums (
-albums_id INT PRIMARY KEY auto_increment,
+album_id INT PRIMARY KEY auto_increment,
 album VARCHAR(100),
 artista_id INT NOT NULL,
 FOREIGN KEY (artista_id) REFERENCES artistas(artista_id)
