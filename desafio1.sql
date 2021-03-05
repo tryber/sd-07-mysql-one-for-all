@@ -5,14 +5,13 @@ CREATE DATABASE SpotifyClone;
 CREATE TABLE SpotifyClone.artistas (
   id_artista INT NOT NULL AUTO_INCREMENT,
   artista VARCHAR(100) NOT NULL,
-  PRIMARY KEY (id_artista));
+  PRIMARY KEY (id_artista))engine = InnoDB;
 
 CREATE TABLE SpotifyClone.albuns (
   id_album INT NOT NULL AUTO_INCREMENT,
   album VARCHAR(100) NOT NULL,
   id_artista INT NOT NULL,
   PRIMARY KEY (id_album),
-  INDEX artista_id (id_artista ASC) VISIBLE,
     FOREIGN KEY (id_artista)
     REFERENCES SpotifyClone.artistas (id_artista)) engine = InnoDB;
 
@@ -22,16 +21,15 @@ CREATE TABLE SpotifyClone.cancoes (
   nome VARCHAR(100) NOT NULL,
   id_album INT NOT NULL,
   PRIMARY KEY (id_cancao),
-  INDEX album_id (id_album ASC) VISIBLE,
     FOREIGN KEY (id_album)
-    REFERENCES SpotifyClone.albuns (id_album));
+    REFERENCES SpotifyClone.albuns (id_album))engine = InnoDB;
 
 
 CREATE TABLE SpotifyClone.planos (
   id_plano INT NOT NULL AUTO_INCREMENT,
   plano VARCHAR(100) NOT NULL,
   valor_plano FLOAT NOT NULL,
-  PRIMARY KEY (id_plano));
+  PRIMARY KEY (id_plano))engine = InnoDB;
 
 CREATE TABLE SpotifyClone.usuarios (
   id_usuario INT NOT NULL AUTO_INCREMENT,
@@ -39,29 +37,26 @@ CREATE TABLE SpotifyClone.usuarios (
   idade INT NOT NULL,
   id_plano INT NOT NULL,
   PRIMARY KEY (id_usuario),
-  INDEX plano_id (id_plano ASC) VISIBLE,
     FOREIGN KEY (id_plano)
-    REFERENCES SpotifyClone.planos (id_plano));
+    REFERENCES SpotifyClone.planos (id_plano))engine = InnoDB;
 
 CREATE TABLE SpotifyClone.historico_reproducoes (
   id_usuario INT NOT NULL,
   id_cancao INT NOT NULL,
   PRIMARY KEY (id_usuario, id_cancao),
-  INDEX cancao_id (id_cancao ASC) VISIBLE,
     FOREIGN KEY (id_usuario)
     REFERENCES SpotifyClone.usuarios (id_usuario),
     FOREIGN KEY (id_cancao)
-    REFERENCES SpotifyClone.cancoes (id_cancao));
+    REFERENCES SpotifyClone.cancoes (id_cancao))engine = InnoDB;
 
 CREATE TABLE SpotifyClone.seguindo_artistas (
   id_usuario INT NOT NULL,
   id_artista INT NOT NULL,
   PRIMARY KEY (id_usuario, id_artista),
-  INDEX seguindo_artista (id_artista ASC) VISIBLE,
     FOREIGN KEY (id_usuario)
     REFERENCES SpotifyClone.usuarios (id_usuario),
     FOREIGN KEY (id_artista)
-    REFERENCES SpotifyClone.artistas (id_artista));
+    REFERENCES SpotifyClone.artistas (id_artista))engine = InnoDB;
 
 INSERT INTO SpotifyClone.planos (valor_plano, plano)
 VALUES 
