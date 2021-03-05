@@ -4,6 +4,20 @@ CREATE DATABASE SpotifyClone;
 
 USE SpotifyClone;
 
+CREATE TABLE planos (
+plano_id INT PRIMARY KEY AUTO_INCREMENT,
+plano VARCHAR(80) NOT NULL,
+preco DECIMAL (8, 2) NOT NULL
+);
+
+CREATE TABLE usuarios (
+usuario_id INT PRIMARY KEY AUTO_INCREMENT,
+usuario VARCHAR(80) NOT NULL,
+idade INT NOT NULL,
+plano_id INT NOT NULL,
+CONSTRAINT `fk_planos_usuarios` FOREIGN KEY (plano_id) REFERENCES SpotifyClone.planos (plano_id)
+);
+
 CREATE TABLE artistas (
 artista_id INT PRIMARY KEY AUTO_INCREMENT,
 artista VARCHAR(80) NOT NULL
@@ -16,13 +30,6 @@ artista_id INT NOT NULL,
 CONSTRAINT `fk_artistas_albuns` FOREIGN KEY (artista_id) REFERENCES SpotifyClone.artistas (artista_id)
 );
 
-CREATE TABLE `usuarios` (
-usuario_id INT PRIMARY KEY AUTO_INCREMENT,
-usuario VARCHAR(80) NOT NULL,
-idade INT NOT NULL,
-plano_id INT NOT NULL,
-CONSTRAINT `fk_planos_usuarios` FOREIGN KEY (plano_id) REFERENCES SpotifyClone.planos (plano_id)
-);
 
 CREATE TABLE musicas (
 musicas_id INT PRIMARY KEY AUTO_INCREMENT,
@@ -47,11 +54,7 @@ CONSTRAINT `fk_user_history` FOREIGN KEY (usuario_id) REFERENCES SpotifyClone.us
 CONSTRAINT `fk_music_history` FOREIGN KEY (musicas_id) REFERENCES SpotifyClone.musicas (musicas_id)
 );
 
-CREATE TABLE planos (
-plano_id INT PRIMARY KEY AUTO_INCREMENT,
-plano VARCHAR(80) NOT NULL,
-preco DECIMAL (8, 2) NOT NULL
-);
+
 
 INSERT INTO planos (plano, preco) VALUES
 ('gratuito', 0), ('familiar', 7.99), ('universitário', 5.99);
@@ -64,6 +67,7 @@ INSERT INTO artistas (artista) VALUES
 
 INSERT INTO albuns (album, artista_id) VALUES
 ('Envious', 1), ('Exuberant', 1), ('Hallowed Steam', 2), ('Incandescent', 3), ('Temporary Culture', 4);
+
 
 INSERT INTO musicas (musica, album_id) VALUES
 ('Soul For Us', 1), ('Reflections Of Magic', 1), ('Dance With Her Own', 1),
