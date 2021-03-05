@@ -1,4 +1,4 @@
-DROP DATABASE IF EXISTS SpotifyClone;
+oDROP DATABASE IF EXISTS SpotifyClone;
 
 CREATE DATABASE SpotifyClone;
 
