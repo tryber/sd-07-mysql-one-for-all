@@ -2,7 +2,7 @@ CREATE DATABASE IF NOT EXISTS SpotifyClone;
 -- -----------------------------------------------------
 -- Table SpotifyClone.artistas
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS SpotifyClone.artistas (
+CREATE TABLE SpotifyClone.artistas (
   id_artista INT NOT NULL AUTO_INCREMENT,
   artista VARCHAR(100) NOT NULL,
   PRIMARY KEY (id_artista));
@@ -11,7 +11,7 @@ CREATE TABLE IF NOT EXISTS SpotifyClone.artistas (
 -- -----------------------------------------------------
 -- Table SpotifyClone.albuns
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS SpotifyClone.albuns (
+CREATE TABLE SpotifyClone.albuns (
   id_album INT NOT NULL AUTO_INCREMENT,
   album VARCHAR(100) NOT NULL,
   id_artista INT NOT NULL,
@@ -25,7 +25,7 @@ CREATE TABLE IF NOT EXISTS SpotifyClone.albuns (
 -- -----------------------------------------------------
 -- Table SpotifyClone.cancoes
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS SpotifyClone.cancoes (
+CREATE TABLE SpotifyClone.cancoes (
   id_cancao INT NOT NULL AUTO_INCREMENT,
   nome VARCHAR(100) NOT NULL,
   id_album INT NOT NULL,
@@ -39,7 +39,7 @@ CREATE TABLE IF NOT EXISTS SpotifyClone.cancoes (
 -- -----------------------------------------------------
 -- Table SpotifyClone.planos
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS SpotifyClone.planos (
+CREATE TABLE SpotifyClone.planos (
   id_plano INT NOT NULL AUTO_INCREMENT,
   plano VARCHAR(100) NOT NULL,
   valor_plano FLOAT NOT NULL,
@@ -48,7 +48,7 @@ CREATE TABLE IF NOT EXISTS SpotifyClone.planos (
 -- -----------------------------------------------------
 -- Table SpotifyClone.usuarios
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS SpotifyClone.usuarios (
+CREATE TABLE SpotifyClone.usuarios (
   id_usuario INT NOT NULL AUTO_INCREMENT,
   nome VARCHAR(100) NOT NULL,
   idade INT NOT NULL,
@@ -62,7 +62,7 @@ CREATE TABLE IF NOT EXISTS SpotifyClone.usuarios (
 -- -----------------------------------------------------
 -- Table SpotifyClone.historico_reproducoes
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS SpotifyClone.historico_reproducoes (
+CREATE TABLE SpotifyClone.historico_reproducoes (
   id_usuario INT NOT NULL,
   id_cancao INT NOT NULL,
   PRIMARY KEY (id_usuario, id_cancao),
@@ -78,7 +78,7 @@ CREATE TABLE IF NOT EXISTS SpotifyClone.historico_reproducoes (
 -- -----------------------------------------------------
 -- Table SpotifyClone.seguindo_artistas
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS SpotifyClone.seguindo_artistas (
+CREATE TABLE SpotifyClone.seguindo_artistas (
   id_usuario INT NOT NULL,
   id_artista INT NOT NULL,
   PRIMARY KEY (id_usuario, id_artista),
