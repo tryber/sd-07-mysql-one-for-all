@@ -161,9 +161,11 @@ SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
 -- -----------------------------------------------------
 START TRANSACTION;
 USE `SpotifyClone`;
-INSERT INTO `SpotifyClone`.`planos` (`id`, `nome`, `valor`) VALUES (DEFAULT, 'gratuito', 0);
-INSERT INTO `SpotifyClone`.`planos` (`id`, `nome`, `valor`) VALUES (DEFAULT, 'familiar', 7.99);
-INSERT INTO `SpotifyClone`.`planos` (`id`, `nome`, `valor`) VALUES (DEFAULT, 'universitário', 5.99);
+INSERT INTO `SpotifyClone`.`planos` (`id`, `nome`, `valor`) 
+VALUES 
+(DEFAULT, 'gratuito', 0),
+(DEFAULT, 'familiar', 7.99),
+(DEFAULT, 'universitário', 5.99);
 
 COMMIT;
 
