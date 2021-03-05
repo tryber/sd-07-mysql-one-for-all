@@ -1,6 +1,6 @@
 DROP DATABASE IF EXISTS SpotifyClone;
-CREATE SCHEMA SpotifyClone ;
-USE SpotifyClone ;
+CREATE DATABASE SpotifyClone;
+USE SpotifyClone;
 
 CREATE TABLE album (
   album_id INT AUTO_INCREMENT,
@@ -8,8 +8,8 @@ CREATE TABLE album (
   artista_id INT NOT NULL,
   PRIMARY KEY (album_id, artista_id),
   FOREIGN KEY (artista_id)
-  REFERENCES artista(artista_id))
-ENGINE = InnoDB;
+  REFERENCES artista(artista_id)
+) ENGINE = InnoDB;
 
 INSERT INTO album (album_nome, artista_id)
 VALUES
@@ -23,8 +23,8 @@ VALUES
 CREATE TABLE artista (
   artista_id INT AUTO_INCREMENT,
   artista_nome VARCHAR(100) NOT NULL,
-  PRIMARY KEY (artista_id))
-ENGINE = InnoDB;
+  PRIMARY KEY (artista_id)
+) ENGINE = InnoDB;
 
 INSERT INTO artista (artista_nome)
 VALUES
@@ -41,8 +41,8 @@ CREATE TABLE artistas_seguidos (
   FOREIGN KEY (usuario_id)
   REFERENCES usuario(usuario_id),
   FOREIGN KEY (artista_id)
-  REFERENCES artista(artista_id))
-ENGINE = InnoDB;
+  REFERENCES artista(artista_id)
+) ENGINE = InnoDB;
 
 INSERT INTO artistas_seguidos
 VALUES
@@ -62,8 +62,8 @@ CREATE TABLE cancoes (
   album_id INT NOT NULL,
   PRIMARY KEY (cancoes_id),
   FOREIGN KEY (album_id)
-  REFERENCES album(album_id))
-ENGINE = InnoDB;
+  REFERENCES album(album_id)
+) ENGINE = InnoDB;
 
 INSERT INTO cancoes (cancoes_nome, album_id)
 VALUES
@@ -94,8 +94,8 @@ CREATE TABLE historico_reproducoes (
   FOREIGN KEY (usuario_id)
   REFERENCES usuario(usuario_id),
   FOREIGN KEY (cancoes_id)
-  REFERENCES cancoes(cancoes_id))
-ENGINE = InnoDB;
+  REFERENCES cancoes(cancoes_id)
+) ENGINE = InnoDB;
 
 INSERT INTO historico_reproducoes
 VALUES
@@ -119,8 +119,8 @@ CREATE TABLE IF NOT EXISTS plano (
   plano_id INT AUTO_INCREMENT,
   tipo_plano VARCHAR(45) NOT NULL,
   valor_plano FLOAT NOT NULL,
-  PRIMARY KEY (plano_id))
-ENGINE = InnoDB;
+  PRIMARY KEY (plano_id)
+) ENGINE = InnoDB;
 
 INSERT INTO plano (tipo_plano, valor_plano)
 VALUES
@@ -136,8 +136,8 @@ CREATE TABLE usuario (
   plano_id INT NOT NULL,
   PRIMARY KEY (usuario_id),
   FOREIGN KEY (plano_id)
-  REFERENCES plano(plano_id)) 
-ENGINE = InnoDB;
+  REFERENCES plano(plano_id)
+) ENGINE = InnoDB;
 
 INSERT INTO usuario (usuario_nome, idade, plano_id)
 VALUES
