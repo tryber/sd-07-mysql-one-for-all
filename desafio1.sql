@@ -26,7 +26,12 @@ CREATE TABLE IF NOT EXISTS `SpotifyClone`.`usuarios` (
   `usuario_nome` VARCHAR(45) NOT NULL,
   `idade` INT NOT NULL,
   `plano_id` INT NOT NULL,
-  PRIMARY KEY (`usuario_id`))
+  PRIMARY KEY (`usuario_id`),
+  CONSTRAINT `plano_id`
+    FOREIGN KEY (`plano_id`)
+    REFERENCES `SpotifyClone`.`planos` (`plano_id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
 ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8;
 
