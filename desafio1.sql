@@ -47,9 +47,10 @@ FOREIGN KEY (album_id) REFERENCES album(album_id)
 ); 
 
 CREATE TABLE historico(
-historico_id INT PRIMARY KEY AUTO_INCREMENT NOT NULL,
+historico_id INT AUTO_INCREMENT NOT NULL,
 cancao_id INT NOT NULL,
 usuario_id INT NOT NULL,
+PRIMARY KEY(cancao_id, usuario_id),
 FOREIGN KEY(cancao_id) REFERENCES cancao(cancao_id),
 FOREIGN KEY(usuario_id) REFERENCES usuario(usuario_id)
 );
