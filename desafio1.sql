@@ -22,22 +22,22 @@ CREATE TABLE artists (
   artist_name VARCHAR(100) NOT NULL
 )ENGINE=InnoDB;
 
-CREATE TABLE albuns (
+CREATE TABLE albums (
   album_id INT NOT NULL PRIMARY KEY AUTO_INCREMENT UNIQUE,
-  albun_name VARCHAR(100) NOT NULL,
+  album_name VARCHAR(100) NOT NULL,
   artist_id INT NOT NULL,
-  FOREIGN KEY (artist_id) REFERENCES SpotifyClone.artist(artist_id)
+  FOREIGN KEY (artist_id) REFERENCES SpotifyClone.artists(artist_id)
 )ENGINE=InnoDB;
 
 CREATE TABLE songs (
   song_id INT NOT NULL PRIMARY KEY AUTO_INCREMENT UNIQUE,
   song_name VARCHAR(100) NOT NULL,
   album_id INT NOT NULL,
-  FOREIGN KEY (album_id) REFERENCES SpotifyClone.albuns(album_id)
+  FOREIGN KEY (album_id) REFERENCES SpotifyClone.albums(album_id)
 )ENGINE=InnoDB;
 
 CREATE TABLE users_follow_artists (
-  user_int INT NOT NULL,
+  user_id INT NOT NULL,
   artist_id INT NOT NULL,
   PRIMARY KEY(user_id, artist_id),
   FOREIGN KEY (user_id) REFERENCES SpotifyClone.users(user_id),
@@ -70,6 +70,14 @@ VALUES
   ('Peter Strong'),
   ('Lance Day'),
   ('Fredie Shannon');
+
+INSERT INTO albums(album_name, artist_id)
+VALUES
+  ('Envious', 1),
+  ('Exuberant', 1),
+  ('Hallowed Steam', 2),
+  ('Incandescent', 3),
+  ('Temporary Culture', 4);
   
 INSERT INTO songs(song_name, album_id)
 VALUES
