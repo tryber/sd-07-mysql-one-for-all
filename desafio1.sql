@@ -47,6 +47,7 @@ CREATE TABLE users_follow_artists (
 CREATE TABLE users_history_songs (
   user_id INT NOT NULL,
   song_id INT NOT NULL,
+  PRIMARY KEY (user_id, song_id),
   FOREIGN KEY (user_id) REFERENCES SpotifyClone.users(user_id),
   FOREIGN KEY (song_id) REFERENCES SpotifyClone.songs(song_id)
 )ENGINE=InnoDB;
@@ -69,7 +70,7 @@ VALUES
   ('Walter Phoenix'),
   ('Peter Strong'),
   ('Lance Day'),
-  ('Fredie Shannon');
+  ('Freedie Shannon');
 
 INSERT INTO albums(album_name, artist_id)
 VALUES

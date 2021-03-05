@@ -4,4 +4,4 @@ COUNT(DISTINCT AR.artist_id) AS artistas,
 COUNT(DISTINCT AL.album_id) AS albuns
 FROM SpotifyClone.songs AS S
 JOIN SpotifyClone.artists AS AR
-JOIN SpotifyClone.albuns AS AL;
+JOIN SpotifyClone.albums AS AL;
