@@ -52,6 +52,12 @@ CREATE TABLE follow_list(
     FOREIGN KEY (artist_id) REFERENCES artists(artist_id)
 ) engine = InnoDB;
 
+INSERT INTO plans (plan_name, plan_value)
+VALUES
+  ('Gratuito', 0),
+  ('Universitário', 5.99),
+  ('Família', 7.99);
+  
 INSERT INTO users (user_name, age, plan_id)
 VALUES
   ('Thati', 23, 1),
@@ -59,12 +65,6 @@ VALUES
   ('Bill', 20, 2),
   ('Roger', 45, 1);
 
-INSERT INTO plans (plan_name, plan_value)
-VALUES
-  ('Gratuito', 0),
-  ('Universitário', 5,99),
-  ('Família', 7,99);
-  
   INSERT INTO artists (first_name, last_name)
 VALUES
   ('Walter', 'Phoenix'),
