@@ -4,78 +4,78 @@ CREATE DATABASE IF NOT EXISTS SpotifyClone;
 
 USE SpotifyClone;
 
-CREATE TABLE SpotifyClone.planos(
+CREATE TABLE planos(
 plano_id INT PRIMARY KEY AUTO_INCREMENT,
 plano VARCHAR(50) NOT NULL,
 valor_plano DOUBLE NOT NULL
-);
+) ENGINE = InnoDB;
 
-CREATE TABLE SpotifyClone.artistas(
+CREATE TABLE artistas(
 artista_id INT PRIMARY KEY AUTO_INCREMENT,
 artista VARCHAR(100) NOT NULL
-);
+) ENGINE = InnoDB;
 
-CREATE TABLE SpotifyClone.usuarios(
+CREATE TABLE usuarios(
 usuario_id INT PRIMARY KEY AUTO_INCREMENT,
 usuario VARCHAR(100) NOT NULL,
 idade INT NOT NULL,
 plano_id INT NOT NULL,
-FOREIGN KEY (plano_id) REFERENCES SpotifyClone.planos(plano_id)
-);
+FOREIGN KEY (plano_id) REFERENCES planos(plano_id)
+) ENGINE = InnoDB;
 
-CREATE TABLE SpotifyClone.albuns(
+CREATE TABLE albuns(
 album_id INT PRIMARY KEY AUTO_INCREMENT,
 album VARCHAR(100) NOT NULL,
 artista_id INT NOT NULL,
-FOREIGN KEY (artista_id) REFERENCES SpotifyClone.artistas(artista_id)
-);
+FOREIGN KEY (artista_id) REFERENCES artistas(artista_id)
+) ENGINE = InnoDB;
 
-CREATE TABLE SpotifyClone.musicas(
+CREATE TABLE musicas(
 musica_id INT PRIMARY KEY AUTO_INCREMENT,
 musica VARCHAR(100) NOT NULL,
 album_id INT NOT NULL,
-FOREIGN KEY (album_id) REFERENCES SpotifyClone.albuns(album_id)
-);
+FOREIGN KEY (album_id) REFERENCES albuns(album_id)
+) ENGINE = InnoDB;
 
-CREATE TABLE SpotifyClone.usuarios_artistas(
+CREATE TABLE usuarios_artistas(
 usuario_id INT NOT NULL,
 artista_id INT NOT NULL,
-FOREIGN KEY (usuario_id) REFERENCES SpotifyClone.usuarios(usuario_id),
-FOREIGN KEY (artista_id) REFERENCES SpotifyClone.artistas(artista_id)
-);
+FOREIGN KEY (usuario_id) REFERENCES usuarios(usuario_id),
+FOREIGN KEY (artista_id) REFERENCES artistas(artista_id)
+) ENGINE = InnoDB;
 
-CREATE TABLE SpotifyClone.historico_reproducao(
+CREATE TABLE historico_reproducao(
 musica_id INT NOT NULL,
 usuario_id INT NOT NULL,
-FOREIGN KEY (musica_id) REFERENCES SpotifyClone.musicas(musica_id),
-FOREIGN KEY (usuario_id) REFERENCES SpotifyClone.usuarios(usuario_id)
-);
+FOREIGN KEY (musica_id) REFERENCES musicas(musica_id),
+FOREIGN KEY (usuario_id) REFERENCES usuarios(usuario_id)
+) ENGINE = InnoDB;
 
-INSERT INTO SpotifyClone.planos (plano, valor_plano)
+INSERT INTO planos (plano, valor_plano)
 VALUES ('gratuito', 0),
 ('familiar', 7.99),
 ('universitário', 5.99);
 
-INSERT INTO SpotifyClone.artistas (artista)
+INSERT INTO artistas (artista)
 VALUES ('Walter Phoenix'),
 ('Freedie Shannon'),
 ('Lance Day'),
 ('Peter Strong');
 
-INSERT INTO SpotifyClone.usuarios (usuario, idade, plano_id)
+INSERT INTO usuarios (usuario, idade, plano_id)
 VALUES ('Thati', 23, 1),
 ('Cintia', 35, 2),
 ('Bill', 20, 3),
 ('Roger', 45, 1);
 
-INSERT INTO SpotifyClone.albuns (album, artista_id)
+INSERT INTO albuns (album, artista_id)
 VALUES ('Envious', 1),
 ('Exuberant', 1),
 ('Hallowed Steam', 4),
 ('Incandescent', 3),
 ('Temporary Culture', 2);
 
-INSERT INTO SpotifyClone.musicas (musica, album_id)
+INSERT INTO musicas (musica, album_id)
 VALUES ('Soul For Us', 1),
 ('Reflections Of Magic', 1),
 ('Dance With Her Own', 1),
@@ -95,7 +95,7 @@ VALUES ('Soul For Us', 1),
 ("Words Of Her Life", 5),
 ("Without My Streets", 5);
 
-INSERT INTO SpotifyClone.usuarios_artistas (usuario_id, artista_id)
+INSERT INTO usuarios_artistas (usuario_id, artista_id)
 VALUES (1, 1),
 (1, 2),
 (1, 3),
@@ -105,7 +105,7 @@ VALUES (1, 1),
 (3, 1),
 (4, 2);
 
-INSERT INTO SpotifyClone.historico_reproducao (usuario_id, musica_id)
+INSERT INTO historico_reproducao (usuario_id, musica_id)
 VALUES (1, 1),
 (1, 6),
 (1, 14),
