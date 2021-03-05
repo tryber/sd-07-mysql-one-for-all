@@ -8,7 +8,7 @@ FOR EACH ROW
 BEGIN
     DELETE FROM SpotifyClone.historicos
     WHERE OLD.usuario_id = usuario_id;
-    DELETE FROM SpotifyClone.historicos
+    DELETE FROM SpotifyClone.inscricoes
     WHERE OLD.usuario_id = usuario_id;
 END $$
 
