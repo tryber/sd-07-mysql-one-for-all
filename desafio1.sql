@@ -2,13 +2,6 @@ DROP DATABASE IF EXISTS SpotifyClone;
 
 CREATE DATABASE SpotifyClone;
 
-USE SpotifyClone;
-
-CREATE TABLE planos (
-plano_id INT PRIMARY KEY AUTO_INCREMENT,
-plano VARCHAR(80) NOT NULL,
-preco DECIMAL (8, 2) NOT NULL
-);
 
 CREATE TABLE artistas (
 artista_id INT PRIMARY KEY AUTO_INCREMENT,
@@ -51,6 +44,12 @@ musicas_id INT NOT NULL,
 PRIMARY KEY (user_id, music_id),
 CONSTRAINT `fk_user_history` FOREIGN KEY (user_id) REFERENCES SpotifyClone.usuarios (user_id),
 CONSTRAINT `fk_music_history` FOREIGN KEY (music_id) REFERENCES SpotifyClone.musicas (music_id)
+);
+
+CREATE TABLE planos (
+plano_id INT PRIMARY KEY AUTO_INCREMENT,
+plano VARCHAR(80) NOT NULL,
+preco DECIMAL (8, 2) NOT NULL
 );
 
 INSERT INTO planos (plano, preco) VALUES
