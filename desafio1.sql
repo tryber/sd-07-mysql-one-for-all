@@ -2,12 +2,8 @@ DROP DATABASE IF EXISTS SpotifyClone;
 CREATE SCHEMA SpotifyClone ;
 USE SpotifyClone ;
 
--- -----------------------------
--- Table album
--- -----------------------------
-
 CREATE TABLE album (
-  album_id INT NOT NULL AUTO_INCREMENT,
+  album_id INT AUTO_INCREMENT,
   album_nome VARCHAR(200) NOT NULL,
   artista_id INT NOT NULL,
   PRIMARY KEY (album_id, artista_id),
@@ -24,12 +20,8 @@ VALUES
   ('Temporary Culture', 4)
 ;
 
--- ---------------
--- Table artista
--- ---------------
-
 CREATE TABLE artista (
-  artista_id INT NOT NULL AUTO_INCREMENT,
+  artista_id INT AUTO_INCREMENT,
   artista_nome VARCHAR(100) NOT NULL,
   PRIMARY KEY (artista_id))
 ENGINE = InnoDB;
@@ -41,10 +33,6 @@ VALUES
   ('Lance Day'),
   ('Freedie Shannon')
 ;
-
--- -----------------------------------------
--- Table artistas_seguidos
--- -----------------------------------------
 
 CREATE TABLE artistas_seguidos (
   artista_id INT NOT NULL,
@@ -68,12 +56,8 @@ VALUES
   (4, 5)
 ;
 
--- ----------------
--- Table cancoes
--- ----------------
-
 CREATE TABLE cancoes (
-  cancoes_id INT NOT NULL AUTO_INCREMENT,
+  cancoes_id INT AUTO_INCREMENT,
   cancoes_nome VARCHAR(200) NOT NULL,
   album_id INT NOT NULL,
   PRIMARY KEY (cancoes_id),
@@ -103,10 +87,6 @@ VALUES
   ('Without My Streets', 5)
 ;
 
--- -----------------------------
--- Table historico_reproducoes
--- -----------------------------
-
 CREATE TABLE historico_reproducoes (
   usuario_id INT NOT NULL,
   cancoes_id INT NOT NULL,
@@ -135,12 +115,8 @@ VALUES
   (4, 18)
 ;
 
--- -------------
--- Table plano
--- -------------
-
 CREATE TABLE IF NOT EXISTS plano (
-  plano_id INT NOT NULL AUTO_INCREMENT,
+  plano_id INT AUTO_INCREMENT,
   tipo_plano VARCHAR(45) NOT NULL,
   valor_plano FLOAT NOT NULL,
   PRIMARY KEY (plano_id))
@@ -153,12 +129,8 @@ VALUES
   ('familiar', 7.99)
 ;
 
--- ---------------
--- Table usuario
--- ---------------
-
 CREATE TABLE usuario (
-  usuario_id INT NOT NULL AUTO_INCREMENT,
+  usuario_id INT AUTO_INCREMENT,
   usuario_nome VARCHAR(100) NOT NULL,
   idade INT,
   plano_id INT NOT NULL,
