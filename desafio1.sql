@@ -5,48 +5,48 @@ CREATE DATABASE SpotifyClone;
 USE SpotifyClone;
 
 CREATE TABLE plans(
-    plan_id INT PRIMARY KEY  AUTO_INCREMENT,
-    plan VARCHAR(100),
-    planValue DECIMAL(4,2) NOT NULL
+plan_id INT PRIMARY KEY  AUTO_INCREMENT,
+plan VARCHAR(100),
+planValue DECIMAL(4,2) NOT NULL
 ) engine = InnoDB;
 
 CREATE TABLE users(
-    user_id INT PRIMARY KEY AUTO_INCREMENT,
-    uname VARCHAR(100),
-    age INT NOT NULL,
-    plan_id INT,
-    FOREIGN KEY (plan_id) REFERENCES plans(plan_id)
+user_id INT PRIMARY KEY AUTO_INCREMENT,
+uname VARCHAR(100),
+age INT NOT NULL,
+plan_id INT,
+FOREIGN KEY (plan_id) REFERENCES plans(plan_id)
 ) engine = InnoDB;
 
 CREATE TABLE artists(
-    artist_id INT PRIMARY KEY  AUTO_INCREMENT,
-    artist VARCHAR(100)
+artist_id INT PRIMARY KEY  AUTO_INCREMENT,
+artist VARCHAR(100)
 ) engine = InnoDB;
 
 CREATE TABLE albuns(
-    album_id INT PRIMARY KEY  AUTO_INCREMENT,
-    album VARCHAR(100),
-    artist_id INT,
-    FOREIGN KEY (artist_id) REFERENCES artists(artist_id)
+album_id INT PRIMARY KEY  AUTO_INCREMENT,
+album VARCHAR(100),
+artist_id INT,
+FOREIGN KEY (artist_id) REFERENCES artists(artist_id)
 ) engine = InnoDB;
 
 CREATE TABLE songs(
-	song_id INT PRIMARY KEY  AUTO_INCREMENT,
-    song VARCHAR(100)
+song_id INT PRIMARY KEY  AUTO_INCREMENT,
+song VARCHAR(100)
 ) engine = InnoDB;
 
 CREATE TABLE folowers(
-	user_id INT,
-    artist_id INT,
-    FOREIGN KEY (user_id) REFERENCES users(user_id),
-    FOREIGN KEY (artist_id) REFERENCES artists(artist_id)
+user_id INT,
+artist_id INT,
+FOREIGN KEY (user_id) REFERENCES users(user_id),
+FOREIGN KEY (artist_id) REFERENCES artists(artist_id)
 ) engine = InnoDB;
 
 CREATE TABLE histories(
-	user_id INT,
-    song_id INT,
-    FOREIGN KEY (user_id) REFERENCES users(user_id),
-    FOREIGN KEY (song_id) REFERENCES songs(song_id)
+user_id INT,
+song_id INT,
+FOREIGN KEY (user_id) REFERENCES users(user_id),
+FOREIGN KEY (song_id) REFERENCES songs(song_id)
 ) engine = InnoDB;
 
 INSERT INTO plans (plan, planValue)
