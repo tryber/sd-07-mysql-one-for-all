@@ -1,16 +1,16 @@
 {
   "coluna_usuario": "usuario_id",
-  "tabela_que_contem_usuario": "SpotifyClone.usuario",
+  "tabela_que_contem_usuario": "SpotifyClone.usuarios",
   "coluna_plano": "plano_id",
-  "tabela_que_contem_plano": "SpotifyClone.plano",
+  "tabela_que_contem_plano": "SpotifyClone.planos",
   "coluna_historico_de_reproducoes": "usuario_id",
   "tabela_que_contem_historico_de_reproducoes": "SpotifyClone.historico_de_reproducoes",
   "coluna_seguindo_artistas": "usuario_id",
   "tabela_que_contem_seguindo_artistas": "SpotifyClone.seguindo_artistas",
   "coluna_artista": "usuario_id",
-  "tabela_que_contem_artista": "SpotifyClone.artista",
+  "tabela_que_contem_artista": "SpotifyClone.artistas",
   "coluna_album": "album_id",
-  "tabela_que_contem_album": "SpotifyClone.album",
+  "tabela_que_contem_album": "SpotifyClone.albuns",
   "coluna_cancoes": "cancao_id",
   "tabela_que_contem_cancoes": "SpotifyClone.cancoes"
 }
