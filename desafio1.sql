@@ -1,3 +1,5 @@
+-- DROP DATABASE IF EXISTS SpotifyClone;
+
 CREATE DATABASE IF NOT EXISTS SpotifyClone;
 
 USE SpotifyClone;
@@ -14,8 +16,7 @@ idade INT NOT NULL,
 plano_id INT NOT NULL,
 CONSTRAINT fk_usuarios_planos1
 FOREIGN KEY (plano_id)
-REFERENCES SpotifyClone.planos (plano_id))
-ENGINE = InnoDB;
+REFERENCES SpotifyClone.planos (plano_id));
 
 CREATE TABLE artistas(
 artista_id INT PRIMARY KEY AUTO_INCREMENT,
@@ -27,8 +28,7 @@ album VARCHAR(50) NOT NULL,
 artista_id INT NOT NULL,
 CONSTRAINT fk_albuns_artistas1
 FOREIGN KEY (artista_id)
-REFERENCES SpotifyClone.artistas (artista_id))
-ENGINE = InnoDB;
+REFERENCES SpotifyClone.artistas (artista_id));
 
 CREATE TABLE cancoes(
 cancao_id INT PRIMARY KEY AUTO_INCREMENT,
@@ -36,8 +36,7 @@ cancao VARCHAR(50) NOT NULL,
 album_id INT NOT NULL,
 CONSTRAINT fk_musicas_albuns1
 FOREIGN KEY (album_id)
-REFERENCES SpotifyClone.albuns (album_id))
-ENGINE = InnoDB;
+REFERENCES SpotifyClone.albuns (album_id));
 
 CREATE TABLE seguindo_artistas(
 usuario_id INT NOT NULL,
@@ -45,13 +44,10 @@ artista_id INT NOT NULL,
 PRIMARY KEY (usuario_id, artista_id),
 CONSTRAINT fk_usuarios_has_artistas_usuarios1
 FOREIGN KEY (usuario_id)
-REFERENCES SpotifyClone.usuarios (usuario_id)
-ON DELETE NO ACTION
-ON UPDATE NO ACTION,
+REFERENCES SpotifyClone.usuarios (usuario_id),
 CONSTRAINT fk_usuarios_has_artistas_artistas1
 FOREIGN KEY (artista_id)
-REFERENCES SpotifyClone.artistas (artista_id))
-ENGINE = InnoDB;
+REFERENCES SpotifyClone.artistas (artista_id));
 
 CREATE TABLE historico_de_reproducoes(
 usuario_id INT NOT NULL,
@@ -59,13 +55,10 @@ cancao_id INT NOT NULL,
 PRIMARY KEY (usuario_id, cancao_id),
 CONSTRAINT fk_usuarios_has_musicas_usuarios
 FOREIGN KEY (usuario_id)
-REFERENCES SpotifyClone.usuarios (usuario_id)
-ON DELETE NO ACTION
-ON UPDATE NO ACTION,
+REFERENCES SpotifyClone.usuarios (usuario_id),
 CONSTRAINT fk_usuarios_has_musicas_musicas1
 FOREIGN KEY (cancao_id)
-REFERENCES SpotifyClone.cancoes (cancao_id))
-ENGINE = InnoDB;
+REFERENCES SpotifyClone.cancoes (cancao_id));
 
 INSERT INTO planos (plano, valor_plano)
 VALUES ('gratuito', 0), ('familiar', 7.99), ('universitário', 5.99);
