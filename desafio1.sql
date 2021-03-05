@@ -40,14 +40,14 @@ FOREIGN KEY (album_id) REFERENCES albums(album_id)
 ) engine = InnoDB;
 
 CREATE TABLE followers(
-user_id INT,
+user_id INT NOT NULL,
 artist_id INT NOT NULL,
 FOREIGN KEY (user_id) REFERENCES users(user_id),
 FOREIGN KEY (artist_id) REFERENCES artists(artist_id)
 ) engine = InnoDB;
 
 CREATE TABLE playbacks(
-user_id INT,
+user_id INT NOT NULL,
 song_id INT NOT NULL,
 FOREIGN KEY (user_id) REFERENCES users(user_id),
 FOREIGN KEY (song_id) REFERENCES song(song_id)
