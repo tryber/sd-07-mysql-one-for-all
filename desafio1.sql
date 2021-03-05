@@ -36,8 +36,9 @@ INSERT INTO artistas(artista_id, nome_artista) VALUES(4, 'Freedie Shannon');
 
 CREATE TABLE seguindo(
 usuario_id INT NOT NULL,
-FOREIGN KEY (usuario_id) REFERENCES usuarios(usuario_id),
 artista_id INT NOT NULL,
+PRIMARY KEY (usuario_id, artista_id),
+FOREIGN KEY (usuario_id) REFERENCES usuarios(usuario_id),
 FOREIGN KEY (artista_id) REFERENCES artistas(artista_id)
 ) ENGINE = InnoDB;
 
@@ -66,33 +67,34 @@ INSERT INTO album(album_id, nome_album, artista_id) VALUES(5, "Temporary Culture
 CREATE TABLE cancoes(
 cancao_id INT PRIMARY KEY,
 nome_cancao VARCHAR(200) NOT NULL,
-artista_id INT NOT NULL,
-FOREIGN KEY (artista_id) REFERENCES artistas(artista_id)
+album_id INT NOT NULL,
+FOREIGN KEY (album_id) REFERENCES album(album_id)
 ) ENGINE = InnoDB;
 
-INSERT INTO cancoes(cancao_id, nome_cancao, artista_id) VALUES(1, "Dance With Her Own", 1);
-INSERT INTO cancoes(cancao_id, nome_cancao, artista_id) VALUES(2, "Soul For Us", 1);
-INSERT INTO cancoes(cancao_id, nome_cancao, artista_id) VALUES(3,  "Reflections Of Magic", 1);
-INSERT INTO cancoes(cancao_id, nome_cancao, artista_id) VALUES(4, "Troubles Of My Inner Fire", 1);
-INSERT INTO cancoes(cancao_id, nome_cancao, artista_id) VALUES(5,  "Time Fireworks", 1);
-INSERT INTO cancoes(cancao_id, nome_cancao, artista_id) VALUES(6, "Magic Circus", 2);
-INSERT INTO cancoes(cancao_id, nome_cancao, artista_id) VALUES(7, "Honey, So Do I", 2);
-INSERT INTO cancoes(cancao_id, nome_cancao, artista_id) VALUES(8, "Sweetie, Let's Go Wild", 2);
-INSERT INTO cancoes(cancao_id, nome_cancao, artista_id) VALUES(9,  "She Knows", 2);
-INSERT INTO cancoes(cancao_id, nome_cancao, artista_id) VALUES(10, "Fantasy For Me", 3);
-INSERT INTO cancoes(cancao_id, nome_cancao, artista_id) VALUES(11, "Celebration Of More", 3);
-INSERT INTO cancoes(cancao_id, nome_cancao, artista_id) VALUES(12, "Rock His Everything", 3);
-INSERT INTO cancoes(cancao_id, nome_cancao, artista_id) VALUES(13,  "Home Forever", 3);
-INSERT INTO cancoes(cancao_id, nome_cancao, artista_id) VALUES(14,  "Diamond Power", 3);
-INSERT INTO cancoes(cancao_id, nome_cancao, artista_id) VALUES(15,  "Honey, Let's Be Silly", 3);
-INSERT INTO cancoes(cancao_id, nome_cancao, artista_id) VALUES(16, "Thang Of Thunder", 4);
-INSERT INTO cancoes(cancao_id, nome_cancao, artista_id) VALUES(17, "Words Of Her Life", 4);
-INSERT INTO cancoes(cancao_id, nome_cancao, artista_id) VALUES(18, "Without My Streets", 4);
+INSERT INTO cancoes(cancao_id, nome_cancao, album_id) VALUES(1, "Dance With Her Own", 1);
+INSERT INTO cancoes(cancao_id, nome_cancao, album_id) VALUES(2, "Soul For Us", 1);
+INSERT INTO cancoes(cancao_id, nome_cancao, album_id) VALUES(3,  "Reflections Of Magic", 1);
+INSERT INTO cancoes(cancao_id, nome_cancao, album_id) VALUES(4, "Troubles Of My Inner Fire", 2);
+INSERT INTO cancoes(cancao_id, nome_cancao, album_id) VALUES(5,  "Time Fireworks", 2);
+INSERT INTO cancoes(cancao_id, nome_cancao, album_id) VALUES(6, "Magic Circus", 3);
+INSERT INTO cancoes(cancao_id, nome_cancao, album_id) VALUES(7, "Honey, So Do I", 3);
+INSERT INTO cancoes(cancao_id, nome_cancao, album_id) VALUES(8, "Sweetie, Let's Go Wild", 3);
+INSERT INTO cancoes(cancao_id, nome_cancao, album_id) VALUES(9,  "She Knows", 3);
+INSERT INTO cancoes(cancao_id, nome_cancao, album_id) VALUES(10, "Fantasy For Me", 4);
+INSERT INTO cancoes(cancao_id, nome_cancao, album_id) VALUES(11, "Celebration Of More", 4);
+INSERT INTO cancoes(cancao_id, nome_cancao, album_id) VALUES(12, "Rock His Everything", 4);
+INSERT INTO cancoes(cancao_id, nome_cancao, album_id) VALUES(13,  "Home Forever", 4);
+INSERT INTO cancoes(cancao_id, nome_cancao, album_id) VALUES(14,  "Diamond Power", 4);
+INSERT INTO cancoes(cancao_id, nome_cancao, album_id) VALUES(15,  "Honey, Let's Be Silly", 4);
+INSERT INTO cancoes(cancao_id, nome_cancao, album_id) VALUES(16, "Thang Of Thunder", 5);
+INSERT INTO cancoes(cancao_id, nome_cancao, album_id) VALUES(17, "Words Of Her Life", 5);
+INSERT INTO cancoes(cancao_id, nome_cancao, album_id) VALUES(18, "Without My Streets", 5);
 
 CREATE TABLE historico(
 usuario_id INT NOT NULL,
-FOREIGN KEY (usuario_id) REFERENCES usuarios(usuario_id),
 cancao_id INT NOT NULL,
+PRIMARY KEY (usuario_id, cancao_id),
+FOREIGN KEY (usuario_id) REFERENCES usuarios(usuario_id),
 FOREIGN KEY (cancao_id) REFERENCES cancoes(cancao_id)
 ) ENGINE = InnoDB;
 
