@@ -41,6 +41,7 @@ CREATE TABLE songs(
 CREATE TABLE playback_list(
     user_id INT NOT NULL,
     song_id INT NOT NULL,
+    PRIMARY KEY (user_id, song_id),
     FOREIGN KEY (user_id) REFERENCES users(user_id),
     FOREIGN KEY (song_id) REFERENCES songs(song_id)
 ) engine = InnoDB;
@@ -48,6 +49,7 @@ CREATE TABLE playback_list(
 CREATE TABLE follow_list(
     user_id INT NOT NULL,
     artist_id INT NOT NULL,
+    PRIMARY KEY (user_id, artis_id),
     FOREIGN KEY (user_id) REFERENCES users(user_id),
     FOREIGN KEY (artist_id) REFERENCES artists(artist_id)
 ) engine = InnoDB;
