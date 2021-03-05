@@ -1,4 +1,3 @@
-DROP VIEW estatisticas_musicais;
 CREATE VIEW estatisticas_musicais AS 
 SELECT 
 (SELECT COUNT(cancao_name) FROM SpotifyClone.Cancao) AS `cancoes`,
