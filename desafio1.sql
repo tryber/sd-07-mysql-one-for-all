@@ -1,5 +1,5 @@
-DROP DATABASE IF EXISTS SpotifyClone;
-CREATE DATABASE SpotifyClone;
+-- DROP DATABASE IF EXISTS SpotifyClone;
+CREATE DATABASE IF NOT EXISTS SpotifyClone;
 USE SpotifyClone;
 
 CREATE TABLE artistas(
