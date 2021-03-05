@@ -7,7 +7,7 @@ USE SpotifyClone;
 CREATE TABLE plans(
 plano_id INT AUTO_INCREMENT PRIMARY KEY,
 tipo_plano VARCHAR(15) NOT NULL,
-valor_plano DECIMAL(3, 2) NOT NULL
+valor_plano DECIMAL(4, 2) NOT NULL
 ) engine = InnoDB;
 
 CREATE TABLE artists(
@@ -127,3 +127,4 @@ VALUES
 (4, 3),
 (4, 18),
 (4, 11);
+SELECT * FROM SpotifyClone.top_2_hits_do_momento;
