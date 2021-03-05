@@ -56,21 +56,21 @@ VALUES
   ('gratuito', 0),
   ('familiar', 7.99),
   ('universitário', 5.99);
-       
+
 INSERT INTO usuarios(nome, idade, fk_id_plano) 
 VALUES 
   ('Thati', 23, 1),
   ('Cintia', 35, 2),
   ('Bill', 20, 3),
   ('Roger', 45, 1);
-       
+
 INSERT INTO artista(nome) 
 VALUES
   ('Walter Phoenix'),
   ('Freedie Shannon'),
   ('Lance Day'),
   ('Peter Strong');
-       
+
 INSERT INTO album(nome, fk_id_artista) 
 VALUES 
   ('Envious', 1),
@@ -116,7 +116,7 @@ VALUES
   (3, 4),
   (18, 4),
   (11, 4);
-       
+
 INSERT INTO seguidores (fk_id_usuario, fk_id_artista)
 VALUES
   (1, 1),
