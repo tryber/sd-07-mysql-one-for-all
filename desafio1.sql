@@ -1,3 +1,4 @@
+CREATE DATABASE IF NOT EXISTS SpotifyClone;
 -- -----------------------------------------------------
 -- Table SpotifyClone.artistas
 -- -----------------------------------------------------
