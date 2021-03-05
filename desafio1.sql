@@ -36,7 +36,6 @@ CREATE TABLE cancoes(
 cancao_id INT PRIMARY KEY AUTO_INCREMENT,
 cancao VARCHAR(50) NOT NULL,
 album_id INT NOT NULL,
-PRIMARY KEY (`cancao_id`),
 CONSTRAINT `fk_musicas_albuns1`
 FOREIGN KEY (`album_id`)
 REFERENCES `SpotifyClone`.`albuns` (`album_id`))
