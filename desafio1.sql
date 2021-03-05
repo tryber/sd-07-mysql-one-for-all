@@ -10,7 +10,7 @@ CREATE TABLE artista (
 CREATE TABLE plano (
   plano_id INT PRIMARY KEY AUTO_INCREMENT,
   tipo_plano VARCHAR(45) NOT NULL,
-  valor_plano FLOAT NOT NULL
+  valor_plano DECIMAL(5, 2) NOT NULL
 ) ENGINE = InnoDB;
 
 CREATE TABLE usuario (
@@ -61,9 +61,9 @@ VALUES
 
 INSERT INTO plano (tipo_plano, valor_plano)
 VALUES
-  ('gratuito', 0.00),
-  ('universitário', 5.99),
-  ('familiar', 7.99)
+  ('gratuito', "0.00"),
+  ('universitário', "5.99"),
+  ('familiar', "7.99")
 ;
 
 INSERT INTO usuario (usuario_nome, idade, plano_id)
