@@ -53,7 +53,7 @@ CREATE TABLE inscricoes (
   FOREIGN KEY (artista_id) REFERENCES artistas (artista_id)
 ) ENGINE = InnoDB;
 
-CREATE TABLE históricos (
+CREATE TABLE historicos (
   historico_id INT NOT NULL AUTO_INCREMENT,
   usuario_id INT NOT NULL,
   musica_id INT NOT NULL,
@@ -105,3 +105,29 @@ INSERT INTO musicas (musica, album_id, artista_id) VALUES
 ('Thang Of Thunder', 5, 4),
 ('Words Of Her Life', 5, 4),
 ('Without My Streets', 5, 4);
+
+INSERT INTO inscricoes (usuario_id, artista_id) VALUES
+(1, 1),
+(1, 3),
+(1, 4),
+(2, 1),
+(2, 3),
+(3, 2),
+(3, 1),
+(4, 4);
+
+INSERT INTO historicos (usuario_id, musica_id) VALUES
+(1, 1),
+(1, 6),
+(1, 14),
+(1, 16),
+(2, 13),
+(2, 17),
+(2, 2),
+(2, 15),
+(3, 4),
+(3, 16),
+(3, 6),
+(4, 3),
+(4, 18),
+(4, 11);
