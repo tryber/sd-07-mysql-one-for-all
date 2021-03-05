@@ -14,7 +14,7 @@ FOREIGN KEY (plan_id) REFERENCES plans(plan_id)
 
 CREATE TABLE plans(
 plan_id INT PRIMARY KEY AUTO_INCREMENT,
-plan INT NOT NULL,
+plan VARCHAR(50) NOT NULL,
 plan_value DECIMAL(4,2) NOT NULL
 ) engine = InnoDB;
 
