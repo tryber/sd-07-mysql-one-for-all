@@ -5,51 +5,51 @@ CREATE DATABASE SpotifyClone;
 USE SpotifyClone;
 
 CREATE TABLE Plano(
- plano_id INTEGER auto_increment PRIMARY KEY NOT NULL,
- tipo VARCHAR(30) NOT NULL,
- price DECIMAL(5,2) NOT NULL
+  plano_id INTEGER auto_increment PRIMARY KEY NOT NULL,
+  tipo VARCHAR(30) NOT NULL,
+  price DECIMAL(5,2) NOT NULL
 ) engine = InnoDB;
 
 CREATE TABLE Users(
- user_id INTEGER auto_increment PRIMARY KEY NOT NULL,
- user_name VARCHAR(30) NOT NULL,
- age INTEGER NOT NULL,
- plano_id INTEGER,
- FOREIGN KEY (plano_id) REFERENCES Plano (plano_id)
+  user_id INTEGER auto_increment PRIMARY KEY NOT NULL,
+  user_name VARCHAR(30) NOT NULL,
+  age INTEGER NOT NULL,
+  plano_id INTEGER,
+  FOREIGN KEY (plano_id) REFERENCES Plano (plano_id)
 ) engine = InnoDB;
 
 CREATE TABLE Artists(
- artist_id INTEGER auto_increment PRIMARY KEY NOT NULL,
- artist_name VARCHAR(30) NOT NULL
+  artist_id INTEGER auto_increment PRIMARY KEY NOT NULL,
+  artist_name VARCHAR(30) NOT NULL
 ) engine = InnoDB;
 
 CREATE TABLE Album(
- album_id INTEGER auto_increment PRIMARY KEY NOT NULL,
- album_name VARCHAR(30) NOT NULL,
- artist_id INTEGER,
+  album_id INTEGER auto_increment PRIMARY KEY NOT NULL,
+  album_name VARCHAR(30) NOT NULL,
+  artist_id INTEGER,
  FOREIGN KEY (artist_id) REFERENCES Artists (artist_id)
 ) engine = InnoDB;
 
 CREATE TABLE Following(
- user_id INTEGER,
- FOREIGN KEY (user_id) REFERENCES Users (user_id),
- artist_id INTEGER,
- FOREIGN KEY (artist_id) REFERENCES Artists (artist_id)
+  user_id INTEGER,
+  FOREIGN KEY (user_id) REFERENCES Users (user_id),
+  artist_id INTEGER,
+  FOREIGN KEY (artist_id) REFERENCES Artists (artist_id)
 ) engine = InnoDB;
 
 
 CREATE TABLE Songs(
- song_id INTEGER auto_increment PRIMARY KEY NOT NULL,
- song_name VARCHAR(30) NOT NULL,
- album_id INTEGER,
- FOREIGN KEY (album_id) REFERENCES Album (album_id)
+  song_id INTEGER auto_increment PRIMARY KEY NOT NULL,
+  song_name VARCHAR(30) NOT NULL,
+  album_id INTEGER,
+  FOREIGN KEY (album_id) REFERENCES Album (album_id)
 ) engine = InnoDB;
 
 CREATE TABLE Music_history(
- user_id INTEGER,
- FOREIGN KEY (user_id) REFERENCES Users (user_id),
- song_id INTEGER,
- FOREIGN KEY (song_id) REFERENCES Songs (song_id)
+  user_id INTEGER,
+  FOREIGN KEY (user_id) REFERENCES Users (user_id),
+  song_id INTEGER,
+  FOREIGN KEY (song_id) REFERENCES Songs (song_id)
 ) engine = InnoDB;
 
 INSERT INTO Artists(artist_name) VALUES
