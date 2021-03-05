@@ -40,6 +40,7 @@ FOREIGN KEY (album_id) REFERENCES albums(album_id)
 CREATE TABLE follow(
 usuario_id INT NOT NULL,
 artista_id INT NOT NULL,
+PRIMARY KEY (usuario_id, artista_id),
 FOREIGN KEY (usuario_id) REFERENCES users(usuario_id),
 FOREIGN KEY (artista_id) REFERENCES artists(artista_id)
 ) engine = InnoDB;
@@ -47,6 +48,7 @@ FOREIGN KEY (artista_id) REFERENCES artists(artista_id)
 CREATE TABLE reproductions(
 usuario_id INT NOT NULL,
 musica_id INT NOT NULL,
+PRIMARY KEY (usuario_id, musica_id),
 FOREIGN KEY (usuario_id) REFERENCES users(usuario_id),
 FOREIGN KEY (musica_id) REFERENCES songs(musica_id)
 ) engine = InnoDB;
