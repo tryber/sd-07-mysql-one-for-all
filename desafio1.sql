@@ -1,13 +1,13 @@
 create database if not exists SpotifyClone;
 
 create table SpotifyClone.planos(
-	plano_id int primary key auto_increment,
-	tipo varchar(50) not null,
-	preço double not null
+  plano_id int primary key auto_increment,
+  tipo varchar(50) not null,
+  preço double not null
 ) engine = InnoDB;
 
 create table SpotifyClone.usuarios(
-	usuario_id int primary key auto_increment,
+  usuario_id int primary key auto_increment,
   nomeUsuario varchar(50) NOT NULL,
   idade int not null,
   plano_id int not null,
@@ -15,27 +15,27 @@ create table SpotifyClone.usuarios(
 ) engine = InnoDB;
 
 create table SpotifyClone.cantores(
-	cantor_id int primary key auto_increment,
-	nome varchar(50) not null,
+  cantor_id int primary key auto_increment,
+  nome varchar(50) not null,
   sobreNome varchar(50)
 ) engine = InnoDB;
 
 create table SpotifyClone.albuns(
-	albun_id int primary key auto_increment,
-	nome varchar(50) not null,
+  albun_id int primary key auto_increment,
+  nome varchar(50) not null,
   cantor_id int not null,
   foreign key (cantor_id) references SpotifyClone.cantores(cantor_id)
 ) engine = InnoDB;
 
 create table SpotifyClone.musicas(
-	musica_id int primary key auto_increment,
-	titulo varchar(50) not null,
+  musica_id int primary key auto_increment,
+  titulo varchar(50) not null,
   albun_id int not null,
   foreign key (albun_id) references SpotifyClone.albuns(albun_id)
 );
 
 create table SpotifyClone.seguidores(
-	seguidor_id int primary key auto_increment,
+  seguidor_id int primary key auto_increment,
   cantor_id int not null,
   usuario_id int not null,
   foreign key (usuario_id) references SpotifyClone.usuarios(usuario_id),
@@ -43,7 +43,7 @@ create table SpotifyClone.seguidores(
 ) engine = InnoDB;
 
 create table SpotifyClone.historiocos(
-	historico_id int primary key auto_increment,
+  historico_id int primary key auto_increment,
   musica_id int not null,
   usuario_id int not null,
   foreign key (usuario_id) references SpotifyClone.usuarios(usuario_id),
