@@ -1,3 +1,4 @@
+CREATE DATABASE SpotifyClone;
 USE SpotifyClone;
 
 -- -----------------------------------------------------
@@ -5,7 +6,7 @@ USE SpotifyClone;
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS artistas (
   id_artista INT NOT NULL AUTO_INCREMENT,
-  artista VARCHAR(300) NOT NULL,
+  artista VARCHAR(100) NOT NULL,
   PRIMARY KEY (id_artista))
 ENGINE = InnoDB;
 
@@ -15,7 +16,7 @@ ENGINE = InnoDB;
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS albuns (
   id_album INT NOT NULL AUTO_INCREMENT,
-  album VARCHAR(300) NOT NULL,
+  album VARCHAR(100) NOT NULL,
   id_artista INT NOT NULL,
   PRIMARY KEY (id_album),
   INDEX artista_id (id_artista ASC) VISIBLE,
@@ -30,7 +31,7 @@ ENGINE = InnoDB;
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS cancoes (
   id_cancao INT NOT NULL AUTO_INCREMENT,
-  nome VARCHAR(300) NOT NULL,
+  nome VARCHAR(100) NOT NULL,
   id_album INT NOT NULL,
   PRIMARY KEY (id_cancao),
   INDEX album_id (id_album ASC) VISIBLE,
@@ -55,7 +56,7 @@ ENGINE = InnoDB;
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS usuarios (
   id_usuario INT NOT NULL AUTO_INCREMENT,
-  nome VARCHAR(300) NOT NULL,
+  nome VARCHAR(100) NOT NULL,
   idade INT NOT NULL,
   id_plano INT NOT NULL,
   PRIMARY KEY (id_usuario),
