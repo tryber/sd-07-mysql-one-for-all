@@ -93,7 +93,7 @@ CREATE TABLE seguidores(
 seguidor_id INT AUTO_INCREMENT,
 usuario_id INT NOT NULL,
 artista_id INT NOT NULL,
-PRIMARY KEY (seguidor_id),
+PRIMARY KEY (seguidor_id, usuario_id, artista_id),
 FOREIGN KEY (usuario_id) REFERENCES usuarios(usuario_id),
 FOREIGN KEY (artista_id) REFERENCES artistas(artista_id)
 ) engine = InnoDB;
@@ -113,7 +113,7 @@ CREATE TABLE historico_de_reproducoes(
 historico_id INT AUTO_INCREMENT,
 usuario_id INT NOT NULL,
 cancao_id INT NOT NULL,
-PRIMARY KEY (historico_id),
+PRIMARY KEY (historico_id, usuario_id, cancao_id),
 FOREIGN KEY (usuario_id) REFERENCES usuarios(usuario_id),
 FOREIGN KEY (cancao_id) REFERENCES cancoes(cancao_id)
 ) engine = InnoDB;
