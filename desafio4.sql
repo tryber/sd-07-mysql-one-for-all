@@ -5,5 +5,5 @@ COUNT(*) AS 'seguidores'
 FROM SpotifyClone.seguindo s
 JOIN SpotifyClone.artistas a ON s.artista_id = a.artista_id
 GROUP BY a.artista_nome
-ORDER BY `seguidores` DESC
+ORDER BY `seguidores` DESC, `artista`
 LIMIT 3;
