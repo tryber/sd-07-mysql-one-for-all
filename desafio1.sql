@@ -1,4 +1,4 @@
-CREATE DATABASE IF NOT EXISTS SpotifyClone;
+CREATE DATABASE SpotifyClone;
 -- -----------------------------------------------------
 -- Table SpotifyClone.artistas
 -- -----------------------------------------------------
@@ -6,7 +6,6 @@ CREATE TABLE SpotifyClone.artistas (
   id_artista INT NOT NULL AUTO_INCREMENT,
   artista VARCHAR(100) NOT NULL,
   PRIMARY KEY (id_artista));
-
 
 -- -----------------------------------------------------
 -- Table SpotifyClone.albuns
