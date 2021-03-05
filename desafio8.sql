@@ -13,5 +13,4 @@ DELETE FROM SpotifyClone.users_history_songs
 WHERE user_id = OLD.user_id;
 END $$
 
-
 DELIMITER ;
