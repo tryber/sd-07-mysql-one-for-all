@@ -50,7 +50,7 @@ FOREIGN KEY (album_id) REFERENCES albuns(id)
 ) ENGINE = InnoDB;
 
 INSERT INTO musicas(nome_musica,album_id) VALUES 
-('Soul For us',1),
+('Soul For Us',1),
 ('Magic Circus',3),
 ('Diamond Power',4),
 ('Thang Of Thunder',5),
@@ -87,6 +87,7 @@ INSERT INTO usuarios(nome_usuario,idade,plano_id) VALUES
 CREATE TABLE historico_usuario(
 usuario_id INT NOT NULL,
 musica_id INT NOT NULL,
+PRIMARY KEY (usuario_id,musica_id),
 FOREIGN KEY (usuario_id) REFERENCES usuarios(id),
 FOREIGN KEY (musica_id) REFERENCES musicas(id)
 ) ENGINE = InnoDB;
@@ -110,6 +111,7 @@ INSERT INTO historico_usuario(usuario_id,musica_id) VALUES
 CREATE TABLE artistas_seguidos(
 usuario_id INT NOT NULL,
 artista_id INT NOT NULL,
+PRIMARY KEY (usuario_id,artista_id),
 FOREIGN KEY (usuario_id) REFERENCES usuarios(id),
 FOReIGN KEY (artista_id) REFERENCES artistas(id) 
 )ENGINE = InnoDB;
