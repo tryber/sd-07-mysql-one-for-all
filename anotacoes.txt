@@ -1,0 +1,28 @@
+Colunas
+1. usuário;
+2. plano;
+3. histórico de reproduções;
+4. artistas seguidos;
+5. artista;
+6. álbum;
+7. canções;
+
+
+Tabela
+- Tabelas precisam conter as informações
+
+1. users
+    (user_id, name, age, plan_id);
+2. plans
+    (plan_id, plan_name, price);
+3. reproduction_history
+    (history_id, user_id, artist_id, album_id, song_id);
+4. followers
+    (follow_id, artist_id, user_id);
+5. artists
+    (artist_id, first_name, last_name);
+6. albums
+    (album_id, album_name, artist_id);
+7. songs
+    (song_id, song_name, artist_id, album_id);
+
