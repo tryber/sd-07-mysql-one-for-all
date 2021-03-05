@@ -1,6 +1,8 @@
-DELIMITER &&
+DROP DATABASE IF EXISTS SpotifyClone;
 
 CREATE DATABASE IF NOT EXISTS SpotifyClone;
+
+USE SpotifyClone;
 
 CREATE TABLE SpotifyClone.planos(
 plano_id INT PRIMARY KEY AUTO_INCREMENT,
@@ -118,6 +120,3 @@ VALUES (1, 1),
 (4, 3),
 (4, 18),
 (4, 11);
-&&
-
-DELIMITER ;
