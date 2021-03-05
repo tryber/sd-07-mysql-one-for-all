@@ -31,6 +31,7 @@ CREATE TABLE Album(
 ) engine = InnoDB;
 
 CREATE TABLE Following(
+  PRIMARY KEY (user_id, artist_id),
   user_id INTEGER,
   FOREIGN KEY (user_id) REFERENCES Users (user_id),
   artist_id INTEGER,
@@ -46,6 +47,7 @@ CREATE TABLE Songs(
 ) engine = InnoDB;
 
 CREATE TABLE Music_history(
+  PRIMARY KEY (user_id, song_id),	
   user_id INTEGER,
   FOREIGN KEY (user_id) REFERENCES Users (user_id),
   song_id INTEGER,
