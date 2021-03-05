@@ -27,7 +27,7 @@ CREATE TABLE Album(
   album_id INTEGER auto_increment PRIMARY KEY NOT NULL,
   album_name VARCHAR(30) NOT NULL,
   artist_id INTEGER,
- FOREIGN KEY (artist_id) REFERENCES Artists (artist_id)
+  FOREIGN KEY (artist_id) REFERENCES Artists (artist_id)
 ) engine = InnoDB;
 
 CREATE TABLE Following(
@@ -121,4 +121,3 @@ INSERT INTO Following(user_id, artist_id) VALUES
 (3, 2),
 (3, 1),
 (4, 1);
-
