@@ -7,20 +7,17 @@ USE SpotifyClone;
 -- -----------------------------------------------------
 -- Table `SpotifyClone`.`artistas`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `SpotifyClone`.`artistas` (
+CREATE TABLE IF NOT EXISTS `artistas` (
   `id_artista` INT NOT NULL AUTO_INCREMENT,
   `artista` VARCHAR(300) NOT NULL,
   PRIMARY KEY (`id_artista`))
-ENGINE = InnoDB
-AUTO_INCREMENT = 5
-DEFAULT CHARACTER SET = utf8mb4
-COLLATE = utf8mb4_0900_ai_ci;
+ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
 -- Table `SpotifyClone`.`albuns`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `SpotifyClone`.`albuns` (
+CREATE TABLE IF NOT EXISTS `albuns` (
   `id_album` INT NOT NULL AUTO_INCREMENT,
   `album` VARCHAR(300) NOT NULL,
   `id_artista` INT NOT NULL,
@@ -28,17 +25,14 @@ CREATE TABLE IF NOT EXISTS `SpotifyClone`.`albuns` (
   INDEX `artista_id` (`id_artista` ASC) VISIBLE,
   CONSTRAINT `albuns_ibfk_1`
     FOREIGN KEY (`id_artista`)
-    REFERENCES `SpotifyClone`.`artistas` (`id_artista`))
-ENGINE = InnoDB
-AUTO_INCREMENT = 6
-DEFAULT CHARACTER SET = utf8mb4
-COLLATE = utf8mb4_0900_ai_ci;
+    REFERENCES `artistas` (`id_artista`))
+ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
 -- Table `SpotifyClone`.`cancoes`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `SpotifyClone`.`cancoes` (
+CREATE TABLE IF NOT EXISTS `cancoes` (
   `id_cancao` INT NOT NULL AUTO_INCREMENT,
   `nome` VARCHAR(300) NOT NULL,
   `id_album` INT NOT NULL,
@@ -46,31 +40,24 @@ CREATE TABLE IF NOT EXISTS `SpotifyClone`.`cancoes` (
   INDEX `album_id` (`id_album` ASC) VISIBLE,
   CONSTRAINT `cancoes_ibfk_1`
     FOREIGN KEY (`id_album`)
-    REFERENCES `SpotifyClone`.`albuns` (`id_album`))
-ENGINE = InnoDB
-AUTO_INCREMENT = 19
-DEFAULT CHARACTER SET = utf8mb4
-COLLATE = utf8mb4_0900_ai_ci;
+    REFERENCES `albuns` (`id_album`))
+ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
 -- Table `SpotifyClone`.`planos`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `SpotifyClone`.`planos` (
+CREATE TABLE IF NOT EXISTS `planos` (
   `id_plano` INT NOT NULL AUTO_INCREMENT,
   `plano` VARCHAR(100) NOT NULL,
   `valor_plano` FLOAT NOT NULL,
   PRIMARY KEY (`id_plano`))
-ENGINE = InnoDB
-AUTO_INCREMENT = 4
-DEFAULT CHARACTER SET = utf8mb4
-COLLATE = utf8mb4_0900_ai_ci;
-
+ENGINE = InnoDB;
 
 -- -----------------------------------------------------
 -- Table `SpotifyClone`.`usuarios`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `SpotifyClone`.`usuarios` (
+CREATE TABLE IF NOT EXISTS `usuarios` (
   `id_usuario` INT NOT NULL AUTO_INCREMENT,
   `nome` VARCHAR(300) NOT NULL,
   `idade` INT NOT NULL,
@@ -79,54 +66,41 @@ CREATE TABLE IF NOT EXISTS `SpotifyClone`.`usuarios` (
   INDEX `plano_id` (`id_plano` ASC) VISIBLE,
   CONSTRAINT `usuarios_ibfk_1`
     FOREIGN KEY (`id_plano`)
-    REFERENCES `SpotifyClone`.`planos` (`id_plano`))
-ENGINE = InnoDB
-AUTO_INCREMENT = 5
-DEFAULT CHARACTER SET = utf8mb4
-COLLATE = utf8mb4_0900_ai_ci;
-
+    REFERENCES `planos` (`id_plano`))
+ENGINE = InnoDB;
 
 -- -----------------------------------------------------
 -- Table `SpotifyClone`.`historico_reproducoes`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `SpotifyClone`.`historico_reproducoes` (
+CREATE TABLE IF NOT EXISTS `historico_reproducoes` (
   `id_usuario` INT NOT NULL,
   `id_cancao` INT NOT NULL,
   PRIMARY KEY (`id_usuario`, `id_cancao`),
   INDEX `cancao_id` (`id_cancao` ASC) VISIBLE,
   CONSTRAINT `hist_reproducoes_ibfk_1`
     FOREIGN KEY (`id_usuario`)
-    REFERENCES `SpotifyClone`.`usuarios` (`id_usuario`),
+    REFERENCES `usuarios` (`id_usuario`),
   CONSTRAINT `hist_reproducoes_ibfk_2`
     FOREIGN KEY (`id_cancao`)
-    REFERENCES `SpotifyClone`.`cancoes` (`id_cancao`))
-ENGINE = InnoDB
-DEFAULT CHARACTER SET = utf8mb4
-COLLATE = utf8mb4_0900_ai_ci;
+    REFERENCES `cancoes` (`id_cancao`))
+ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
 -- Table `SpotifyClone`.`seguindo_artistas`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `SpotifyClone`.`seguindo_artistas` (
+CREATE TABLE IF NOT EXISTS `seguindo_artistas` (
   `id_usuario` INT NOT NULL,
   `id_artista` INT NOT NULL,
   PRIMARY KEY (`id_usuario`, `id_artista`),
   INDEX `seguindo_artista` (`id_artista` ASC) VISIBLE,
   CONSTRAINT `usuario_artista_ibfk_1`
     FOREIGN KEY (`id_usuario`)
-    REFERENCES `SpotifyClone`.`usuarios` (`id_usuario`),
+    REFERENCES `usuarios` (`id_usuario`),
   CONSTRAINT `usuario_artista_ibfk_2`
     FOREIGN KEY (`id_artista`)
-    REFERENCES `SpotifyClone`.`artistas` (`id_artista`))
-ENGINE = InnoDB
-DEFAULT CHARACTER SET = utf8mb4
-COLLATE = utf8mb4_0900_ai_ci;
-
-
-SET SQL_MODE=@OLD_SQL_MODE;
-SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
-SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
+    REFERENCES `artistas` (`id_artista`))
+ENGINE = InnoDB;
 
 INSERT INTO planos (valor_plano, plano)
 VALUES 
@@ -134,21 +108,21 @@ VALUES
 (5.99, 'universitário'),
 (7.99, 'familia');
 
-INSERT INTO usuarios (nome, idade, plano_id)
+INSERT INTO usuarios (nome, idade, id_plano)
 VALUES 
 ('Thati', 23, 1),
 ('Cintia', 35, 3),
 ('Bill', 20, 2),
 ('Roger', 45, 1);
 
-INSERT INTO artistas (nome)
+INSERT INTO artistas (artista)
 VALUES 
 ('Walter Phoenix'),
 ('Peter Strong'),
 ('Lance Day'),
 ('Freedie Shannon');
 
-INSERT INTO albuns (album, artista_id)
+INSERT INTO albuns (album, id_artista)
 VALUES 
 ('Envious',1),
 ('Exuberant',1),
@@ -157,7 +131,7 @@ VALUES
 ('Temporary Culture',4);
 
 INSERT INTO 
-usuario_artista (usuario_id, seguindo_artista)
+seguindo_artistas (id_usuario, id_artista)
 VALUES 
 (1,1),
 (1,4),
@@ -168,7 +142,7 @@ VALUES
 (3,1),
 (4,4);
 
-INSERT INTO cancoes (nome, album_id)
+INSERT INTO cancoes (nome, id_album)
 VALUES 
 ('Soul For Us',1),
 ('Reflections Of Magic',1),
@@ -189,7 +163,7 @@ VALUES
 ("Words Of Her Life",5),
 ("Without My Streets",5);
 
-INSERT INTO hist_reproducoes (usuario_id, cancao_id)
+INSERT INTO historico_reproducoes (id_usuario, id_cancao)
 VALUES 
 (1,1),
 (1,6),
