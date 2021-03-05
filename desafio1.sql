@@ -55,7 +55,6 @@ CONSTRAINT `fk_music_history` FOREIGN KEY (musicas_id) REFERENCES SpotifyClone.m
 );
 
 
-
 INSERT INTO planos (plano, preco) VALUES
 ('gratuito', 0), ('familiar', 7.99), ('universitário', 5.99);
 
@@ -67,7 +66,6 @@ INSERT INTO artistas (artista) VALUES
 
 INSERT INTO albuns (album, artista_id) VALUES
 ('Envious', 1), ('Exuberant', 1), ('Hallowed Steam', 2), ('Incandescent', 3), ('Temporary Culture', 4);
-
 
 INSERT INTO musicas (musica, album_id) VALUES
 ('Soul For Us', 1), ('Reflections Of Magic', 1), ('Dance With Her Own', 1),
