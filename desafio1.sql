@@ -1,29 +1,33 @@
-CREATE DATABASE IF NOT EXISTS SpotifyClone;
+DROP DATABASE IF EXISTS SpotifyClone;
+
+CREATE DATABASE SpotifyClone;
+
+USE SpotifyClone;
 
 CREATE TABLE spotifyclone.plano(
 id INT PRIMARY KEY AUTO_INCREMENT,
 nome VARCHAR(100) NOT NULL,
 valor DECIMAL(5,2) NOT NULL
-);
+) ENGINE = InnoDB;
 
 CREATE TABLE spotifyclone.artista(
 id INT PRIMARY KEY AUTO_INCREMENT,
 nome VARCHAR(100) NOT NULL
-);
+) ENGINE = InnoDB;
 
 CREATE TABLE spotifyclone.album(
 id INT PRIMARY KEY AUTO_INCREMENT,
 nome VARCHAR(100) NOT NULL,
 artista_id INT NOT NULL,
 FOREIGN KEY (artista_id) REFERENCES spotifyclone.artista(id)
-);
+) ENGINE = InnoDB;
 
 CREATE TABLE spotifyclone.cancao(
 id INT PRIMARY KEY AUTO_INCREMENT,
 nome VARCHAR(100) NOT NULL,
 album_id INT NOT NULL,
 FOREIGN KEY (album_id) REFERENCES spotifyclone.album(id)
-);
+) ENGINE = InnoDB;
 
 CREATE TABLE spotifyclone.usuario(
 id INT PRIMARY KEY AUTO_INCREMENT,
@@ -31,7 +35,7 @@ nome VARCHAR(100) NOT NULL,
 idade INT NOT NULL,
 plano_id INT NOT NULL,
 FOREIGN KEY (plano_id) REFERENCES spotifyclone.plano(id)
-);
+) ENGINE = InnoDB;
 
 CREATE TABLE spotifyclone.seguindo_artista(
 id INT PRIMARY KEY AUTO_INCREMENT,
@@ -39,7 +43,7 @@ usuario_id INT NOT NULL,
 artista_id INT NOT NULL,
 FOREIGN KEY (usuario_id) REFERENCES spotifyclone.usuario(id),
 FOREIGN KEY (artista_id) REFERENCES spotifyclone.artista(id)
-);
+) ENGINE = InnoDB;
 
 CREATE TABLE spotifyclone.historico_reproducao(
 id INT PRIMARY KEY AUTO_INCREMENT,
@@ -47,7 +51,7 @@ usuario_id INT NOT NULL,
 cancao_id INT NOT NULL,
 FOREIGN KEY (usuario_id) REFERENCES spotifyclone.usuario(id),
 FOREIGN KEY (cancao_id) REFERENCES spotifyclone.cancao(id)
-);
+) ENGINE = InnoDB;
 
 INSERT INTO spotifyclone.plano(nome, valor)
 VALUES
