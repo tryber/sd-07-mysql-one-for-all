@@ -35,6 +35,7 @@ CREATE TABLE musicas (
 musicas_id INT PRIMARY KEY AUTO_INCREMENT,
 musica VARCHAR(80) NOT NULL,
 album_id INT NOT NULL,
+artista VARCHAR(80) NOT NULL,
 CONSTRAINT `album_id_musicas` FOREIGN KEY (album_id) REFERENCES SpotifyClone.albuns (album_id)
 );
 
@@ -67,13 +68,13 @@ INSERT INTO artistas (artista) VALUES
 INSERT INTO albuns (album, artista_id) VALUES
 ('Envious', 1), ('Exuberant', 1), ('Hallowed Steam', 2), ('Incandescent', 3), ('Temporary Culture', 4);
 
-INSERT INTO musicas (musica, album_id) VALUES
-('Soul For Us', 1), ('Reflections Of Magic', 1), ('Dance With Her Own', 1),
-('Troubles Of My Inner Fire', 2), ('Time Fireworks', 2),
-('Magic Circus', 3), ('Honey, So Do I', 3), ('Sweetie, Let''s Go Wild', 3), ('She Knows', 3),
-('Fantasy For Me', 4), ('Celebration Of More', 4), ('Rock His Everything', 4),
-('Home Forever', 4), ('Diamond Power', 4), ('Honey, Let''s Be Silly', 4),
-('Thang Of Thunder', 5), ('Words Of Her Life', 5), ('Without My Streets', 5);
+INSERT INTO musicas (musica, album_id, artista) VALUES
+('Soul For Us', 1,'Walter Phoenix'), ('Reflections Of Magic', 1,'Walter Phoenix'), ('Dance With Her Own', 1,'Walter Phoenix'),
+('Troubles Of My Inner Fire', 2,'Walter Phoenix'), ('Time Fireworks', 2,'Walter Phoenix'),
+('Magic Circus', 3,'Peter Strong'), ('Honey, So Do I', 3,'Peter Strong'), ('Sweetie, Let''s Go Wild', 3,'Peter Strong'), ('She Knows', 3,'Peter Strong'),
+('Fantasy For Me', 4,'Lance Day'), ('Celebration Of More', 4,'Lance Day'), ('Rock His Everything', 4,'Lance Day'),
+('Home Forever', 4,'Lance Day'), ('Diamond Power', 4,'Lance Day'), ('Honey, Let''s Be Silly', 4,'Lance Day'),
+('Thang Of Thunder', 5,'Freedie Shannon'), ('Words Of Her Life', 5,'Freedie Shannon'), ('Without My Streets', 5,'Freedie Shannon');
 
 INSERT INTO seguidores (usuario_id, artista_id) VALUES
 (1, 1), (1, 4), (1, 3),
