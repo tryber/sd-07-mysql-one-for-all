@@ -15,12 +15,6 @@ describe('Queries de seleção', () => {
     }
     catch(error) {
       console.log('Erro ao restaurar o dump!');
-<<<<<<< HEAD
-=======
-
-      console.log(error, '** Error Info **')
-
->>>>>>> 8779ae8121efd7f25644737e05edfc44b1ae01af
     }
 
     importer.disconnect();
