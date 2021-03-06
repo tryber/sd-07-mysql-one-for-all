@@ -1,3 +1,4 @@
+CREATE VIEW estatisticas_musicais AS
 SELECT COUNT(table_cancoes.cancao_id) AS "cancoes",
   (
     SELECT COUNT(table_artistas.artista_id)
