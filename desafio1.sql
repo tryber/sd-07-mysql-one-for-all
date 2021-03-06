@@ -1,11 +1,11 @@
-DROP SCHEMA IF EXISTS SpotifyClone ;
-CREATE SCHEMA IF NOT EXISTS SpotifyClone ;
+DROP DATABASE IF EXISTS SpotifyClone ;
+CREATE DATABASE IF NOT EXISTS SpotifyClone ;
 USE SpotifyClone ;
 
 CREATE TABLE IF NOT EXISTS planos (
   plano_id INT NOT NULL AUTO_INCREMENT,
   plano_nome VARCHAR(45) NOT NULL,
-  plano_valor DOUBLE(5,2) NOT NULL,
+  plano_valor DOUBLE NOT NULL,
   PRIMARY KEY (plano_id))
 ENGINE = InnoDB;
 
