@@ -1,21 +1,8 @@
 DROP DATABASE IF EXISTS SpotifyClone;
 
-CREATE DATABASE `SpotifyClone`;
+CREATE DATABASE SpotifyClone;
 
-SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0;
-SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0;
-SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION';
-
--- -----------------------------------------------------
--- Schema SpotifyClone
--- -----------------------------------------------------
-
--- -----------------------------------------------------
--- Schema SpotifyClone
--- -----------------------------------------------------
-CREATE SCHEMA IF NOT EXISTS `SpotifyClone` ;
-
-USE `SpotifyClone`;
+USE SpotifyClone;
 -- -----------------------------------------------------
 -- Table `SpotifyClone`.`plano`
 -- -----------------------------------------------------
@@ -24,7 +11,6 @@ CREATE TABLE IF NOT EXISTS `SpotifyClone`.`plano` (
   `nome_plano` VARCHAR(45) NOT NULL,
   `valor` FLOAT NOT NULL,
   PRIMARY KEY (`plano_id`),
-  UNIQUE INDEX `plano_id_UNIQUE` (`plano_id` ASC) VISIBLE
 ) ENGINE = InnoDB;
 -- -----------------------------------------------------
 -- Table `SpotifyClone`.`usuario`
@@ -35,9 +21,7 @@ CREATE TABLE IF NOT EXISTS `SpotifyClone`.`usuario` (
   `idade` INT NOT NULL,
   `plano_id` INT NOT NULL,
   PRIMARY KEY (`usuario_id`),
-  UNIQUE INDEX `usuario_id_UNIQUE` (`usuario_id` ASC) VISIBLE,
-  INDEX `plano_id_idx` (`plano_id` ASC) VISIBLE,
-  CONSTRAINT `plano_usuario_id_fk` FOREIGN KEY (`plano_id`) REFERENCES `SpotifyClone`.`plano` (`plano_id`) ON DELETE NO ACTION ON UPDATE NO ACTION
+  CONSTRAINT `plano_usuario_id_fk` FOREIGN KEY (`plano_id`) REFERENCES `SpotifyClone`.`plano` (`plano_id`)
 ) ENGINE = InnoDB;
 -- -----------------------------------------------------
 -- Table `SpotifyClone`.`artista`
@@ -55,8 +39,7 @@ CREATE TABLE IF NOT EXISTS `SpotifyClone`.`album` (
   `nome_album` VARCHAR(45) NOT NULL,
   `artista_id` INT NOT NULL,
   PRIMARY KEY (`album_id`),
-  INDEX `album_artista_id_fk_idx` (`artista_id` ASC) VISIBLE,
-  CONSTRAINT `album_artista_id_fk` FOREIGN KEY (`artista_id`) REFERENCES `SpotifyClone`.`artista` (`artista_id`) ON DELETE NO ACTION ON UPDATE NO ACTION
+  CONSTRAINT `album_artista_id_fk` FOREIGN KEY (`artista_id`) REFERENCES `SpotifyClone`.`artista` (`artista_id`)
 ) ENGINE = InnoDB;
 -- -----------------------------------------------------
 -- Table `SpotifyClone`.`musica`
@@ -67,10 +50,8 @@ CREATE TABLE IF NOT EXISTS `SpotifyClone`.`musica` (
   `album_id` INT NOT NULL,
   `artista_id` INT NOT NULL,
   PRIMARY KEY (`musica_id`),
-  INDEX `album_id_idx` (`album_id` ASC) VISIBLE,
-  INDEX `artista_id_idx` (`artista_id` ASC) VISIBLE,
-  CONSTRAINT `musica_album_id_fk` FOREIGN KEY (`album_id`) REFERENCES `SpotifyClone`.`album` (`album_id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  CONSTRAINT `musica_artista_id_fk` FOREIGN KEY (`artista_id`) REFERENCES `SpotifyClone`.`artista` (`artista_id`) ON DELETE NO ACTION ON UPDATE NO ACTION
+  CONSTRAINT `musica_album_id_fk` FOREIGN KEY (`album_id`) REFERENCES `SpotifyClone`.`album` (`album_id`),
+  CONSTRAINT `musica_artista_id_fk` FOREIGN KEY (`artista_id`) REFERENCES `SpotifyClone`.`artista` (`artista_id`)
 ) ENGINE = InnoDB;
 -- -----------------------------------------------------
 -- Table `SpotifyClone`.`historico_reproducao`
@@ -80,10 +61,8 @@ CREATE TABLE IF NOT EXISTS `SpotifyClone`.`historico_reproducao` (
   `usuario_id` INT NOT NULL,
   `musica_id` INT NOT NULL,
   PRIMARY KEY (`historico_reproducao_id`),
-  INDEX `usuario_id_idx` (`usuario_id` ASC) VISIBLE,
-  INDEX `musica_ida_idx` (`musica_id` ASC) VISIBLE,
-  CONSTRAINT `historico_usuario_id_fk` FOREIGN KEY (`usuario_id`) REFERENCES `SpotifyClone`.`usuario` (`usuario_id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  CONSTRAINT `historico_musica_id_fk` FOREIGN KEY (`musica_id`) REFERENCES `SpotifyClone`.`musica` (`musica_id`) ON DELETE NO ACTION ON UPDATE NO ACTION
+  CONSTRAINT `historico_usuario_id_fk` FOREIGN KEY (`usuario_id`) REFERENCES `SpotifyClone`.`usuario` (`usuario_id`),
+  CONSTRAINT `historico_musica_id_fk` FOREIGN KEY (`musica_id`) REFERENCES `SpotifyClone`.`musica` (`musica_id`)
 ) ENGINE = InnoDB;
 -- -----------------------------------------------------
 -- Table `SpotifyClone`.`seguidores`
@@ -92,11 +71,9 @@ CREATE TABLE IF NOT EXISTS `SpotifyClone`.`seguidores` (
   `seguidores_id` INT NOT NULL AUTO_INCREMENT,
   `usuario_id` INT NOT NULL,
   `artista_id` INT NOT NULL,
-  INDEX `usuario_id_idx` (`usuario_id` ASC) VISIBLE,
-  INDEX `artista_id_idx` (`artista_id` ASC) VISIBLE,
   PRIMARY KEY (`seguidores_id`),
-  CONSTRAINT `seguidores_usuario_id_fk` FOREIGN KEY (`usuario_id`) REFERENCES `SpotifyClone`.`usuario` (`usuario_id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  CONSTRAINT `seguidores_artista_id_fk` FOREIGN KEY (`artista_id`) REFERENCES `SpotifyClone`.`artista` (`artista_id`) ON DELETE NO ACTION ON UPDATE NO ACTION
+  CONSTRAINT `seguidores_usuario_id_fk` FOREIGN KEY (`usuario_id`) REFERENCES `SpotifyClone`.`usuario` (`usuario_id`),
+  CONSTRAINT `seguidores_artista_id_fk` FOREIGN KEY (`artista_id`) REFERENCES `SpotifyClone`.`artista` (`artista_id`)
 ) ENGINE = InnoDB;
 INSERT INTO usuario (nome_usuario, idade, plano_id)
 VALUES ('Thati', 23, 1),
@@ -161,7 +138,3 @@ VALUES (1, 1),
   (3, 2),
   (3, 1),
   (4, 4);
-
-SET SQL_MODE=@OLD_SQL_MODE;
-SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
-SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
