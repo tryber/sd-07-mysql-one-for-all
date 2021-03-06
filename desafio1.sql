@@ -1,14 +1,14 @@
 DROP DATABASE IF EXISTS SpotifyClone ;
 CREATE DATABASE IF NOT EXISTS SpotifyClone ;
 USE SpotifyClone ;
-CREATE TABLE IF NOT EXISTS plans (
+CREATE TABLE plans (
   id_plan INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
   plan VARCHAR(45) NOT NULL,
   price DECIMAL(5,2) NOT NULL,
   UNIQUE INDEX plan_UNIQUE (plan ASC) VISIBLE)
 ENGINE = InnoDB;
 
-CREATE TABLE IF NOT EXISTS users (
+CREATE TABLE users (
   id_user INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
   name VARCHAR(100) NOT NULL,
   age INT NOT NULL,
@@ -18,12 +18,12 @@ CREATE TABLE IF NOT EXISTS users (
     REFERENCES SpotifyClone.plans (id_plan))
 ENGINE = InnoDB;
 
-CREATE TABLE IF NOT EXISTS artists (
+CREATE TABLE artists (
   id_artist INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
   name VARCHAR(100) NOT NULL,
 ENGINE = InnoDB;
 
-CREATE TABLE IF NOT EXISTS albums (
+CREATE TABLE albums (
   id_album INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
   album VARCHAR(100) NOT NULL,
   id_artist INT NOT NULL,
@@ -32,7 +32,7 @@ CREATE TABLE IF NOT EXISTS albums (
     REFERENCES SpotifyClone.artists (id_artist))
 ENGINE = InnoDB;
 
-CREATE TABLE IF NOT EXISTS songs (
+CREATE TABLE songs (
   id_song INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
   song VARCHAR(100) NOT NULL,
   id_album INT NOT NULL,
@@ -41,7 +41,7 @@ CREATE TABLE IF NOT EXISTS songs (
     REFERENCES SpotifyClone.albums (id_album))
 ENGINE = InnoDB;
 
-CREATE TABLE IF NOT EXISTS users_songs (
+CREATE TABLE users_songs (
   id_user INT NOT NULL,
   id_song INT NOT NULL,
   PRIMARY KEY (id_user, id_song),
@@ -53,7 +53,7 @@ CREATE TABLE IF NOT EXISTS users_songs (
     REFERENCES SpotifyClone.songs (id_song))
 ENGINE = InnoDB;
 
-CREATE TABLE IF NOT EXISTS users_artists (
+CREATE TABLE users_artists (
   id_user INT NOT NULL,
   id_artist INT NOT NULL,
   PRIMARY KEY (id_user, id_artist),
