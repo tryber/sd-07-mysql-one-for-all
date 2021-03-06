@@ -12,3 +12,4 @@ CREATE VIEW estatisticas_musicais AS
   ON C.artist_id = Album.artist_id
   GROUP BY C.artist_id) AS C2;
   
+  
