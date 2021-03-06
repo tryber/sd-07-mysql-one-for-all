@@ -6,16 +6,16 @@ USE SpotifyClone;
 -- -----------------------------------------------------
 -- Table `SpotifyClone`.`plano`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `SpotifyClone`.`plano` (
+CREATE TABLE IF NOT EXISTS plano (
   `plano_id` INT NOT NULL AUTO_INCREMENT,
   `nome_plano` VARCHAR(45) NOT NULL,
   `valor` FLOAT NOT NULL,
-  PRIMARY KEY (`plano_id`),
+  PRIMARY KEY (`plano_id`)
 ) ENGINE = InnoDB;
 -- -----------------------------------------------------
 -- Table `SpotifyClone`.`usuario`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `SpotifyClone`.`usuario` (
+CREATE TABLE IF NOT EXISTS usuario (
   `usuario_id` INT NOT NULL AUTO_INCREMENT,
   `nome_usuario` VARCHAR(100) NOT NULL,
   `idade` INT NOT NULL,
@@ -26,7 +26,7 @@ CREATE TABLE IF NOT EXISTS `SpotifyClone`.`usuario` (
 -- -----------------------------------------------------
 -- Table `SpotifyClone`.`artista`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `SpotifyClone`.`artista` (
+CREATE TABLE IF NOT EXISTS artista (
   `artista_id` INT NOT NULL AUTO_INCREMENT,
   `nome_artista` VARCHAR(45) NOT NULL,
   PRIMARY KEY (`artista_id`)
@@ -34,7 +34,7 @@ CREATE TABLE IF NOT EXISTS `SpotifyClone`.`artista` (
 -- -----------------------------------------------------
 -- Table `SpotifyClone`.`album`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `SpotifyClone`.`album` (
+CREATE TABLE IF NOT EXISTS album (
   `album_id` INT NOT NULL AUTO_INCREMENT,
   `nome_album` VARCHAR(45) NOT NULL,
   `artista_id` INT NOT NULL,
@@ -44,7 +44,7 @@ CREATE TABLE IF NOT EXISTS `SpotifyClone`.`album` (
 -- -----------------------------------------------------
 -- Table `SpotifyClone`.`musica`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `SpotifyClone`.`musica` (
+CREATE TABLE IF NOT EXISTS musica (
   `musica_id` INT NOT NULL AUTO_INCREMENT,
   `nome_musica` VARCHAR(45) NOT NULL,
   `album_id` INT NOT NULL,
@@ -56,7 +56,7 @@ CREATE TABLE IF NOT EXISTS `SpotifyClone`.`musica` (
 -- -----------------------------------------------------
 -- Table `SpotifyClone`.`historico_reproducao`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `SpotifyClone`.`historico_reproducao` (
+CREATE TABLE IF NOT EXISTS historico_reproducao (
   `historico_reproducao_id` INT NOT NULL AUTO_INCREMENT,
   `usuario_id` INT NOT NULL,
   `musica_id` INT NOT NULL,
@@ -67,7 +67,7 @@ CREATE TABLE IF NOT EXISTS `SpotifyClone`.`historico_reproducao` (
 -- -----------------------------------------------------
 -- Table `SpotifyClone`.`seguidores`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `SpotifyClone`.`seguidores` (
+CREATE TABLE IF NOT EXISTS seguidores (
   `seguidores_id` INT NOT NULL AUTO_INCREMENT,
   `usuario_id` INT NOT NULL,
   `artista_id` INT NOT NULL,
