@@ -72,7 +72,7 @@ VALUES
   ('Walter', 'Phoenix'),
   ('Peter', 'Strong'),
   ('Lance', 'Day'),
-  ('Freddie', 'Shannon');
+  ('Freedie', 'Shannon');
   
   INSERT INTO album_list (album_name, artist_id)
 VALUES
