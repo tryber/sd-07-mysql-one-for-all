@@ -3,29 +3,29 @@ CREATE SCHEMA SpotifyClone;
 USE SpotifyClone;
 
 CREATE TABLE planos (
-plano_id INT NOT NULL auto_increment,
-plano_tipo varchar(45) not null,
-plano_preço decimal(4,2) not null,
-PRIMARY KEY (plano_id)
+  plano_id INT NOT NULL auto_increment,
+  plano_tipo varchar(45) not null,
+  plano_preço decimal(4,2) not null,
+  PRIMARY KEY (plano_id)
 );
 
 CREATE TABLE usuarios (
 usuario_id int not null auto_increment,
-usuario_nome int not null auto_increment,
-idade int zerofill null,
+usuario_nome varchar(45) not null,
+idade int not null,
 plano_id int not null,
 PRIMARY KEY (usuario_id),
 FOREIGN KEY (plano_id) REFERENCES planos (plano_id)
 );
 
 CREATE TABLE historico_de_reproducao (
-usuario_id INT NOT NULL,
-musica_id INT NOT NULL,
-PRIMARY KEY (usuario_id, musica_id),
-FOREIGN KEY (usuario_id)
-REFERENCES usuarios (usuario_id),
-FOREIGN KEY (musica_id)
-REFERENCES musicas (musica_id)
+  usuario_id INT NOT NULL,
+  musica_id INT NOT NULL,
+  PRIMARY KEY (usuario_id, musica_id),
+  FOREIGN KEY (usuario_id)
+    REFERENCES usuarios (usuario_id),
+    FOREIGN KEY (musica_id)
+    REFERENCES musicas (musica_id)
 );
 
 CREATE TABLE musicas (
