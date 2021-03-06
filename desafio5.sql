@@ -6,5 +6,3 @@ CREATE VIEW top_2_hits_do_momento AS
   GROUP BY S.song_name
   ORDER BY reproducoes DESC, cancao
   LIMIT 2;
-  
-  

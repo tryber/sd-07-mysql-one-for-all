@@ -122,4 +122,4 @@ INSERT INTO Following(user_id, artist_id) VALUES
 (2, 3),
 (3, 2),
 (3, 1),
-(4, 1);
+(4, 4);
