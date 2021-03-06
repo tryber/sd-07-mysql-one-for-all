@@ -7,4 +7,3 @@ CREATE VIEW `estatisticas_musicais` AS
             ON s.id_album = alb.id_album
         INNER JOIN SpotifyClone.artists AS art
             ON art.id_artist = alb.id_artist;
-        
