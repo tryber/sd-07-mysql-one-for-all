@@ -6,4 +6,4 @@ INNER JOIN artists AS a ON
 f.artist_id = a.artist_id
 GROUP BY `artista`
 ORDER BY `seguidores`DESC, `artista`
-LIMIT 3
+LIMIT 3;
