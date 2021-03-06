@@ -7,7 +7,7 @@ USE SpotifyClone;
 CREATE TABLE planos(
     plano_id INT PRIMARY KEY AUTO_INCREMENT,
     plano VARCHAR(100) NOT NULL,
-    valor_plano DOUBLE NOT NULL
+    valor_plano DECIMAL(5,2) NOT NULL
 ) ENGINE=InnoDB;
 
 CREATE TABLE usuarios(
@@ -40,17 +40,17 @@ CREATE TABLE cancoes(
 ) ENGINE=InnoDB;
 
 CREATE TABLE historicos(
-    historico_id INT PRIMARY KEY AUTO_INCREMENT,
     usuario_id INT NOT NULL,
     cancao_id INT NOT NULL,
+    PRIMARY KEY (usuario_id, cancao_id),
     FOREIGN KEY (usuario_id) REFERENCES usuarios(usuario_id),
     FOREIGN KEY (cancao_id) REFERENCES cancoes(cancao_id)
 ) ENGINE=InnoDB;
 
 CREATE TABLE seguidores(
-    id INT PRIMARY KEY AUTO_INCREMENT,
     usuario_id INT NOT NULL,
     artista_id INT NOT NULL,
+    PRIMARY KEY (usuario_id, artista_id),
     FOREIGN KEY (usuario_id) REFERENCES usuarios(usuario_id),
     FOREIGN KEY (artista_id) REFERENCES artistas(artista_id)
 ) ENGINE=InnoDB;
