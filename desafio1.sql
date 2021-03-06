@@ -92,8 +92,11 @@ CREATE TABLE reproducoes (
 usuario_id INT,
 cancoe_id INT,
 FOREIGN KEY (usuario_id) REFERENCES usuarios(usuario_id),
-FOREIGN KEY (cancoe_id) REFERENCES cancoes(cancoe_id)
+FOREIGN KEY (cancoe_id) REFERENCES cancoes(cancoe_id),
+CONSTRAINT usuario_cancoe PRIMARY KEY auto_increment (usuario_id, cancoe_id)
 ) ENGINE = InnoDB;
+
+
 
 INSERT INTO reproducoes (usuario_id, cancoe_id)
 VALUES
@@ -116,7 +119,8 @@ CREATE TABLE seguindo (
 usuario_id INT,
 artista_id INT,
 FOREIGN KEY (usuario_id) REFERENCES usuarios(usuario_id),
-FOREIGN KEY (artista_id) REFERENCES artistas(artista_id)
+FOREIGN KEY (artista_id) REFERENCES artistas(artista_id),
+CONSTRAINT usuario_artista PRIMARY KEY auto_increment(usuario_id, artista_id)
 ) ENGINE = InnoDB;
 
 INSERT INTO seguindo (usuario_id, artista_id)
