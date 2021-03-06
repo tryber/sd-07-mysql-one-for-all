@@ -77,8 +77,8 @@ VALUES
   INSERT INTO album_list (album_name, artist_id)
 VALUES
   ('Envious', 1),
-  ('Exburerant', 1),
-  ('Hallowed Stream', 2),
+  ('Exuberant', 1),
+  ('Hallowed Steam', 2),
   ('Incandescent', 3),
   ('Temporary Culture', 4);
   
