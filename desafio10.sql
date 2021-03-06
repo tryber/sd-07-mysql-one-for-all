@@ -1,4 +1,3 @@
-USE SpotifyClone;
 DELIMITER $$
 CREATE PROCEDURE quantidade_musicas_no_historico(IN id INT)
 BEGIN
