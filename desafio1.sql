@@ -7,7 +7,7 @@ USE SpotifyClone;
 CREATE TABLE plan(
 id INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
 name VARCHAR(100),
-price FLOAT
+price DECIMAL(5, 2)
 );
 
 CREATE TABLE user(
