@@ -84,6 +84,7 @@ VALUES ('Soul For Us', 1),
 CREATE TABLE usuarios_artistas(
 usuario_id INT NOT NULL,
 artista_id INT NOT NULL,
+PRIMARY KEY(usuario_id, artista_id),
 FOREIGN KEY (usuario_id) REFERENCES usuarios(usuario_id),
 FOREIGN KEY (artista_id) REFERENCES artistas(artista_id)
 ) ENGINE = InnoDB;
@@ -101,6 +102,7 @@ VALUES (1, 1),
 CREATE TABLE historico_reproducao(
 musica_id INT NOT NULL,
 usuario_id INT NOT NULL,
+PRIMARY KEY(musica_id, usuario_id),
 FOREIGN KEY (musica_id) REFERENCES musicas(musica_id),
 FOREIGN KEY (usuario_id) REFERENCES usuarios(usuario_id)
 ) ENGINE = InnoDB;
