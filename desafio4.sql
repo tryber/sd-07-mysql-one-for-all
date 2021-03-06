@@ -6,3 +6,4 @@ CREATE VIEW top_3_artistas AS
   GROUP BY A.artist_name
   ORDER BY seguidores DESC, artista
   LIMIT 3;
+  
