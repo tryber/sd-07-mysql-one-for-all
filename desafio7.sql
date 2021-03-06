@@ -1,4 +1,4 @@
-CREATE VIEW chamada perfil_artistas AS
+CREATE VIEW perfil_artistas AS
 SELECT
   SpotifyClone.singers.name AS "artista",
   SpotifyClone.albuns.name AS "album",
