@@ -4,7 +4,7 @@
 
 DELIMITER $$
 
-CREATE FUNCTION quantidade_musicas_no_historico(search_user VARCHAR(50))
+CREATE FUNCTION quantidade_musicas_no_historico(search_user_id INT)
 RETURNS INT READS SQL DATA
   BEGIN
     DECLARE history_sum INT;
@@ -12,7 +12,7 @@ RETURNS INT READS SQL DATA
     FROM history AS h
     JOIN users AS u
       ON h.user_id = u.user_id
-    WHERE u.name = CONCAT('%', search_user, '%')
+    WHERE u.user_id = search_user_id
     INTO history_sum;
     RETURN history_sum;
   END $$
