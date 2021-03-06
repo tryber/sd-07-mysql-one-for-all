@@ -2,7 +2,7 @@ USE SpotifyClone;
 
 DELIMITER $$
 
-CREATE FUNCTION quantidade_musicas_no_historico(username VARCHAR(10))
+CREATE FUNCTION `quantidade_musicas_no_historico`(username VARCHAR(10))
 RETURNS INT READS SQL DATA
 BEGIN
 DECLARE musicCount INT;
