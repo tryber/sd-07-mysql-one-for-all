@@ -12,4 +12,3 @@ WHERE OLD.user_id = user_id;
 END $$;
 
 DELIMITER ;
-
