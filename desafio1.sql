@@ -4,55 +4,60 @@ CREATE DATABASE SpotifyClone;
 
 USE SpotifyClone;
 
-CREATE TABLE users(
-user_id INT PRIMARY KEY AUTO_INCREMENT,
-user_name VARCHAR(50) NOT NULL,
-age INT NOT NULL,
-plan_id INT NOT NULL,
-CONSTRAINT `fk_plans_users` FOREIGN KEY (plan_id) REFERENCES SpotifyClone(plan_id)
-) engine = InnoDB;
-
-CREATE TABLE plans(
+CREATE TABLE plans (
 plan_id INT PRIMARY KEY AUTO_INCREMENT,
 plan VARCHAR(50) NOT NULL,
 plan_value DECIMAL(4,2) NOT NULL
 ) engine = InnoDB;
 
-CREATE TABLE artists(
+CREATE TABLE users (
+user_id INT PRIMARY KEY AUTO_INCREMENT,
+user_name VARCHAR(50) NOT NULL,
+age INT NOT NULL,
+plan_id INT NOT NULL,
+FOREIGN KEY (plan_id) REFERENCES SpotifyClone(plan_id)
+) engine = InnoDB;
+
+CREATE TABLE artists (
 artist_id INT PRIMARY KEY AUTO_INCREMENT,
 artist VARCHAR(100) NOT NULL
 ) engine = InnoDB;
 
-CREATE TABLE albums(
+CREATE TABLE albums (
 album_id INT PRIMARY KEY AUTO_INCREMENT,
 album VARCHAR(100) NOT NULL,
 artist_id INT NOT NULL,
-CONSTRAINT `fk_artists_albuns` FOREIGN KEY (artist_id) REFERENCES artists(artist_id)
+FOREIGN KEY (artist_id) REFERENCES artists(artist_id)
 ) engine = InnoDB;
 
-CREATE TABLE songs(
+CREATE TABLE songs (
 song_id INT PRIMARY KEY AUTO_INCREMENT,
 song VARCHAR(100) NOT NULL,
 artist_id INT NOT NULL,
 album_id INT NOT NULL,
-CONSTRAINT `fk_artists_songs` FOREIGN KEY (artist_id) REFERENCES SpotifyClone.artists(artist_id),
-CONSTRAINT `fk_albums_songs` FOREIGN KEY (album_id) REFERENCES SpotifyClone.albums(album_id)
+FOREIGN KEY (artist_id) REFERENCES SpotifyClone.artists(artist_id),
+FOREIGN KEY (album_id) REFERENCES SpotifyClone.albums(album_id)
 ) engine = InnoDB;
 
-CREATE TABLE followers(
-user_id INT NOT NULL,
-artist_id INT NOT NULL,
-CONSTRAINT `fk_users_followers` FOREIGN KEY (user_id) REFERENCES SpotifyClone.users(user_id),
-CONSTRAINT `fk_artists_followers` FOREIGN KEY (artist_id) REFERENCES SpotifyClone.artists(artist_id)
-) engine = InnoDB;
-
-CREATE TABLE playbacks(
+CREATE TABLE playbacks (
 user_id INT NOT NULL,
 song_id INT NOT NULL,
-CONSTRAINT `fk_users_playback` FOREIGN KEY (user_id) REFERENCES SpotifyClone.users(user_id),
-CONSTRAINT `fk_artists_playback` FOREIGN KEY (song_id) REFERENCES SpotifyClone.song(song_id)
+FOREIGN KEY (user_id) REFERENCES SpotifyClone.users(user_id),
+FOREIGN KEY (song_id) REFERENCES SpotifyClone.song(song_id)
 ) engine = InnoDB;
 
+CREATE TABLE followers (
+user_id INT NOT NULL,
+artist_id INT NOT NULL,
+FOREIGN KEY (user_id) REFERENCES SpotifyClone.users(user_id),
+FOREIGN KEY (artist_id) REFERENCES SpotifyClone.artists(artist_id)
+) engine = InnoDB;
+
+INSERT INTO plans (plan, plan_value)
+VALUES
+('gratuito', 00.00),
+('universitário', 05.99),
+('familiar', 07.99);
 
 INSERT INTO users (user_name, age, plan_id)
 VALUES
@@ -60,12 +65,6 @@ VALUES
 ('Cintia', 35, 3),
 ('Bill', 20, 2),
 ('Roger', 45, 1);
-
-INSERT INTO plans (plan, plan_value)
-VALUES
-('gratuito', 00.00),
-('universitário', 05.99),
-('familiar', 07.99);
 
 INSERT INTO artists (artist)
 VALUES
@@ -103,17 +102,6 @@ VALUES
 ('Without My Streets', 1, 5),
 ('Words Of Her Life', 1, 5);
 
-INSERT INTO followers (user_id, artist_id)
-VALUES
-(1, 4),
-(1, 1),
-(1, 2),
-(2, 4),
-(2, 2),
-(3, 3),
-(3, 4),
-(4, 1);
-
 INSERT INTO playbacks (user_id, song_id)
 VALUES
 (1, 12),
@@ -129,4 +117,15 @@ VALUES
 (3, 8),
 (4, 2),
 (4, 17),
+(4, 1);
+
+INSERT INTO followers (user_id, artist_id)
+VALUES
+(1, 4),
+(1, 1),
+(1, 2),
+(2, 4),
+(2, 2),
+(3, 3),
+(3, 4),
 (4, 1);
