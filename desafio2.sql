@@ -1,7 +1,7 @@
-CREATE VIEW estatisticas_musicais AS
-  SELECT ROUND(SUM(Number_of_songs), 0) AS cancoes, ROUND(COUNT(artist_id),0) AS artistas, ROUND(SUM(albuns),0) AS albuns FROM(
+CREATE VIEW estatisticas_musicais AS  
+  SELECT SUM(Number_of_songs) AS cancoes, COUNT(artist_id) AS artistas, SUM(albuns) AS albuns FROM(
   SELECT C.Number_of_songs, C.artist_id, COUNT(Album.album_id) AS albuns FROM(
-  SELECT COUNT(Songs.song_name) AS Number_of_songs, Artists.artist_id
+  SELECT COUNT(Songs.song_id) AS Number_of_songs, Artists.artist_id
   FROM SpotifyClone.Songs AS Songs
   INNER JOIN SpotifyClone.Album AS Album
   ON Songs.album_id = Album.album_id
