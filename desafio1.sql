@@ -28,7 +28,7 @@ CREATE TABLE SpotifyClone.cancoes (
 CREATE TABLE SpotifyClone.planos (
   id_plano INT NOT NULL AUTO_INCREMENT,
   plano VARCHAR(100) NOT NULL,
-  valor_plano FLOAT NOT NULL,
+  valor_plano decimal(4,2) NOT NULL,
   PRIMARY KEY (id_plano))engine = InnoDB;
 
 CREATE TABLE SpotifyClone.usuarios (
