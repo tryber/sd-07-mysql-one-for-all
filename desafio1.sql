@@ -83,6 +83,7 @@ CREATE TABLE SpotifyClone.historico(
 INSERT INTO SpotifyClone.historico (usuario_id, cancao_id)
 VALUES (1, 1),
     (1, 6),
+    (1, 14),
     (1, 16),
     (2, 13),
     (2, 17),
