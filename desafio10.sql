@@ -7,7 +7,7 @@ DECLARE musicCount INT;
 SELECT COUNT(*) FROM SpotifyClone.playback_list AS p
 INNER JOIN SpotifyClone.users AS u ON
 p.user_id = u.user_id
-WHERE user_name = username
+WHERE u.user_name = username
 INTO musicCount;
 RETURN musicCount;
 END $$
