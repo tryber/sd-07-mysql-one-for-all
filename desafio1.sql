@@ -67,7 +67,7 @@ REFERENCES artistas (artista_id)
 );
 
 INSERT INTO SpotifyClone.usuarios(usuario_nome, idade, plano_id)
-VALUES ('Thati', '23', 1),('CINTia', 35, 2),('Bill', 20, 3), ('Roger', '45', 1);
+VALUES ('Thati', '23', 1),('Cintia', 35, 2),('Bill', 20, 3), ('Roger', '45', 1);
 
 INSERT INTO SpotifyClone.planos (plano_tipo, plano_preço)
 VALUES ('gratuito', 0), ('familiar', 7.99),('universitário', 5.99);
@@ -82,7 +82,7 @@ INSERT INTO SpotifyClone.albuns(album_titulo, artista_id)
 VALUES('Envious', 1),('Exuberant',1),('Hallowed Steam',2), ('Incandescent',3), ('Temporary Culture',4);
 
 INSERT INTO SpotifyClone.musicas(album_id, artista_id, musica_titulo)
-VALUES (1,1,'Soul For Us'),(1,1,'Reflections of Magic'), (1,1,'Dance with her own'),(2,1,'Troubles Of My Inner Fire'),(2,1,'Time Fireworks'),
+VALUES (1,1,'Soul For Us'),(1,1,'Reflections Of Magic'), (1,1,'Dance With Her Own'),(2,1,'Troubles Of My Inner Fire'),(2,1,'Time Fireworks'),
 (3,2, 'Magic Circus'), (3,2,'Honey, So Do I'),(3,2,'Sweetie, Let\'s Go Wild'), (3,2,'She Knows'), (4,3,'Fantasy for Me'), (4,3,'Celebration Of More'),
 (4,3,'Rock His Everything'), (4,3,'Home Forever'),(4,3,'Diamond Power'), (4,3,'Honey, Let\'s Be Silly'), (5,4,'Thang Of Thunder'),(5,4,'Words Of Her Life'),
 (5,4,'Without My Streets');
