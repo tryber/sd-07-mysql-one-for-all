@@ -1,114 +1,75 @@
 DROP DATABASE IF EXISTS SpotifyClone;
-CREATE SCHEMA SpotifyClone;
+
+CREATE DATABASE SpotifyClone;
 USE SpotifyClone;
--- -----------------------------------------------------
--- Table `SpotifyClone`.`usuarios`
--- -----------------------------------------------------
+
+CREATE TABLE planos
+(
+  plano_id MEDIUMINT NOT NULL AUTO_INCREMENT,
+  plano VARCHAR(255) NOT NULL,
+  valor DECIMAL(5, 2) NOT NULL,
+  PRIMARY KEY (plano_id)
+) engine = InnoDB;
+
 CREATE TABLE usuarios
 (
   usuario_id MEDIUMINT NOT NULL AUTO_INCREMENT,
   usuario VARCHAR(255) NOT NULL,
   idade MEDIUMINT NULL,
   PRIMARY KEY (usuario_id)
-);
+) engine = InnoDB;
 
--- -----------------------------------------------------
--- Table `SpotifyClone`.`planos`
--- -----------------------------------------------------
-CREATE TABLE planos
-(
-  plano_id MEDIUMINT NOT NULL AUTO_INCREMENT,
-  plano VARCHAR(100) NOT NULL,
-  valor DECIMAL(5, 2) NOT NULL,
-  PRIMARY KEY (plano_id)
-);
-
--- -----------------------------------------------------
--- Table `SpotifyClone`.`artistas`
--- -----------------------------------------------------
 CREATE TABLE artistas
 (
   artista_id MEDIUMINT NOT NULL AUTO_INCREMENT,
   artista VARCHAR(255) NOT NULL,
   PRIMARY KEY (artista_id)
-);
+) engine = InnoDB;
 
--- -----------------------------------------------------
--- Table `SpotifyClone`.`usuarios_seguindo_artistas`
--- -----------------------------------------------------
 CREATE TABLE usuarios_seguindo_artistas
 (
   usuario_id MEDIUMINT NOT NULL,
   artista_id MEDIUMINT NOT NULL,
   PRIMARY KEY (usuario_id, artista_id),
-  CONSTRAINT fk_usuarios_seguindo_artistas
-    FOREIGN KEY (usuario_id)
-    REFERENCES SpotifyClone.usuarios (usuario_id),
-  CONSTRAINT fk_usuarios_seguindo_artistas_artistas1
-    FOREIGN KEY (artista_id)
-    REFERENCES SpotifyClone.artistas (artista_id)
-);
+  FOREIGN KEY (usuario_id) REFERENCES SpotifyClone.usuarios (usuario_id),
+  FOREIGN KEY (artista_id) REFERENCES SpotifyClone.artistas (artista_id)
+) engine = InnoDB;
 
--- -----------------------------------------------------
--- Table `SpotifyClone`.`usuarios_planos`
--- -----------------------------------------------------
 CREATE TABLE usuarios_planos
 (
   usuario_id MEDIUMINT NOT NULL,
   plano_id MEDIUMINT NOT NULL,
   PRIMARY KEY (usuario_id, plano_id),
-  CONSTRAINT fk_usuarios_planos_1
-    FOREIGN KEY (usuario_id)
-    REFERENCES SpotifyClone.usuarios (usuario_id),
-  CONSTRAINT fk_usuarios_planos_2
-    FOREIGN KEY (plano_id)
-    REFERENCES SpotifyClone.planos (plano_id)
-);
+  FOREIGN KEY (usuario_id) REFERENCES SpotifyClone.usuarios (usuario_id),
+  FOREIGN KEY (plano_id) REFERENCES SpotifyClone.planos (plano_id)
+) engine = InnoDB;
 
--- -----------------------------------------------------
--- Table `SpotifyClone`.`albuns`
--- -----------------------------------------------------
 CREATE TABLE albuns
 (
   albun_id MEDIUMINT NOT NULL AUTO_INCREMENT,
-  album VARCHAR(255) NULL,
+  album VARCHAR(255) NOT NULL,
   artista_id MEDIUMINT NOT NULL,
   PRIMARY KEY (albun_id),
-  CONSTRAINT fk_albuns_artistas_1
-    FOREIGN KEY (artista_id)
-    REFERENCES SpotifyClone.artistas (artista_id)
-);
+  FOREIGN KEY (artista_id) REFERENCES SpotifyClone.artistas (artista_id)
+) engine = InnoDB;
 
--- -----------------------------------------------------
--- Table `SpotifyClone`.`musicas`
--- -----------------------------------------------------
 CREATE TABLE musicas
 (
   musica_id MEDIUMINT NOT NULL AUTO_INCREMENT,
   musica VARCHAR(255) NOT NULL,
   albun_id MEDIUMINT NOT NULL,
   PRIMARY KEY (musica_id),
-  CONSTRAINT fk_musicas_albuns_1
-    FOREIGN KEY (albun_id)
-    REFERENCES SpotifyClone.albuns (albun_id)
-);
+  FOREIGN KEY (albun_id) REFERENCES SpotifyClone.albuns (albun_id)
+) engine = InnoDB;
 
-
--- -----------------------------------------------------
--- Table `SpotifyClone`.`historico_de_reproducoes`
--- -----------------------------------------------------
 CREATE TABLE historico_de_reproducoes
 (
   usuario_id MEDIUMINT NOT NULL,
   musica_id MEDIUMINT NOT NULL,
   PRIMARY KEY (usuario_id, musica_id),
-  CONSTRAINT fk_historico_de_reproducoes_1
-    FOREIGN KEY (usuario_id)
-    REFERENCES SpotifyClone.usuarios (usuario_id),
-  CONSTRAINT fk_historico_de_reproducoes_2
-    FOREIGN KEY (musica_id)
-    REFERENCES SpotifyClone.musicas (musica_id)
-);
+  FOREIGN KEY (usuario_id) REFERENCES SpotifyClone.usuarios (usuario_id),
+  FOREIGN KEY (musica_id) REFERENCES SpotifyClone.musicas (musica_id)
+) engine = InnoDB;
 
 INSERT INTO SpotifyClone.usuarios (usuario, idade)
 VALUES
