@@ -14,9 +14,7 @@ CREATE TABLE users (
   name VARCHAR(100) NOT NULL,
   age INT NOT NULL,
   id_plan INT NOT NULL,
-  INDEX fk_users_plans_idx (id_plan ASC) VISIBLE,
-  CONSTRAINT fk_users_plans
-    FOREIGN KEY (id_plan)
+  FOREIGN KEY (id_plan)
     REFERENCES SpotifyClone.plans (id_plan))
 ENGINE = InnoDB;
 
@@ -29,9 +27,7 @@ CREATE TABLE albums (
   id_album INT PRIMARY KEY AUTO_INCREMENT,
   album VARCHAR(100) NOT NULL,
   id_artist INT NOT NULL,
-  INDEX fk_album_artists1_idx (id_artist ASC) VISIBLE,
-  CONSTRAINT fk_album_artists1
-    FOREIGN KEY (id_artist)
+  FOREIGN KEY (id_artist)
     REFERENCES SpotifyClone.artists (id_artist))
 ENGINE = InnoDB;
 
@@ -39,9 +35,7 @@ CREATE TABLE songs (
   id_song INT PRIMARY KEY AUTO_INCREMENT,
   song VARCHAR(100) NOT NULL,
   id_album INT NOT NULL,
-  INDEX fk_songs_album1_idx (id_album ASC) VISIBLE,
-  CONSTRAINT fk_songs_album1
-    FOREIGN KEY (id_album)
+  FOREIGN KEY (id_album)
     REFERENCES SpotifyClone.albums (id_album))
 ENGINE = InnoDB;
 
@@ -49,13 +43,9 @@ CREATE TABLE users_songs (
   id_user INT NOT NULL,
   id_song INT NOT NULL,
   PRIMARY KEY (id_user, id_song),
-  INDEX fk_users_has_songs_songs1_idx (id_song ASC) VISIBLE,
-  INDEX fk_users_has_songs_users1_idx (id_user ASC) VISIBLE,
-  CONSTRAINT fk_users_has_songs_users1
-    FOREIGN KEY (id_user)
+  FOREIGN KEY (id_user)
     REFERENCES SpotifyClone.users (id_user),
-  CONSTRAINT fk_users_has_songs_songs1
-    FOREIGN KEY (id_song)
+  FOREIGN KEY (id_song)
     REFERENCES SpotifyClone.songs (id_song))
 ENGINE = InnoDB;
 
@@ -63,13 +53,9 @@ CREATE TABLE users_artists (
   id_user INT NOT NULL,
   id_artist INT NOT NULL,
   PRIMARY KEY (id_user, id_artist),
-  INDEX fk_users_has_artists_artists1_idx (id_artist ASC) VISIBLE,
-  INDEX fk_users_has_artists_users1_idx (id_user ASC) VISIBLE,
-  CONSTRAINT fk_users_has_artists_users1
-    FOREIGN KEY (id_user)
+  FOREIGN KEY (id_user)
     REFERENCES SpotifyClone.users (id_user),
-  CONSTRAINT fk_users_has_artists_artists1
-    FOREIGN KEY (id_artist)
+  FOREIGN KEY (id_artist)
     REFERENCES SpotifyClone.artists (id_artist))
 ENGINE = InnoDB;
 
