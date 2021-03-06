@@ -10,6 +10,7 @@ SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,N
 -- -----------------------------------------------------
 -- Schema SpotifyClone
 -- -----------------------------------------------------
+DROP SCHEMA IF EXISTS `SpotifyClone` ;
 
 -- -----------------------------------------------------
 -- Schema SpotifyClone
@@ -18,11 +19,11 @@ CREATE SCHEMA IF NOT EXISTS `SpotifyClone` ;
 USE `SpotifyClone` ;
 
 -- -----------------------------------------------------
--- Table `SpotifyClone`.`planos`
+-- Table `planos`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `SpotifyClone`.`planos` ;
+DROP TABLE IF EXISTS `planos` ;
 
-CREATE TABLE IF NOT EXISTS `SpotifyClone`.`planos` (
+CREATE TABLE IF NOT EXISTS `planos` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `plano` VARCHAR(45) NOT NULL,
   `valor` DECIMAL(5,2) NOT NULL,
@@ -33,11 +34,11 @@ ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `SpotifyClone`.`artistas`
+-- Table `artistas`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `SpotifyClone`.`artistas` ;
+DROP TABLE IF EXISTS `artistas` ;
 
-CREATE TABLE IF NOT EXISTS `SpotifyClone`.`artistas` (
+CREATE TABLE IF NOT EXISTS `artistas` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `artista` VARCHAR(45) NOT NULL,
   PRIMARY KEY (`id`),
@@ -46,11 +47,11 @@ ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `SpotifyClone`.`albuns`
+-- Table `albuns`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `SpotifyClone`.`albuns` ;
+DROP TABLE IF EXISTS `albuns` ;
 
-CREATE TABLE IF NOT EXISTS `SpotifyClone`.`albuns` (
+CREATE TABLE IF NOT EXISTS `albuns` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `album` VARCHAR(45) NOT NULL,
   `artistas_id` INT NOT NULL,
@@ -59,18 +60,18 @@ CREATE TABLE IF NOT EXISTS `SpotifyClone`.`albuns` (
   UNIQUE INDEX `id_UNIQUE` (`id` ASC) VISIBLE,
   CONSTRAINT `fk_albuns_artistas`
     FOREIGN KEY (`artistas_id`)
-    REFERENCES `SpotifyClone`.`artistas` (`id`)
+    REFERENCES `artistas` (`id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `SpotifyClone`.`cancoes`
+-- Table `cancoes`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `SpotifyClone`.`cancoes` ;
+DROP TABLE IF EXISTS `cancoes` ;
 
-CREATE TABLE IF NOT EXISTS `SpotifyClone`.`cancoes` (
+CREATE TABLE IF NOT EXISTS `cancoes` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `cancao` VARCHAR(45) NOT NULL,
   `albuns_id` INT NOT NULL,
@@ -79,18 +80,18 @@ CREATE TABLE IF NOT EXISTS `SpotifyClone`.`cancoes` (
   INDEX `fk_cancoes_albuns1_idx` (`albuns_id` ASC) VISIBLE,
   CONSTRAINT `fk_cancoes_albuns1`
     FOREIGN KEY (`albuns_id`)
-    REFERENCES `SpotifyClone`.`albuns` (`id`)
+    REFERENCES `albuns` (`id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `SpotifyClone`.`usuarios`
+-- Table `usuarios`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `SpotifyClone`.`usuarios` ;
+DROP TABLE IF EXISTS `usuarios` ;
 
-CREATE TABLE IF NOT EXISTS `SpotifyClone`.`usuarios` (
+CREATE TABLE IF NOT EXISTS `usuarios` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `usuario` VARCHAR(45) NOT NULL,
   `idade` TINYINT UNSIGNED ZEROFILL NOT NULL,
@@ -100,18 +101,18 @@ CREATE TABLE IF NOT EXISTS `SpotifyClone`.`usuarios` (
   INDEX `fk_usuarios_planos1_idx` (`planos_id` ASC) VISIBLE,
   CONSTRAINT `fk_usuarios_planos1`
     FOREIGN KEY (`planos_id`)
-    REFERENCES `SpotifyClone`.`planos` (`id`)
+    REFERENCES `planos` (`id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `SpotifyClone`.`seguidores`
+-- Table `seguidores`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `SpotifyClone`.`seguidores` ;
+DROP TABLE IF EXISTS `seguidores` ;
 
-CREATE TABLE IF NOT EXISTS `SpotifyClone`.`seguidores` (
+CREATE TABLE IF NOT EXISTS `seguidores` (
   `artistas_id` INT NOT NULL,
   `usuarios_id` INT NOT NULL,
   PRIMARY KEY (`artistas_id`, `usuarios_id`),
@@ -119,23 +120,23 @@ CREATE TABLE IF NOT EXISTS `SpotifyClone`.`seguidores` (
   INDEX `fk_artistas_has_usuarios_artistas1_idx` (`artistas_id` ASC) VISIBLE,
   CONSTRAINT `fk_artistas_has_usuarios_artistas1`
     FOREIGN KEY (`artistas_id`)
-    REFERENCES `SpotifyClone`.`artistas` (`id`)
+    REFERENCES `artistas` (`id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
   CONSTRAINT `fk_artistas_has_usuarios_usuarios1`
     FOREIGN KEY (`usuarios_id`)
-    REFERENCES `SpotifyClone`.`usuarios` (`id`)
+    REFERENCES `usuarios` (`id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `SpotifyClone`.`historico`
+-- Table `historico`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `SpotifyClone`.`historico` ;
+DROP TABLE IF EXISTS `historico` ;
 
-CREATE TABLE IF NOT EXISTS `SpotifyClone`.`historico` (
+CREATE TABLE IF NOT EXISTS `historico` (
   `cancoes_id` INT NOT NULL,
   `usuarios_id` INT NOT NULL,
   PRIMARY KEY (`cancoes_id`, `usuarios_id`),
@@ -143,12 +144,12 @@ CREATE TABLE IF NOT EXISTS `SpotifyClone`.`historico` (
   INDEX `fk_cancoes_has_usuarios_cancoes1_idx` (`cancoes_id` ASC) VISIBLE,
   CONSTRAINT `fk_cancoes_has_usuarios_cancoes1`
     FOREIGN KEY (`cancoes_id`)
-    REFERENCES `SpotifyClone`.`cancoes` (`id`)
+    REFERENCES `cancoes` (`id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
   CONSTRAINT `fk_cancoes_has_usuarios_usuarios1`
     FOREIGN KEY (`usuarios_id`)
-    REFERENCES `SpotifyClone`.`usuarios` (`id`)
+    REFERENCES `usuarios` (`id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
