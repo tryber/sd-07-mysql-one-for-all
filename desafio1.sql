@@ -1,86 +1,67 @@
-SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0;
-SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0;
-SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION';
+DROP SCHEMA IF EXISTS SpotifyClone;
+CREATE SCHEMA SpotifyClone;
+USE SpotifyClone;
 
-CREATE SCHEMA IF NOT EXISTS `SpotifyClone` DEFAULT CHARACTER SET utf8 ;
-
-CREATE TABLE IF NOT EXISTS `SpotifyClone`.`planos` (
-  `plano_id` INT(11) NOT NULL AUTO_INCREMENT,
-  `plano_tipo` VARCHAR(45) NOT NULL,
-  `plano_preço` DECIMAL NOT NULL,
-  PRIMARY KEY (`plano_id`));
-
-CREATE TABLE IF NOT EXISTS `SpotifyClone`.`usuarios` (
-  `usuario_id` INT(11) NOT NULL AUTO_INCREMENT,
-  `usuario_nome` VARCHAR(45) NOT NULL,
-  `idade` INT(11) ZEROFILL NULL DEFAULT NULL,
-  `plano_id` INT(11) NOT NULL,
-  PRIMARY KEY (`usuario_id`),
-    FOREIGN KEY (`plano_id`) REFERENCES `SpotifyClone`.`planos` (`plano_id`)
+CREATE TABLE planos (
+plano_id INT NOT NULL auto_increment,
+plano_tipo varchar(45) not null,
+plano_preço decimal(4,2) not null,
+PRIMARY KEY (plano_id)
 );
 
-CREATE TABLE IF NOT EXISTS `SpotifyClone`.`historico_de_reproducao` (
-  `usuario_id` INT(11) NOT NULL,
-  `musica_id` INT(11) NOT NULL,
-  PRIMARY KEY (usuario_id, musica_id),
-    FOREIGN KEY (`usuario_id`)
-    REFERENCES `SpotifyClone`.`usuarios` (`usuario_id`),
-    FOREIGN KEY (`musica_id`)
-    REFERENCES `SpotifyClone`.`musicas` (`musica_id`)
+CREATE TABLE usuarios (
+usuario_id int not null auto_increment,
+usuario_nome int not null auto_increment,
+idade int zerofill null,
+plano_id int not null,
+PRIMARY KEY (usuario_id),
+FOREIGN KEY (plano_id) REFERENCES planos (plano_id)
 );
 
-CREATE TABLE IF NOT EXISTS `SpotifyClone`.`musicas` (
-  `musica_id` INT(11) NOT NULL AUTO_INCREMENT,
-  `musica_titulo` VARCHAR(100) NOT NULL,
-  `album_id` INT(11) NOT NULL,
-  `artista_id` INT(11) NOT NULL,
-  PRIMARY KEY (`musica_id`),
-  UNIQUE INDEX `musica_id_UNIQUE` (`musica_id` ASC) VISIBLE,
-  INDEX `fk_musicas_1_idx` (`artista_id` ASC) VISIBLE,
-  INDEX `fk_musicas_2_idx` (`album_id` ASC) VISIBLE,
-  CONSTRAINT `fk_musicas_1`
-    FOREIGN KEY (`artista_id`)
-    REFERENCES `SpotifyClone`.`artistas` (`artista_id`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION,
-  CONSTRAINT `fk_musicas_2`
-    FOREIGN KEY (`album_id`)
-    REFERENCES `SpotifyClone`.`albuns` (`albuns_id`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
-ENGINE = InnoDB
-DEFAULT CHARACTER SET = utf8;
-
-CREATE TABLE IF NOT EXISTS `SpotifyClone`.`albuns` (
-  `albuns_id` INT(11) NOT NULL AUTO_INCREMENT,
-  `album_title` VARCHAR(45) NOT NULL,
-  `artista_id` INT(11) NOT NULL,
-  PRIMARY KEY (`albuns_id`),
-  INDEX `fk_albuns_1_idx` (`artista_id` ASC) VISIBLE,
-  CONSTRAINT `fk_albuns_1`
-    FOREIGN KEY (`artista_id`)
-    REFERENCES `SpotifyClone`.`artistas` (`artista_id`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
-ENGINE = InnoDB
-DEFAULT CHARACTER SET = utf8;
-
-CREATE TABLE IF NOT EXISTS `SpotifyClone`.`artistas` (
-  `artista_id` INT(11) NOT NULL AUTO_INCREMENT,
-  `artista_nome` VARCHAR(60) NOT NULL,
-  PRIMARY KEY (`artista_id`))
-ENGINE = InnoDB
-DEFAULT CHARACTER SET = utf8;
-
-CREATE TABLE IF NOT EXISTS `SpotifyClone`.`historico_de_seguidores` (
-  `usuario_id` INT(11) NOT NULL,
-  `artista_id` INT(11) NOT NULL,
-  PRIMARY KEY (usuario_id, artista_id),
-    FOREIGN KEY (`usuario_id`)
-    REFERENCES `SpotifyClone`.`usuarios` (`usuario_id`),
-    FOREIGN KEY (`artista_id`)
-    REFERENCES `SpotifyClone`.`artistas` (`artista_id`)
+CREATE TABLE historico_de_reproducao (
+usuario_id INT NOT NULL,
+musica_id INT NOT NULL,
+PRIMARY KEY (usuario_id, musica_id),
+FOREIGN KEY (usuario_id)
+REFERENCES usuarios (usuario_id),
+FOREIGN KEY (musica_id)
+REFERENCES musicas (musica_id)
 );
+
+CREATE TABLE musicas (
+musica_id int not null auto_increment,
+musica_titulo varchar(100) not null,
+album_id int not null,
+artista_id int not null,
+PRIMARY KEY(musica_id),
+FOREIGN KEY (artista_id) references artistas (artista_id),
+FOREIGN KEY (album_id) references albuns(album_id)
+);
+
+CREATE TABLE albuns (
+album_id int not null auto_increment,
+album_titulo varchar(45) not null,
+artista_id int not null,
+PRIMARY KEY (album_id),
+foreign key (artista_id) references artistas(artista_id)
+);
+
+CREATE TABLE artistas (
+artista_id INT NOT NULL AUTO_INCREMENT,
+artista_nome VARCHAR(60) NOT NULL,
+PRIMARY KEY (artista_id)
+);
+
+CREATE TABLE historico_de_seguidores (
+usuario_id INT NOT NULL,
+artista_id INT NOT NULL,
+PRIMARY KEY (usuario_id, artista_id),
+FOREIGN KEY (usuario_id)
+    REFERENCES usuarios (usuario_id),
+    FOREIGN KEY (artista_id)
+    REFERENCES artistas (artista_id)
+);
+
 
 insert into SpotifyClone.usuarios(usuario_nome, idade, plano_id)
 values ('Thati', '23', 1),('Cintia', 35, 2),('Bill', 20, 3), ('Roger', '45', 1);
@@ -94,7 +75,7 @@ values ('Walter Phoenix'), ('Peter Strong'), ('Lance Day'), ('Freedie Shannon');
 insert into SpotifyClone.historico_de_seguidores(usuario_id, artista_id)
 values(1, 1), (1, 4), (1,3),(2,1),(2,3),(3,2),(3,1),(4,4);
 
-insert into SpotifyClone.albuns(album_title, artista_id)
+insert into SpotifyClone.albuns(album_titulo, artista_id)
 values('Envious', 1),('Exuberant',1),('Hallowed Steam',2), ('Incandescent',3), ('Temporary Culture',4);
 
 insert into SpotifyClone.musicas(album_id, artista_id, musica_titulo)
