@@ -39,8 +39,8 @@ CREATE TABLE cancoes (
 ENGINE = InnoDB;
 
 CREATE TABLE seguindo_artistas (
-  artista_id INT NOT NULL,
   usuario_id INT NOT NULL,
+  artista_id INT NOT NULL,
   PRIMARY KEY (artista_id, usuario_id),
   FOREIGN KEY (artista_id) REFERENCES artistas (artista_id),
   FOREIGN KEY (usuario_id) REFERENCES usuarios (usuario_id))
