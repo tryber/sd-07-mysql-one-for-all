@@ -11,3 +11,4 @@ CREATE VIEW estatisticas_musicais AS
   INNER JOIN SpotifyClone.Album AS Album
   ON C.artist_id = Album.artist_id
   GROUP BY C.artist_id) AS C2;
+  
