@@ -9,6 +9,7 @@ SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,N
 CREATE SCHEMA IF NOT EXISTS `SpotifyClone` ;
 USE `SpotifyClone` ;
 
+DROP TABLE IF EXISTS `plano`;
 
 CREATE TABLE IF NOT EXISTS `SpotifyClone`.`plano` (
   `plano_id` INT NOT NULL AUTO_INCREMENT,
@@ -17,11 +18,16 @@ CREATE TABLE IF NOT EXISTS `SpotifyClone`.`plano` (
   PRIMARY KEY (`plano_id`))
 ENGINE = InnoDB;
 
+LOCK TABLES `plano` WRITE;
+
 INSERT INTO `plano` (`plano_nome`, `valor_plano`)
 VALUES ('gratuito', 0),
   ('familiar', 7.99),
   ('universitário', 5.99);
 
+UNLOCK TABLES;
+
+DROP TABLE IF EXISTS `usuario`;
 
 CREATE TABLE IF NOT EXISTS `SpotifyClone`.`usuario` (
   `usuario_id` INT NOT NULL AUTO_INCREMENT,
@@ -37,12 +43,17 @@ CREATE TABLE IF NOT EXISTS `SpotifyClone`.`usuario` (
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
+LOCK TABLES `usuario` WRITE;
+
 INSERT INTO `usuario` (`usuario_nome`, `idade`, `plano_id`)
 VALUES ('Thati', 23, 1),
   ('Cintia', 35, 2),
   ('Bill', 20, 3),
   ('Roger', 45, 1);
 
+UNLOCK TABLES;
+
+DROP TABLE IF EXISTS `artista`;
 
 CREATE TABLE IF NOT EXISTS `SpotifyClone`.`artista` (
   `artista_id` INT NOT NULL AUTO_INCREMENT,
@@ -50,12 +61,17 @@ CREATE TABLE IF NOT EXISTS `SpotifyClone`.`artista` (
   PRIMARY KEY (`artista_id`))
 ENGINE = InnoDB;
 
+LOCK TABLES `artista` WRITE;
+
 INSERT INTO `artista` (`artista_nome`)
 VALUES ('Walter Phoenix'),
   ('Peter Strong'),
   ('Lance Day'),
   ('Freedie Shannon');
 
+UNLOCK TABLES;
+
+DROP TABLE IF EXISTS `album`;
 
 CREATE TABLE IF NOT EXISTS `SpotifyClone`.`album` (
   `album_id` INT NOT NULL AUTO_INCREMENT,
@@ -70,6 +86,8 @@ CREATE TABLE IF NOT EXISTS `SpotifyClone`.`album` (
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
+LOCK TABLES `album` WRITE;
+
 INSERT INTO `album` (`album_nome`, `artista_id`)
 VALUES ('Envious', 1),
   ('Exuberant', 1),
@@ -77,6 +95,9 @@ VALUES ('Envious', 1),
   ('Incandescent', 3),
   ('Temporary Culture', 4);
 
+UNLOCK TABLES;
+
+DROP TABLE IF EXISTS `musica`;
 
 CREATE TABLE IF NOT EXISTS `SpotifyClone`.`musica` (
   `musica_id` INT NOT NULL AUTO_INCREMENT,
@@ -98,6 +119,8 @@ CREATE TABLE IF NOT EXISTS `SpotifyClone`.`musica` (
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
+LOCK TABLES `musica` WRITE;
+
 INSERT INTO `musica` (`musica_nome`, `artista_id`, `album_id`)
 VALUES ("Soul For Us", 1, 1),
   ("Reflections Of Magic", 1, 1),
@@ -118,6 +141,9 @@ VALUES ("Soul For Us", 1, 1),
   ("Words Of Her Life", 4, 5),
   ("Without My Streets", 4, 5);
 
+UNLOCK TABLES;
+
+DROP TABLE IF EXISTS `historico`;
 
 CREATE TABLE IF NOT EXISTS `SpotifyClone`.`historico` (
   `historico_id` INT NOT NULL AUTO_INCREMENT,
@@ -138,6 +164,8 @@ CREATE TABLE IF NOT EXISTS `SpotifyClone`.`historico` (
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
+LOCK TABLES `historico` WRITE;
+
 INSERT INTO `historico` (`usuario_id`, `musica_id`)
 VALUES (1, 1),
   (1, 6),
@@ -154,6 +182,9 @@ VALUES (1, 1),
   (4, 18),
   (4, 11);
 
+UNLOCK TABLES;
+
+DROP TABLE IF EXISTS `seguindo`;
 
 CREATE TABLE IF NOT EXISTS `SpotifyClone`.`seguindo` (
   `seguindo_id` INT NOT NULL AUTO_INCREMENT,
@@ -174,6 +205,8 @@ CREATE TABLE IF NOT EXISTS `SpotifyClone`.`seguindo` (
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
+LOCK TABLES `seguindo` WRITE;
+
 INSERT INTO `seguindo` (`usuario_id`, `artista_id`)
 VALUES (1, 1),
   (1, 4),
@@ -183,6 +216,8 @@ VALUES (1, 1),
   (3, 2),
   (3, 1),
   (4, 4);
+
+UNLOCK TABLES;
 
 SET SQL_MODE=@OLD_SQL_MODE;
 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
