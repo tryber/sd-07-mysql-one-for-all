@@ -79,7 +79,7 @@ INSERT INTO Users(user_name, age, plano_id) VALUES
 ('Roger', 45, 1);
 
 INSERT INTO Songs(song_name, album_id) VALUES
-('Soul For US', 1),
+('Soul For Us', 1),
 ('Reflections Of Magic', 1),
 ('Dance With Her Own', 1),
 ('Troubles Of My Inner Fire', 2),
