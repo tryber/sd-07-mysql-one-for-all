@@ -116,7 +116,7 @@ VALUES
   (4, 3),
   (4, 18),
   (4, 11);
- 
+  
 INSERT INTO seguidores(usuario_id, id_artista)
 VALUES
   (1, 1),
