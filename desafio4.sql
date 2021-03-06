@@ -4,5 +4,5 @@
   INNER JOIN SpotifyClone.following_artist AS f
   ON f.singer_id = sin.singer_id
   GROUP BY sin.name_singer
-  ORDER BY COUNT(f.singer_id) DESC
+  ORDER BY COUNT(f.singer_id) DESC, `artista`
   LIMIT 3;
