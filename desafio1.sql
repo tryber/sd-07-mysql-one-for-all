@@ -5,8 +5,7 @@ USE SpotifyClone;
 CREATE TABLE plans (
   id_plan INT PRIMARY KEY AUTO_INCREMENT,
   plan VARCHAR(45) NOT NULL,
-  price DECIMAL(5,2) NOT NULL,
-  UNIQUE INDEX plan_UNIQUE (plan ASC) VISIBLE)
+  price DECIMAL(5,2) NOT NULL)
 ENGINE = InnoDB;
 
 CREATE TABLE users (
@@ -60,25 +59,25 @@ CREATE TABLE users_artists (
 ENGINE = InnoDB;
 
 -- Data insertion
-INSERT INTO `SpotifyClone`.`plans` (`plan`, `price`) VALUES
+INSERT INTO SpotifyClone.plans (plan, price) VALUES
     ('gratuito', '0'),
     ('universitário', '5.99'),
     ('familiar', '7.99');
 
-INSERT INTO `SpotifyClone`.`artists` (`name`) VALUES
+INSERT INTO SpotifyClone.artists (name) VALUES
     ('Freedie Shannon'),
     ('Lance Day'),
     ('Peter Strong'),
     ('Walter Phoenix');
     
-INSERT INTO `SpotifyClone`.`albums` (`album`, `id_artist`) VALUES
+INSERT INTO SpotifyClone.albums (album, id_artist) VALUES
     ('Envious', '4'),
     ('Exuberant', '4'),
     ('Hallowed Steam', '3'),
     ('Incandescent', '2'),
     ('Temporary Culture', '1');
 
-INSERT INTO `SpotifyClone`.`songs` (`song`, `id_album`) VALUES
+INSERT INTO SpotifyClone.songs (song, id_album) VALUES
     ('Soul For Us', '1'),
     ('Reflections Of Magic', '1'),
     ('Dance With Her Own', '1'),
@@ -98,13 +97,13 @@ INSERT INTO `SpotifyClone`.`songs` (`song`, `id_album`) VALUES
     ("Words Of Her Life", 5),
     ("Without My Streets", 5);
     
-INSERT INTO `SpotifyClone`.`users` (`name`, `age`, `id_plan`) VALUES
+INSERT INTO SpotifyClone.users (name, age, id_plan) VALUES
     ('Thati', '23', '1'),
     ('Cintia', '35', '3'),
     ('Bill', '20', '2'),
     ('Roger', '45', '1');
     
-INSERT INTO `SpotifyClone`.`users_songs` (`id_user`, `id_song`) VALUES
+INSERT INTO SpotifyClone.users_songs (id_user, id_song) VALUES
     ('1', '1'),
     ('1', '6'),
     ('1', '14'),
@@ -120,7 +119,7 @@ INSERT INTO `SpotifyClone`.`users_songs` (`id_user`, `id_song`) VALUES
     ('4', '18'),
     ('4', '11');
 
-INSERT INTO `SpotifyClone`.`users_artists` (`id_user`, `id_artist`) VALUES
+INSERT INTO SpotifyClone.users_artists (id_user, id_artist) VALUES
     ('1', '4'),
     ('1', '2'),
     ('1', '1'),
