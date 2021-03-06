@@ -1,32 +1,46 @@
 DROP DATABASE IF EXISTS SpotifyClone;
 
-CREATE DATABASE SpotifyClone;
-USE SpotifyClone;
+CREATE DATABASE IF NOT EXISTS SpotifyClone;
 
-CREATE TABLE planos
+CREATE TABLE SpotifyClone.planos
 (
-  plano_id MEDIUMINT NOT NULL AUTO_INCREMENT,
+  plano_id MEDIUMINT PRIMARY KEY AUTO_INCREMENT,
   plano VARCHAR(255) NOT NULL,
-  valor DECIMAL(5, 2) NOT NULL,
-  PRIMARY KEY (plano_id)
+  valor DECIMAL(5, 2) NOT NULL
 ) engine = InnoDB;
 
-CREATE TABLE usuarios
+CREATE TABLE SpotifyClone.artistas
 (
-  usuario_id MEDIUMINT NOT NULL AUTO_INCREMENT,
+  artista_id MEDIUMINT PRIMARY KEY AUTO_INCREMENT,
+  artista VARCHAR(255) NOT NULL
+) engine = InnoDB;
+
+CREATE TABLE SpotifyClone.usuarios
+(
+  usuario_id MEDIUMINT PRIMARY KEY AUTO_INCREMENT,
   usuario VARCHAR(255) NOT NULL,
   idade MEDIUMINT NULL,
-  PRIMARY KEY (usuario_id)
+  plano_id MEDIUMINT NOT NULL,
+  FOREIGN KEY (plano_id) REFERENCES SpotifyClone.planos (plano_id)
 ) engine = InnoDB;
 
-CREATE TABLE artistas
+CREATE TABLE SpotifyClone.albuns
 (
-  artista_id MEDIUMINT NOT NULL AUTO_INCREMENT,
-  artista VARCHAR(255) NOT NULL,
-  PRIMARY KEY (artista_id)
+  albun_id MEDIUMINT PRIMARY KEY AUTO_INCREMENT,
+  album VARCHAR(255) NOT NULL,
+  artista_id MEDIUMINT NOT NULL,
+  FOREIGN KEY (artista_id) REFERENCES SpotifyClone.artistas (artista_id)
 ) engine = InnoDB;
 
-CREATE TABLE usuarios_seguindo_artistas
+CREATE TABLE SpotifyClone.musicas
+(
+  musica_id MEDIUMINT PRIMARY KEY AUTO_INCREMENT,
+  musica VARCHAR(255) NOT NULL,
+  albun_id MEDIUMINT NOT NULL,
+  FOREIGN KEY (albun_id) REFERENCES SpotifyClone.albuns (albun_id)
+) engine = InnoDB;
+
+CREATE TABLE SpotifyClone.usuarios_seguindo_artistas
 (
   usuario_id MEDIUMINT NOT NULL,
   artista_id MEDIUMINT NOT NULL,
@@ -35,34 +49,7 @@ CREATE TABLE usuarios_seguindo_artistas
   FOREIGN KEY (artista_id) REFERENCES SpotifyClone.artistas (artista_id)
 ) engine = InnoDB;
 
-CREATE TABLE usuarios_planos
-(
-  usuario_id MEDIUMINT NOT NULL,
-  plano_id MEDIUMINT NOT NULL,
-  PRIMARY KEY (usuario_id, plano_id),
-  FOREIGN KEY (usuario_id) REFERENCES SpotifyClone.usuarios (usuario_id),
-  FOREIGN KEY (plano_id) REFERENCES SpotifyClone.planos (plano_id)
-) engine = InnoDB;
-
-CREATE TABLE albuns
-(
-  albun_id MEDIUMINT NOT NULL AUTO_INCREMENT,
-  album VARCHAR(255) NOT NULL,
-  artista_id MEDIUMINT NOT NULL,
-  PRIMARY KEY (albun_id),
-  FOREIGN KEY (artista_id) REFERENCES SpotifyClone.artistas (artista_id)
-) engine = InnoDB;
-
-CREATE TABLE musicas
-(
-  musica_id MEDIUMINT NOT NULL AUTO_INCREMENT,
-  musica VARCHAR(255) NOT NULL,
-  albun_id MEDIUMINT NOT NULL,
-  PRIMARY KEY (musica_id),
-  FOREIGN KEY (albun_id) REFERENCES SpotifyClone.albuns (albun_id)
-) engine = InnoDB;
-
-CREATE TABLE historico_de_reproducoes
+CREATE TABLE SpotifyClone.historico_de_reproducoes
 (
   usuario_id MEDIUMINT NOT NULL,
   musica_id MEDIUMINT NOT NULL,
@@ -70,13 +57,6 @@ CREATE TABLE historico_de_reproducoes
   FOREIGN KEY (usuario_id) REFERENCES SpotifyClone.usuarios (usuario_id),
   FOREIGN KEY (musica_id) REFERENCES SpotifyClone.musicas (musica_id)
 ) engine = InnoDB;
-
-INSERT INTO SpotifyClone.usuarios (usuario, idade)
-VALUES
-  ('Thati', 23),
-  ('Cintia', 35),
-  ('Bill', 20),
-  ('Roger', 45);
 
 INSERT INTO SpotifyClone.planos (plano, valor)
 VALUES
@@ -91,23 +71,12 @@ VALUES
   ("Lance Day"),
   ("Freedie Shannon");
 
-INSERT INTO SpotifyClone.usuarios_seguindo_artistas (usuario_id, artista_id)
+INSERT INTO SpotifyClone.usuarios (usuario, idade, plano_id)
 VALUES
-  (1, 1),
-  (1, 4),
-  (1, 3),
-  (2, 1),
-  (2, 3),
-  (3, 2),
-  (3, 1),
-  (4, 4);
-  
-INSERT INTO SpotifyClone.usuarios_planos (usuario_id, plano_id)
-VALUES
-  (1, 1),
-  (2, 2),
-  (3, 3),
-  (4, 1);
+  ('Thati', 23, 1),
+  ('CMEDIUMINTia', 35, 2),
+  ('Bill', 20, 3),
+  ('Roger', 45, 1);
 
 INSERT INTO SpotifyClone.albuns (album, artista_id)
 VALUES
@@ -137,6 +106,17 @@ VALUES
   ("Thang Of Thunder", 5),
   ("Words Of Her Life", 5),
   ("Without My Streets", 5);
+
+INSERT INTO SpotifyClone.usuarios_seguindo_artistas (usuario_id, artista_id)
+VALUES
+  (1, 1),
+  (1, 4),
+  (1, 3),
+  (2, 1),
+  (2, 3),
+  (3, 2),
+  (3, 1),
+  (4, 4);
 
 INSERT INTO SpotifyClone.historico_de_reproducoes (usuario_id, musica_id)
 VALUES
