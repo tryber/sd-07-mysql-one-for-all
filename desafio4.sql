@@ -1,3 +1,4 @@
+CREATE VIEW top_3_artistas AS
 SELECT 
 CONCAT(a.first_name, ' ', a.last_name) AS 'artista',
 COUNT(f.artist_id) AS  'seguidores'
