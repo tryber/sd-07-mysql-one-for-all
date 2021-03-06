@@ -79,7 +79,7 @@ INSERT INTO Users(user_name, age, plano_id) VALUES
 ('Roger', 45, 1);
 
 INSERT INTO Songs(song_name, album_id) VALUES
-('Saul For US', 1),
+('Soul For US', 1),
 ('Reflections Of Magic', 1),
 ('Dance With Her Own', 1),
 ('Troubles Of My Inner Fire', 2),
@@ -93,7 +93,7 @@ INSERT INTO Songs(song_name, album_id) VALUES
 ('Rock His Everything', 4),
 ('Home Forever', 4),
 ('Diamond Power', 4),
-('Honey, Lets Be Silly', 4),
+("Honey, Let's Be Silly", 4),
 ('Thang Of Thunder', 5),
 ('Words Of Her Life', 5),
 ('Without My Streets', 5);
