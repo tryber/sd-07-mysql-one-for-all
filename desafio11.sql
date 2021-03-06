@@ -10,4 +10,3 @@ CREATE VIEW cancoes_premium AS (
     GROUP BY historico.cancoes_id, historico.usuarios_id
     ORDER BY nome ASC
 );
-
