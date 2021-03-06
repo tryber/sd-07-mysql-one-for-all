@@ -52,7 +52,7 @@ create table SpotifyClone.historiocos(
 
 insert into SpotifyClone.planos (tipo, preço)
 values
-('gratuito', 0),
+('gratuito', 0.00),
 ('familiar', 7.99),
 ('universitário', 5.99);
 
