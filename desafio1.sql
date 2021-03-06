@@ -41,22 +41,22 @@ ENGINE = InnoDB;
 CREATE TABLE IF NOT EXISTS `SpotifyClone`.`songs` (
   `id_song` INT NOT NULL AUTO_INCREMENT,
   `song` VARCHAR(100) NOT NULL,
-  `album_id_album` INT NOT NULL,
+  `id_album` INT NOT NULL,
   PRIMARY KEY (`id_song`),
-  INDEX `fk_songs_album1_idx` (`album_id_album` ASC) VISIBLE,
+  INDEX `fk_songs_album1_idx` (`id_album` ASC) VISIBLE,
   CONSTRAINT `fk_songs_album1`
-    FOREIGN KEY (`album_id_album`)
+    FOREIGN KEY (`id_album`)
     REFERENCES `SpotifyClone`.`albums` (`id_album`))
 ENGINE = InnoDB;
 
 CREATE TABLE IF NOT EXISTS `SpotifyClone`.`users_songs` (
-  `id_users` INT NOT NULL,
+  `id_user` INT NOT NULL,
   `id_song` INT NOT NULL,
-  PRIMARY KEY (`id_users`, `id_song`),
+  PRIMARY KEY (`id_user`, `id_song`),
   INDEX `fk_users_has_songs_songs1_idx` (`id_song` ASC) VISIBLE,
-  INDEX `fk_users_has_songs_users1_idx` (`id_users` ASC) VISIBLE,
+  INDEX `fk_users_has_songs_users1_idx` (`id_user` ASC) VISIBLE,
   CONSTRAINT `fk_users_has_songs_users1`
-    FOREIGN KEY (`id_users`)
+    FOREIGN KEY (`id_user`)
     REFERENCES `SpotifyClone`.`users` (`id_user`),
   CONSTRAINT `fk_users_has_songs_songs1`
     FOREIGN KEY (`id_song`)
@@ -96,7 +96,7 @@ INSERT INTO `SpotifyClone`.`albums` (`album`, `id_artist`) VALUES
     ('Incandescent', '2'),
     ('Temporary Culture', '1');
 
-INSERT INTO `SpotifyClone`.`songs` (`song`, `album_id_album`) VALUES
+INSERT INTO `SpotifyClone`.`songs` (`song`, `id_album`) VALUES
     ('Soul For Us', '1'),
     ('Reflections Of Magic', '1'),
     ('Dance With Her Own', '1'),
@@ -122,7 +122,7 @@ INSERT INTO `SpotifyClone`.`users` (`name`, `age`, `id_plan`) VALUES
     ('Bill', '20', '2'),
     ('Roger', '45', '1');
     
-INSERT INTO `SpotifyClone`.`users_songs` (`id_users`, `id_song`) VALUES
+INSERT INTO `SpotifyClone`.`users_songs` (`id_user`, `id_song`) VALUES
     ('1', '1'),
     ('1', '6'),
     ('1', '14'),
