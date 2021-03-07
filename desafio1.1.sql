@@ -50,10 +50,9 @@ REFERENCES albums (album_id) ON DELETE RESTRICT ON UPDATE CASCADE
 ) engine = InnoDB;
 
 CREATE TABLE reproduction_history(
-history_id INT UNSIGNED NOT NULL AUTO_INCREMENT,
 user_id INT UNSIGNED NOT NULL,
 song_id INT UNSIGNED NOT NULL,
-PRIMARY KEY (history_id),
+PRIMARY KEY (user_id, song_id),
 KEY idx_fk_user_id (user_id),
 KEY idx_fk_song_id (song_id),
 CONSTRAINT fk_reproduction_history_user FOREIGN KEY (user_id)
@@ -63,10 +62,9 @@ REFERENCES songs (song_id) ON DELETE RESTRICT ON UPDATE CASCADE
 ) engine = InnoDB;
 
 CREATE TABLE followers(
-follower_id INT UNSIGNED NOT NULL AUTO_INCREMENT,
 artist_id INT UNSIGNED NOT NULL,
 user_id INT UNSIGNED NOT NULL,
-PRIMARY KEY (follower_id),
+PRIMARY KEY (artist_id, user_id),
 KEY idx_fk_artist_id (artist_id),
 KEY idx_fk_user_id (user_id),
 CONSTRAINT fk_followers_artist FOREIGN KEY (artist_id)
@@ -75,54 +73,54 @@ CONSTRAINT fk_followers_user FOREIGN KEY (user_id)
 REFERENCES users (user_id) ON DELETE RESTRICT ON UPDATE CASCADE
 ) engine = InnoDB;
 
-INSERT INTO plans (plan_id, plan_name, price)
+INSERT INTO plans (plan_name, price)
 VALUES
-(1, 'Gratuito', 0.00),
-(2, 'Universitário', 5.99),
-(3, 'Familiar', 7.99);
+('Gratuito', 0.00),
+('Universitário', 5.99),
+('Familiar', 7.99);
   
-INSERT INTO users (user_id, name, age, plan_id)
+INSERT INTO users (name, age, plan_id)
 VALUES
-(1, 'Tathi', 23, 1),
-(2, 'Cintia', 35, 3),
-(3, 'Bill', 20, 2),
-(4, 'Roger', 45, 1);
+('Tathi', 23, 1),
+('Cintia', 35, 3),
+('Bill', 20, 2),
+('Roger', 45, 1);
 
-INSERT INTO artists (artist_id, name)
+INSERT INTO artists (name)
 VALUES
-(1, 'Freedie Shannon'),
-(2, 'Lance Day'),
-(3, 'Peter Strong'),
-(4, 'Walter Phoenix');
+('Freedie Shannon'),
+('Lance Day'),
+('Peter Strong'),
+('Walter Phoenix');
   
-INSERT INTO albums (album_id, album_name, artist_id)
+INSERT INTO albums (album_name, artist_id)
 VALUES
-(1, 'Envious', 4),
-(2, 'Exuberant', 4),
-(3, 'Hallowed Steam', 3),
-(4, 'Incandescent', 2),
-(5, 'Temporary Culture', 1);
+('Envious', 4),
+('Exuberant', 4),
+('Hallowed Steam', 3),
+('Incandescent', 2),
+('Temporary Culture', 1);
   
-INSERT INTO songs (song_id, song_name, artist_id, album_id)
+INSERT INTO songs (song_name, artist_id, album_id)
 VALUES
-(1, 'Soul For Us', 4, 1),
-(2, 'Reflections Of Magic', 4, 1),
-(3, 'Dance With Her Own', 4, 1),
-(4, 'Troubles Of My Inner Fire', 4, 2),
-(5, 'Time Fireworks', 4, 2),
-(6, 'Magic Circus', 3, 3),
-(7, 'Honey, So Do I', 3, 3),
-(8, "Sweetie, Let's Go Wild", 3, 3),
-(9, 'She Knows', 3, 3),
-(10, 'Fantasy For Me', 2, 4),
-(11, 'Celebration Of More', 2, 4),
-(12, 'Rock His Everything', 2, 4),
-(13, 'Home Forever', 2, 4),
-(14, 'Diamond Power', 2, 4),
-(15, "Honey, Let's Be Silly", 2, 4),
-(16, 'Thang Of Thunder', 1, 5),
-(17, 'Words Of Her Life', 1, 5),
-(18, 'Without My Streets', 1, 5);
+('Soul For Us', 4, 1),
+('Reflections Of Magic', 4, 1),
+('Dance With Her Own', 4, 1),
+('Troubles Of My Inner Fire', 4, 2),
+('Time Fireworks', 4, 2),
+('Magic Circus', 3, 3),
+('Honey, So Do I', 3, 3),
+("Sweetie, Let's Go Wild", 3, 3),
+('She Knows', 3, 3),
+('Fantasy For Me', 2, 4),
+('Celebration Of More', 2, 4),
+('Rock His Everything', 2, 4),
+('Home Forever', 2, 4),
+('Diamond Power', 2, 4),
+("Honey, Let's Be Silly", 2, 4),
+('Thang Of Thunder', 1, 5),
+('Words Of Her Life', 1, 5),
+('Without My Streets', 1, 5);
   
 INSERT INTO reproduction_history (user_id, song_id)
 VALUES
