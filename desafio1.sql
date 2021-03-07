@@ -8,7 +8,6 @@ CREATE TABLE Singers(
     sin_id INT PRIMARY KEY AUTO_INCREMENT,
     sin_name VARCHAR(100) NOT NULL
 ) engine = InnoDB;
-
 CREATE TABLE Albums(
     abl_id INT PRIMARY KEY AUTO_INCREMENT,
     abl_name VARCHAR(100) NOT NULL,
