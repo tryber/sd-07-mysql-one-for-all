@@ -24,4 +24,4 @@ WHERE
 GROUP BY
   `nome`
   ORDER BY
- `nome`ASC;
+  `nome`ASC;

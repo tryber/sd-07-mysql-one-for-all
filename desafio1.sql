@@ -54,8 +54,8 @@ VALUES ('Thati', 23,1), ('Cintia', 35, 2), ('Bill', 20, 3), ('Roger', 45,1);
 
   INSERT INTO artist (
     artist_name
- ) 
- VALUES ('Walter Phoenix'),('Peter Strong'),('Lance Day'), ('Freedie Shannon'); 
+  ) 
+  VALUES ('Walter Phoenix'),('Peter Strong'),('Lance Day'), ('Freedie Shannon'); 
 
   INSERT INTO plan (
     plan_name,
@@ -89,7 +89,7 @@ VALUES
   ) 
   VALUES ('Envious',1), ('Exuberant',1), ('Hallowed Steam',2),('Incandescent',3),('Temporary Culture',4);
 
- INSERT INTO musics (
+  INSERT INTO musics (
     music_name ,
     album_id ,
     artist_id
@@ -106,7 +106,6 @@ VALUES
     artist_id
   ) 
   VALUES (1,1),(1,4),(1,3),(2,1),(2,3),(3,2),(3,1),(4,4);
- 
   ALTER TABLE `followers` ADD CONSTRAINT `fk_followerUser` FOREIGN KEY (`user_id`) REFERENCES `user` (`user_id`);
   ALTER TABLE `followers` ADD CONSTRAINT `fk_followerArtist` FOREIGN KEY (`user_id`) REFERENCES `artist` (`artist_id`);
   ALTER TABLE `albums` ADD CONSTRAINT `fk_albumsArtist` FOREIGN KEY (`artist_id`) REFERENCES `artist` (`artist_id`);

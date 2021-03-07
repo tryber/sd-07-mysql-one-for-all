@@ -11,7 +11,7 @@ SELECT
     ON 
     art.artist_id = alb.artist_id
     WHERE
-	artist = art.artist_name
+    artist = art.artist_name
     ORDER BY
     `album` ASC;
 END $$
