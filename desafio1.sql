@@ -3,17 +3,13 @@ DROP DATABASE IF EXISTS SpotifyClone;
 CREATE DATABASE SpotifyClone;
 
 USE SpotifyClone;
--- -----------------------------------------------------
--- Table `SpotifyClone`.`plano`
--- -----------------------------------------------------
+
 CREATE TABLE IF NOT EXISTS plano (
   plano_id INT PRIMARY KEY AUTO_INCREMENT,
   nome_plano VARCHAR(45) NOT NULL,
   valor FLOAT NOT NULL
 );
--- -----------------------------------------------------
--- Table `SpotifyClone`.`usuario`
--- -----------------------------------------------------
+
 CREATE TABLE IF NOT EXISTS usuario (
   usuario_id INT PRIMARY KEY AUTO_INCREMENT,
   nome_usuario VARCHAR(100) NOT NULL,
@@ -21,25 +17,19 @@ CREATE TABLE IF NOT EXISTS usuario (
   plano_id INT NOT NULL,
   CONSTRAINT `plano_usuario_id_fk` FOREIGN KEY (plano_id) REFERENCES SpotifyClone.plano (plano_id)
 );
--- -----------------------------------------------------
--- Table `SpotifyClone`.`artista`
--- -----------------------------------------------------
+
 CREATE TABLE IF NOT EXISTS artista (
   artista_id INT PRIMARY KEY AUTO_INCREMENT,
   nome_artista VARCHAR(45) NOT NULL
 );
--- -----------------------------------------------------
--- Table `SpotifyClone`.`album`
--- -----------------------------------------------------
+
 CREATE TABLE IF NOT EXISTS album (
   album_id INT PRIMARY KEY AUTO_INCREMENT,
   nome_album VARCHAR(45) NOT NULL,
   artista_id INT NOT NULL,
   CONSTRAINT `album_artista_id_fk` FOREIGN KEY (artista_id) REFERENCES SpotifyClone.artista (artista_id)
 );
--- -----------------------------------------------------
--- Table `SpotifyClone`.`musica`
--- -----------------------------------------------------
+
 CREATE TABLE IF NOT EXISTS musica (
   musica_id INT PRIMARY KEY AUTO_INCREMENT,
   nome_musica VARCHAR(45) NOT NULL,
@@ -48,23 +38,19 @@ CREATE TABLE IF NOT EXISTS musica (
   CONSTRAINT `musica_album_id_fk` FOREIGN KEY (album_id) REFERENCES SpotifyClone.album (album_id),
   CONSTRAINT `musica_artista_id_fk` FOREIGN KEY (artista_id) REFERENCES SpotifyClone.artista (artista_id)
 );
--- -----------------------------------------------------
--- Table `SpotifyClone`.`historico_reproducao`
--- -----------------------------------------------------
+
 CREATE TABLE IF NOT EXISTS historico_reproducao (
-  `historico_reproducao_id` INT PRIMARY KEY AUTO_INCREMENT,
-  `usuario_id` INT NOT NULL,
-  `musica_id` INT NOT NULL,
-  CONSTRAINT `historico_usuario_id_fk` FOREIGN KEY (`usuario_id`) REFERENCES `usuario` (`usuario_id`),
-  CONSTRAINT `historico_musica_id_fk` FOREIGN KEY (`musica_id`) REFERENCES `musica` (`musica_id`)
+  usuario_id INT NOT NULL,
+  musica_id INT NOT NULL,
+  PRIMARY KEY (usuario_id, musica_id),
+  CONSTRAINT `historico_usuario_id_fk` FOREIGN KEY (usuario_id) REFERENCES SpotifyClone.usuario (usuario_id),
+  CONSTRAINT `historico_musica_id_fk` FOREIGN KEY (musica_id) REFERENCES SpotifyClone.musica (musica_id)
 );
--- -----------------------------------------------------
--- Table `SpotifyClone`.`seguidores`
--- -----------------------------------------------------
+
 CREATE TABLE IF NOT EXISTS seguidores (
-  seguidores_id INT PRIMARY KEY AUTO_INCREMENT,
   usuario_id INT NOT NULL,
   artista_id INT NOT NULL,
+  PRIMARY KEY (usuario_id, artista_id),
   CONSTRAINT `seguidores_usuario_id_fk` FOREIGN KEY (usuario_id) REFERENCES SpotifyClone.usuario (usuario_id),
   CONSTRAINT `seguidores_artista_id_fk` FOREIGN KEY (artista_id) REFERENCES SpotifyClone.artista (artista_id)
 );
