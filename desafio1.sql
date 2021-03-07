@@ -42,7 +42,6 @@ CREATE TABLE IF NOT EXISTS musica (
 ) ENGINE = InnoDB;
 
 CREATE TABLE IF NOT EXISTS historico (
-  `historico_id` INT NOT NULL AUTO_INCREMENT,
   `usuario_id` INT NOT NULL,
   `musica_id` INT NOT NULL,
   PRIMARY KEY (usuario_id, musica_id),
