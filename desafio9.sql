@@ -11,5 +11,3 @@ BEGIN
     ORDER BY 2;
 END $$
 DELIMITER ;
-
--- CALL albuns_do_artista('Walter Phoenix');
