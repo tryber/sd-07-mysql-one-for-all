@@ -1,5 +1,3 @@
-DROP VIEW IF EXISTS estatisticas_musicais;
-
 CREATE VIEW SpotifyClone.estatisticas_musicais AS
 SELECT (
     SELECT COUNT(`musica_id`)
