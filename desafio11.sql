@@ -7,4 +7,4 @@ FROM SpotifyClone.historico_reproducao AS h
 WHERE u.plano_id = 2
   or u.plano_id = 3
 GROUP BY h.`musica_id`
-ORDER BY `cancao`;
+ORDER BY `nome`;
