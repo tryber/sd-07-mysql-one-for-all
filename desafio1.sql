@@ -5,52 +5,52 @@ CREATE DATABASE SpotifyClone;
 USE SpotifyClone;
 
 CREATE TABLE Singers(
-    sin_id INT PRIMARY KEY AUTO_INCREMENT,
-    sin_name VARCHAR(100) NOT NULL
+  sin_id INT PRIMARY KEY AUTO_INCREMENT,
+  sin_name VARCHAR(100) NOT NULL
 ) engine = InnoDB;
 
 CREATE TABLE Albums(
-    abl_id INT PRIMARY KEY AUTO_INCREMENT,
-    abl_name VARCHAR(100) NOT NULL,
-    sin_id INT NOT NULL,
-  	FOREIGN KEY (sin_id) REFERENCES Singers(sin_id)
+  abl_id INT PRIMARY KEY AUTO_INCREMENT,
+  abl_name VARCHAR(100) NOT NULL,
+  sin_id INT NOT NULL,
+  FOREIGN KEY (sin_id) REFERENCES Singers(sin_id)
 ) engine = InnoDB;
 
 CREATE TABLE Songs(
-    son_id INT PRIMARY KEY AUTO_INCREMENT,
-    son_name VARCHAR(100) NOT NULL,
-    abl_id INT NOT NULL,
-	  FOREIGN KEY (abl_id) REFERENCES Albums(abl_id)
+  son_id INT PRIMARY KEY AUTO_INCREMENT,
+  son_name VARCHAR(100) NOT NULL,
+  abl_id INT NOT NULL,
+	FOREIGN KEY (abl_id) REFERENCES Albums(abl_id)
 ) engine = InnoDB;
 
 CREATE TABLE Plans(
-    pla_id TINYINT PRIMARY KEY AUTO_INCREMENT,
-    pla_name VARCHAR(100) NOT NULL UNIQUE,
-    pla_value DECIMAL(6,2) NOT NULL UNIQUE
+  pla_id TINYINT PRIMARY KEY AUTO_INCREMENT,
+  pla_name VARCHAR(100) NOT NULL UNIQUE,
+  pla_value DECIMAL(6,2) NOT NULL UNIQUE
 ) engine = InnoDB;
 
 CREATE TABLE Users(
-    use_id INT PRIMARY KEY AUTO_INCREMENT,
-    use_name VARCHAR(100) NOT NULL,
-    use_age TINYINT NOT NULL,
-    pla_id TINYINT NOT NULL,
-    FOREIGN KEY (pla_id) REFERENCES Plans (pla_id)
+  use_id INT PRIMARY KEY AUTO_INCREMENT,
+  use_name VARCHAR(100) NOT NULL,
+  use_age TINYINT NOT NULL,
+  pla_id TINYINT NOT NULL,
+  FOREIGN KEY (pla_id) REFERENCES Plans (pla_id)
 ) engine = InnoDB;
 
 CREATE TABLE Followings(
-    use_id INT NOT NULL,
-    sin_id INT NOT NULL,
-	  PRIMARY KEY (use_id, sin_id),
-	  FOREIGN KEY (use_id) REFERENCES Users(use_id),
-    FOREIGN KEY (sin_id) REFERENCES Singers(sin_id)
+  use_id INT NOT NULL,
+  sin_id INT NOT NULL,
+	PRIMARY KEY (use_id, sin_id),
+	FOREIGN KEY (use_id) REFERENCES Users(use_id),
+  FOREIGN KEY (sin_id) REFERENCES Singers(sin_id)
 ) engine = InnoDB;
 
 CREATE TABLE Historic(
-    use_id INT NOT NULL,
-    son_id INT NOT NULL,
-    PRIMARY KEY (use_id, son_id),
-	  FOREIGN KEY (use_id) REFERENCES Users(use_id),
-    FOREIGN KEY (son_id) REFERENCES Songs(son_id)
+  use_id INT NOT NULL,
+  son_id INT NOT NULL,
+  PRIMARY KEY (use_id, son_id),
+	FOREIGN KEY (use_id) REFERENCES Users(use_id),
+  FOREIGN KEY (son_id) REFERENCES Songs(son_id)
 ) engine = InnoDB;
 
 INSERT INTO SpotifyClone.Singers (sin_name)
