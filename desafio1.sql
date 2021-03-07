@@ -5,13 +5,13 @@ CREATE DATABASE SpotifyClone;
 USE SpotifyClone;
 
 CREATE TABLE planos(
-id INT PRIMARY KEY AUTO_INCREMENT,
+	id INT PRIMARY KEY AUTO_INCREMENT,
     tipo VARCHAR(50) NOT NULL,
     valor DECIMAL(5,2) NOT NULL
 ) engine = InnoDB;
 
 CREATE TABLE usuarios(
-id INT PRIMARY KEY AUTO_INCREMENT,
+	id INT PRIMARY KEY AUTO_INCREMENT,
     nome VARCHAR(50) NOT NULL,
     idade INT NOT NULL,
     plano_id INT,
@@ -19,19 +19,19 @@ id INT PRIMARY KEY AUTO_INCREMENT,
 ) engine = InnoDB;
 
 CREATE TABLE artistas(
-id INT PRIMARY KEY AUTO_INCREMENT,
+	id INT PRIMARY KEY AUTO_INCREMENT,
     nome VARCHAR(50) NOT NULL
 ) engine = InnoDB;
 
 CREATE TABLE albuns(
-id INT PRIMARY KEY AUTO_INCREMENT,
+	id INT PRIMARY KEY AUTO_INCREMENT,
     nome VARCHAR(50) NOT NULL,
     artista_id INT,
     FOREIGN KEY (artista_id) REFERENCES artistas (id)
 ) engine = InnoDB;
 
 CREATE TABLE usuario_segue_artista(
-id INT PRIMARY KEY AUTO_INCREMENT,
+	id INT PRIMARY KEY AUTO_INCREMENT,
     usuario_id INT NOT NULL,
     artista_id INT,
     FOREIGN KEY (usuario_id) REFERENCES usuarios (id),
@@ -39,7 +39,7 @@ id INT PRIMARY KEY AUTO_INCREMENT,
 ) engine = InnoDB;
 
 CREATE TABLE cancoes(
-id INT PRIMARY KEY AUTO_INCREMENT,
+	id INT PRIMARY KEY AUTO_INCREMENT,
     nome VARCHAR(100) NOT NULL,
     artista_id INT,
     album_id INT,
@@ -48,7 +48,7 @@ id INT PRIMARY KEY AUTO_INCREMENT,
 ) engine = InnoDB;
 
 CREATE TABLE usuario_ouve_cancao(
-id INT PRIMARY KEY AUTO_INCREMENT,
+	id INT PRIMARY KEY AUTO_INCREMENT,
     usuario_id INT NOT NULL,
     cancao_id INT,
     FOREIGN KEY (usuario_id) REFERENCES usuarios (id),
@@ -78,4 +78,4 @@ INSERT INTO cancoes (nome, artista_id, album_id) VALUES
 ('Thang Of Thunder', 4, 5), ('Words Of Her Life', 4, 5), ('Without My Streets', 4, 5);
 
 INSERT INTO usuario_ouve_cancao (usuario_id, cancao_id) VALUES
-(1, 1), (1, 6), (1, 14), (1, 16), (2, 13), (2, 17), (2, 3), (2, 15), (3, 4), (3, 16), (3, 6), (4, 3), (4, 18), (4, 11);
+(1, 1), (1, 6), (1, 14), (1, 16), (2, 13), (2, 17), (2, 2), (2, 15), (3, 4), (3, 16), (3, 6), (4, 3), (4, 18), (4, 11);
