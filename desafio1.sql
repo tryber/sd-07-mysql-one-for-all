@@ -17,7 +17,6 @@ name VARCHAR(50) NOT NULL,
 age INT UNSIGNED NOT NULL,
 plan_id INT UNSIGNED NOT NULL,
 PRIMARY KEY (user_id),
-KEY idx_fk_plan_id (plan_id),
 CONSTRAINT fk_user_plan FOREIGN KEY (plan_id)
 REFERENCES plans (plan_id) ON DELETE RESTRICT ON UPDATE CASCADE
 ) engine = InnoDB;
