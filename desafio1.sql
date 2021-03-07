@@ -10,7 +10,7 @@ USE `SpotifyClone` ;
 CREATE TABLE IF NOT EXISTS `SpotifyClone`.`planos` (
   `plano_id` INT NOT NULL AUTO_INCREMENT ,
   `plano` VARCHAR(45) NOT NULL,
-  `valor_plano` FLOAT NOT NULL,
+  `valor_plano` DECIMAL(5, 2) NOT NULL,
   PRIMARY KEY (`plano_id`))
 ENGINE = InnoDB;
 -- -----------------------------------------------------
@@ -89,7 +89,7 @@ ENGINE = InnoDB;
 
 INSERT INTO planos(plano, valor_plano)
 VALUES
-  ('gratuito', 0),
+  ('gratuito', 0.00),
   ('universitario', 5.99),
   ('familiar', 7.99);
 

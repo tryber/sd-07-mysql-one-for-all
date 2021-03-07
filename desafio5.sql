@@ -1,4 +1,4 @@
-CREATE VIEW top_2_hits_do_momento AS
+CREATE VIEW SpotifyClone.top_2_hits_do_momento AS
 SELECT can.cancao AS `cancao`,
 COUNT(can.cancao_id) AS `reproducoes`
 FROM SpotifyClone.cancoes as can
