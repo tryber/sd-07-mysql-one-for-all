@@ -3,7 +3,7 @@ DELIMITER $$
 CREATE FUNCTION quantidade_musicas_no_historico (user_indent INT)
 RETURNS INT READS SQL DATA
 BEGIN
-	DECLARE music_result INT;
+DECLARE music_result INT;
     SELECT
     COUNT(id_music)
     FROM 

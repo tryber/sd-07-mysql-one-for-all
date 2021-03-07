@@ -1,7 +1,7 @@
 CREATE VIEW cancoes_premium AS
 SELECT
- musc.music_name AS `nome`,
- COUNT(hist.id_music) AS `reproducoes`
+  musc.music_name AS `nome`,
+  COUNT(hist.id_music) AS `reproducoes`
 FROM
   SpotifyClone.musics AS `musc`
 INNER JOIN
@@ -20,8 +20,8 @@ ON
   pl.plan_id = usr.user_plan
 
 WHERE
- pl.plan_name IN ('familiar','universitário')
+  pl.plan_name IN ('familiar','universitário')
 GROUP BY
- `nome`
- ORDER BY
+  `nome`
+  ORDER BY
  `nome`ASC;
