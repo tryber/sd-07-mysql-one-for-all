@@ -20,7 +20,7 @@ CREATE TABLE Songs(
   son_id INT PRIMARY KEY AUTO_INCREMENT,
   son_name VARCHAR(100) NOT NULL,
   abl_id INT NOT NULL,
-	  FOREIGN KEY (abl_id) REFERENCES Albums(abl_id)
+FOREIGN KEY (abl_id) REFERENCES Albums(abl_id)
 ) engine = InnoDB;
 
 CREATE TABLE Plans(
@@ -40,8 +40,8 @@ CREATE TABLE Users(
 CREATE TABLE Followings(
   use_id INT NOT NULL,
   sin_id INT NOT NULL,
-	PRIMARY KEY (use_id, sin_id),
-	FOREIGN KEY (use_id) REFERENCES Users(use_id),
+PRIMARY KEY (use_id, sin_id),
+FOREIGN KEY (use_id) REFERENCES Users(use_id),
   FOREIGN KEY (sin_id) REFERENCES Singers(sin_id)
 ) engine = InnoDB;
 
@@ -49,7 +49,7 @@ CREATE TABLE Historic(
   use_id INT NOT NULL,
   son_id INT NOT NULL,
   PRIMARY KEY (use_id, son_id),
-	FOREIGN KEY (use_id) REFERENCES Users(use_id),
+FOREIGN KEY (use_id) REFERENCES Users(use_id),
   FOREIGN KEY (son_id) REFERENCES Songs(son_id)
 ) engine = InnoDB;
 
