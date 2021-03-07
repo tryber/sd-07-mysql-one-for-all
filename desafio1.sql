@@ -155,7 +155,7 @@ INSERT INTO `SpotifyClone`.`usuarios_cancoes` (`usuario_id`, `cancao_id`) VALUES
 INSERT INTO `SpotifyClone`.`usuarios_cancoes` (`usuario_id`, `cancao_id`) VALUES (1, 16);
 INSERT INTO `SpotifyClone`.`usuarios_cancoes` (`usuario_id`, `cancao_id`) VALUES (2, 13);
 INSERT INTO `SpotifyClone`.`usuarios_cancoes` (`usuario_id`, `cancao_id`) VALUES (2, 17);
-INSERT INTO `SpotifyClone`.`usuarios_cancoes` (`usuario_id`, `cancao_id`) VALUES (2, 6);
+INSERT INTO `SpotifyClone`.`usuarios_cancoes` (`usuario_id`, `cancao_id`) VALUES (2, 2);
 INSERT INTO `SpotifyClone`.`usuarios_cancoes` (`usuario_id`, `cancao_id`) VALUES (2, 15);
 INSERT INTO `SpotifyClone`.`usuarios_cancoes` (`usuario_id`, `cancao_id`) VALUES (3, 4);
 INSERT INTO `SpotifyClone`.`usuarios_cancoes` (`usuario_id`, `cancao_id`) VALUES (3, 16);
