@@ -3,7 +3,7 @@ create database if not exists SpotifyClone;
 create table SpotifyClone.planos(
   plano_id int primary key auto_increment,
   tipo varchar(50) not null,
-  preço double not null
+  preço varchar(10) not null
 ) engine = InnoDB;
 
 create table SpotifyClone.usuarios(
@@ -52,9 +52,9 @@ create table SpotifyClone.historiocos(
 
 insert into SpotifyClone.planos (tipo, preço)
 values
-('gratuito', 0.00),
-('familiar', 7.99),
-('universitário', 5.99);
+('gratuito', '0.00'),
+('familiar', '7.99'),
+('universitário', '5.99');
 
 insert into SpotifyClone.usuarios (nomeUsuario, idade, plano_id)
 values
