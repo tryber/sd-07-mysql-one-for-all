@@ -42,17 +42,18 @@ CREATE TABLE IF NOT EXISTS musica (
 ) ENGINE = InnoDB;
 
 CREATE TABLE IF NOT EXISTS historico (
-  `historico_id` INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
+  `historico_id` INT NOT NULL AUTO_INCREMENT,
   `usuario_id` INT NOT NULL,
   `musica_id` INT NOT NULL,
+  PRIMARY KEY (usuario_id, musica_id),
   FOREIGN KEY (`usuario_id`) REFERENCES usuario (`usuario_id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   FOREIGN KEY (`musica_id`) REFERENCES musica (`musica_id`) ON DELETE NO ACTION ON UPDATE NO ACTION
 ) ENGINE = InnoDB;
 
 CREATE TABLE IF NOT EXISTS seguindo (
-  `seguindo_id` INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
   `usuario_id` INT NOT NULL,
   `artista_id` INT NOT NULL,
+  PRIMARY KEY (usuario_id, artista_id),
   FOREIGN KEY (`usuario_id`) REFERENCES usuario (`usuario_id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   FOREIGN KEY (`artista_id`) REFERENCES artista (`artista_id`) ON DELETE NO ACTION ON UPDATE NO ACTION
 ) ENGINE = InnoDB;
@@ -112,28 +113,28 @@ VALUES (DEFAULT, "Soul For Us", 1, 1),
   (DEFAULT, "Words Of Her Life", 4, 5),
   (DEFAULT, "Without My Streets", 4, 5);
 
-INSERT INTO historico (`historico_id`, `usuario_id`, `musica_id`)
-VALUES (DEFAULT, 1, 1),
-  (DEFAULT, 1, 6),
-  (DEFAULT, 1, 14),
-  (DEFAULT, 1, 16),
-  (DEFAULT, 2, 13),
-  (DEFAULT, 2, 17),
-  (DEFAULT, 2, 2),
-  (DEFAULT, 2, 15),
-  (DEFAULT, 3, 4),
-  (DEFAULT, 3, 16),
-  (DEFAULT, 3, 6),
-  (DEFAULT, 4, 3),
-  (DEFAULT, 4, 18),
-  (DEFAULT, 4, 11);
+INSERT INTO historico (`usuario_id`, `musica_id`)
+VALUES (1, 1),
+  (1, 6),
+  (1, 14),
+  (1, 16),
+  (2, 13),
+  (2, 17),
+  (2, 2),
+  (2, 15),
+  (3, 4),
+  (3, 16),
+  (3, 6),
+  (4, 3),
+  (4, 18),
+  (4, 11);
 
-INSERT INTO seguindo (`seguindo_id`, `usuario_id`, `artista_id`)
-VALUES (DEFAULT, 1, 1),
-  (DEFAULT, 1, 4),
-  (DEFAULT, 1, 3),
-  (DEFAULT, 2, 1),
-  (DEFAULT, 2, 3),
-  (DEFAULT, 3, 2),
-  (DEFAULT, 3, 1),
-  (DEFAULT, 4, 4);
+INSERT INTO seguindo (`usuario_id`, `artista_id`)
+VALUES (1, 1),
+  (1, 4),
+  (1, 3),
+  (2, 1),
+  (2, 3),
+  (3, 2),
+  (3, 1),
+  (4, 4);
