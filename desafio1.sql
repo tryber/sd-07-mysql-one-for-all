@@ -7,7 +7,7 @@ DROP TABLE IF EXISTS `SpotifyClone`.`planos` ;
 CREATE TABLE IF NOT EXISTS `SpotifyClone`.`planos` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `nome` VARCHAR(100) NOT NULL,
-  `valor` DOUBLE NOT NULL,
+  `valor` DECIMAL(5,2) NOT NULL,
   PRIMARY KEY (`id`))
 ENGINE = InnoDB;
 
