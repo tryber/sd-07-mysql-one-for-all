@@ -2,7 +2,7 @@ USE SpotifyClone;
 
 DELIMITER $$
 CREATE TRIGGER trigger_usuario_delete
-AFTER DELETE ON SpotifyClone.Users
+BEFORE DELETE ON SpotifyClone.Users
 FOR EACH ROW
 BEGIN
 DELETE FROM SpotifyClone.Following

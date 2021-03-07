@@ -1,5 +1,5 @@
-CREATE VIEW estatisticas_musicais AS  
-  SELECT SUM(Number_of_songs) AS cancoes, COUNT(artist_id) AS artistas, SUM(albuns) AS albuns FROM(
+CREATE VIEW estatisticas_musicais AS 
+  SELECT CONVERT(SUM(Number_of_songs), DECIMAL) AS cancoes, COUNT(artist_id) AS artistas, CONVERT(SUM(albuns), DECIMAL) AS albuns FROM(
   SELECT C.Number_of_songs, C.artist_id, COUNT(Album.album_id) AS albuns FROM(
   SELECT COUNT(Songs.song_id) AS Number_of_songs, Artists.artist_id
   FROM SpotifyClone.Songs AS Songs
