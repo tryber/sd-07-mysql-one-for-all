@@ -81,7 +81,7 @@ VALUES
   
 INSERT INTO users (name, age, plan_id)
 VALUES
-('Tathi', 23, 1),
+('Thati', 23, 1),
 ('Cintia', 35, 3),
 ('Bill', 20, 2),
 ('Roger', 45, 1);
