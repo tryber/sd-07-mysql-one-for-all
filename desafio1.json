@@ -1,5 +1,5 @@
 {
-  "coluna_usuario": "usuario_id",
+  "coluna_usuario": "nome_usuario",
   "tabela_que_contem_usuario": "usuario",
   "coluna_plano": "nome_plano",
   "tabela_que_contem_plano": "plano",
@@ -11,6 +11,6 @@
   "tabela_que_contem_artista": "artista",
   "coluna_album": "album_id",
   "tabela_que_contem_album": "album",
-  "coluna_cancoes": "musica",
-  "tabela_que_contem_cancoes": "musica_id"
+  "coluna_cancoes": "musica_id",
+  "tabela_que_contem_cancoes": "musica"
 }

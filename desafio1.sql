@@ -7,73 +7,66 @@ USE SpotifyClone;
 -- Table `SpotifyClone`.`plano`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS plano (
-  `plano_id` INT NOT NULL AUTO_INCREMENT,
+  `plano_id` INT PRIMARY KEY AUTO_INCREMENT,
   `nome_plano` VARCHAR(45) NOT NULL,
-  `valor` FLOAT NOT NULL,
-  PRIMARY KEY (`plano_id`)
+  `valor` FLOAT NOT NULL
 ) ENGINE = InnoDB;
 -- -----------------------------------------------------
 -- Table `SpotifyClone`.`usuario`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS usuario (
-  `usuario_id` INT NOT NULL AUTO_INCREMENT,
+  `usuario_id` INT PRIMARY KEY AUTO_INCREMENT,
   `nome_usuario` VARCHAR(100) NOT NULL,
   `idade` INT NOT NULL,
   `plano_id` INT NOT NULL,
-  PRIMARY KEY (`usuario_id`),
-  CONSTRAINT `plano_usuario_id_fk` FOREIGN KEY (`plano_id`) REFERENCES `SpotifyClone`.`plano` (`plano_id`)
+  CONSTRAINT `plano_usuario_id_fk` FOREIGN KEY (`plano_id`) REFERENCES `plano` (`plano_id`)
 ) ENGINE = InnoDB;
 -- -----------------------------------------------------
 -- Table `SpotifyClone`.`artista`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS artista (
-  `artista_id` INT NOT NULL AUTO_INCREMENT,
-  `nome_artista` VARCHAR(45) NOT NULL,
-  PRIMARY KEY (`artista_id`)
+  `artista_id` INT PRIMARY KEY AUTO_INCREMENT,
+  `nome_artista` VARCHAR(45) NOT NULL
 ) ENGINE = InnoDB;
 -- -----------------------------------------------------
 -- Table `SpotifyClone`.`album`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS album (
-  `album_id` INT NOT NULL AUTO_INCREMENT,
+  `album_id` INT PRIMARY KEY AUTO_INCREMENT,
   `nome_album` VARCHAR(45) NOT NULL,
   `artista_id` INT NOT NULL,
-  PRIMARY KEY (`album_id`),
-  CONSTRAINT `album_artista_id_fk` FOREIGN KEY (`artista_id`) REFERENCES `SpotifyClone`.`artista` (`artista_id`)
+  CONSTRAINT `album_artista_id_fk` FOREIGN KEY (`artista_id`) REFERENCES `artista` (`artista_id`)
 ) ENGINE = InnoDB;
 -- -----------------------------------------------------
 -- Table `SpotifyClone`.`musica`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS musica (
-  `musica_id` INT NOT NULL AUTO_INCREMENT,
+  `musica_id` INT PRIMARY KEY AUTO_INCREMENT,
   `nome_musica` VARCHAR(45) NOT NULL,
   `album_id` INT NOT NULL,
   `artista_id` INT NOT NULL,
-  PRIMARY KEY (`musica_id`),
-  CONSTRAINT `musica_album_id_fk` FOREIGN KEY (`album_id`) REFERENCES `SpotifyClone`.`album` (`album_id`),
-  CONSTRAINT `musica_artista_id_fk` FOREIGN KEY (`artista_id`) REFERENCES `SpotifyClone`.`artista` (`artista_id`)
+  CONSTRAINT `musica_album_id_fk` FOREIGN KEY (`album_id`) REFERENCES `album` (`album_id`),
+  CONSTRAINT `musica_artista_id_fk` FOREIGN KEY (`artista_id`) REFERENCES `artista` (`artista_id`)
 ) ENGINE = InnoDB;
 -- -----------------------------------------------------
 -- Table `SpotifyClone`.`historico_reproducao`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS historico_reproducao (
-  `historico_reproducao_id` INT NOT NULL AUTO_INCREMENT,
+  `historico_reproducao_id` INT PRIMARY KEY AUTO_INCREMENT,
   `usuario_id` INT NOT NULL,
   `musica_id` INT NOT NULL,
-  PRIMARY KEY (`historico_reproducao_id`),
-  CONSTRAINT `historico_usuario_id_fk` FOREIGN KEY (`usuario_id`) REFERENCES `SpotifyClone`.`usuario` (`usuario_id`),
-  CONSTRAINT `historico_musica_id_fk` FOREIGN KEY (`musica_id`) REFERENCES `SpotifyClone`.`musica` (`musica_id`)
+  CONSTRAINT `historico_usuario_id_fk` FOREIGN KEY (`usuario_id`) REFERENCES `usuario` (`usuario_id`),
+  CONSTRAINT `historico_musica_id_fk` FOREIGN KEY (`musica_id`) REFERENCES `musica` (`musica_id`)
 ) ENGINE = InnoDB;
 -- -----------------------------------------------------
 -- Table `SpotifyClone`.`seguidores`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS seguidores (
-  `seguidores_id` INT NOT NULL AUTO_INCREMENT,
+  `seguidores_id` INT PRIMARY KEY AUTO_INCREMENT,
   `usuario_id` INT NOT NULL,
   `artista_id` INT NOT NULL,
-  PRIMARY KEY (`seguidores_id`),
-  CONSTRAINT `seguidores_usuario_id_fk` FOREIGN KEY (`usuario_id`) REFERENCES `SpotifyClone`.`usuario` (`usuario_id`),
-  CONSTRAINT `seguidores_artista_id_fk` FOREIGN KEY (`artista_id`) REFERENCES `SpotifyClone`.`artista` (`artista_id`)
+  CONSTRAINT `seguidores_usuario_id_fk` FOREIGN KEY (`usuario_id`) REFERENCES `usuario` (`usuario_id`),
+  CONSTRAINT `seguidores_artista_id_fk` FOREIGN KEY (`artista_id`) REFERENCES `artista` (`artista_id`)
 ) ENGINE = InnoDB;
 INSERT INTO usuario (nome_usuario, idade, plano_id)
 VALUES ('Thati', 23, 1),
