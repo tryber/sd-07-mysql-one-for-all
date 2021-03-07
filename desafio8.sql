@@ -10,6 +10,6 @@ DELETE FROM SpotifyClone.usuario_artista
 WHERE usuario_id = OLD.usuario_id;
 DELETE FROM SpotifyClone.usuario_cancao
 WHERE usuario_id = OLD.usuario_id;
-END
+END $$
 
-DELIMITER $$ ;
+DELIMITER ;
