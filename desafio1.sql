@@ -55,7 +55,7 @@ FOREIGN KEY (usuario_id) REFERENCES usuario(usuario_id)
 INSERT INTO plano(nome, valor)
 VALUES
 ('gratuito', 0),
-('univestário', 5.99),
+('universitário', 5.99),
 ('familiar', 7.99);
 
 INSERT INTO artista(nome)
