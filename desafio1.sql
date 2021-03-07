@@ -17,8 +17,7 @@ name VARCHAR(50) NOT NULL,
 age INT UNSIGNED NOT NULL,
 plan_id INT UNSIGNED NOT NULL,
 PRIMARY KEY (user_id),
-KEY idx_fk_plan_id (plan_id),
-CONSTRAINT fk_user_plan FOREIGN KEY (plan_id)
+FOREIGN KEY (plan_id)
 REFERENCES plans (plan_id) ON DELETE RESTRICT ON UPDATE CASCADE
 ) engine = InnoDB;
 
@@ -33,7 +32,7 @@ album_id INT UNSIGNED NOT NULL AUTO_INCREMENT,
 album_name VARCHAR(50) NOT NULL,
 artist_id INT UNSIGNED NOT NULL,
 PRIMARY KEY (album_id),
-CONSTRAINT fk_albums_artist FOREIGN KEY (artist_id)
+FOREIGN KEY (artist_id)
 REFERENCES artists (artist_id) ON DELETE RESTRICT ON UPDATE CASCADE
 ) engine = InnoDB;
 
@@ -43,9 +42,9 @@ song_name VARCHAR(50) NOT NULL,
 artist_id INT UNSIGNED NOT NULL,
 album_id INT UNSIGNED NOT NULL,
 PRIMARY KEY (song_id),
-CONSTRAINT fk_songs_artist FOREIGN KEY (artist_id)
+FOREIGN KEY (artist_id)
 REFERENCES artists (artist_id) ON DELETE RESTRICT ON UPDATE CASCADE,
-CONSTRAINT fk_songs_album FOREIGN KEY (album_id)
+FOREIGN KEY (album_id)
 REFERENCES albums (album_id) ON DELETE RESTRICT ON UPDATE CASCADE
 ) engine = InnoDB;
 
@@ -54,11 +53,9 @@ history_id INT UNSIGNED NOT NULL AUTO_INCREMENT,
 user_id INT UNSIGNED NOT NULL,
 song_id INT UNSIGNED NOT NULL,
 PRIMARY KEY (history_id),
-KEY idx_fk_user_id (user_id),
-KEY idx_fk_song_id (song_id),
-CONSTRAINT fk_reproduction_history_user FOREIGN KEY (user_id)
+FOREIGN KEY (user_id)
 REFERENCES users (user_id) ON DELETE RESTRICT ON UPDATE CASCADE,
-CONSTRAINT fk_reproduction_history_song FOREIGN KEY (song_id)
+FOREIGN KEY (song_id)
 REFERENCES songs (song_id) ON DELETE RESTRICT ON UPDATE CASCADE
 ) engine = InnoDB;
 
@@ -67,11 +64,9 @@ follower_id INT UNSIGNED NOT NULL AUTO_INCREMENT,
 artist_id INT UNSIGNED NOT NULL,
 user_id INT UNSIGNED NOT NULL,
 PRIMARY KEY (follower_id),
-KEY idx_fk_artist_id (artist_id),
-KEY idx_fk_user_id (user_id),
-CONSTRAINT fk_followers_artist FOREIGN KEY (artist_id)
+FOREIGN KEY (artist_id)
 REFERENCES artists (artist_id) ON DELETE RESTRICT ON UPDATE CASCADE,
-CONSTRAINT fk_followers_user FOREIGN KEY (user_id)
+FOREIGN KEY (user_id)
 REFERENCES users (user_id) ON DELETE RESTRICT ON UPDATE CASCADE
 ) engine = InnoDB;
 
