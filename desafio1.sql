@@ -20,7 +20,7 @@ CREATE TABLE Songs(
   son_id INT PRIMARY KEY AUTO_INCREMENT,
   son_name VARCHAR(100) NOT NULL,
   abl_id INT NOT NULL,
-	FOREIGN KEY (abl_id) REFERENCES Albums(abl_id)
+	  FOREIGN KEY (abl_id) REFERENCES Albums(abl_id)
 ) engine = InnoDB;
 
 CREATE TABLE Plans(
