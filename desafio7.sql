@@ -1,5 +1,5 @@
 CREATE VIEW perfil_artistas AS
-SELECT a.name AS artista, ab.album_name AS album,
+SELECT ab.album_name AS album, a.name AS artista,
 COUNT(f.artist_id) AS seguidores
 FROM SpotifyClone.followers AS f
 JOIN SpotifyClone.artists AS a ON a.artist_id = f.artist_id
