@@ -1,3 +1,4 @@
+CREATE VIEW SpotifyClone.top_3_artistas AS
 SELECT a.artista_nome AS `artista`,
     COUNT(*) AS `seguidores`
 FROM SpotifyClone.seguindo AS s
