@@ -7,7 +7,7 @@ CREATE TRIGGER trigger_usuario_delete
 BEGIN
     DELETE FROM Followings
     WHERE Followings.use_id = OLD.use_id;
-	  DELETE FROM Historic
+DELETE FROM Historic
     WHERE Historic.use_id = OLD.use_id;
 END $$
 DELIMITER ;
