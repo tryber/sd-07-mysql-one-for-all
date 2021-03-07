@@ -54,26 +54,31 @@ CREATE TABLE IF NOT EXISTS seguidores (
   FOREIGN KEY (usuario_id) REFERENCES usuario (usuario_id),
   FOREIGN KEY (artista_id) REFERENCES artista (artista_id)
 );
+
 INSERT INTO usuario (nome_usuario, idade, plano_id)
 VALUES ('Thati', 23, 1),
   ('Cintia', 35, 2),
   ('Bill', 20, 3),
   ('Roger', 45, 1);
+
 INSERT INTO plano (nome_plano, valor)
 VALUES ('gratuito', 0),
   ('familiar', 7.99),
   ('universitário', 5.99);
+
 INSERT INTO artista (nome_artista)
 VALUES ('Walter Phoenix'),
   ('Peter Strong'),
   ('Lance Day'),
   ('Freedie Shannon');
+
 INSERT INTO album (nome_album, artista_id)
 VALUES ('Envious', 1),
   ('Exuberant', 1),
   ('Hallowed Steam', 2),
   ('Incandescent', 3),
   ('Temporary Culture', 4);
+
 INSERT INTO musica (nome_musica, album_id, artista_id)
 VALUES ('Soul For Us', 1, 1),
   ('Reflections Of Magic', 1, 1),
@@ -93,6 +98,7 @@ VALUES ('Soul For Us', 1, 1),
   ('Thang Of Thunder', 5, 4),
   ('Words Of Her Life', 5, 4),
   ('Without My Streets', 5, 4);
+
 INSERT INTO historico_reproducao (usuario_id, musica_id)
 VALUES (1, 1),
   (1, 6),
@@ -108,6 +114,7 @@ VALUES (1, 1),
   (4, 3),
   (4, 18),
   (4, 11);
+
 INSERT INTO seguidores (usuario_id, artista_id)
 VALUES (1, 1),
   (1, 4),
