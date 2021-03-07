@@ -15,7 +15,7 @@ CREATE TABLE IF NOT EXISTS usuario (
   nome_usuario VARCHAR(100) NOT NULL,
   idade INT NOT NULL,
   plano_id INT NOT NULL,
-  CONSTRAINT `plano_usuario_id_fk` FOREIGN KEY (plano_id) REFERENCES SpotifyClone.plano (plano_id)
+  FOREIGN KEY (plano_id) REFERENCES plano (plano_id)
 );
 
 CREATE TABLE IF NOT EXISTS artista (
@@ -27,7 +27,7 @@ CREATE TABLE IF NOT EXISTS album (
   album_id INT PRIMARY KEY AUTO_INCREMENT,
   nome_album VARCHAR(45) NOT NULL,
   artista_id INT NOT NULL,
-  CONSTRAINT `album_artista_id_fk` FOREIGN KEY (artista_id) REFERENCES SpotifyClone.artista (artista_id)
+  FOREIGN KEY (artista_id) REFERENCES artista (artista_id)
 );
 
 CREATE TABLE IF NOT EXISTS musica (
@@ -35,24 +35,24 @@ CREATE TABLE IF NOT EXISTS musica (
   nome_musica VARCHAR(45) NOT NULL,
   album_id INT NOT NULL,
   artista_id INT NOT NULL,
-  CONSTRAINT `musica_album_id_fk` FOREIGN KEY (album_id) REFERENCES SpotifyClone.album (album_id),
-  CONSTRAINT `musica_artista_id_fk` FOREIGN KEY (artista_id) REFERENCES SpotifyClone.artista (artista_id)
+  FOREIGN KEY (album_id) REFERENCES album (album_id),
+  FOREIGN KEY (artista_id) REFERENCES artista (artista_id)
 );
 
 CREATE TABLE IF NOT EXISTS historico_reproducao (
   usuario_id INT NOT NULL,
   musica_id INT NOT NULL,
   PRIMARY KEY (usuario_id, musica_id),
-  CONSTRAINT `historico_usuario_id_fk` FOREIGN KEY (usuario_id) REFERENCES SpotifyClone.usuario (usuario_id),
-  CONSTRAINT `historico_musica_id_fk` FOREIGN KEY (musica_id) REFERENCES SpotifyClone.musica (musica_id)
+  FOREIGN KEY (usuario_id) REFERENCES usuario (usuario_id),
+  FOREIGN KEY (musica_id) REFERENCES musica (musica_id)
 );
 
 CREATE TABLE IF NOT EXISTS seguidores (
   usuario_id INT NOT NULL,
   artista_id INT NOT NULL,
   PRIMARY KEY (usuario_id, artista_id),
-  CONSTRAINT `seguidores_usuario_id_fk` FOREIGN KEY (usuario_id) REFERENCES SpotifyClone.usuario (usuario_id),
-  CONSTRAINT `seguidores_artista_id_fk` FOREIGN KEY (artista_id) REFERENCES SpotifyClone.artista (artista_id)
+  FOREIGN KEY (usuario_id) REFERENCES usuario (usuario_id),
+  FOREIGN KEY (artista_id) REFERENCES artista (artista_id)
 );
 INSERT INTO usuario (nome_usuario, idade, plano_id)
 VALUES ('Thati', 23, 1),
