@@ -11,14 +11,14 @@ price DECIMAL(3,2) NOT NULL DEFAULT 0.00,
 PRIMARY KEY (plan_id)
 ) engine = InnoDB;
 
-CREATE TABLE IF NOT EXISTS `users` (
-`user_id` INT PRIMARY KEY AUTO_INCREMENT,
-`name` VARCHAR(100) NOT NULL,
-`age` INT NOT NULL,
-`plan_id` INT NOT NULL,
-CONSTRAINT `fk_users_plans`
-FOREIGN KEY (`plan_id`)
-REFERENCES `plans` (`plan_id`)
+CREATE TABLE IF NOT EXISTS users (
+user_id INT PRIMARY KEY AUTO_INCREMENT,
+name VARCHAR(100) NOT NULL,
+age INT NOT NULL,
+plan_id INT NOT NULL,
+CONSTRAINT fk_users_plans
+FOREIGN KEY (plan_id)
+REFERENCES plans (plan_id)
 ON DELETE RESTRICT
 ON UPDATE CASCADE
 )ENGINE = InnoDB;
