@@ -4,10 +4,9 @@ CREATE SCHEMA IF NOT EXISTS SpotifyClone;
 USE SpotifyClone;
 DROP TABLE IF EXISTS plano;
 CREATE TABLE IF NOT EXISTS plano (
-  `plano_id` INT NOT NULL AUTO_INCREMENT,
+  `plano_id` INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
   `plano_nome` VARCHAR(45) NOT NULL,
-  `valor_plano` FLOAT NOT NULL,
-  PRIMARY KEY (`plano_id`)
+  `valor_plano` FLOAT NOT NULL
 ) ENGINE = InnoDB;
 DROP TABLE IF EXISTS usuario;
 CREATE TABLE IF NOT EXISTS usuario (
