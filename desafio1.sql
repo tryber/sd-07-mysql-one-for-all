@@ -27,11 +27,9 @@ CREATE TABLE IF NOT EXISTS `SpotifyClone`.`usuarios` (
   `idade` INT NOT NULL,
   `plano_id` INT NOT NULL,
   PRIMARY KEY (`usuario_id`),
-  CONSTRAINT `plano_id`
+  CONSTRAINT `plano_id1`
     FOREIGN KEY (`plano_id`)
-    REFERENCES `SpotifyClone`.`planos` (`plano_id`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
+    REFERENCES `SpotifyClone`.`planos` (`plano_id`))
 ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8;
 
@@ -65,16 +63,12 @@ CREATE TABLE IF NOT EXISTS `SpotifyClone`.`seguindo_artistas` (
   `usuario_id` INT NOT NULL,
   `artista_id` INT NOT NULL,
   PRIMARY KEY (`usuario_id`, `artista_id`),
-  CONSTRAINT `usuario_id`
+  CONSTRAINT `usuario_id1`
     FOREIGN KEY (`usuario_id`)
-    REFERENCES `SpotifyClone`.`usuarios` (`usuario_id`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION,
-  CONSTRAINT `artista_id`
+    REFERENCES `SpotifyClone`.`usuarios` (`usuario_id`),
+  CONSTRAINT `artista_id1`
     FOREIGN KEY (`artista_id`)
-    REFERENCES `SpotifyClone`.`artistas` (`artista_id`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
+    REFERENCES `SpotifyClone`.`artistas` (`artista_id`))
 ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8;
 
@@ -88,9 +82,7 @@ CREATE TABLE IF NOT EXISTS `SpotifyClone`.`albuns` (
   `artista_id` INT NOT NULL,
   CONSTRAINT `artista_id1`
     FOREIGN KEY (`artista_id`)
-    REFERENCES `SpotifyClone`.`artistas` (`artista_id`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
+    REFERENCES `SpotifyClone`.`artistas` (`artista_id`))
 ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8;
 
@@ -103,11 +95,9 @@ CREATE TABLE IF NOT EXISTS `SpotifyClone`.`cancoes` (
   `album_id` INT NOT NULL,
   `cancao_nome` VARCHAR(45) NOT NULL,
   PRIMARY KEY (`cancao_id`),
-  CONSTRAINT `album_id`
+  CONSTRAINT `album_id1`
     FOREIGN KEY (`album_id`)
-    REFERENCES `SpotifyClone`.`albuns` (`album_id`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
+    REFERENCES `SpotifyClone`.`albuns` (`album_id`))
 ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8;
 
@@ -121,14 +111,10 @@ CREATE TABLE IF NOT EXISTS `SpotifyClone`.`historico_reproducoes` (
   PRIMARY KEY (`usuario_id`, `cancao_id`),
   CONSTRAINT `usuario_id1`
     FOREIGN KEY (`usuario_id`)
-    REFERENCES `SpotifyClone`.`usuarios` (`usuario_id`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION,
-  CONSTRAINT `cancao_id`
+    REFERENCES `SpotifyClone`.`usuarios` (`usuario_id`),
+  CONSTRAINT `cancao_id1`
     FOREIGN KEY (`cancao_id`)
-    REFERENCES `SpotifyClone`.`cancoes` (`cancao_id`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
+    REFERENCES `SpotifyClone`.`cancoes` (`cancao_id`))
 ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8;
 
