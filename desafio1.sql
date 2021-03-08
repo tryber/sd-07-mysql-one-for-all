@@ -44,10 +44,10 @@ FOREIGN KEY (cancao_id) REFERENCES cancoes(cancao_id)
 ) ENGINE=InnoDB;
 
 CREATE TABLE IF NOT EXISTS seguindo(
-artista_id INT NOT NULL,
 usuario_id INT NOT NULL,
-PRIMARY KEY (artista_id, usuario_id),
-FOREIGN KEY (artista_id) REFERENCES artistas(artista_id),
+artista_id INT NOT NULL,
+PRIMARY KEY (usuario_id, artista_id),
+FOREIGN KEY (usuario_id) REFERENCES usuarios(usuario_id),
 FOREIGN KEY (artista_id) REFERENCES artistas(artista_id)
 ) ENGINE= InnoDB;
 
