@@ -47,7 +47,6 @@ FOREIGN KEY(artista_id) REFERENCES SpotifyClone.artistas(artista_id)
 )engine = InnoDB;
 
 CREATE TABLE historico_de_reproducoes(
-historico_de_reproducoes_id INT PRIMARY KEY AUTO_INCREMENT,
 usuario_id INT NOT NULL,
 cancao_id INT NOT NULL,
 PRIMARY KEY (usuario_id, cancao_id),
