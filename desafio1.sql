@@ -18,7 +18,7 @@ VALUES
 CREATE TABLE planos(
 plano_id INT AUTO_INCREMENT ,
 nome VARCHAR(100) NOT NULL,
-preco FLOAT(6,2) NOT NULL,
+preco DECIMAL(6,2) NOT NULL,
 PRIMARY KEY (plano_id)
 ) engine = InnoDB;
 
