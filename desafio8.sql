@@ -5,7 +5,7 @@ CREATE TRIGGER trigger_usuario_delete
 BEGIN
     DELETE FROM SpotifyClone.Followings
     WHERE OLD.use_id = Followings.use_id;
-	DELETE FROM SpotifyClone.Historic
+DELETE FROM SpotifyClone.Historic
     WHERE OLD.use_id = Historic.use_id;
 END $$
 DELIMITER;
