@@ -9,7 +9,7 @@ al.album_name AS album
 FROM SpotifyClone.Artistas AS `a`
 INNER JOIN SpotifyClone.Albunss AS `al`
 ON a.artista_id = al.artista_id
-HAVING artista_name = artistaName
+HAVING a.artista_name = artistaName
 ORDER BY album;
 END $$
 
