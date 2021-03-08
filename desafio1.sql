@@ -80,7 +80,7 @@ CREATE TABLE IF NOT EXISTS `SpotifyClone`.`albuns` (
   `album_id` INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
   `album_nome` VARCHAR(45) NOT NULL,
   `artista_id` INT NOT NULL,
-  CONSTRAINT `artista_id1`
+  CONSTRAINT `artista_id2`
     FOREIGN KEY (`artista_id`)
     REFERENCES `SpotifyClone`.`artistas` (`artista_id`))
 ENGINE = InnoDB
@@ -109,7 +109,7 @@ CREATE TABLE IF NOT EXISTS `SpotifyClone`.`historico_reproducoes` (
   `usuario_id` INT NOT NULL,
   `cancao_id` INT NOT NULL,
   PRIMARY KEY (`usuario_id`, `cancao_id`),
-  CONSTRAINT `usuario_id1`
+  CONSTRAINT `usuario_id2`
     FOREIGN KEY (`usuario_id`)
     REFERENCES `SpotifyClone`.`usuarios` (`usuario_id`),
   CONSTRAINT `cancao_id1`
