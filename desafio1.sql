@@ -5,14 +5,14 @@ CREATE DATABASE SpotifyClone;
 USE SpotifyClone;
 
 CREATE TABLE planos(
-	id INT AUTO_INCREMENT,
+id INT AUTO_INCREMENT,
     tipo VARCHAR(50) NOT NULL,
     valor DECIMAL(5,2) NOT NULL,
     PRIMARY KEY (id)
 ) engine = InnoDB;
 
 CREATE TABLE usuarios(
-	id INT AUTO_INCREMENT,
+id INT AUTO_INCREMENT,
     nome VARCHAR(50) NOT NULL,
     idade INT NOT NULL,
     plano_id INT,
@@ -21,13 +21,13 @@ CREATE TABLE usuarios(
 ) engine = InnoDB;
 
 CREATE TABLE artistas(
-	id INT AUTO_INCREMENT,
+id INT AUTO_INCREMENT,
     nome VARCHAR(50) NOT NULL,
     PRIMARY KEY (id)
 ) engine = InnoDB;
 
 CREATE TABLE albuns(
-	id INT AUTO_INCREMENT,
+id INT AUTO_INCREMENT,
     nome VARCHAR(50) NOT NULL,
     artista_id INT,
     PRIMARY KEY (id),
@@ -35,7 +35,7 @@ CREATE TABLE albuns(
 ) engine = InnoDB;
 
 CREATE TABLE usuario_segue_artista(
-	id INT AUTO_INCREMENT,
+id INT AUTO_INCREMENT,
     usuario_id INT NOT NULL,
     artista_id INT,
     PRIMARY KEY (id),
@@ -44,7 +44,7 @@ CREATE TABLE usuario_segue_artista(
 ) engine = InnoDB;
 
 CREATE TABLE cancoes(
-	id INT AUTO_INCREMENT,
+id INT AUTO_INCREMENT,
     nome VARCHAR(100) NOT NULL,
     artista_id INT,
     album_id INT,
@@ -54,7 +54,7 @@ CREATE TABLE cancoes(
 ) engine = InnoDB;
 
 CREATE TABLE usuario_ouve_cancao(
-	id INT AUTO_INCREMENT,
+id INT AUTO_INCREMENT,
     usuario_id INT NOT NULL,
     cancao_id INT,
     PRIMARY KEY (id),
