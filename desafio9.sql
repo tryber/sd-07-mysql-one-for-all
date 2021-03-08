@@ -6,8 +6,8 @@ BEGIN
 SELECT 
 a.artista_name AS artista,
 al.album_name AS album
-FROM SpotifyClone.artistas AS `a`
-INNER JOIN SpotifyClone.albuns AS `al`
+FROM SpotifyClone.Artistas AS `a`
+INNER JOIN SpotifyClone.Albunss AS `al`
 ON a.artista_id = al.artista_id
 HAVING artista_name = artistaName
 ORDER BY album;
