@@ -36,16 +36,16 @@ FOREIGN KEY (album_id) REFERENCES albuns(album_id)
 ) ENGINE=InnoDB;
 
 CREATE TABLE IF NOT EXISTS historico(
-usuario_id INT,
-cancao_id INT,
+usuario_id INT NOT NULL,
+cancao_id INT NOT NULL,
 PRIMARY KEY (usuario_id, cancao_id),
 FOREIGN KEY (usuario_id) REFERENCES usuarios(usuario_id),
 FOREIGN KEY (cancao_id) REFERENCES cancoes(cancao_id)
 ) ENGINE=InnoDB;
 
 CREATE TABLE IF NOT EXISTS seguindo(
-artista_id INT,
-usuario_id INT,
+artista_id INT NOT NULL,
+usuario_id INT NOT NULL,
 PRIMARY KEY (artista_id, usuario_id),
 FOREIGN KEY (artista_id) REFERENCES artistas(artista_id),
 FOREIGN KEY (artista_id) REFERENCES artistas(artista_id)
@@ -107,20 +107,25 @@ VALUES
 (1, 14),
 (1, 16),
 (2, 2),
+(2, 13),
 (2, 15),
 (2, 17),
 (3, 3),
 (3, 4),
+(3, 6),
 (3, 16),
 (4, 3),
 (4, 11),
 (4, 18);
 
-INSERT INTO SpotifyClone.seguindo(artista_id, usuario_id)
+INSERT INTO SpotifyClone.seguindo(usuario_id, artista_id)
 VALUES
 (1,1),
-(1,2),
+(1,4),
+(1,3),
 (2,3),
-(3,1),
+(2,1),
 (3,2),
+(3,1),
 (4,4);
+select * from artistas;
