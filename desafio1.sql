@@ -57,9 +57,9 @@ REFERENCES SpotifyClone.albums(`album_id`)
 
 DROP TABLE IF EXISTS `reproductions`;
 CREATE TABLE IF NOT EXISTS `reproductions` (
-reproductions_id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
 user_id INT,
 songs_id INT,
+PRIMARY KEY(user_id, songs_id),
 FOREIGN KEY (`user_id`)
 REFERENCES SpotifyClone.users(`user_id`),
 FOREIGN KEY (`songs_id`)
