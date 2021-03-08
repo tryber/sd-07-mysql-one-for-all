@@ -5,7 +5,7 @@ USE SpotifyClone;
 CREATE TABLE plano (
     plano_id INT AUTO_INCREMENT,
     tipo VARCHAR(50) NOT NULL,
-    valor DOUBLE NOT NULL,
+    valor DECIMAL(6, 2) NOT NULL,
     PRIMARY KEY (plano_id)
 )  ENGINE=INNODB;
 
