@@ -6,4 +6,5 @@ FROM SpotifyClone.Cancao AS `c`
 INNER JOIN SpotifyClone.HistoricoReproducao AS `r`
 ON c.cancao_id = r.cancao_id
 GROUP BY `cancao`
-ORDER BY `reproducoes` DESC, `cancao`;
+ORDER BY `reproducoes` DESC, `cancao`
+LIMIT 2;
