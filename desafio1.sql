@@ -33,6 +33,7 @@ CREATE TABLE seguindo_artistas(
 seguindo_artistas_id INT PRIMARY KEY AUTO_INCREMENT,
 usuario_id INT NOT NULL,
 artista_id INT,
+PRIMARY KEY (usuario_id, artista_id),
 FOREIGN KEY (usuario_id) REFERENCES SpotifyClone.usuarios(usuario_id),
 FOREIGN KEY (artista_id) REFERENCES SpotifyClone.artistas(artista_id)
 )engine = InnoDB;
