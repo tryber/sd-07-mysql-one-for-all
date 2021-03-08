@@ -65,27 +65,27 @@ CREATE TABLE seguindo_artistas (
 
 INSERT INTO SpotifyClone.plano(tipo, valor)
 VALUES
-	('gratuito', 0),
+    ('gratuito', 0),
     ('familiar', 7.99),
     ('universitario', 5.99);
 
 INSERT INTO SpotifyClone.usuario(nome, idade, plano_id)
 VALUES
-	('Thati', 23, 1),
+    ('Thati', 23, 1),
     ('Cintia', 35, 2),
     ('Bill', 20, 3),
     ('Roger', 45, 1);
 
 INSERT INTO SpotifyClone.artista(nome)
 VALUES
-	('Walter Phoenix'),
+    ('Walter Phoenix'),
     ('Peter Strong'),
     ('Lance Day'),
     ('Freedie Shannon');
 
 INSERT INTO SpotifyClone.album(nome, artista_id)
 VALUES
-	('Envious', 1),
+    ('Envious', 1),
     ('Exuberant', 1),
     ('Hallowed Steam', 2),
     ('Incandescent', 3),
