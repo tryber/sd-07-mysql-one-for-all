@@ -31,9 +31,9 @@ id INT PRIMARY KEY AUTO_INCREMENT,
 ) engine = InnoDB;
 
 CREATE TABLE SpotifyClone.usuario_segue_artista(
-id INT PRIMARY KEY AUTO_INCREMENT,
     usuario_id INT NOT NULL,
     artista_id INT,
+    PRIMARY KEY (usuario_id, artista_id),
     FOREIGN KEY (usuario_id) REFERENCES usuarios (id),
     FOREIGN KEY (artista_id) REFERENCES artistas (id)
 ) engine = InnoDB;
@@ -48,9 +48,9 @@ id INT PRIMARY KEY AUTO_INCREMENT,
 ) engine = InnoDB;
 
 CREATE TABLE SpotifyClone.usuario_ouve_cancao(
-id INT PRIMARY KEY AUTO_INCREMENT,
     usuario_id INT NOT NULL,
     cancao_id INT,
+    PRIMARY KEY (usuario_id, cancao_id),
     FOREIGN KEY (usuario_id) REFERENCES usuarios (id),
     FOREIGN KEY (cancao_id) REFERENCES cancoes (id)
 ) engine = InnoDB;
