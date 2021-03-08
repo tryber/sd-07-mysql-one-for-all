@@ -7,7 +7,7 @@ alb.nome_album AS album
 FROM SpotifyClone.artista AS art
 INNER JOIN SpotifyClone.album AS alb
 ON art.artista_id = alb.artista_id
-WHERE artista = nome_do_artista
+WHERE art.nome_artista = nome_do_artista
 ORDER BY album;
 END $$
 DELIMITER ;
