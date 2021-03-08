@@ -36,16 +36,16 @@ FOREIGN KEY (album_id) REFERENCES albuns(album_id)
 ) ENGINE=InnoDB;
 
 CREATE TABLE IF NOT EXISTS historico(
-usuario_id INT NOT NULL,
-cancao_id INT NOT NULL,
+usuario_id INT,
+cancao_id INT,
 PRIMARY KEY (usuario_id, cancao_id),
 FOREIGN KEY (usuario_id) REFERENCES usuarios(usuario_id),
 FOREIGN KEY (cancao_id) REFERENCES cancoes(cancao_id)
 ) ENGINE=InnoDB;
 
 CREATE TABLE IF NOT EXISTS seguindo(
-artista_id INT NOT NULL,
-usuario_id INT NOT NULL,
+artista_id INT,
+usuario_id INT,
 PRIMARY KEY (artista_id, usuario_id),
 FOREIGN KEY (artista_id) REFERENCES artistas(artista_id),
 FOREIGN KEY (artista_id) REFERENCES artistas(artista_id)
