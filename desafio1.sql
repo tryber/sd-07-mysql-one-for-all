@@ -78,4 +78,4 @@ INSERT INTO cancoes (nome, artista_id, album_id) VALUES
 ('Thang Of Thunder', 4, 5), ('Words Of Her Life', 4, 5), ('Without My Streets', 4, 5);
 
 INSERT INTO usuario_ouve_cancao (usuario_id, cancao_id) VALUES
-(1, 1), (1, 6), (1, 14), (1, 16), (2, 13), (2, 17), (2, 3), (2, 15), (3, 4), (3, 16), (3, 6), (4, 3), (4, 18), (4, 11);
+(1, 1), (1, 6), (1, 14), (1, 16), (2, 13), (2, 17), (2, 2), (2, 15), (3, 4), (3, 16), (3, 6), (4, 3), (4, 18), (4, 11);
