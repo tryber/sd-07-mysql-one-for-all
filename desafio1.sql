@@ -8,13 +8,13 @@ CREATE TABLE IF NOT EXISTS artistas(
 ) ENGINE=InnoDB;
 
 CREATE TABLE IF NOT EXISTS planos(
-	plano_id INT PRIMARY KEY AUTO_INCREMENT,
+	  plano_id INT PRIMARY KEY AUTO_INCREMENT,
     plano VARCHAR(30) NOT NULL,
     valor DECIMAL(4, 2) NOT NULL
 ) ENGINE=InnoDB;
 
 CREATE TABLE IF NOT EXISTS usuarios(
-	usuario_id INT PRIMARY KEY AUTO_INCREMENT,
+	  usuario_id INT PRIMARY KEY AUTO_INCREMENT,
     usuario VARCHAR(50) NOT NULL,
     idade INT NOT NULL,
     plano_id INT NOT NULL,
@@ -40,7 +40,7 @@ CREATE TABLE IF NOT EXISTS historico(
     cancao_id INT NOT NULL,
     PRIMARY KEY (usuario_id, cancao_id),
     FOREIGN KEY (usuario_id) REFERENCES usuarios(usuario_id),
-	FOREIGN KEY (cancao_id) REFERENCES cancoes(cancao_id)
+	  FOREIGN KEY (cancao_id) REFERENCES cancoes(cancao_id)
 ) ENGINE=InnoDB;
 
 CREATE TABLE IF NOT EXISTS seguindo(
