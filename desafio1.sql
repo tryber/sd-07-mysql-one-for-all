@@ -5,65 +5,65 @@ USE SpotifyClone;
 
 DROP TABLE IF EXISTS `plans`;
 CREATE TABLE IF NOT EXISTS `plans` (
-	plans_id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
-    plan VARCHAR(40) NOT NULL,
-    price DECIMAL(5, 2) NOT NULL
+plans_id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
+plan VARCHAR(40) NOT NULL,
+price DECIMAL(5, 2) NOT NULL
 ) ENGINE = InnoDB;
 
 DROP TABLE IF EXISTS `users`;
 CREATE TABLE IF NOT EXISTS `users` (
-	user_id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
-    name_users VARCHAR(50) NOT NULL,
-    age INT,
-    plans_id INT NOT NULL,
-    FOREIGN KEY (`plans_id`)
-		REFERENCES SpotifyClone.plans (`plans_id`)
+user_id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
+name_users VARCHAR(50) NOT NULL,
+age INT,
+plans_id INT NOT NULL,
+FOREIGN KEY (`plans_id`)
+REFERENCES SpotifyClone.plans (`plans_id`)
 ) ENGINE = InnoDB;
 
 DROP TABLE IF EXISTS `artists`;
 CREATE TABLE IF NOT EXISTS `artists` (
-	artist_id INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
-	name_artists VARCHAR (50)
+artist_id INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
+name_artists VARCHAR (50)
 ) ENGINE = InnoDB;
 
 DROP TABLE IF EXISTS `follow`;
 CREATE TABLE IF NOT EXISTS `follow` (
-	user_id INT,
-    artist_id INT,
-    PRIMARY KEY(user_id, artist_id),
-    FOREIGN KEY (`user_id`)
-		REFERENCES SpotifyClone.users(`user_id`),
-	FOREIGN KEY (`artist_id`)
-		REFERENCES SpotifyClone.artists(`artist_id`)
+user_id INT,
+artist_id INT,
+PRIMARY KEY(user_id, artist_id),
+FOREIGN KEY (`user_id`)
+REFERENCES SpotifyClone.users(`user_id`),
+FOREIGN KEY (`artist_id`)
+REFERENCES SpotifyClone.artists(`artist_id`)
 ) ENGINE = InnoDB;
 
 DROP TABLE IF EXISTS `albums`;
 CREATE TABLE IF NOT EXISTS `albums` (
-	album_id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
-    name_album VARCHAR(100),
-    artist_id INT,
-    FOREIGN KEY (`artist_id`)
-		REFERENCES SpotifyClone.artists(`artist_id`)
+album_id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
+name_album VARCHAR(100),
+artist_id INT,
+FOREIGN KEY (`artist_id`)
+REFERENCES SpotifyClone.artists(`artist_id`)
 ) ENGINE = InnoDB;
 
 DROP TABLE IF EXISTS `songs`;
 CREATE TABLE IF NOT EXISTS `songs` (
-	songs_id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
-    name_songs VARCHAR(100),
-    album_id INT,
-    FOREIGN KEY (`album_id`)
-		REFERENCES SpotifyClone.albums(`album_id`)
+songs_id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
+name_songs VARCHAR(100),
+album_id INT,
+FOREIGN KEY (`album_id`)
+REFERENCES SpotifyClone.albums(`album_id`)
 ) ENGINE = InnoDB;
 
 DROP TABLE IF EXISTS `reproductions`;
 CREATE TABLE IF NOT EXISTS `reproductions` (
-	reproductions_id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
-    user_id INT,
-    songs_id INT,
-    FOREIGN KEY (`user_id`)
-		REFERENCES SpotifyClone.users(`user_id`),
-	FOREIGN KEY (`songs_id`)
-		REFERENCES SpotifyClone.songs(`songs_id`)
+reproductions_id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
+user_id INT,
+songs_id INT,
+FOREIGN KEY (`user_id`)
+REFERENCES SpotifyClone.users(`user_id`),
+FOREIGN KEY (`songs_id`)
+REFERENCES SpotifyClone.songs(`songs_id`)
 ) ENGINE = InnoDB;
 
 INSERT INTO plans (plan, price)
