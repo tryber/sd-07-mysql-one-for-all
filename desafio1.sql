@@ -3,29 +3,29 @@ CREATE DATABASE SpotifyClone;
 USE SpotifyClone;
 
 CREATE TABLE IF NOT EXISTS artistas(
-    artista_id INT PRIMARY KEY AUTO_INCREMENT,
-    artista VARCHAR(50) NOT NULL
+artista_id INT PRIMARY KEY AUTO_INCREMENT,
+artista VARCHAR(50) NOT NULL
 ) ENGINE=InnoDB;
 
 CREATE TABLE IF NOT EXISTS planos(
-	  plano_id INT PRIMARY KEY AUTO_INCREMENT,
-    plano VARCHAR(30) NOT NULL,
-    valor DECIMAL(4, 2) NOT NULL
+plano_id INT PRIMARY KEY AUTO_INCREMENT,
+plano VARCHAR(30) NOT NULL,
+valor DECIMAL(4, 2) NOT NULL
 ) ENGINE=InnoDB;
 
 CREATE TABLE IF NOT EXISTS usuarios(
-	  usuario_id INT PRIMARY KEY AUTO_INCREMENT,
-    usuario VARCHAR(50) NOT NULL,
-    idade INT NOT NULL,
-    plano_id INT NOT NULL,
-    FOREIGN KEY (plano_id) REFERENCES planos(plano_id)
+usuario_id INT PRIMARY KEY AUTO_INCREMENT,
+usuario VARCHAR(50) NOT NULL,
+idade INT NOT NULL,
+plano_id INT NOT NULL,
+FOREIGN KEY (plano_id) REFERENCES planos(plano_id)
 ) ENGINE=InnoDB;
 
 CREATE TABLE IF NOT EXISTS albuns(
-    album_id INT PRIMARY KEY AUTO_INCREMENT,
-    album VARCHAR(50) NOT NULL,
-    artista_id INT NOT NULL,
-    FOREIGN KEY (artista_id) REFERENCES artistas(artista_id)
+album_id INT PRIMARY KEY AUTO_INCREMENT,
+album VARCHAR(50) NOT NULL,
+artista_id INT NOT NULL,
+FOREIGN KEY (artista_id) REFERENCES artistas(artista_id)
 ) ENGINE=InnoDB;
 
 CREATE TABLE IF NOT EXISTS cancoes(
@@ -36,11 +36,11 @@ FOREIGN KEY (album_id) REFERENCES albuns(album_id)
 ) ENGINE=InnoDB;
 
 CREATE TABLE IF NOT EXISTS historico(
-    usuario_id INT NOT NULL,
-    cancao_id INT NOT NULL,
-    PRIMARY KEY (usuario_id, cancao_id),
-    FOREIGN KEY (usuario_id) REFERENCES usuarios(usuario_id),
-	  FOREIGN KEY (cancao_id) REFERENCES cancoes(cancao_id)
+usuario_id INT NOT NULL,
+cancao_id INT NOT NULL,
+PRIMARY KEY (usuario_id, cancao_id),
+FOREIGN KEY (usuario_id) REFERENCES usuarios(usuario_id),
+FOREIGN KEY (cancao_id) REFERENCES cancoes(cancao_id)
 ) ENGINE=InnoDB;
 
 CREATE TABLE IF NOT EXISTS seguindo(
