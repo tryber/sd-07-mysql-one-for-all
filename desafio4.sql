@@ -8,4 +8,3 @@ CREATE VIEW top_3_artistas AS
     GROUP BY a.artista_id
     ORDER BY `seguidores` DESC , `artista`
     LIMIT 3;
-    

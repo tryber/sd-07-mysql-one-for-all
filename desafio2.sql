@@ -9,4 +9,3 @@ CREATE VIEW estatisticas_musicais AS
         SpotifyClone.albuns AS a2 ON m.album_id = a2.album_id
             INNER JOIN
         SpotifyClone.artistas AS a ON a2.artista_id = a.artista_id;
-        

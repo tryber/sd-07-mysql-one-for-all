@@ -8,4 +8,3 @@ CREATE VIEW top_2_hits_do_momento AS
     GROUP BY m.musica_id
     ORDER BY `reproducoes` DESC , `cancao`
     LIMIT 2;
-    
