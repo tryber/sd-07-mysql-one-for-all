@@ -13,7 +13,7 @@ CREATE TABLE usuarios (
 usuario_id INT PRIMARY KEY AUTO_INCREMENT,
 usuario VARCHAR(100) NOT NULL,
 idade INT NOT NULL,
-plano_id INT,
+plano_id INT NOT NULL,
 FOREIGN KEY (plano_id) REFERENCES SpotifyClone.planos(plano_id)
 )engine = InnoDB;
 
@@ -25,13 +25,13 @@ artista VARCHAR(100) NOT NULL,
 CREATE TABLE albuns (
 album_id INT PRIMARY KEY AUTO_INCREMENT,
 album VARCHAR(100) NOT NULL,
-artista_id INT,
+artista_id INT NOT NULL,
 FOREIGN KEY (artista_id) REFERENCES SpotifyClone.artistas(artista_id)
 )engine = InnoDB;
 
 CREATE TABLE seguindo_artistas(
 usuario_id INT NOT NULL,
-artista_id INT,
+artista_id INT NOT NULL,
 PRIMARY KEY (usuario_id, artista_id),
 FOREIGN KEY (usuario_id) REFERENCES SpotifyClone.usuarios(usuario_id),
 FOREIGN KEY (artista_id) REFERENCES SpotifyClone.artistas(artista_id)
