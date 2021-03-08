@@ -322,7 +322,7 @@ describe('Queries de seleção', () => {
     });
   });
 
-  describe.only('Crie uma function chamada de `quantidade_musicas_no_historico` que exibe a quantidade de músicas que estão presente atualmente no histórico de reprodução de uma pessoa usuária', () => {
+  describe('Crie uma function chamada de `quantidade_musicas_no_historico` que exibe a quantidade de músicas que estão presente atualmente no histórico de reprodução de uma pessoa usuária', () => {
     it('Verifica o desafio 10', async () => {
       const {
         tabela_que_contem_usuario: userTable,
