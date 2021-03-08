@@ -19,7 +19,7 @@ FOREIGN KEY (plano_id) REFERENCES SpotifyClone.planos(plano_id)
 
 CREATE TABLE artistas (
 artista_id INT PRIMARY KEY AUTO_INCREMENT,
-artista VARCHAR(100) NOT NULL,
+artista VARCHAR(100) NOT NULL
 )engine = InnoDB;
 
 CREATE TABLE albuns (
