@@ -1,5 +1,3 @@
-DROP TRIGGER IF EXISTS trigger_usuario_delete;
-
 DELIMITER $$
 
 CREATE TRIGGER trigger_usuario_delete
