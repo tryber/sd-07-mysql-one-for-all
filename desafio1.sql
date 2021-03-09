@@ -74,7 +74,7 @@ INSERT INTO Artista(nome)
 VALUES('Walter Phoenix'), ('Peter Strong'), ('Lance Day'), ('Freedie Shannon');
 
 INSERT INTO Album(nome, artista_id)
-VALUES('Envious', 1), ('Exuberant', 2), ('Hallowed Steam', 3), ('Incandescent', 4), ('Temporary Culture', 5);
+VALUES('Envious', 1), ('Exuberant', 1), ('Hallowed Steam', 2), ('Incandescent', 3), ('Temporary Culture', 4);
     
 INSERT INTO Usuario(nome, idade, plano_id )
 VALUES('Thati', 23, 1 ), ('Cintia', 35, 2), ('Bill', 20, 3), ('Roger', 45, 1);
