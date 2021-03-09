@@ -81,4 +81,3 @@ VALUES("Soul For Us", 1 ), ("Reflections Of Magic", 1), ("Dance With Her Own", 1
         
 INSERT INTO Historico(usuario_id, cancao_id)
 VALUES(1, 1), (1, 6), (1, 14), (1, 16), (2, 13), (2, 17), (2, 2), (2, 15), (3, 4), (3, 16), (3, 6), (4, 3), (4, 18), (4, 11);
-
