@@ -1,65 +1,65 @@
 DROP DATABASE IF EXISTS SpotifyClone;
-CREATE DATABASE IF NOT EXISTS SpotifyClone;
+CREATE DATABASE SpotifyClone;
 
 USE SpotifyClone;
 
-CREATE TABLE IF NOT EXISTS Plano (
-    id INT AUTO_INCREMENT PRIMARY KEY NOT NULL,
-    tipo VARCHAR(40) NOT NULL,
-    valor DECIMAL(5 , 2 ) NOT NULL
-);
+CREATE TABLE Plano (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    tipo VARCHAR(50),
+    valor DECIMAL(5, 2)
+) ENGINE=InnoDB;
 
 
-CREATE TABLE IF NOT EXISTS Artista (
-    id INT AUTO_INCREMENT PRIMARY KEY NOT NULL,
+CREATE TABLE Artista (
+    id INT AUTO_INCREMENT PRIMARY KEY,
     nome VARCHAR(50) NOT NULL
-);
+) ENGINE=InnoDB;
 
-CREATE TABLE IF NOT EXISTS Album (
-    id INT AUTO_INCREMENT PRIMARY KEY NOT NULL,
+CREATE TABLE Album (
+    id INT AUTO_INCREMENT PRIMARY KEY,
     nome VARCHAR(100) NOT NULL,
     artista_id INT NOT NULL,
     FOREIGN KEY (artista_id)
-        REFERENCES SpotifyClone.Artista (id)
-);
+        REFERENCES Artista (id)
+) ENGINE=InnoDB;
 
-CREATE TABLE IF NOT EXISTS Usuario (
-    id INT AUTO_INCREMENT PRIMARY KEY NOT NULL,
+CREATE TABLE Usuario (
+    id INT AUTO_INCREMENT PRIMARY KEY,
     nome VARCHAR(50) NOT NULL,
-    idade INT,
+    idade INT NOT NULL,
     plano_id INT NOT NULL,
     FOREIGN KEY (plano_id)
-        REFERENCES SpotifyClone.Plano (id)
-);
+        REFERENCES Plano (id)
+) ENGINE=InnoDB;
 
-CREATE TABLE IF NOT EXISTS Seguindo (
-    usuario_id INT,
-    artista_id INT,
+CREATE TABLE Seguindo (
+    usuario_id INT NOT NULL,
+    artista_id INT NOT NULL,
     PRIMARY KEY (usuario_id , artista_id),
     FOREIGN KEY (usuario_id)
-        REFERENCES SpotifyClone.Usuario (id),
+        REFERENCES Usuario (id),
     FOREIGN KEY (artista_id)
-        REFERENCES SpotifyClone.Artista (id)
-);
+        REFERENCES Artista (id)
+) ENGINE=InnoDB;
 
-CREATE TABLE IF NOT EXISTS Cancao (
-    id INT AUTO_INCREMENT PRIMARY KEY NOT NULL,
-    nome VARCHAR(100) NOT NULL,
-    album_id INT,
+CREATE TABLE Cancao (
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    nome VARCHAR(100),
+    album_id INT NOT NULL,
     FOREIGN KEY (album_id)
-        REFERENCES SpotifyClone.Album (id)
-);
+        REFERENCES Album (id)
+) ENGINE=InnoDB;
 
 
-CREATE TABLE IF NOT EXISTS Historico (
-    usuario_id INT,
-    cancao_id INT,
+CREATE TABLE Historico (
+    usuario_id INT NOT NULL,
+    cancao_id INT NOT NULL,
     PRIMARY KEY (usuario_id , cancao_id),
     FOREIGN KEY (usuario_id)
-        REFERENCES SpotifyClone.Usuario (id),
+        REFERENCES Usuario(id),
     FOREIGN KEY (cancao_id)
-        REFERENCES SpotifyClone.Cancao (id)
-);
+        REFERENCES Cancao(id)
+) ENGINE=InnoDB;
 
 INSERT INTO Plano(tipo, valor)
 VALUES('gratuito', 0), ('familiar', 7.99), ('universitário', 5.99);
