@@ -22,7 +22,7 @@ CREATE TABLE Album (
     nome VARCHAR(50) NOT NULL,
     artista_id INT NOT NULL,
     FOREIGN KEY (artista_id)
-        REFERENCES Artista (id)
+        REFERENCES SpotifyClone.Artista (id)
 ) ENGINE = InnoDB;
 
 DROP TABLE IF EXISTS Usuario;
@@ -32,7 +32,7 @@ CREATE TABLE Usuario (
     idade INT NOT NULL,
     plano_id INT NOT NULL,
     FOREIGN KEY (plano_id)
-        REFERENCES Plano (id)
+        REFERENCES SpotifyClone.Plano (id)
 ) ENGINE = InnoDB;
 
 DROP TABLE IF EXISTS Seguindo;
@@ -41,9 +41,9 @@ CREATE TABLE Seguindo (
     artista_id INT NOT NULL,
     PRIMARY KEY (usuario_id , artista_id),
     FOREIGN KEY (usuario_id)
-        REFERENCES Usuario (id),
+        REFERENCES SpotifyClone.Usuario (id),
     FOREIGN KEY (artista_id)
-        REFERENCES Artista (id)
+        REFERENCES SpotifyClone.Artista (id)
 ) ENGINE = InnoDB;
 
 DROP TABLE IF EXISTS Cancao;
@@ -52,7 +52,7 @@ CREATE TABLE Cancao (
     nome VARCHAR(50) NOT NULL,
     album_id INT NOT NULL,
     FOREIGN KEY (album_id)
-        REFERENCES Album (id)
+        REFERENCES SpotifyClone.Album (id)
 ) ENGINE = InnoDB;
 
 DROP TABLE IF EXISTS Historico;
@@ -63,7 +63,7 @@ CREATE TABLE Historico (
     FOREIGN KEY (usuario_id)
         REFERENCES Usuario (id),
     FOREIGN KEY (cancao_id)
-        REFERENCES Cancao (id)
+        REFERENCES SpotifyClone.Cancao (id)
 ) ENGINE = InnoDB;
 
 INSERT INTO Plano(tipo, valor)
