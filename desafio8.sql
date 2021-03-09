@@ -5,9 +5,9 @@ FOR EACH ROW
 BEGIN
 DELETE FROM Historico 
 WHERE
-    usuario_id = old.id;
+    usuario_id = OLD.id;
 DELETE FROM Seguindo 
 WHERE
-    usuario_id = old.id;
+    usuario_id = OLD.id;
 END $$
 DELIMITER ;
