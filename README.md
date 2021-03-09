@@ -149,7 +149,7 @@ Seu banco de dados deve seguir as regras de negócio e ser capaz de recuperar:
 
   - Será um dia de projeto.
   
-  - Data de entrega para avaliação final do projeto: `12/03/2021 - 14:00h`.
+  - Data de entrega para avaliação final do projeto: `15/03/2021 - 14:00h`.
 
 ---
 
