@@ -19,7 +19,7 @@ CREATE TABLE IF NOT EXISTS Artista (
 DROP TABLE IF EXISTS `Album`;
 CREATE TABLE IF NOT EXISTS Album (
     id INT AUTO_INCREMENT PRIMARY KEY NOT NULL,
-    nome VARCHAR(50) NOT NULL,
+    nome VARCHAR(100) NOT NULL,
     artista_id INT NOT NULL,
     FOREIGN KEY (artista_id)
         REFERENCES SpotifyClone.Artista (id)
@@ -49,7 +49,7 @@ CREATE TABLE IF NOT EXISTS Seguindo (
 DROP TABLE IF EXISTS `Cancao`;
 CREATE TABLE IF NOT EXISTS Cancao (
     id INT AUTO_INCREMENT PRIMARY KEY NOT NULL,
-    nome VARCHAR(50) NOT NULL,
+    nome VARCHAR(100) NOT NULL,
     album_id INT,
     FOREIGN KEY (album_id)
         REFERENCES SpotifyClone.Album (id)
