@@ -15,3 +15,6 @@ CREATE VIEW estatisticas_musicais AS
                 COUNT(album.id)
             FROM
                 SpotifyClone.Album AS album) AS 'albuns';
+                
+                
+SELECT * FROM estatisticas_musicais;
