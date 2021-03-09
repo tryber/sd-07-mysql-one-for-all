@@ -59,6 +59,7 @@ DROP TABLE IF EXISTS Historico;
 CREATE TABLE Historico (
     usuario_id INT,
     cancao_id INT,
+    primary key (usuario_id, cancao_id),
     FOREIGN KEY (usuario_id)
         REFERENCES Usuario (id),
     FOREIGN KEY (cancao_id)
