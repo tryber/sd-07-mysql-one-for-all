@@ -1,12 +1,14 @@
+DROP TRIGGER IF EXISTS trigger_usuario_delete;
+
 DELIMITER $$
 CREATE TRIGGER trigger_usuario_delete
 BEFORE DELETE ON Usuario
 FOR EACH ROW
 BEGIN
-DELETE FROM Historico 
-WHERE
-    usuario_id = old.id;
-DELETE FROM Seguindo 
+DELETE FROM SpotifyClone.Historico 
+WHERE 
+	usuario_id = old.id;
+DELETE FROM SpotifyClone.Seguindo 
 WHERE
     usuario_id = old.id;
 END $$
