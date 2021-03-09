@@ -45,7 +45,7 @@ CREATE TABLE Cancao (
     album_id INT NOT NULL,
     FOREIGN KEY (album_id)
         REFERENCES Album (id),
-	artista_id INT NOT NULL,
+    artista_id INT NOT NULL,
     FOREIGN KEY (artista_id)
         REFERENCES Artista (id)
 );
