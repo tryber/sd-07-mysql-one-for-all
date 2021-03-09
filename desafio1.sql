@@ -71,7 +71,7 @@ INSERT INTO Plano(tipo, valor)
 VALUES('gratuito', 0), ('familiar', 7.99), ('universitário', 5.99);
 
 INSERT INTO Artista(nome)
-VALUES('Walter Phoenix'), ('Peter Strong'), ('Lancy Day'), ('Freedie Shannon');
+VALUES('Walter Phoenix'), ('Peter Strong'), ('Lance Day'), ('Freedie Shannon');
 
 INSERT INTO Album(nome, artista_id)
 VALUES('Envious', 1), ('Exuberant', 2), ('Hallowed Steam', 3), ('Incandescent', 4), ('Temporary Culture', 5);
