@@ -1,38 +1,43 @@
+SET FOREIGN_KEY_CHECKS=0;
 DROP DATABASE IF EXISTS SpotifyClone;
 CREATE DATABASE SpotifyClone;
 
 USE SpotifyClone;
 
-CREATE TABLE Plano (
-    id INT AUTO_INCREMENT PRIMARY KEY,
+DROP TABLE IF EXISTS Plano;
+CREATE TABLE IF NOT EXISTS Plano (
+    id INT AUTO_INCREMENT PRIMARY KEY NOT NULL,
     tipo VARCHAR(50),
-    valor DECIMAL(5, 2)
-) ENGINE=InnoDB;
+    valor DECIMAL(5 , 2 )
+)  ENGINE=INNODB;
 
-
-CREATE TABLE Artista (
-    id INT AUTO_INCREMENT PRIMARY KEY,
+DROP TABLE IF EXISTS Artista;
+CREATE TABLE IF NOT EXISTS Artista (
+    id INT AUTO_INCREMENT PRIMARY KEY NOT NULL,
     nome VARCHAR(50) NOT NULL
-) ENGINE=InnoDB;
+)  ENGINE=INNODB;
 
-CREATE TABLE Album (
-    id INT AUTO_INCREMENT PRIMARY KEY,
+DROP TABLE IF EXISTS Album;
+CREATE TABLE IF NOT EXISTS Album (
+    id INT AUTO_INCREMENT PRIMARY KEY NOT NULL,
     nome VARCHAR(100) NOT NULL,
     artista_id INT NOT NULL,
     FOREIGN KEY (artista_id)
         REFERENCES Artista (id)
-) ENGINE=InnoDB;
+)  ENGINE=INNODB;
 
-CREATE TABLE Usuario (
-    id INT AUTO_INCREMENT PRIMARY KEY,
+DROP TABLE IF EXISTS Usuario;
+CREATE TABLE IF NOT EXISTS Usuario (
+    id INT AUTO_INCREMENT PRIMARY KEY NOT NULL,
     nome VARCHAR(50) NOT NULL,
     idade INT NOT NULL,
     plano_id INT NOT NULL,
     FOREIGN KEY (plano_id)
         REFERENCES Plano (id)
-) ENGINE=InnoDB;
+)  ENGINE=INNODB;
 
-CREATE TABLE Seguindo (
+DROP TABLE IF EXISTS Seguindo;
+CREATE TABLE IF NOT EXISTS Seguindo (
     usuario_id INT NOT NULL,
     artista_id INT NOT NULL,
     PRIMARY KEY (usuario_id , artista_id),
@@ -40,26 +45,27 @@ CREATE TABLE Seguindo (
         REFERENCES Usuario (id),
     FOREIGN KEY (artista_id)
         REFERENCES Artista (id)
-) ENGINE=InnoDB;
+)  ENGINE=INNODB;
 
-CREATE TABLE Cancao (
-    id INT PRIMARY KEY AUTO_INCREMENT,
+DROP TABLE IF EXISTS Cancao;
+CREATE TABLE IF NOT EXISTS Cancao (
+    id INT PRIMARY KEY AUTO_INCREMENT NOT NULL,
     nome VARCHAR(100),
     album_id INT NOT NULL,
     FOREIGN KEY (album_id)
         REFERENCES Album (id)
-) ENGINE=InnoDB;
+)  ENGINE=INNODB;
 
-
-CREATE TABLE Historico (
+DROP TABLE IF EXISTS Historico;
+CREATE TABLE IF NOT EXISTS Historico (
     usuario_id INT NOT NULL,
     cancao_id INT NOT NULL,
     PRIMARY KEY (usuario_id , cancao_id),
     FOREIGN KEY (usuario_id)
-        REFERENCES Usuario(id),
+        REFERENCES Usuario (id),
     FOREIGN KEY (cancao_id)
-        REFERENCES Cancao(id)
-) ENGINE=InnoDB;
+        REFERENCES Cancao (id)
+)  ENGINE=INNODB;
 
 INSERT INTO Plano(tipo, valor)
 VALUES('gratuito', 0), ('familiar', 7.99), ('universitário', 5.99);
