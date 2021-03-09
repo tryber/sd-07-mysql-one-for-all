@@ -3,29 +3,26 @@ CREATE DATABASE IF NOT EXISTS SpotifyClone;
 
 USE SpotifyClone;
 
-DROP TABLE IF EXISTS `plano`;
 CREATE TABLE IF NOT EXISTS Plano (
     id INT AUTO_INCREMENT PRIMARY KEY NOT NULL,
     tipo VARCHAR(40) NOT NULL,
     valor DECIMAL(5 , 2 ) NOT NULL
-)  ENGINE=INNODB;
+);
 
-DROP TABLE IF EXISTS `artista`;
+
 CREATE TABLE IF NOT EXISTS Artista (
     id INT AUTO_INCREMENT PRIMARY KEY NOT NULL,
     nome VARCHAR(50) NOT NULL
-)  ENGINE=INNODB;
+);
 
-DROP TABLE IF EXISTS `album`;
 CREATE TABLE IF NOT EXISTS Album (
     id INT AUTO_INCREMENT PRIMARY KEY NOT NULL,
     nome VARCHAR(100) NOT NULL,
     artista_id INT NOT NULL,
     FOREIGN KEY (artista_id)
         REFERENCES SpotifyClone.Artista (id)
-)  ENGINE=INNODB;
+);
 
-DROP TABLE IF EXISTS `usuario`;
 CREATE TABLE IF NOT EXISTS Usuario (
     id INT AUTO_INCREMENT PRIMARY KEY NOT NULL,
     nome VARCHAR(50) NOT NULL,
@@ -33,9 +30,8 @@ CREATE TABLE IF NOT EXISTS Usuario (
     plano_id INT NOT NULL,
     FOREIGN KEY (plano_id)
         REFERENCES SpotifyClone.Plano (id)
-)  ENGINE=INNODB;
+);
 
-DROP TABLE IF EXISTS `seguindo`;
 CREATE TABLE IF NOT EXISTS Seguindo (
     usuario_id INT,
     artista_id INT,
@@ -44,27 +40,26 @@ CREATE TABLE IF NOT EXISTS Seguindo (
         REFERENCES SpotifyClone.Usuario (id),
     FOREIGN KEY (artista_id)
         REFERENCES SpotifyClone.Artista (id)
-)  ENGINE=INNODB;
+);
 
-DROP TABLE IF EXISTS `cancao`;
 CREATE TABLE IF NOT EXISTS Cancao (
     id INT AUTO_INCREMENT PRIMARY KEY NOT NULL,
     nome VARCHAR(100) NOT NULL,
     album_id INT,
     FOREIGN KEY (album_id)
         REFERENCES SpotifyClone.Album (id)
-)  ENGINE=INNODB;
+);
 
-DROP TABLE IF EXISTS `historico`;
+
 CREATE TABLE IF NOT EXISTS Historico (
     usuario_id INT,
     cancao_id INT,
     PRIMARY KEY (usuario_id , cancao_id),
     FOREIGN KEY (usuario_id)
-        REFERENCES Usuario (id),
+        REFERENCES SpotifyClone.Usuario (id),
     FOREIGN KEY (cancao_id)
         REFERENCES SpotifyClone.Cancao (id)
-)  ENGINE=INNODB;
+);
 
 INSERT INTO Plano(tipo, valor)
 VALUES('gratuito', 0), ('familiar', 7.99), ('universitário', 5.99);
