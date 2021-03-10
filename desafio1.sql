@@ -81,7 +81,7 @@ VALUES (1, 'Celebration Of More', 4),
 (3, 'Diamond Power', 4),
 (4, 'Fantasy For Me', 4),
 (5, 'Home Forever', 4),
-(6, "Honey Let's Be Silly", 4),
+(6, "Honey, Let's Be Silly", 4),
 (7, 'Honey, So Do I', 3),
 (8, 'Magic Circus', 3),
 (9, 'Reflections Of Magic', 1),
@@ -108,7 +108,7 @@ VALUES (1, 3),
 (3, 14),
 (3, 16),
 (4, 2),
-(4, 12 ),
+(4, 1 ),
 (4, 17);
 
 INSERT INTO usuarios_artistas(usuario_id, artista_id)
