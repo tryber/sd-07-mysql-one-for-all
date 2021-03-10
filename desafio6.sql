@@ -1,3 +1,4 @@
+CREATE VIEW faturamento_atual AS
 SELECT MIN(P1.price) AS "faturamento_minimo" ,
 MAX(P1.price) AS "faturamento_maximo",
 ROUND(AVG(P1.price), 2)"faturamento_médio",
