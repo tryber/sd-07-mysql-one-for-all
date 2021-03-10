@@ -38,14 +38,14 @@ FOREIGN KEY (cover_id) REFERENCES covers (cover_id)
 
 CREATE TABLE history_reproductions(
 user_id INT NOT NULL,
-reproductions varchar(50) NOT NULL,
+reproductions varchar(50) PRIMARY KEY NOT NULL,
 FOREIGN KEY (user_id) REFERENCES users (user_id),
 FOREIGN KEY (reproductions) REFERENCES songs (song)
 );
 
 CREATE TABLE following (
 user_id INT NOT NULL,
-following varchar(50) NOT NULL,
+following varchar(50) PRIMARY KEY NOT NULL,
 FOREIGN KEY (user_id) REFERENCES users(user_id),
 FOREIGN KEY (following) REFERENCES artists (name)
 );
