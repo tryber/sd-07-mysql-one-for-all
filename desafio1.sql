@@ -71,14 +71,15 @@ INSERT INTO usuarios(usuario_id, nome, idade, plano)
 VALUES (1, 'Thati', 23, 1), (2, 'Cintia', 35, 3), (3, 'Bill', 20, 2), (4, 'Roger', 45, 1);
 
 CREATE TABLE historico_de_reproducoes(
-historico_id INT PRIMARY KEY AUTO_INCREMENT,
+id INT NOT NULL AUTO_INCREMENT,
 usuario_id INT NOT NULL,
 cancao_id INT NOT NULL,
+PRIMARY KEY (id, usuario_id, cancao_id),
 FOREIGN KEY (usuario_id) REFERENCES usuarios(usuario_id),
 FOREIGN KEY (cancao_id) REFERENCES cancoes(cancao_id)
 );
 
-INSERT INTO historico_de_reproducoes(historico_id, usuario_id, cancao_id)
+INSERT INTO historico_de_reproducoes(id, usuario_id, cancao_id)
 VALUES (1, 1, 1), (2, 1, 6), (3, 1, 14), (4, 1, 16), (5, 2, 13), (6, 2, 17), (7, 2, 2), (8, 2, 15), (9, 3, 4), (10, 3, 16), (11, 3, 6), (12, 4, 3), (13, 4, 18), (14, 4, 11);
 
 CREATE TABLE seguindo_artistas(
