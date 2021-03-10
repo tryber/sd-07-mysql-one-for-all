@@ -47,7 +47,7 @@ FOREIGN KEY (reproductions) REFERENCES songs (song)
 CREATE TABLE following (
 user_id INT NOT NULL,
 following varchar(50) NOT NULL,
-PRIMARY KEY (user_id, following)
+PRIMARY KEY (user_id, following),
 FOREIGN KEY (user_id) REFERENCES users(user_id),
 FOREIGN KEY (following) REFERENCES artists (name)
 );
