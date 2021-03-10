@@ -36,17 +36,17 @@ CREATE TABLE cancao(
 ) ENGINE=InnoDB;
 
 CREATE TABLE seguidores(
-  seguidores_id INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
   artista_id INT NOT NULL,
   usuario_id INT NOT NULL,
+  PRIMARY KEY (artista_id, usuario_id),
   FOREIGN KEY (artista_id) REFERENCES artista(artista_id),
   FOREIGN KEY (usuario_id) REFERENCES usuario(usuario_id)
 ) ENGINE=InnoDB;
 
 CREATE TABLE historico_reproducoes(
-  historico_reproducoes_id INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
   usuario_id INT NOT NULL,
   cancao_id INT NOT NULL,
+  PRIMARY KEY (usuario_id, cancao_id),
   FOREIGN KEY (usuario_id) REFERENCES usuario(usuario_id),
   FOREIGN KEY (cancao_id) REFERENCES cancao(cancao_id)
 ) ENGINE=InnoDB;
