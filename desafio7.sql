@@ -7,7 +7,7 @@ INNER JOIN SpotifyClone.album AS album
 ON artists.id = album.artist_id
 INNER JOIN SpotifyClone.following AS following 
 ON following.artist_id = artists.id
-GROUP BY album
+GROUP BY album.id
 ORDER BY `seguidores` DESC,
 artists.name,
 album.title;
