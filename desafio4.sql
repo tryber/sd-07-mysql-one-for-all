@@ -5,5 +5,5 @@ FROM SpotifyClone.artists AS artists
 INNER JOIN SpotifyClone.following AS following 
 ON following.artist_id = artists.id
 GROUP BY artists.name
-ORDER BY `seguidores` DESC
+ORDER BY `seguidores` DESC, artists.name
 LIMIT 3;
