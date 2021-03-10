@@ -5,49 +5,49 @@ CREATE DATABASE IF NOT EXISTS SpotifyClone;
 USE SpotifyClone;
 
 CREATE TABLE plans(
-	plan varchar(50) PRIMARY KEY NOT NULL,
-    value DOUBLE NOT NULL
+plan varchar(50) PRIMARY KEY NOT NULL,
+value DOUBLE NOT NULL
 );
 
 CREATE TABLE users(
-	user_id INT PRIMARY KEY auto_increment,
-    name VARCHAR(50) NOT NULL,
-    age INT NOT NULL,
-    plan VARCHAR(50) NOT NULL,
-    FOREIGN KEY (plan) REFERENCES plans (plan)
+user_id INT PRIMARY KEY auto_increment,
+name VARCHAR(50) NOT NULL,
+age INT NOT NULL,
+plan VARCHAR(50) NOT NULL,
+FOREIGN KEY (plan) REFERENCES plans (plan)
 );
 
 
 CREATE TABLE artists(
-	name VARCHAR(100) PRIMARY KEY NOT NULL
+name VARCHAR(100) PRIMARY KEY NOT NULL
 );
 
 
 CREATE TABLE covers(
-	cover_id INT PRIMARY KEY NOT NULL auto_increment,
-    cover varchar(50) NOT NULL,
-    artist varchar(50) NOT NULL,
-    FOREIGN KEY (artist) REFERENCES artists(name)
+cover_id INT PRIMARY KEY NOT NULL auto_increment,
+cover varchar(50) NOT NULL,
+artist varchar(50) NOT NULL,
+FOREIGN KEY (artist) REFERENCES artists(name)
 );
 
 CREATE TABLE songs(
-    cover_id INT NOT NULL,
-	song VARCHAR(50) PRIMARY KEY NOT NULL,
-    FOREIGN KEY (cover_id) REFERENCES covers (cover_id)
+cover_id INT NOT NULL,
+song VARCHAR(50) PRIMARY KEY NOT NULL,
+FOREIGN KEY (cover_id) REFERENCES covers (cover_id)
 );
 
 CREATE TABLE history_reproductions(
-	user_id INT NOT NULL,
-    reproductions varchar(50) NOT NULL,
-    FOREIGN KEY (user_id) REFERENCES users (user_id),
-    FOREIGN KEY (reproductions) REFERENCES songs (song)
+user_id INT NOT NULL,
+reproductions varchar(50) NOT NULL,
+FOREIGN KEY (user_id) REFERENCES users (user_id),
+FOREIGN KEY (reproductions) REFERENCES songs (song)
 );
 
 CREATE TABLE following (
-	user_id INT NOT NULL,
-    following varchar(50) NOT NULL,
-    FOREIGN KEY (user_id) REFERENCES users(user_id),
-    FOREIGN KEY (following) REFERENCES artists (name)
+user_id INT NOT NULL,
+following varchar(50) NOT NULL,
+FOREIGN KEY (user_id) REFERENCES users(user_id),
+FOREIGN KEY (following) REFERENCES artists (name)
 );
 
 INSERT INTO plans(plan, value)
