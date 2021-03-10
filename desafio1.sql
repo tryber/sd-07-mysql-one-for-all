@@ -4,13 +4,13 @@ CREATE DATABASE SpotifyClone;
 
 USE SpotifyClone;
 
-CREATE TABLE plano(
+CREATE TABLE IF NOT EXISTS plano(
   plano_id INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
   plano VARCHAR(100) NOT NULL,
   valor_plano INT NOT NULL
 ) ENGINE=InnoDB;
 
-CREATE TABLE usuario(
+CREATE TABLE IF NOT EXISTS usuario(
   usuario_id INT PRIMARY KEY NOT NULL,
   usuario VARCHAR(100) NOT NULL,
   idade INT NOT NULL,
@@ -18,26 +18,26 @@ CREATE TABLE usuario(
   FOREIGN KEY (plano_id) REFERENCES plano(plano_id)
 ) ENGINE=InnoDB;
 
-CREATE TABLE artista(
+CREATE TABLE IF NOT EXISTS artista(
   artista_id INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
   artista VARCHAR(100) NOT NULL
 ) ENGINE=InnoDB;
 
-CREATE TABLE album(
+CREATE TABLE IF NOT EXISTS album(
   album_id INT PRIMARY KEY NOT NULL,
   album VARCHAR(100) NOT NULL,
   artista_id INT NOT NULL,
   FOREIGN KEY (artista_id) REFERENCES artista(artista_id)
 ) ENGINE=InnoDB;
 
-CREATE TABLE cancao(
+CREATE TABLE IF NOT EXISTS cancao(
   cancao_id INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
   cancao VARCHAR(100) NOT NULL,
   album_id INT NOT NULL,
   FOREIGN KEY (album_id) REFERENCES album(album_id)
 ) ENGINE=InnoDB;
 
-CREATE TABLE seguidores(
+CREATE TABLE IF NOT EXISTS seguidores(
   artista_id INT NOT NULL,
   usuario_id INT NOT NULL,
   PRIMARY KEY (artista_id, usuario_id),
@@ -45,7 +45,7 @@ CREATE TABLE seguidores(
   FOREIGN KEY (usuario_id) REFERENCES usuario(usuario_id)
 ) ENGINE=InnoDB;
 
-CREATE TABLE historico_reproducoes(
+CREATE TABLE IF NOT EXISTS historico_reproducoes(
   usuario_id INT NOT NULL,
   cancao_id INT NOT NULL,
   PRIMARY KEY (usuario_id, cancao_id),
@@ -102,16 +102,16 @@ VALUES
   ('Words Of Her Life', 5),
   ('Without My Streets', 5);
 
-INSERT INTO seguidores (artista_id, usuario_id)
+INSERT INTO seguidores (usuario_id, artista_id)
 VALUES
-  (1, 1),
-  (1, 4),
-  (1, 3),
-  (2, 1),
-  (2, 3),
-  (3, 2),
-  (3, 1),
-  (4, 4);
+(1, 1),
+(1, 3),
+(1, 4),
+(2, 1),
+(2, 3),
+(3, 1),
+(3, 2),
+(4, 4);
 
 INSERT INTO historico_reproducoes (usuario_id, cancao_id)
 VALUES
