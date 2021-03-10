@@ -4,10 +4,18 @@ CREATE DATABASE SpotifyClone;
 
 USE SpotifyClone;
 
+CREATE TABLE planos (
+    plano VARCHAR(50) PRIMARY KEY NOT NULL,
+    valor_plano DOUBLE NOT NULL
+)  ENGINE=INNODB;
+
 CREATE TABLE usuarios (
     usuario_id INT PRIMARY KEY AUTO_INCREMENT,
     usuario VARCHAR(50) NOT NULL,
-    idade INT NOT NULL
+    idade INT NOT NULL,
+    plano VARCHAR(50) NOT NULL,
+    FOREIGN KEY (plano)
+        REFERENCES planos (plano)
 )  ENGINE=INNODB;
 
 CREATE TABLE artistas (
@@ -32,41 +40,35 @@ CREATE TABLE cancoes (
 CREATE TABLE seguindo (
     usuario_id INT NOT NULL,
     seguindo_artistas VARCHAR(100) NOT NULL,
+    PRIMARY KEY (usuario_id , seguindo_artistas),
     FOREIGN KEY (usuario_id)
         REFERENCES usuarios (usuario_id),
     FOREIGN KEY (seguindo_artistas)
         REFERENCES artistas (nome)
 )  ENGINE=INNODB;
 
-CREATE TABLE planos (
-    plano VARCHAR(50) PRIMARY KEY NOT NULL,
-    valor_plano DOUBLE NOT NULL
-)  ENGINE=INNODB;
-
-CREATE TABLE planos_usuarios (
-    usuario_id INT NOT NULL,
-    plano VARCHAR(50) NOT NULL,
-    FOREIGN KEY (usuario_id)
-        REFERENCES usuarios (usuario_id),
-    FOREIGN KEY (plano)
-        REFERENCES planos (plano)
-)  ENGINE=INNODB;
-
 CREATE TABLE historico_reproducao (
     usuario_id INT NOT NULL,
     historico_de_reproducoes VARCHAR(100) NOT NULL,
+    PRIMARY KEY (usuario_id , historico_de_reproducoes),
     FOREIGN KEY (usuario_id)
         REFERENCES usuarios (usuario_id),
     FOREIGN KEY (historico_de_reproducoes)
         REFERENCES cancoes (cancao)
 )  ENGINE=INNODB;
 
-INSERT INTO usuarios (usuario_id, usuario, idade)
+INSERT INTO planos (plano, valor_plano)
 VALUES
-  (1, 'Thati', 23),
-  (2, 'Cintia', 35),
-  (3, 'Bill', 20),
-  (4, 'Roger', 45);
+  ('gratuito', 0),
+  ('familiar', 7.99),
+  ('universitário', 5.99);
+
+INSERT INTO usuarios (usuario_id, usuario, idade, plano)
+VALUES
+  (1, 'Thati', 23, 'gratuito'),
+  (2, 'Cintia', 35, 'familiar'),
+  (3, 'Bill', 20, 'universitário'),
+  (4, 'Roger', 45, 'gratuito');
   
   INSERT INTO artistas (nome)
 VALUES
@@ -114,19 +116,6 @@ VALUES
   (3, 'Peter Strong'),
   (3, 'Walter Phoenix'),
   (4, 'Freedie Shannon');
-  
-  INSERT INTO planos (plano, valor_plano)
-VALUES
-  ('gratuito', 0),
-  ('familiar', 7.99),
-  ('universitário', 5.99);
-  
-    INSERT INTO planos_usuarios (usuario_id, plano)
-VALUES
-  (1, 'gratuito'),
-  (2, 'familiar'),
-  (3, 'universitário'),
-  (4, 'gratuito');
   
     INSERT INTO historico_reproducao (usuario_id, historico_de_reproducoes)
 VALUES
