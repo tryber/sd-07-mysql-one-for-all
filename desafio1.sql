@@ -27,7 +27,7 @@ CREATE TABLE artist(
 CREATE TABLE user_artist(
   userID INT NOT NULL,
   artistID INT NOT NULL,
-  PRIMARY KEY(userID, artistID,
+  PRIMARY KEY (userID, artistID),
   FOREIGN KEY (userID) REFERENCES user(userID),
   FOREIGN KEY (artistID) REFERENCES artist(artistID)
 );
@@ -36,7 +36,7 @@ CREATE TABLE album(
   albumID INT PRIMARY KEY AUTO_INCREMENT NOT NULL,
   albumNAME VARCHAR(50) NOT NULL,
   artistID INT NOT NULL,
-  FOREIGN KEY (artistID REFERENCES artist(artistID)
+  FOREIGN KEY (artistID) REFERENCES artist(artistID)
 ); 
 
 CREATE TABLE song(
