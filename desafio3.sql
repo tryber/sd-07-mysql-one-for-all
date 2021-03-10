@@ -7,4 +7,3 @@ ON music_history.user_id = users.id
 INNER JOIN spotifyclone.musics AS musics
 ON music_history.music_id = musics.id
 ORDER BY users.user_name, musics.title;
-
