@@ -11,21 +11,20 @@ CREATE TABLE usuarios (
 )  ENGINE=INNODB;
 
 CREATE TABLE artistas (
-    artista_id INT PRIMARY KEY AUTO_INCREMENT,
-    artista VARCHAR(100) NOT NULL
+    nome VARCHAR(100) PRIMARY KEY NOT NULL
 )  ENGINE=INNODB;
 
 CREATE TABLE albuns (
     album_id INT PRIMARY KEY AUTO_INCREMENT,
     album VARCHAR(50) NOT NULL,
-    artista_id INT NOT NULL,
-    FOREIGN KEY (artista_id)
-        REFERENCES artistas (artista_id)
+    artista VARCHAR(100) NOT NULL,
+    FOREIGN KEY (artista)
+        REFERENCES artistas (nome)
 )  ENGINE=INNODB;
 
 CREATE TABLE cancoes (
+    cancao VARCHAR(100) PRIMARY KEY NOT NULL,
     album_id INT NOT NULL,
-    cancao VARCHAR(100) NOT NULL,
     FOREIGN KEY (album_id)
         REFERENCES albuns (album_id)
 )  ENGINE=INNODB;
@@ -34,22 +33,32 @@ CREATE TABLE seguindo (
     usuario_id INT NOT NULL,
     seguindo_artistas VARCHAR(100) NOT NULL,
     FOREIGN KEY (usuario_id)
-        REFERENCES usuarios (usuario_id)
+        REFERENCES usuarios (usuario_id),
+    FOREIGN KEY (seguindo_artistas)
+        REFERENCES artistas (nome)
 )  ENGINE=INNODB;
 
 CREATE TABLE planos (
+    plano VARCHAR(50) PRIMARY KEY NOT NULL,
+    valor_plano DOUBLE NOT NULL
+)  ENGINE=INNODB;
+
+CREATE TABLE planos_usuarios (
     usuario_id INT NOT NULL,
     plano VARCHAR(50) NOT NULL,
-    valor_plano DOUBLE NOT NULL,
     FOREIGN KEY (usuario_id)
-        REFERENCES usuarios (usuario_id)
+        REFERENCES usuarios (usuario_id),
+    FOREIGN KEY (plano)
+        REFERENCES planos (plano)
 )  ENGINE=INNODB;
 
 CREATE TABLE historico_reproducao (
     usuario_id INT NOT NULL,
     historico_de_reproducoes VARCHAR(100) NOT NULL,
     FOREIGN KEY (usuario_id)
-        REFERENCES usuarios (usuario_id)
+        REFERENCES usuarios (usuario_id),
+    FOREIGN KEY (historico_de_reproducoes)
+        REFERENCES cancoes (cancao)
 )  ENGINE=INNODB;
 
 INSERT INTO usuarios (usuario_id, usuario, idade)
@@ -59,20 +68,20 @@ VALUES
   (3, 'Bill', 20),
   (4, 'Roger', 45);
   
-  INSERT INTO artistas (artista_id, artista)
+  INSERT INTO artistas (nome)
 VALUES
-  (1, 'Walter Phoenix'),
-  (2, 'Peter Strong'),
-  (3, 'Lance Day'),
-  (4, 'Freedie Shannon');
+  ('Walter Phoenix'),
+  ('Peter Strong'),
+  ('Lance Day'),
+  ('Freedie Shannon');
   
-  INSERT INTO albuns (album_id, album, artista_id)
+  INSERT INTO albuns (album_id, album, artista)
 VALUES
-  (1, 'Envious', 1),
-  (2, 'Exuberant', 1),
-  (3, 'Hallowed Steam', 2),
-  (4, 'Incandescent', 3),
-  (5, 'Temporary Culture', 4);
+  (1, 'Envious', 'Walter Phoenix'),
+  (2, 'Exuberant', 'Walter Phoenix'),
+  (3, 'Hallowed Steam', 'Peter Strong'),
+  (4, 'Incandescent', 'Lance Day'),
+  (5, 'Temporary Culture', 'Freedie Shannon');
   
   INSERT INTO cancoes (album_id, cancao)
 VALUES
@@ -98,7 +107,7 @@ VALUES
     INSERT INTO seguindo (usuario_id, seguindo_artistas)
 VALUES
   (1, 'Walter Phoenix'),
-  (1, 'Freedien Shanno'),
+  (1, 'Freedie Shannon'),
   (1, 'Lance Day'),
   (2, 'Walter Phoenix'),
   (2, 'Lance Day'),
@@ -106,12 +115,18 @@ VALUES
   (3, 'Walter Phoenix'),
   (4, 'Freedie Shannon');
   
-    INSERT INTO planos (usuario_id, plano, valor_plano)
+  INSERT INTO planos (plano, valor_plano)
 VALUES
-  (1, 'gratuito', 0),
-  (2, 'familiar', 7.99),
-  (2, 'universitário', 7.99),
-  (2, 'gratuito', 0);
+  ('gratuito', 0),
+  ('familiar', 7.99),
+  ('universitário', 5.99);
+  
+    INSERT INTO planos_usuarios (usuario_id, plano)
+VALUES
+  (1, 'gratuito'),
+  (2, 'familiar'),
+  (3, 'universitário'),
+  (4, 'gratuito');
   
     INSERT INTO historico_reproducao (usuario_id, historico_de_reproducoes)
 VALUES
