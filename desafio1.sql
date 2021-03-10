@@ -16,7 +16,7 @@ CREATE TABLE `users`(
     `UserAge` INT NOT NULL,
     `PaymentPlanID`INT NOT NULL,
     CONSTRAINT `fk_users_PaymentPlans`
-		FOREIGN KEY(`PaymentPlanID`)
+    FOREIGN KEY(`PaymentPlanID`)
         REFERENCES `paymentplans`(`PaymentPlanID`)        
 ) engine = InnoDB;
 CREATE TABLE `artists`(
@@ -29,16 +29,16 @@ CREATE TABLE `albums`(
     `AlbumName`VARCHAR(255) NOT NULL,
     `ArtistID`INT NOT NULL,
     CONSTRAINT `fk_albums_artists`
-		FOREIGN KEY(`ArtistID`)
+    FOREIGN KEY(`ArtistID`)
         REFERENCES `artists`(`ArtistID`)    
 ) engine = InnoDB;
 
 CREATE TABLE `songs`(
     `SongID` INT PRIMARY KEY AUTO_INCREMENT,
-	`SongName`VARCHAR(255) NOT NULL,
+    `SongName`VARCHAR(255) NOT NULL,
     `AlbumID`INT NOT NULL,
     CONSTRAINT `fk_songs_albums`
-		FOREIGN KEY(`AlbumID`)
+    FOREIGN KEY(`AlbumID`)
         REFERENCES `albums`(`AlbumID`)    
 ) engine = InnoDB;
 
