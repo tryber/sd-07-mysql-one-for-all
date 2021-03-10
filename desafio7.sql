@@ -1,4 +1,4 @@
--- CREATE VIEW faturamento_atual AS 
+CREATE VIEW perfil_artistas AS 
 SELECT t1.artist AS `artist`, t1.cover AS `album`, COUNT(t2.following) AS `seguidores`
 FROM covers AS t1
 INNER JOIN following as t2
