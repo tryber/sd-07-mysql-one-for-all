@@ -6,7 +6,7 @@ USE SpotifyClone;
 
 CREATE TABLE planos (
     plano VARCHAR(50) PRIMARY KEY NOT NULL,
-    valor_plano DOUBLE NOT NULL
+    valor_plano DECIMAL(4,2) NOT NULL
 )  ENGINE=INNODB;
 
 CREATE TABLE usuarios (
