@@ -82,12 +82,12 @@ INSERT INTO historico_de_reproducoes(historico_id, usuario_id, cancao_id)
 VALUES (1, 1, 1), (2, 1, 6), (3, 1, 14), (4, 1, 16), (5, 2, 13), (6, 2, 17), (7, 2, 2), (8, 2, 15), (9, 3, 4), (10, 3, 16), (11, 3, 6), (12, 4, 3), (13, 4, 18), (14, 4, 11);
 
 CREATE TABLE seguindo_artistas(
-seguindo_id INT PRIMARY KEY AUTO_INCREMENT,
 usuario_id INT NOT NULL,
 artista_id INT NOT NULL,
+PRIMARY KEY(usuario_id, artista_id),
 FOREIGN KEY (usuario_id) REFERENCES usuarios(usuario_id),
 FOREIGN KEY (artista_id) REFERENCES artistas(artista_id)
 );
 
-INSERT INTO seguindo_artistas(seguindo_id, usuario_id, artista_id)
-VALUES (1, 1, 4), (2, 1, 1), (3, 1, 2), (4, 2, 4), (5, 2, 2), (6, 3, 3), (7, 3, 4), (8, 4, 1);
+INSERT INTO seguindo_artistas(usuario_id, artista_id)
+VALUES (1, 4), (1, 1), (1, 2), (2, 4), (2, 2), (3, 3), (3, 4), (4, 1);
