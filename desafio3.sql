@@ -4,7 +4,7 @@ CREATE VIEW historico_reproducao_usuarios AS
     FROM
         histsongs AS H
             INNER JOIN
-        SpotifyClone.users AS U ON U.UserID = H.UserID
+        SpotifyClone.songs AS S ON S.SongID = H.SongID 
             INNER JOIN
-        SpotifyClone.songs AS S ON S.SongID = H.SongID
+        SpotifyClone.users AS U ON U.UserID = H.UserID
     ORDER BY U.UserName , S.SongName;
