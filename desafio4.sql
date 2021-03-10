@@ -4,4 +4,5 @@ CREATE VIEW top_3_artistas AS
     FROM
         seguindo
     GROUP BY seguindo_artistas
-    ORDER BY COUNT(*) DESC , seguindo_artistas;
+    ORDER BY COUNT(*) DESC , seguindo_artistas
+    LIMIT 3;
