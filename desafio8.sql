@@ -1,4 +1,4 @@
-DELIMITER $$
+DELIMITER //
 
 CREATE 
     TRIGGER  trigger_usuario_delete
@@ -10,6 +10,6 @@ BEFORE DELETE ON usuarios FOR EACH ROW
 DELETE FROM seguindo 
 WHERE
     OLD.usuario_id = usuario_id;
-    END $$
+    END //
 
 DELIMITER ;
