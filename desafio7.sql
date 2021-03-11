@@ -6,3 +6,4 @@ from SpotifyClone.albums as al
 inner join SpotifyClone.artistas as ar on ar.artista_id = al.artista_id
 inner join SpotifyClone.seguindo as s on al.artista_id = s.artista_id
 group by artista, album
+order by seguidores desc, artista, album;
