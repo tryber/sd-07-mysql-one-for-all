@@ -58,9 +58,7 @@ CREATE TABLE planos (
   id INT NOT NULL AUTO_INCREMENT,
   valor_plano INT,
   plano CHAR(50) NOT NULL,
-  usuario_id INT NOT NULL,
-  PRIMARY KEY (id, usuario_id),
-  FOREIGN KEY (usuario_id) REFERENCES SpotifyClone.usuarios (id)
+  PRIMARY KEY (id)
 );
 
 INSERT INTO usuarios (usuario, idade) 
@@ -128,8 +126,8 @@ INSERT INTO seguidores (usuario_id, artista_id)
     (3, 1),
     (4, 4);
 
-INSERT INTO planos (valor_plano, plano, usuario_id)
-  VALUES (0, 'gratuito', 1),
-    (7.99, 'familiar', 2),
-    (5.99, 'universitário', 3),
-    (0, 'gratuito', 4);
+INSERT INTO planos (valor_plano, plano)
+  VALUES (0, 'gratuito'),
+    (7.99, 'familiar'),
+    (5.99, 'universitário'),
+    (0, 'gratuito');
