@@ -205,7 +205,7 @@ describe('Queries de seleção', () => {
     });
   });
 
-  describe.only('Exibe o histórico de reprodução para cada pessoa usuária', () => {
+  describe('Exibe o histórico de reprodução para cada pessoa usuária', () => {
     it('Verifica o desafio 3', async () => {
       const challengeQuery = readFileSync('desafio3.sql', 'utf8');
 
@@ -250,7 +250,7 @@ describe('Queries de seleção', () => {
     });
   });
 
-  describe('Exibe top 2 hits mais tocados no momento', () => {
+  describe.only('Exibe top 2 hits mais tocados no momento', () => {
     it('Verifica o desafio 5', async () => {
       const challengeQuery = readFileSync('desafio5.sql', 'utf8');
 
