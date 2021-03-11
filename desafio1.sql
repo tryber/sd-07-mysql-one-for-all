@@ -59,7 +59,7 @@ CREATE TABLE planos (
   valor_plano INT,
   plano CHAR(50) NOT NULL,
   usuario_id INT NOT NULL,
-  PRIMARY KEY (usuario_id),
+  PRIMARY KEY (id, usuario_id),
   FOREIGN KEY (usuario_id) REFERENCES SpotifyClone.usuarios (id)
 );
 
