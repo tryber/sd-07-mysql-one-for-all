@@ -3,49 +3,49 @@ CREATE DATABASE SpotifyClone;
 USE SpotifyClone;
 
 CREATE TABLE artists (
-artist_id INT(4) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+artist_id INT AUTO_INCREMENT PRIMARY KEY,
 artist_colum VARCHAR(30) NOT NULL
 ) ENGINE = InnoDB;
 
 CREATE TABLE albums (
-album_id INT(4) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+album_id INT AUTO_INCREMENT PRIMARY KEY,
 album_colum VARCHAR(30) NOT NULL,
-artist_id INT(4) UNSIGNED NOT NULL, 
+artist_id INT NOT NULL, 
 FOREIGN KEY (artist_id) REFERENCES artists(artist_id)
 ) engine = InnoDB;
 
 CREATE TABLE songs (
-song_id INT(4) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+song_id INT AUTO_INCREMENT PRIMARY KEY,
 song_colum VARCHAR(50) NOT NULL,
-album_id INT(4) UNSIGNED NOT NULL,
+album_id INT NOT NULL,
 FOREIGN KEY (album_id) REFERENCES albums(album_id)
 ) engine = InnoDB;
 
 CREATE TABLE plans (
-plan_id INT(2) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+plan_id INT AUTO_INCREMENT PRIMARY KEY,
 plan_colum VARCHAR(30) NOT NULL,
 plan_price DOUBLE NOT NULL 
 ) engine = InnoDB;
 
 CREATE TABLE users (
-user_id INT(4) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+user_id INT AUTO_INCREMENT PRIMARY KEY,
 user_colum VARCHAR(30) NOT NULL,
-age INT(3) NOT NULL,
-plan_id INT(2) UNSIGNED NOT NULL,
+age INT NOT NULL,
+plan_id INT NOT NULL,
 FOREIGN KEY (plan_id) REFERENCES plans(plan_id)
 ) engine = InnoDB;
 
 CREATE TABLE history (
-song_id INT(4) UNSIGNED NOT NULL,
-user_id INT(4) UNSIGNED NOT NULL,
+song_id INT NOT NULL,
+user_id INT NOT NULL,
 PRIMARY KEY (song_id, user_id),
 FOREIGN KEY (song_id) REFERENCES songs(song_id),
 FOREIGN KEY (user_id) REFERENCES users(user_id)
 ) engine = InnoDB;
 
 CREATE TABLE followers  (
-artist_id INT(4) UNSIGNED NOT NULL,
-user_id INT(4) UNSIGNED NOT NULL,
+artist_id INT NOT NULL,
+user_id INT NOT NULL,
 PRIMARY KEY (artist_id, user_id),
 FOREIGN KEY (artist_id) REFERENCES artists(artist_id),
 FOREIGN KEY (user_id) REFERENCES users(user_id)
