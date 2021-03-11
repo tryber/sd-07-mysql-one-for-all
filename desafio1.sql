@@ -1,31 +1,32 @@
 DROP SCHEMA IF EXISTS SpotifyClone;
 CREATE SCHEMA SpotifyClone;
+USE SpotifyClone;
 
-DROP TABLE IF EXISTS SpotifyClone.usuarios;
-CREATE TABLE SpotifyClone.usuarios (
+DROP TABLE IF EXISTS usuarios;
+CREATE TABLE usuarios (
   id INT NOT NULL AUTO_INCREMENT,
   usuario CHAR(30) NOT NULL,
   idade INT NOT NULL,
   PRIMARY KEY (id)
 );
 
-DROP TABLE IF EXISTS SpotifyClone.artistas;
-CREATE TABLE IF NOT EXISTS SpotifyClone.artistas (
+DROP TABLE IF EXISTS artistas;
+CREATE TABLE artistas (
   id INT NOT NULL AUTO_INCREMENT,
   artista CHAR(50) NOT NULL,
   PRIMARY KEY (id)
 );
 
-DROP TABLE IF EXISTS SpotifyClone.albuns;
-CREATE TABLE SpotifyClone.albuns (
+DROP TABLE IF EXISTS albuns;
+CREATE TABLE albuns (
   id INT NOT NULL AUTO_INCREMENT,
   album CHAR(50) NOT NULL,
   artista_id INT NOT NULL,
   PRIMARY KEY (id)
 );
 
-DROP TABLE IF EXISTS SpotifyClone.cancoes;
-CREATE TABLE IF NOT EXISTS SpotifyClone.cancoes (
+DROP TABLE IF EXISTS cancoes;
+CREATE TABLE cancoes (
   id INT NOT NULL AUTO_INCREMENT,
   cancao CHAR(100) NOT NULL,
   album_id INT NOT NULL,
@@ -33,8 +34,8 @@ CREATE TABLE IF NOT EXISTS SpotifyClone.cancoes (
   FOREIGN KEY (album_id) REFERENCES SpotifyClone.albuns (id)
 );
 
-DROP TABLE IF EXISTS SpotifyClone.historico;
-CREATE TABLE SpotifyClone.historico (
+DROP TABLE IF EXISTS historico;
+CREATE TABLE historico (
   usuario_id INT NOT NULL,
   cancao_id INT NOT NULL,
   historico_reproducoes CHAR(300) NOT NULL,
@@ -43,8 +44,8 @@ CREATE TABLE SpotifyClone.historico (
   FOREIGN KEY (cancao_id) REFERENCES SpotifyClone.cancoes (id)
 );
 
-DROP TABLE IF EXISTS SpotifyClone.seguidores;
-CREATE TABLE SpotifyClone.seguidores (
+DROP TABLE IF EXISTS seguidores;
+CREATE TABLE seguidores (
   usuario_id INT NOT NULL,
   artista_id INT NOT NULL,
   PRIMARY KEY (usuario_id, artista_id),
@@ -52,8 +53,8 @@ CREATE TABLE SpotifyClone.seguidores (
   FOREIGN KEY (artista_id) REFERENCES SpotifyClone.artistas (id)
 );
 
-DROP TABLE IF EXISTS SpotifyClone.planos;
-CREATE TABLE IF NOT EXISTS SpotifyClone.planos (
+DROP TABLE IF EXISTS planos;
+CREATE TABLE planos (
   valor_plano INT,
   plano CHAR(50) NOT NULL,
   usuario_id INT NOT NULL,
@@ -101,20 +102,20 @@ INSERT INTO cancoes (cancao, album_id)
     ('Without My Streets', 5);
     
 INSERT INTO historico (usuario_id, cancao_id, historico_reproducoes)
-  VALUES (1, 1, 'Soul For Us'),
-    (1, 6, 'Magic Circus'),
-    (1, 14, 'Diamond Power'),
-    (1, 16, 'Thang Of Thunder'),
-    (2, 13, 'Home Forever'),
-    (2, 17, 'Words Of Her Life'),
-    (2, 2, 'Reflections Of Magic'),
-    (2, 15, 'Honey, Let''s Be Silly'),
-    (3, 4, 'Troubles Of My Inner Fire'),
-    (3, 16, 'Thang Of Thunder'),
-    (3, 6, 'Magic Circus'),
-    (4, 3, 'Dance With Her Own'),
-    (4,18, 'Without My Streets'),
-    (4, 11, 'Celebration Of More');
+  VALUES (1, 1),
+    (1, 6),
+    (1, 14),
+    (1, 16),
+    (2, 13),
+    (2, 17),
+    (2, 2),
+    (2, 15),
+    (3, 4),
+    (3, 16),
+    (3, 6),
+    (4, 3),
+    (4, 18),
+    (4, 11);
 
 INSERT INTO seguidores (usuario_id, artista_id)
   VALUES (1, 1),
