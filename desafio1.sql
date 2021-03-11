@@ -7,7 +7,7 @@ USE SpotifyClone;
 CREATE TABLE planos (
 plano_id INT PRIMARY KEY auto_increment,
 plano VARCHAR(100) NOT NULL,
-valor_plano FLOAT NOT NULL
+valor_plano DECIMAL(4,2) NOT NULL
 ) ENGINE = InnoDB;
 
 INSERT INTO planos (plano, valor_plano)
