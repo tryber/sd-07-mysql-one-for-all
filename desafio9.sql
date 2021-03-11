@@ -5,7 +5,7 @@ SELECT
 A.name_singer AS 'artista',
 AL.name_album AS 'album'
 FROM SpotifyClone.artistas A
-JOIN SpotifyClone.album AL ON AL.gitartistas_idartistas = A.idartistas
+JOIN SpotifyClone.album AL ON AL.idartistas = A.idartistas
 WHERE A.name_singer = nameArtista
 ORDER BY AL.name_album;
 END $$
