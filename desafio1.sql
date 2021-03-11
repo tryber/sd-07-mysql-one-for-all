@@ -84,8 +84,8 @@ INSERT INTO albuns (album, artista_id)
   VALUES ('Envious', 1),
     ('Exuberant', 1),
     ('Hallowed Steam', 2),
-    ('Honey, So Do I', 3),
-    ('Incandescent', 4);
+    ('Incandescent', 3),
+    ('Honey, So Do I', 4);
 
 INSERT INTO cancoes (cancao, album_id)
   VALUES ('Soul For Us', 1),
