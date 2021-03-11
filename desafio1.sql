@@ -38,7 +38,6 @@ DROP TABLE IF EXISTS historico;
 CREATE TABLE historico (
   usuario_id INT NOT NULL,
   cancao_id INT NOT NULL,
-  historico_reproducoes CHAR(300) NOT NULL,
   PRIMARY KEY (usuario_id, cancao_id),
   FOREIGN KEY (usuario_id) REFERENCES SpotifyClone.usuarios (id),
   FOREIGN KEY (cancao_id) REFERENCES SpotifyClone.cancoes (id)
@@ -101,7 +100,7 @@ INSERT INTO cancoes (cancao, album_id)
     ('Words Of Her Life', 5),
     ('Without My Streets', 5);
     
-INSERT INTO historico (usuario_id, cancao_id, historico_reproducoes)
+INSERT INTO historico (usuario_id, cancao_id)
   VALUES (1, 1),
     (1, 6),
     (1, 14),
