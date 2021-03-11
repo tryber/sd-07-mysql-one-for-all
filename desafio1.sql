@@ -34,7 +34,7 @@ CREATE TABLE albuns (
   artista_id INT NOT NULL,
   PRIMARY KEY (id, artista_id),
   FOREIGN KEY (artista_id) REFERENCES artistas (id)
-);
+) ENGINE = InnoDB;
 
 # DROP TABLE IF EXISTS cancoes;
 CREATE TABLE cancoes (
