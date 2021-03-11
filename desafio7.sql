@@ -8,4 +8,3 @@ CREATE VIEW perfil_artistas AS (
     ON art.artistID = usr.artistID
   GROUP BY usr.artistID, alb.albumNAME ORDER BY `seguidores` DESC, `artista`, `album`
 );
-
