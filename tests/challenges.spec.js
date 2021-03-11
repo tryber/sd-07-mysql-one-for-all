@@ -266,7 +266,7 @@ describe('Queries de seleção', () => {
     });
   });
 
-  describe.only('Exibe o relatório de faturamento da empresa', () => {
+  describe('Exibe o relatório de faturamento da empresa', () => {
     it('Verifica o desafio 6', async () => {
       const challengeQuery = readFileSync('desafio6.sql', 'utf8');
 
@@ -405,7 +405,7 @@ describe('Queries de deleção', () => {
 
   afterEach(async () => await sequelize.query('DROP DATABASE SpotifyClone;', { type: 'RAW' }));
 
-  describe('Crie uma trigger chamada `trigger_usuario_delete` que deve ser disparada sempre que uma pessoa usuária for excluída do banco de dados, refletindo essa exclusão em todas as tabelas que ela estiver', () => {
+  describe.only('Crie uma trigger chamada `trigger_usuario_delete` que deve ser disparada sempre que uma pessoa usuária for excluída do banco de dados, refletindo essa exclusão em todas as tabelas que ela estiver', () => {
     it('Verifica o desafio 8', async () => {
       const {
         tabela_que_contem_usuario: userTable,
