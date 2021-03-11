@@ -131,4 +131,3 @@ INSERT INTO planos (valor_plano, plano, usuario_id)
     (7.99, 'familiar', 2),
     (5.99, 'universitário', 3),
     (0, 'gratuito', 4);
-    
