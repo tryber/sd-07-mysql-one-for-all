@@ -9,8 +9,8 @@ BEGIN
 	INNER JOIN SpotifyClone.usuarios_cancoes UC ON US.usuario_id = UC.usuario_id
 	WHERE US.usuario_id = usuario_id
 	GROUP BY UC.usuario_id
-    INTO total_cancoes;
-    RETURN total_cancoes;
+  INTO total_cancoes;
+  RETURN total_cancoes;
 END $$
 
 DELIMITER ;
