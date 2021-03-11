@@ -99,7 +99,7 @@ INSERT INTO cancoes (cancao, album_id)
     ('Thang Of Thunder', 5),
     ('Words Of Her Life', 5),
     ('Without My Streets', 5);
- 
+    
 INSERT INTO historico (usuario_id, cancao_id, historico_reproducoes)
   VALUES (1, 1, 'Soul For Us'),
     (1, 6, 'Magic Circus'),
@@ -131,3 +131,4 @@ INSERT INTO planos (valor_plano, plano, usuario_id)
     (7.99, 'familiar', 2),
     (5.99, 'universitário', 3),
     (0, 'gratuito', 4);
+    
