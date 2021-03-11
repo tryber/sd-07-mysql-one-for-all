@@ -266,7 +266,7 @@ describe('Queries de seleção', () => {
     });
   });
 
-  describe('Exibe o relatório de faturamento da empresa', () => {
+  describe.only('Exibe o relatório de faturamento da empresa', () => {
     it('Verifica o desafio 6', async () => {
       const challengeQuery = readFileSync('desafio6.sql', 'utf8');
 
