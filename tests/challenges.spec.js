@@ -322,7 +322,7 @@ describe('Queries de seleção', () => {
     });
   });
 
-  describe.only('Crie uma function chamada de `quantidade_musicas_no_historico` que exibe a quantidade de músicas que estão presente atualmente no histórico de reprodução de uma pessoa usuária', () => {
+  describe('Crie uma function chamada de `quantidade_musicas_no_historico` que exibe a quantidade de músicas que estão presente atualmente no histórico de reprodução de uma pessoa usuária', () => {
     it('Verifica o desafio 10', async () => {
       const {
         tabela_que_contem_usuario: userTable,
@@ -351,7 +351,7 @@ describe('Queries de seleção', () => {
     });
   });
 
-  describe('Crie uma `VIEW` chamada `cancoes_premium` que exiba o nome e a quantidade de vezes que cada canção foi tocada por pessoas usuárias do plano familiar ou universitário', () => {
+  describe.only('Crie uma `VIEW` chamada `cancoes_premium` que exiba o nome e a quantidade de vezes que cada canção foi tocada por pessoas usuárias do plano familiar ou universitário', () => {
     it('Verifica o desafio 11', async () => {
       const createViewQuery = readFileSync('desafio11.sql', 'utf8').trim();
 
