@@ -1,8 +1,8 @@
-DROP SCHEMA IF EXISTS SpotifyClone;
+# DROP SCHEMA IF EXISTS SpotifyClone;
 CREATE SCHEMA SpotifyClone;
 USE SpotifyClone;
 
-DROP TABLE IF EXISTS planos;
+# DROP TABLE IF EXISTS planos;
 CREATE TABLE planos (
   id INT NOT NULL AUTO_INCREMENT,
   valor_plano DECIMAL(5, 2) NOT NULL,
@@ -10,7 +10,7 @@ CREATE TABLE planos (
   PRIMARY KEY (id)
 ) ENGINE = InnoDB;
 
-DROP TABLE IF EXISTS usuarios;
+# DROP TABLE IF EXISTS usuarios;
 CREATE TABLE usuarios (
   id INT NOT NULL AUTO_INCREMENT,
   usuario CHAR(30) NOT NULL,
@@ -20,14 +20,14 @@ CREATE TABLE usuarios (
   FOREIGN KEY (plano_id) REFERENCES planos (id)
 ) ENGINE = InnoDB;
 
-DROP TABLE IF EXISTS artistas;
+# DROP TABLE IF EXISTS artistas;
 CREATE TABLE artistas (
   id INT NOT NULL AUTO_INCREMENT,
   artista CHAR(50) NOT NULL,
   PRIMARY KEY (id)
 ) ENGINE = InnoDB;
 
-DROP TABLE IF EXISTS albuns;
+# DROP TABLE IF EXISTS albuns;
 CREATE TABLE albuns (
   id INT NOT NULL AUTO_INCREMENT,
   album CHAR(50) NOT NULL,
@@ -36,16 +36,16 @@ CREATE TABLE albuns (
   FOREIGN KEY (artista_id) REFERENCES artistas (id)
 );
 
-DROP TABLE IF EXISTS cancoes;
+# DROP TABLE IF EXISTS cancoes;
 CREATE TABLE cancoes (
   id INT NOT NULL AUTO_INCREMENT,
-  cancao CHAR(100) NOT NULL,
+  cancao CHAR(50) NOT NULL,
   album_id INT NOT NULL,
   PRIMARY KEY (id),
   FOREIGN KEY (album_id) REFERENCES albuns (id)
 ) ENGINE = InnoDB;
 
-DROP TABLE IF EXISTS historico;
+# DROP TABLE IF EXISTS historico;
 CREATE TABLE historico (
   usuario_id INT NOT NULL,
   cancao_id INT NOT NULL,
@@ -54,7 +54,7 @@ CREATE TABLE historico (
   FOREIGN KEY (cancao_id) REFERENCES cancoes (id)
 ) ENGINE = InnoDB;
 
-DROP TABLE IF EXISTS seguidores;
+# DROP TABLE IF EXISTS seguidores;
 CREATE TABLE seguidores (
   usuario_id INT NOT NULL,
   artista_id INT NOT NULL,
