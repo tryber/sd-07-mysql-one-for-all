@@ -1,3 +1,4 @@
+CREATE VIEW top_2_hits_do_momento AS
 SELECT songs.cancao AS cancao,
 count(history.cancao_id) AS reproducoes
 FROM SpotifyClone.historico AS `history`
