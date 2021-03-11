@@ -22,7 +22,8 @@ CREATE TABLE albuns (
   id INT NOT NULL AUTO_INCREMENT,
   album CHAR(50) NOT NULL,
   artista_id INT NOT NULL,
-  PRIMARY KEY (id)
+  PRIMARY KEY (id, artista_id),
+  FOREIGN KEY (artista_id) REFERENCES SpotifyClone.artistas (id)
 );
 
 DROP TABLE IF EXISTS cancoes;
@@ -54,6 +55,7 @@ CREATE TABLE seguidores (
 
 DROP TABLE IF EXISTS planos;
 CREATE TABLE planos (
+  id INT NOT NULL AUTO_INCREMENT,
   valor_plano INT,
   plano CHAR(50) NOT NULL,
   usuario_id INT NOT NULL,
