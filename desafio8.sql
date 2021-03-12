@@ -7,5 +7,5 @@ FOR EACH ROW
 BEGIN
 delete from historico_reproducao where id_usuario = old.id_usuario
 delete from seguindo_artistas where id_usuario = old.id_usuario
-END
-DELIMITER $$ ;
+END $$
+DELIMITER from;
