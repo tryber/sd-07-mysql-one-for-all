@@ -6,36 +6,36 @@ USE SpotifyClone;
 
 CREATE TABLE singers(
 singer_id INTEGER PRIMARY KEY AUTO_INCREMENT,
-	name VARCHAR(30) NOT NULL
+name VARCHAR(30) NOT NULL
 ) engine = InnoDB;
 
 -- Referência: https://github.com/tryber/sd-07-mysql-one-for-all/blob/vini-mysql-one-for-all/desafio1.sql
 CREATE TABLE albuns(
 album_id INTEGER PRIMARY KEY AUTO_INCREMENT,
-	title VARCHAR(100) NOT NULL,
+title VARCHAR(100) NOT NULL,
     singer_id INTEGER NOT NULL,
     FOREIGN KEY (singer_id) REFERENCES singers(singer_id)
 ) engine = InnoDB;
 
 CREATE TABLE plans(
 plan_id INTEGER PRIMARY KEY AUTO_INCREMENT,
-	account VARCHAR(100) NOT NULL,
+account VARCHAR(100) NOT NULL,
     price DOUBLE(6,2) NOT NULL
 ) engine = InnoDB;
 
 CREATE TABLE songs(
 song_id INTEGER PRIMARY KEY AUTO_INCREMENT,
-	album_id INTEGER,
+album_id INTEGER,
     singer_id INTEGER,
-	title VARCHAR(100) NOT NULL,
+title VARCHAR(100) NOT NULL,
     FOREIGN KEY(album_id) REFERENCES albuns(album_id),
     FOREIGN KEY(singer_id) REFERENCES singers(singer_id)
 ) engine = InnoDB;
 
 CREATE TABLE users(
 user_id INTEGER PRIMARY KEY AUTO_INCREMENT,
-	plan_id INTEGER,
-	name VARCHAR(30) NOT NULL,
+plan_id INTEGER,
+name VARCHAR(30) NOT NULL,
     age INTEGER NOT NULL,
     FOREIGN KEY(plan_id) REFERENCES plans(plan_id)
 ) engine = InnoDB;
