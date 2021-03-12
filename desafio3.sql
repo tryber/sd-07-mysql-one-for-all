@@ -1,9 +1,5 @@
-CREATE VIEW historico_reproducao_usuarios AS
-SELECT us.name_users AS "usuario",
-song.name_songs AS "nome"
-FROM SpotifyClone.users AS us
-INNER JOIN SpotifyClone.reproductions AS hist
-ON us.user_id = hist.user_id
-INNER JOIN SpotifyClone.songs AS song
-ON hist.songs_id = song.songs_id
-ORDER BY `usuario`, `nome`;
+CREATE VIEW SpotifyClone.historico_reproducao_usuarios AS
+SELECT u.nome AS usuario, c.nome AS nome FROM SpotifyClone.users AS u
+INNER JOIN SpotifyClone.history AS h ON u.id = h.usuario_id
+INNER JOIN SpotifyClone.songs AS s ON h.id = s.cancao_id
+ORDER BY u.nome, s.nome;
