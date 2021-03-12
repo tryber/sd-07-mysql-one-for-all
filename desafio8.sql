@@ -5,7 +5,7 @@ CREATE TRIGGER trigger_usuario_delete
 BEFORE DELETE ON usuario
 FOR EACH ROW
 BEGIN
-delete from historico_reproducao where id_usuario = old.id_usuario
-delete from seguindo_artistas where id_usuario = old.id_usuario
+DELETE FROM historico_reproducao WHERE id_usuario = OLD.id_usuario
+DELETE FROM seguindo_artistas WHERE id_usuario = OLD.id_usuario
 END $$
 DELIMITER from;
