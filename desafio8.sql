@@ -1,3 +1,4 @@
+-- Reference: https://dba.stackexchange.com/questions/108037
 USE SpotifyClone;
 DELIMITER $$
 CREATE TRIGGER trigger_usuario_delete
