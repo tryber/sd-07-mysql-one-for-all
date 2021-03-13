@@ -97,13 +97,13 @@ CREATE TABLE seguindo_artistas(
 INSERT INTO seguindo_artistas (usuario_id, artista_id)
 VALUES
   (1,1),
-  (1,2),
+  (1,4),
   (1,3),
   (2,1),
   (2,3),
+  (3,2),
   (3,1),
-  (3,4),
-  (4,2);   
+  (4,4);
 
 CREATE TABLE historicos(
     usuario_id INT,
