@@ -16,17 +16,16 @@ CREATE TABLE SpotifyClone.usuario(
     foreign key (plano_id) references plano(plano_id)
 ) engine = InnoDB;
 
-CREATE TABLE SpotifyClone.album(
-    album_id int (11) primary key not null auto_increment,
-    album varchar(100) not null    
-) engine = InnoDB;
-
-
 CREATE TABLE SpotifyClone.artista(
     artista_id int (11) primary key not null auto_increment,
-    artista varchar(100) not null,
-    album_id int (11) not null,
-    foreign key (album_id) references album(album_id)
+    artista varchar(100) not null    
+) engine = InnoDB;
+
+CREATE TABLE SpotifyClone.album(
+    album_id int (11) primary key not null auto_increment,
+    album varchar(100) not null,
+    artista_id int (11) not null,
+    foreign key (artista_id) references artista(artista_id)    
 ) engine = InnoDB;
 
 CREATE TABLE SpotifyClone.musica(
@@ -66,22 +65,20 @@ VALUES
   ('Bill', 20,3),
   ('Roger', 45,1);
 
-INSERT INTO SpotifyClone.album (album)
+INSERT INTO SpotifyClone.artista (artista)
 VALUES
-  ('Envious'),
-  ('Exuberant'),
-  ('Hallowed Steam'),  
-  ('Incandescent'),
-  ('Temporary Culture');
+  ('Walter Phoenix'),
+  ('Peter Strong'),
+  ('Lance Day'),
+  ('Freedie Shannon');
 
-
-INSERT INTO SpotifyClone.artista (artista, album_id)
+INSERT INTO SpotifyClone.album (album, artista_id)
 VALUES
-  ('Walter Phoenix', 1),
-  ('Walter Phoenix', 2),
-  ('Peter Strong', 3),
-  ('Lance Day', 4),
-  ('Freedie Shannon', 5);
+  ('Envious', 1),
+  ('Exuberant', 1),
+  ('Hallowed Steam', 2),  
+  ('Incandescent', 3),
+  ('Temporary Culture', 4);
 
 INSERT INTO SpotifyClone.musica (musica, album_id)
 VALUES
