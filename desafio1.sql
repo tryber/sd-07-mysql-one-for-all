@@ -1,5 +1,5 @@
-CREATE DATABASE IF NOT EXISTS spotifyClone;
-USE spotifyClone;
+CREATE DATABASE IF NOT EXISTS SpotifyClone;
+USE SpotifyClone;
 
 CREATE TABLE plano(
   plano_id INT PRIMARY KEY AUTO_INCREMENT,
