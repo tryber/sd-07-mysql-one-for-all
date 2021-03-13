@@ -13,7 +13,7 @@ CREATE TABLE plano(
 
 CREATE TABLE usuario(
     usuario_id INT AUTO_INCREMENT, 
-    usuario VARCHAR(100) NOT NULL,
+    nome VARCHAR(100) NOT NULL,
     idade INT NOT NULL,
     plano_id INT NOT NULL,
     PRIMARY KEY (usuario_id),
@@ -36,7 +36,7 @@ CREATE TABLE album(
 
 CREATE TABLE musica(
     musica_id INT AUTO_INCREMENT,
-    musica VARCHAR(255) NOT NULL,
+    nome VARCHAR(255) NOT NULL,
     album_id INT NOT NULL,
     PRIMARY KEY (musica_id),
     FOREIGN KEY (album_id) REFERENCES album(album_id)    
@@ -67,7 +67,7 @@ VALUES
   ('familiar', 7.99),
   ('universitário', 5.99);
 
-INSERT INTO SpotifyClone.usuario (usuario, idade,plano_id)
+INSERT INTO SpotifyClone.usuario (nome, idade,plano_id)
 VALUES
   ('Thati', 23,1),
   ('Cintia', 35,2),
@@ -89,7 +89,7 @@ VALUES
   ('Incandescent', 3),
   ('Temporary Culture', 4);
 
-INSERT INTO SpotifyClone.musica (musica, album_id)
+INSERT INTO SpotifyClone.musica (nome, album_id)
 VALUES
   ('Soul For Us', 1),
   ('Reflections Of Magic',1),
