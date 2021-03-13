@@ -60,35 +60,33 @@ VALUES
 
 CREATE TABLE cancoes(
     cancao_id INT PRIMARY KEY AUTO_INCREMENT,
-    album_id INT NOT NULL,
-    artista_id INT NOT NULL,
-    cancao VARCHAR(60) NOT NULL,
-    FOREIGN KEY (artista_id) REFERENCES artistas (artista_id),
+    album_id INT NOT NULL,    
+    cancao VARCHAR(60) NOT NULL,    
     FOREIGN KEY (album_id) REFERENCES albuns (album_id)
 ) engine = InnoDB;
 
-INSERT INTO cancoes (album_id, artista_id, cancao)
+INSERT INTO cancoes (album_id, cancao)
 VALUES
-  (1, 1, 'Soul For Us'),
-  (1, 1, 'Reflections Of Magic'),
-  (1, 1,'Dance With Her Own'),
-  (2, 1,'Troubles Of My Inner Fire'),
-  (2, 1,'Time Fireworks'),
-  (3, 2,'Magic Circus'),
-  (3, 2,'Honey, So Do I'),
-  (3, 2,"Sweetie, Let's Go Wild"),
-  (3, 2,'She Knows'),
-  (4, 3,'Fantasy For Me'),
-  (4, 3,'Celebration Of More'),
-  (4, 3,'Rock His Everything'),
-  (4, 3,'Home Forever'),
-  (4, 3,'Diamond Power'),
-  (4, 3,"Honey, Let's Be Silly"),
-  (5, 4,'Thang Of Thunder'),
-  (5, 4,'Words Of Her Life'),
-  (5, 4, 'Without My Streets');
+  (1, 'Soul For Us'),
+  (1, 'Reflections Of Magic'),
+  (1, 'Dance With Her Own'),
+  (2, 'Troubles Of My Inner Fire'),
+  (2, 'Time Fireworks'),
+  (3, 'Magic Circus'),
+  (3, 'Honey, So Do I'),
+  (3, "Sweetie, Let's Go Wild"),
+  (3, 'She Knows'),
+  (4, 'Fantasy For Me'),
+  (4, 'Celebration Of More'),
+  (4, 'Rock His Everything'),
+  (4, 'Home Forever'),
+  (4, 'Diamond Power'),
+  (4, "Honey, Let's Be Silly"),
+  (5, 'Thang Of Thunder'),
+  (5, 'Words Of Her Life'),
+  (5, 'Without My Streets');
 
-CREATE TABLE seguindo_artista(
+CREATE TABLE seguindo_artistas(
     usuario_id INT,
     artista_id INT,    
     PRIMARY KEY(usuario_id, artista_id),
@@ -96,18 +94,18 @@ CREATE TABLE seguindo_artista(
     FOREIGN KEY (artista_id) REFERENCES artistas (artista_id)
 ) engine = InnoDB;
 
-INSERT INTO seguindo_artista (usuario_id, artista_id)
+INSERT INTO seguindo_artistas (usuario_id, artista_id)
 VALUES
   (1,1),
+  (1,2),
   (1,3),
-  (1,4),
   (2,1),
   (2,3),
   (3,1),
-  (3,2),
-  (4,4);   
+  (3,4),
+  (4,2);   
 
-CREATE TABLE historico(
+CREATE TABLE historicos(
     usuario_id INT,
     cancao_id INT,
     PRIMARY KEY(usuario_id, cancao_id),
@@ -115,7 +113,7 @@ CREATE TABLE historico(
     FOREIGN KEY (cancao_id) REFERENCES cancoes (cancao_id)
 ) engine = InnoDB;
 
-INSERT INTO historico (usuario_id, cancao_id)
+INSERT INTO historicos (usuario_id, cancao_id)
 VALUES
   (1,1),
   (1,6),
@@ -125,6 +123,7 @@ VALUES
   (2,17),
   (2,2),
   (2,15),
+  (3,4),
   (3,16),
   (3,6),
   (4,3),

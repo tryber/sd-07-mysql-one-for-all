@@ -7,5 +7,3 @@ INNER JOIN SpotifyClone.artistas AS art
 ON can.artista_id = art.artista_id
 INNER JOIN SpotifyClone.albuns AS alb
 ON can.artista_id = alb.artista_id;
-
-SELECT * FROM estatisticas_musicais;
