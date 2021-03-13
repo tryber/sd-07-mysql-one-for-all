@@ -81,7 +81,7 @@ VALUES
 INSERT INTO cancao (cancao_id, cancao_nome, album_id) 
 VALUES
 (1, "Soul For Us", 1),
-(2, "Troubles Of MyInner Fire", 2),
+(2, "Troubles Of My Inner Fire", 2),
 (3, "Magic Circus", 3),
 (4, "Fantasy For Me", 4),
 (5, "Thang Of Thunder", 5),
@@ -94,7 +94,7 @@ VALUES
 (12, "Celebration Of More", 4),
 (13, "Rock His Everything", 4),
 (14, "Home Forever", 4),
-(15, "DiamondPower", 4),
+(15, "Diamond Power", 4),
 (16, "Honey, Let's Be Silly", 4),
 (17, "Words Of Her Life", 5),
 (18, "Without My Streets", 5);
