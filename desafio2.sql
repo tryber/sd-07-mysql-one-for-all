@@ -1,4 +1,4 @@
-CREATE VIEW historico_reproducao_usuarios AS
+CREATE VIEW estatisticas_musicais AS
 SELECT COUNT(DISTINCT can.cancao_id) AS "cancoes",
 COUNT(DISTINCT art.artista_name) AS "artistas",
 COUNT(DISTINCT alb.album_id) AS "albuns"
