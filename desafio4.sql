@@ -1,11 +1,9 @@
-/*referencia: Rodrigo Sudário*/
 CREATE VIEW top_3_artistas AS
 SELECT
 a.artista AS artista,
-COUNT(u.usuario) AS seguidores
-FROM SpotifyClone.seguidores AS s
-INNER JOIN SpotifyClone.artistas AS a ON s.artista_id = a.artista_id
-INNER JOIN SpotifyClone.usuarios AS u ON s.usuario_id = u.usuario_id
+COUNT(u.usuario_id) AS seguidores
+FROM SpotifyClone.artistas AS s
+INNER JOIN SpotifyClone.seguindo_artistas AS u ON a.artista_id = u.artista_id
 GROUP BY artista
 ORDER BY seguidores DESC, artista
 LIMIT 3;
