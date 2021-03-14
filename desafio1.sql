@@ -20,7 +20,7 @@ title VARCHAR(100) NOT NULL,
 CREATE TABLE plans(
 plan_id INTEGER PRIMARY KEY AUTO_INCREMENT,
 account VARCHAR(100) NOT NULL,
-    price DOUBLE(6,2) NOT NULL
+    price DECIMAL(6,2) NOT NULL
 ) engine = InnoDB;
 
 CREATE TABLE songs(
@@ -104,7 +104,7 @@ VALUES
     (1, 'Thati', 23),
     (2, 'Cintia', 35),
     (3, 'Bill', 20),
-    (2, 'Roger', 45);
+    (1, 'Roger', 45);
 
 INSERT INTO users_history (user_history_id, song_history_id)
 VALUES
