@@ -6,7 +6,7 @@ USE SpotifyClone;
 
 CREATE TABLE plano(
     plano_id INT AUTO_INCREMENT,
-    plano VARCHAR(100) NOT NULL,
+    categoria VARCHAR(100) NOT NULL,
     valor_plano DECIMAL(10,2) NOT NULL,
     PRIMARY KEY (plano_id)
 ) ENGINE=INNODB;
@@ -22,13 +22,13 @@ CREATE TABLE usuario(
 
 CREATE TABLE artista(
     artista_id INT AUTO_INCREMENT,
-    artista VARCHAR(100) NOT NULL,
+    nome VARCHAR(100) NOT NULL,
     PRIMARY KEY (artista_id)    
 ) ENGINE=INNODB;
 
 CREATE TABLE album(
     album_id INT AUTO_INCREMENT,
-    album VARCHAR(100) NOT NULL,
+    nome VARCHAR(100) NOT NULL,
     artista_id INT NOT NULL,
     PRIMARY KEY (album_id),
     FOREIGN KEY (artista_id) REFERENCES artista(artista_id)    
@@ -50,7 +50,7 @@ CREATE TABLE seguindo(
     FOREIGN KEY (usuario_id) REFERENCES usuario(usuario_id),
     FOREIGN KEY (artista_id) REFERENCES artista(artista_id)
 ) ENGINE=INNODB;
-
+S
 CREATE TABLE historico(
     historico_id INT AUTO_INCREMENT,
     usuario_id INT NOT NULL,
@@ -61,7 +61,7 @@ CREATE TABLE historico(
 ) ENGINE=INNODB;
 
 
-INSERT INTO SpotifyClone.plano (plano, valor_plano)
+INSERT INTO SpotifyClone.plano (categoria, valor_plano)
 VALUES
   ('gratuito', 0.00),
   ('familiar', 7.99),
@@ -74,14 +74,14 @@ VALUES
   ('Bill', 20,3),
   ('Roger', 45,1);
 
-INSERT INTO SpotifyClone.artista (artista)
+INSERT INTO SpotifyClone.artista (nome)
 VALUES
   ('Walter Phoenix'),
   ('Peter Strong'),
   ('Lance Day'),
   ('Freedie Shannon');
 
-INSERT INTO SpotifyClone.album (album, artista_id)
+INSERT INTO SpotifyClone.album (nome, artista_id)
 VALUES
   ('Envious', 1),
   ('Exuberant', 1),
