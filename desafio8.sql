@@ -1,4 +1,6 @@
 -- Referência do DECLARE: https://github.com/tryber/sd-07-mysql-one-for-all/blob/cosmo-mysql-one-for-all/desafio8.sql
+USE SpotifyClone;
+
 DELIMITER $$
 CREATE TRIGGER trigger_usuario_delete
 BEFORE DELETE ON users
