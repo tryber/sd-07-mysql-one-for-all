@@ -41,16 +41,16 @@ CREATE TABLE following_artists(
     user_id INT NOT NULL,
     artist_id INT NOT NULL,
     PRIMARY KEY (user_id, artist_id),
-    FOREIGN KEY (user_id) REFERENCES user(user_id),
-    FOREIGN KEY (artist_id) REFERENCES artist(artist_id)
+    FOREIGN KEY (user_id) REFERENCES user(user_id) ON DELETE CASCADE,
+    FOREIGN KEY (artist_id) REFERENCES artist(artist_id) ON DELETE CASCADE
 ) engine = InnoDB;
 
 CREATE TABLE reproduction_history(
     user_id INT NOT NULL,
     song_id INT NOT NULL,
     PRIMARY KEY (user_id, song_id),
-    FOREIGN KEY (user_id) REFERENCES user(user_id),
-    FOREIGN KEY (song_id) REFERENCES song(song_id)
+    FOREIGN KEY (user_id) REFERENCES user(user_id) ON DELETE CASCADE,
+    FOREIGN KEY (song_id) REFERENCES song(song_id) ON DELETE CASCADE
 ) engine = InnoDB;
 
 INSERT INTO SpotifyClone.plan (plan_name, plan_value)
