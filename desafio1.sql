@@ -46,4 +46,3 @@ user_id INT NOT NULL,
 PRIMARY KEY (artist_id, user_id),
 FOREIGN KEY (artist_id) REFERENCES artist(id),
 FOREIGN KEY (user_id) REFERENCES users(id));
-
