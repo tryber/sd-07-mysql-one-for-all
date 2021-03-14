@@ -50,7 +50,7 @@ CREATE TABLE seguindo(
     FOREIGN KEY (usuario_id) REFERENCES usuario(usuario_id),
     FOREIGN KEY (artista_id) REFERENCES artista(artista_id)
 ) ENGINE=INNODB;
-S
+
 CREATE TABLE historico(
     historico_id INT AUTO_INCREMENT,
     usuario_id INT NOT NULL,
