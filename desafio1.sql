@@ -68,7 +68,7 @@ INSERT INTO albuns (title, singer_id)
 VALUES
     ('Envious', 1),
     ('Exuberant', 1),
-    ('Halloween Steam', 2),
+    ('Hallowed Steam', 2),
     ('Incandescent', 3),
     ('Temporary Culture', 4);
 
