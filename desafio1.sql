@@ -1,1 +1,51 @@
-SELECT * FROM LETS_GO_BEYOND;
+CREATE DATABASE IF NOT EXISTS SpotifyClone;
+USE SpotifyClone;
+
+CREATE TABLE IF NOT EXISTS users(
+id INT PRIMARY KEY AUTO_INCREMENT,
+plan_id INT NOT NULL,
+first_name VARCHAR(100) NOT NULL, 
+last_name VARCHAR(100) NOT NULL,
+age INT(100) NOT NULL,
+FOREIGN KEY (plan_id) REFERENCES plan(id));
+
+CREATE TABLE IF NOT EXISTS plan(
+id INT PRIMARY KEY AUTO_INCREMENT, 
+plan VARCHAR(100) NOT NULL, 
+price INT(100) NOT NULL,
+activated BOOLEAN);
+
+CREATE TABLE IF NOT EXISTS artist(
+id INT PRIMARY KEY AUTO_INCREMENT,
+artist_name VARCHAR(100));
+
+CREATE TABLE IF NOT EXISTS album(
+id INT PRIMARY KEY AUTO_INCREMENT,
+artist_id INT NOT NULL,
+album_title VARCHAR(100) NOT NULL,
+released_year DATE NOT NULL,
+FOREIGN KEY (artist_id) REFERENCES artist(id));
+
+CREATE TABLE IF NOT EXISTS song(
+id INT PRIMARY KEY AUTO_INCREMENT, 
+album_id INT NOT NULL,
+song_title VARCHAR(100) NOT NULL,
+song_length Varchar(4) NOT NULL,
+FOREIGN KEY (album_id) REFERENCES album(id));
+
+CREATE TABLE IF NOT EXISTS history_reproduction(
+user_id INT NOT NULL, 
+song_id INT NOT NULL,
+PRIMARY KEY (user_id, song_id),
+FOREIGN KEY (user_id) REFERENCES users(id),
+FOREIGN KEY (song_id) REFERENCES song(ID));
+
+CREATE TABLE IF NOT EXISTS follewed_artist(
+artist_id INT NOT NULL,
+user_id INT NOT NULL,
+PRIMARY KEY (artist_id, user_id),
+FOREIGN KEY (artist_id) REFERENCES artist(id),
+FOREIGN KEY (user_id) REFERENCES users(id));
+
+
+
