@@ -40,7 +40,7 @@ create table `SpotifyClone`.`usuario`(
 ) engine = InnoDB;
 
 -- INSERT INTO `SpotifyClone`.`usuario` (`usuario`, `idade`, `plano_id`) VALUES ('Thati', '23', '1'), ('Cintia', '35' ,'2'), ('Bill', '20', '3'), ('Roger', '45', '4');
-  INSERT INTO `SpotifyClone`.`usuario` (`usuario`, `idade`, `plano_id`) VALUES ('Thati', '23', '1'), ('Cintia', '35', '2'), ('Bill', '20', '3'), ('Roger', '45', '4');
+  INSERT INTO `SpotifyClone`.`usuario` (`usuario`, `idade`, `plano_id`) VALUES ('Thati', '23', '1'), ('Cintia', '35', '2'), ('Bill', '20', '3'), ('Bill', '20', '3');
 
 create table `SpotifyClone`.`album`(
   `id` INT UNSIGNED NOT NULL AUTO_INCREMENT,
