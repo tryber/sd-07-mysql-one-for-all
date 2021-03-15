@@ -4,6 +4,6 @@ CREATE VIEW top_2_hits_do_momento AS (
     INNER JOIN SpotifyClone.music_history AS mhistory
     ON mhistory.music_id = S.id
     GROUP BY music_id
-    ORDER BY 'reproducoes' DESC, 'cancao'
+    ORDER BY `reproducoes` DESC, `cancao` ASC
   LIMIT 2
 );
