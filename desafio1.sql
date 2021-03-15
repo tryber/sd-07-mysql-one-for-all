@@ -114,9 +114,9 @@ VALUES
 
 create table `SpotifyClone`.`seguindo`(
   `id` INT UNSIGNED NOT NULL AUTO_INCREMENT,
-  `usuario_id` INT UNSIGNED NOT NULL,
-  `artista_id` INT UNSIGNED NOT NULL,
-  PRIMARY KEY (`id`),
+  `usuario_id` INT NOT NULL,
+  `artista_id` INT NOT NULL,
+  PRIMARY KEY (`usuario_id`, `artista_id`),
   FOREIGN KEY (`artista_id`) REFERENCES `SpotifyClone`.`artista`(`id`),
   FOREIGN KEY (`usuario_id`) REFERENCES `SpotifyClone`.`usuario`(`id`)
 );
