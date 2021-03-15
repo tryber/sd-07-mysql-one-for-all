@@ -5,7 +5,7 @@ CREATE DATABASE `SpotifyClone`;
 USE `SpotifyClone`;
 
 CREATE TABLE `SpotifyClone`.`planos`(
-  `id` INT UNSIGNED NOT NULL AUTO_INCREMENT,
+  `id` INT AUTO_INCREMENT,
   `plano` VARCHAR(45) NOT NULL,
   `valor` DECIMAL(5,2) NOT NULL,
   PRIMARY KEY (`id`)
@@ -18,7 +18,7 @@ VALUES
   ('universitário', 5.99);
 
 CREATE TABLE `SpotifyClone`.`artista`(
-  `id` INT UNSIGNED NOT NULL AUTO_INCREMENT,
+  `id` INT AUTO_INCREMENT,
   `artista` VARCHAR(45) NOT NULL,
   PRIMARY KEY (`id`)
 ) engine = InnoDB;
@@ -31,10 +31,10 @@ VALUES
   ('Freedie Shannon');
   
 create table `SpotifyClone`.`usuario`(
-  `id` INT UNSIGNED NOT NULL AUTO_INCREMENT,
+  `id` INT AUTO_INCREMENT,
   `usuario` VARCHAR(45) NOT NULL,
   `idade` INT NOT NULL,
-  `plano_id` INT UNSIGNED NOT NULL,
+  `plano_id` INT NOT NULL,
   PRIMARY KEY (`id`),
   FOREIGN KEY (`plano_id`) REFERENCES `SpotifyClone`.`planos`(`id`)
 ) engine = InnoDB;
@@ -43,9 +43,9 @@ INSERT INTO `SpotifyClone`.`usuario` (`usuario`, `idade`, `plano_id`)
 VALUES ('Thati', '23', '1'), ('Cintia', '35', '2'), ('Bill', '20', '3'), ('Roger', '45', '1');
 
 create table `SpotifyClone`.`album`(
-  `id` INT UNSIGNED NOT NULL AUTO_INCREMENT,
+  `id` INT AUTO_INCREMENT,
   `album` VARCHAR(45) NOT NULL,
-  `artista_id` INT UNSIGNED NOT NULL,
+  `artista_id` INT NOT NULL,
   PRIMARY KEY (`id`),
   FOREIGN KEY (`artista_id`) REFERENCES `SpotifyClone`.`artista`(`id`)
 );
@@ -59,9 +59,9 @@ VALUES
   ('Temporary Culture',4);
 
 create table `SpotifyClone`.`cancoes`(
-  `id` INT UNSIGNED NOT NULL AUTO_INCREMENT,
+  `id` INT AUTO_INCREMENT,
   `cancoes` VARCHAR(45) NOT NULL,
-  `album_id` INT UNSIGNED NOT NULL,
+  `album_id` INT NOT NULL,
   PRIMARY KEY (`id`),
   FOREIGN KEY (`album_id`) REFERENCES `SpotifyClone`.`album`(`id`)
 );
@@ -88,8 +88,8 @@ VALUES
   ("Without My Streets",5);
 
 create table `SpotifyClone`.`historico`(
-  `cancoes_id` INT UNSIGNED NOT NULL,
-  `usuario_id` INT UNSIGNED NOT NULL,
+  `cancoes_id` INT NOT NULL,
+  `usuario_id` INT NOT NULL,
   PRIMARY KEY (`cancoes_id`, `usuario_id`),
   FOREIGN KEY (`cancoes_id`) REFERENCES `SpotifyClone`.`cancoes`(`id`),
   FOREIGN KEY (`usuario_id`) REFERENCES `SpotifyClone`.`usuario`(`id`)
@@ -113,7 +113,6 @@ VALUES
   (11,4);
 
 create table `SpotifyClone`.`seguindo`(
-  `id` INT UNSIGNED NOT NULL AUTO_INCREMENT,
   `usuario_id` INT NOT NULL,
   `artista_id` INT NOT NULL,
   PRIMARY KEY (`usuario_id`, `artista_id`),
