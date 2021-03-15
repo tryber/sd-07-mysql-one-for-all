@@ -4,7 +4,7 @@ DELIMITER $$
 CREATE FUNCTION quantidade_musicas_no_historico(codigo_usuario INT)
 RETURNS INT READS SQL DATA
 BEGIN
-	DECLARE qtd_historico INT;
+  DECLARE qtd_historico INT;
 SELECT 
     COUNT(h.cancao_id) 
 FROM
