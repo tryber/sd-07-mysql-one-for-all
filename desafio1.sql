@@ -50,7 +50,7 @@ CREATE TABLE `songs` (
   CONSTRAINT `fk_song_album` FOREIGN KEY (`album_id`) REFERENCES `albums` (`album_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
-CREATE TABLE `following` (
+CREATE TABLE `followers` (
   `user_id` int NOT NULL,
   `artist_id` int NOT NULL,
   KEY `fk_following_user_idx` (`user_id`),
@@ -135,7 +135,7 @@ VALUES
 (19, 4),
 (12, 4);
 
-INSERT INTO FOLLOWING(user_id, artist_id)
+INSERT INTO followers(user_id, artist_id)
 VALUES
 (1, 1),
 (1, 4),
