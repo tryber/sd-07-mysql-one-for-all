@@ -6,7 +6,7 @@ BEGIN
     alb.album_nome AS "album"
     FROM SpotifyClone.artistas AS art
     INNER JOIN SpotifyClone.albuns AS alb
-    ON alb.album_id = art.album_id
+    ON alb.artista_id = art.artista_id
     WHERE nomeArtista = art.artista_nome
     ORDER BY 2;
 END $$
