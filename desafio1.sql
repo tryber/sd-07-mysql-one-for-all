@@ -46,7 +46,8 @@ create table `SpotifyClone`.`album`(
   `id` INT UNSIGNED NOT NULL AUTO_INCREMENT,
   `album` VARCHAR(45) NOT NULL,
   `artista_id` INT UNSIGNED NOT NULL,
-  PRIMARY KEY (`id`)
+  PRIMARY KEY (`id`),
+  FOREIGN KEY (`artista_id`) REFERENCES `SpotifyClone`.`artista`(`id`)
 );
 
 INSERT INTO `SpotifyClone`.`album` (`album`, `artista_id`)
