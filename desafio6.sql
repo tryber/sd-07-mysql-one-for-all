@@ -19,4 +19,4 @@ on SpotifyClone.usuario.plano_id = SpotifyClone.planos.id) as "faturamento_medio
 round(sum(SpotifyClone.planos.valor), 2)
 FROM SpotifyClone.usuario
 inner join SpotifyClone.planos
-on SpotifyClone.usuario.plano_id = SpotifyClone.planos.id) as "faturamento_total"
+on SpotifyClone.usuario.plano_id = SpotifyClone.planos.id) as "faturamento_total";
