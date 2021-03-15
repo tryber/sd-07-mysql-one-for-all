@@ -1,3 +1,4 @@
+CREATE VIEW cancoes_premium AS
 SELECT
 count(SpotifyClone.historico.usuario_id) as reproducoes,
 SpotifyClone.cancoes.cancoes as nome
