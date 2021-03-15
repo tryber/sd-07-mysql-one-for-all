@@ -7,4 +7,4 @@ inner join SpotifyClone.cancoes
 on SpotifyClone.historico.cancoes_id = SpotifyClone.cancoes.id
 group by cancoes_id
 order by 1 desc, 2
-limit 2
+limit 2;
