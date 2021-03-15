@@ -7,7 +7,7 @@ USE `SpotifyClone`;
 CREATE TABLE `SpotifyClone`.`planos`(
   `id` INT UNSIGNED NOT NULL AUTO_INCREMENT,
   `plano` VARCHAR(45) NOT NULL,
-  `valor` DECIMAL(3,2) NOT NULL,
+  `valor` DECIMAL(5,2) NOT NULL,
   PRIMARY KEY (`id`)
 ) engine = InnoDB;
 
@@ -39,8 +39,8 @@ create table `SpotifyClone`.`usuario`(
   FOREIGN KEY (`plano_id`) REFERENCES `SpotifyClone`.`planos`(`id`)
 ) engine = InnoDB;
 
--- INSERT INTO `SpotifyClone`.`usuario` (`usuario`, `idade`, `plano_id`) VALUES ('Thati', '23', '1'), ('Cintia', '35' ,'2'), ('Bill', '20', '3'), ('Roger', '45', '4');
-  INSERT INTO `SpotifyClone`.`usuario` (`usuario`, `idade`, `plano_id`) VALUES ('Thati', '23', '1'), ('Cintia', '35', '2'), ('Bill', '20', '3'), ('Roger', '45', '1');
+INSERT INTO `SpotifyClone`.`usuario` (`usuario`, `idade`, `plano_id`)
+VALUES ('Thati', '23', '1'), ('Cintia', '35', '2'), ('Bill', '20', '3'), ('Roger', '45', '1');
 
 create table `SpotifyClone`.`album`(
   `id` INT UNSIGNED NOT NULL AUTO_INCREMENT,
@@ -88,10 +88,9 @@ VALUES
   ("Without My Streets",5);
 
 create table `SpotifyClone`.`historico`(
-  `id` INT UNSIGNED NOT NULL AUTO_INCREMENT,
   `cancoes_id` INT UNSIGNED NOT NULL,
   `usuario_id` INT UNSIGNED NOT NULL,
-  PRIMARY KEY (`id`),
+  PRIMARY KEY (`cancoes_id`, `usuario_id`),
   FOREIGN KEY (`cancoes_id`) REFERENCES `SpotifyClone`.`cancoes`(`id`),
   FOREIGN KEY (`usuario_id`) REFERENCES `SpotifyClone`.`usuario`(`id`)
 );
