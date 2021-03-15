@@ -1,4 +1,4 @@
-CREATE VIEW historico_reproducao_usuario AS
+CREATE VIEW historico_reproducao_usuarios AS
 SELECT U.nome_usuario AS 'usuario',
 C.nome_cancao AS 'nome'
 FROM SpotifyClone.usuarios AS U
