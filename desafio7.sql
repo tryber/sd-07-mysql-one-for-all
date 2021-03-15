@@ -7,4 +7,3 @@ inner join SpotifyClone.artista
 on SpotifyClone.seguindo.artista_id = SpotifyClone.artista.id
 inner join SpotifyClone.album
 on SpotifyClone.seguindo.artista_id = SpotifyClone.album.id
-
