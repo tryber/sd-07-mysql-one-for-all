@@ -3,7 +3,7 @@ select
 -- SpotifyClone.historico.id,
 -- SpotifyClone.historico.cancoes_id,
 -- SpotifyClone.historico.usuario_id,
-SpotifyClone.usuario.usuario,
+SpotifyClone.usuario.usuario as nome,
 SpotifyClone.cancoes.cancoes
 from SpotifyClone.historico
 inner join SpotifyClone.cancoes
