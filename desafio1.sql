@@ -62,7 +62,8 @@ create table `SpotifyClone`.`cancoes`(
   `id` INT UNSIGNED NOT NULL AUTO_INCREMENT,
   `cancoes` VARCHAR(45) NOT NULL,
   `album_id` INT UNSIGNED NOT NULL,
-  PRIMARY KEY (`id`)
+  PRIMARY KEY (`id`),
+  FOREIGN KEY (`album_id`) REFERENCES `SpotifyClone`.`album`(`id`)
 );
 
 INSERT INTO `SpotifyClone`.`cancoes`(`cancoes`, `album_id`)
@@ -90,7 +91,9 @@ create table `SpotifyClone`.`historico`(
   `id` INT UNSIGNED NOT NULL AUTO_INCREMENT,
   `cancoes_id` INT UNSIGNED NOT NULL,
   `usuario_id` INT UNSIGNED NOT NULL,
-  PRIMARY KEY (`id`)
+  PRIMARY KEY (`id`),
+  FOREIGN KEY (`cancoes_id`) REFERENCES `SpotifyClone`.`cancoes`(`id`),
+  FOREIGN KEY (`usuario_id`) REFERENCES `SpotifyClone`.`usuario`(`id`)
 );
 
 INSERT INTO `SpotifyClone`.`historico`(`cancoes_id`, `usuario_id`)
@@ -114,7 +117,9 @@ create table `SpotifyClone`.`seguindo`(
   `id` INT UNSIGNED NOT NULL AUTO_INCREMENT,
   `usuario_id` INT UNSIGNED NOT NULL,
   `artista_id` INT UNSIGNED NOT NULL,
-  PRIMARY KEY (`id`)
+  PRIMARY KEY (`id`),
+  FOREIGN KEY (`artista_id`) REFERENCES `SpotifyClone`.`artista`(`id`),
+  FOREIGN KEY (`usuario_id`) REFERENCES `SpotifyClone`.`usuario`(`id`)
 );
 
 INSERT INTO `SpotifyClone`.`seguindo`(`usuario_id`, `artista_id`)
