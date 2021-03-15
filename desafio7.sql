@@ -8,4 +8,4 @@ ON followers.artist_id = artists.id
 INNER JOIN SpotifyClone.albums AS albums
 ON artists.id = albums.artist_id
 GROUP BY albums.id
-ORDER BY 3 DESC, 1, 2;
+ORDER BY 3 DESC, 1;
