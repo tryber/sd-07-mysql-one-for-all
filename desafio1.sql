@@ -7,7 +7,7 @@ USE `SpotifyClone`;
 CREATE TABLE `SpotifyClone`.`planos`(
   `id` INT UNSIGNED NOT NULL AUTO_INCREMENT,
   `plano` VARCHAR(45) NOT NULL,
-  `valor` DECIMAL(3,2) UNSIGNED NOT NULL,
+  `valor` DECIMAL(3,2) NOT NULL,
   PRIMARY KEY (`id`)
 ) engine = InnoDB;
 
@@ -33,18 +33,15 @@ VALUES
 create table `SpotifyClone`.`usuario`(
   `id` INT UNSIGNED NOT NULL AUTO_INCREMENT,
   `usuario` VARCHAR(45) NOT NULL,
-  `idade` INT UNSIGNED NOT NULL,
+  `idade` INT NOT NULL,
   `plano_id` INT UNSIGNED NOT NULL,
-  PRIMARY KEY (`id`)
-    -- FOREIGN KEY (`plano_id`) REFERENCES `SpotifyClone`.`planos`(`id`)
+  PRIMARY KEY (`id`),
+  FOREIGN KEY (`plano_id`) REFERENCES `SpotifyClone`.`planos`(`id`)
 ) engine = InnoDB;
 
-INSERT INTO `SpotifyClone`.`usuario` (`usuario`,`idade`,`plano_id`)
-VALUES
-  ('Thati',23,1),
-  ('Cintia',35,2),
-  ('Bill',20,3),
-  ('Roger',45,4);
+-- INSERT INTO `SpotifyClone`.`usuario` (`usuario`, `idade`, `plano_id`) VALUES ('Thati', '23', '1'), ('Cintia', '35' ,'2'), ('Bill', '20', '3'), ('Roger', '45', '4');
+  
+   INSERT INTO `SpotifyClone`.`usuario` (`usuario`, `idade`, `plano_id`) VALUES ('Thati', '23', '1'), ('Cintia', '35', '2'), ('Bill', '20', '3'), ('Bill', '20', '3');
 
 create table `SpotifyClone`.`album`(
   `id` INT UNSIGNED NOT NULL AUTO_INCREMENT,
