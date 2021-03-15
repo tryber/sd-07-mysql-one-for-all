@@ -41,9 +41,10 @@ CREATE TABLE musicas(
 
 CREATE TABLE reproducoes(
     usuario_id INT NOT NULL,
-    musica_id INT ,
+    musica_id INT NOT NULL,
     primary key (usuario_id, musica_id),
     foreign key (usuario_id) references usuario (usuario_id) ON DELETE CASCADE
+    foreign key (musica_id) references musicas (musica_id) ON DELETE CASCADE
 ) engine = InnoDB;
 
 CREATE TABLE seguindo(
