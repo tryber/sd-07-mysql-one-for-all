@@ -1,7 +1,10 @@
 SELECT 
-count(SpotifyClone.seguindo.artista_id) as "seguidores",
-SpotifyClone.artista.artista
+SpotifyClone.seguindo.artista_id as "seguidores",
+SpotifyClone.artista.artista,
+SpotifyClone.album.album
 FROM SpotifyClone.seguindo
 inner join SpotifyClone.artista
 on SpotifyClone.seguindo.artista_id = SpotifyClone.artista.id
-group by SpotifyClone.artista.artista;
+inner join SpotifyClone.album
+on SpotifyClone.seguindo.artista_id = SpotifyClone.album.id
+
