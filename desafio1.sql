@@ -4,7 +4,7 @@ CREATE DATABASE SpotifyClone;
 
 USE SpotifyClone;
 
-CREATE TABLE `subscriptions` (
+CREATE TABLE subscriptions (
   `sub_id` int NOT NULL AUTO_INCREMENT,
   `subscription` varchar(255) NOT NULL,
   `sub_value` int NOT NULL,
@@ -106,7 +106,7 @@ VALUES
 ('Magic Circus', 3),
 ('Honey, So Do I', 3),
 ('Sweetie', 3),
-('Lets Go Wild', 3),
+("Let's Go Wild", 3),
 ('She Knows', 3),
 ('Fantasy For Me', 4),
 ('Celebration Of More', 4),
@@ -114,7 +114,7 @@ VALUES
 ('Home Forever', 4),
 ('Diamond Power', 4),
 ('Honey, Lets Be Silly', 4),
-('Thanf Of Thunder', 5),
+('Thang Of Thunder', 5),
 ('Words Of Her Life', 5),
 ('Whithout My Streets', 5);
 
