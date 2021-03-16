@@ -25,17 +25,30 @@ CREATE TABLE `users` (
   `user_age` int NOT NULL,
   `subscription_id` int NOT NULL,
   PRIMARY KEY (`user_id`),
-  UNIQUE KEY `user_id_UNIQUE` (`user_id`),
   KEY `fk_user_sub_idx` (`subscription_id`),
   CONSTRAINT `fk_user_sub` FOREIGN KEY (`subscription_id`) REFERENCES `subscriptions` (`sub_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB;
+
+INSERT INTO users(user_name, user_age, subscription_id)
+VALUES
+('Thati', 23, 1),
+('Cintia', 35, 2),
+('Bill', 20, 3),
+('Roger', 45, 1);
 
 CREATE TABLE `artists` (
   `artist_id` int NOT NULL AUTO_INCREMENT,
   `name` varchar(255) NOT NULL,
   PRIMARY KEY (`artist_id`),
   UNIQUE KEY `artist_id_UNIQUE` (`artist_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB;
+
+INSERT INTO artists(name)
+VALUES
+('Walter Phoenix'),
+('Peter Strong'),
+('Lance Day'),
+('Freedie Shannon');
 
 CREATE TABLE `albums` (
   `album_id` int NOT NULL AUTO_INCREMENT,
@@ -45,48 +58,7 @@ CREATE TABLE `albums` (
   UNIQUE KEY `album_id_UNIQUE` (`album_id`),
   KEY `fk_albums_artist_idx` (`artist_id`),
   CONSTRAINT `fk_albums_artist` FOREIGN KEY (`artist_id`) REFERENCES `artists` (`artist_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
-
-CREATE TABLE `songs` (
-  `song_id` int NOT NULL AUTO_INCREMENT,
-  `song_title` varchar(255) NOT NULL,
-  `album_id` int NOT NULL,
-  PRIMARY KEY (`song_id`),
-  KEY `fk_song_album_idx` (`album_id`),
-  CONSTRAINT `fk_song_album` FOREIGN KEY (`album_id`) REFERENCES `albums` (`album_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
-
-CREATE TABLE `followers` (
-  `user_id` int NOT NULL,
-  `artist_id` int NOT NULL,
-  KEY `fk_following_user_idx` (`user_id`),
-  KEY `fk_following_artist_idx` (`artist_id`),
-  CONSTRAINT `fk_following_artist` FOREIGN KEY (`artist_id`) REFERENCES `artists` (`artist_id`),
-  CONSTRAINT `fk_following_user` FOREIGN KEY (`user_id`) REFERENCES `users` (`user_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
-
-CREATE TABLE `plays` (
-  `song_id` int NOT NULL,
-  `user_id` int NOT NULL,
-  KEY `fk_play_song_idx` (`song_id`),
-  KEY `fk_plays_user_idx` (`user_id`),
-  CONSTRAINT `fk_play_song` FOREIGN KEY (`song_id`) REFERENCES `songs` (`song_id`),
-  CONSTRAINT `fk_plays_user` FOREIGN KEY (`user_id`) REFERENCES `users` (`user_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
-
-INSERT INTO users(user_name, user_age, subscription_id)
-VALUES
-('Thati', 23, 1),
-('Cintia', 35, 2),
-('Bill', 20, 3),
-('Roger', 45, 1);
-
-INSERT INTO artists(name)
-VALUES
-('Walter Phoenix'),
-('Peter Strong'),
-('Lance Day'),
-('Freedie Shannon');
+) ENGINE=InnoDB;
 
 INSERT INTO albums(album_name, artist_id)
 VALUES
@@ -95,6 +67,15 @@ VALUES
 ('Hallowed Steam', 2),
 ('Incandescent', 3),
 ('Temporary Culture', 4);
+
+CREATE TABLE `songs` (
+  `song_id` int NOT NULL AUTO_INCREMENT,
+  `song_title` varchar(255) NOT NULL,
+  `album_id` int NOT NULL,
+  PRIMARY KEY (`song_id`),
+  KEY `fk_song_album_idx` (`album_id`),
+  CONSTRAINT `fk_song_album` FOREIGN KEY (`album_id`) REFERENCES `albums` (`album_id`)
+) ENGINE=InnoDB;
 
 INSERT INTO songs(song_title, album_id)
 VALUES
@@ -118,6 +99,35 @@ VALUES
 ('Words Of Her Life', 5),
 ('Whithout My Streets', 5);
 
+CREATE TABLE `followers` (
+  `user_id` int NOT NULL,
+  `artist_id` int NOT NULL,
+  KEY `fk_following_user_idx` (`user_id`),
+  KEY `fk_following_artist_idx` (`artist_id`),
+  CONSTRAINT `fk_following_artist` FOREIGN KEY (`artist_id`) REFERENCES `artists` (`artist_id`),
+  CONSTRAINT `fk_following_user` FOREIGN KEY (`user_id`) REFERENCES `users` (`user_id`)
+) ENGINE=InnoDB;
+
+INSERT INTO followers(user_id, artist_id)
+VALUES
+(1, 1),
+(1, 4),
+(1, 3),
+(2, 1),
+(2, 3),
+(3, 2),
+(3, 1),
+(4, 4);
+
+CREATE TABLE `plays` (
+  `song_id` int NOT NULL,
+  `user_id` int NOT NULL,
+  KEY `fk_play_song_idx` (`song_id`),
+  KEY `fk_plays_user_idx` (`user_id`),
+  CONSTRAINT `fk_play_song` FOREIGN KEY (`song_id`) REFERENCES `songs` (`song_id`),
+  CONSTRAINT `fk_plays_user` FOREIGN KEY (`user_id`) REFERENCES `users` (`user_id`)
+) ENGINE=InnoDB;
+
 INSERT INTO plays(song_id, user_id)
 VALUES
 (1, 1),
@@ -134,14 +144,3 @@ VALUES
 (3, 4),
 (19, 4),
 (12, 4);
-
-INSERT INTO followers(user_id, artist_id)
-VALUES
-(1, 1),
-(1, 4),
-(1, 3),
-(2, 1),
-(2, 3),
-(3, 2),
-(3, 1),
-(4, 4);
