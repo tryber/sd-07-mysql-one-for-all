@@ -93,10 +93,10 @@ VALUES
 ('Rock His Everything', 4),
 ('Home Forever', 4),
 ('Diamond Power', 4),
-('Honey, Lets Be Silly', 4),
+("Honey, Let's Be Silly", 4),
 ('Thang Of Thunder', 5),
 ('Words Of Her Life', 5),
-('Whithout My Streets', 5);
+("Without My Streets", 5);
 
 CREATE TABLE `followers` (
   `user_id` int NOT NULL,
