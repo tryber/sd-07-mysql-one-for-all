@@ -7,4 +7,4 @@ select count(*) from artists
 (
 select count(*) from albums
 ) as 'albuns'
-from songs; 
+from songs;
