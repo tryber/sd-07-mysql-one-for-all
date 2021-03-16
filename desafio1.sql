@@ -125,7 +125,8 @@ CREATE TABLE `plays` (
   KEY `fk_play_song_idx` (`song_id`),
   KEY `fk_plays_user_idx` (`user_id`),
   CONSTRAINT `fk_play_song` FOREIGN KEY (`song_id`) REFERENCES `songs` (`song_id`),
-  CONSTRAINT `fk_plays_user` FOREIGN KEY (`user_id`) REFERENCES `users` (`user_id`)
+  CONSTRAINT `fk_plays_user` FOREIGN KEY (`user_id`) REFERENCES `users` (`user_id`),
+  PRIMARY KEY (song_id, user_id)
 ) ENGINE=InnoDB;
 
 INSERT INTO plays(song_id, user_id)
