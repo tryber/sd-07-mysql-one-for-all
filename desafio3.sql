@@ -1,12 +1,10 @@
-CREATE VIEW historico_reproducao_usuarios as
-select
+CREATE VIEW historico_reproducao_usuarios AS
+SELECT
 (
-select user_name from users where user_id = p.user_id
-) as 'usuario',
+SELECT user_name FROM users WHERE user_id = p.user_id
+) AS usuario,
 (
-select song_title from songs where song_id = p.song_id
-) as 'nome'
-from plays p
-order by
-1 ASC,
-2 ASC;
+SELECT song_title FROM songs WHERE song_id = p.song_id
+) AS nome
+FROM plays p
+ORDER BY 1,2;
