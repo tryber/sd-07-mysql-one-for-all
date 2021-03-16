@@ -11,7 +11,7 @@ CREATE TABLE subscriptions (
   PRIMARY KEY (`sub_id`),
   UNIQUE KEY `sub_id_UNIQUE` (`sub_id`),
   UNIQUE KEY `subscription_UNIQUE` (`subscription`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB;
 
 CREATE TABLE `users` (
   `user_id` int NOT NULL AUTO_INCREMENT,
