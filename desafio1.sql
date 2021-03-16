@@ -105,7 +105,8 @@ CREATE TABLE `followers` (
   KEY `fk_following_user_idx` (`user_id`),
   KEY `fk_following_artist_idx` (`artist_id`),
   CONSTRAINT `fk_following_artist` FOREIGN KEY (`artist_id`) REFERENCES `artists` (`artist_id`),
-  CONSTRAINT `fk_following_user` FOREIGN KEY (`user_id`) REFERENCES `users` (`user_id`)
+  CONSTRAINT `fk_following_user` FOREIGN KEY (`user_id`) REFERENCES `users` (`user_id`),
+  PRIMARY KEY (user_id, artist_id)
 ) ENGINE=InnoDB;
 
 INSERT INTO followers(user_id, artist_id)
