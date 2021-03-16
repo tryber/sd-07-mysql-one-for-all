@@ -13,6 +13,12 @@ CREATE TABLE subscriptions (
   UNIQUE KEY `subscription_UNIQUE` (`subscription`)
 ) ENGINE=InnoDB;
 
+INSERT INTO subscriptions(subscription, sub_value)
+VALUES
+('gratuito', 0),
+('familiar', 7.99),
+('universitário', 5.99);
+
 CREATE TABLE `users` (
   `user_id` int NOT NULL AUTO_INCREMENT,
   `user_name` varchar(255) NOT NULL,
@@ -67,12 +73,6 @@ CREATE TABLE `plays` (
   CONSTRAINT `fk_play_song` FOREIGN KEY (`song_id`) REFERENCES `songs` (`song_id`),
   CONSTRAINT `fk_plays_user` FOREIGN KEY (`user_id`) REFERENCES `users` (`user_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
-
-INSERT INTO subscriptions(subscription, sub_value)
-VALUES
-('gratuito', 0),
-('familiar', 7.99),
-('universitário', 5.99);
 
 INSERT INTO users(user_name, user_age, subscription_id)
 VALUES
