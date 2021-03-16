@@ -7,7 +7,7 @@ USE SpotifyClone;
 CREATE TABLE subscriptions (
   `sub_id` int NOT NULL AUTO_INCREMENT,
   `subscription` varchar(255) NOT NULL,
-  `sub_value` int NOT NULL,
+  `sub_value` DECIMAL(10,2) NOT NULL,
   PRIMARY KEY (`sub_id`),
   UNIQUE KEY `sub_id_UNIQUE` (`sub_id`),
   UNIQUE KEY `subscription_UNIQUE` (`subscription`)
