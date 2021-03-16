@@ -1,3 +1,4 @@
+use SpotifyClone;
 CREATE VIEW historico_reproducao_usuarios as
 select
 u.user_name as 'usuario',
