@@ -8,7 +8,7 @@ BEGIN
     SELECT COUNT(*)
     FROM SpotifyClone.plays
     WHERE SpotifyClone.plays.user_id = iduser INTO total;
-    RETURN movie_total;
+    RETURN total;
 END $$
 
 DELIMITER ;
