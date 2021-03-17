@@ -41,6 +41,7 @@ CREATE TABLE playedMusicHistory(
   history_id INT PRIMARY KEY AUTO_INCREMENT,
   song_id INT,
   user_id INT,
+  PRIMARY KEY (history_id, song_id, user_id),
   FOREIGN KEY (song_id) REFERENCES songs(song_id),
   FOREIGN KEY (user_id) REFERENCES users(user_id)
 );
@@ -49,9 +50,11 @@ CREATE TABLE followingArtists(
   follow_id INT PRIMARY KEY AUTO_INCREMENT,
   user_id INT,
   artist_id INT,
+  PRIMARY KEY (follow_id, user_id, artist_id),
   FOREIGN KEY (artist_id) REFERENCES artists(artist_id),
   FOREIGN KEY (user_id) REFERENCES users(user_id)
 );
+/* linha 44 e 53 feitas com ajuda do código da @vanessaberbidi */
 
 INSERT INTO artists(name)
 VALUES
