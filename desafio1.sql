@@ -21,6 +21,8 @@ CREATE TABLE users(
   age INT NOT NULL,
   plan_id INT NOT NULL,
   FOREIGN KEY (plan_id) REFERENCES monthlyPlans(plan_id)
+  ON DELETE NO ACTION
+  ON UPDATE NO ACTION
 );
 
 CREATE TABLE albuns(
@@ -28,6 +30,8 @@ CREATE TABLE albuns(
   album_name VARCHAR(50) NOT NULL,
   artist_id INT NOT NULL,
   FOREIGN KEY (artist_id) REFERENCES artists(artist_id)
+  ON DELETE NO ACTION
+  ON UPDATE NO ACTION
 );
 
 CREATE TABLE songs(
@@ -35,22 +39,32 @@ CREATE TABLE songs(
   song_name VARCHAR(100) NOT NULL,
   album_id INT NOT NULL,
   FOREIGN KEY (album_id) REFERENCES albuns(album_id)
+  ON DELETE NO ACTION
+  ON UPDATE NO ACTION
 );
 
 CREATE TABLE playedMusicHistory(
   song_id INT NOT NULL,
   user_id INT NOT NULL,
   PRIMARY KEY (song_id, user_id),
-  FOREIGN KEY (song_id) REFERENCES songs(song_id),
+  FOREIGN KEY (song_id) REFERENCES songs(song_id)
+  ON DELETE NO ACTION
+  ON UPDATE NO ACTION,
   FOREIGN KEY (user_id) REFERENCES users(user_id)
+  ON DELETE NO ACTION
+  ON UPDATE NO ACTION
 );
 
 CREATE TABLE followingArtists(
   user_id INT,
   artist_id INT,
   PRIMARY KEY (user_id, artist_id),
-  FOREIGN KEY (artist_id) REFERENCES artists(artist_id),
+  FOREIGN KEY (artist_id) REFERENCES artists(artist_id)
+  ON DELETE NO ACTION
+  ON UPDATE NO ACTION,
   FOREIGN KEY (user_id) REFERENCES users(user_id)
+  ON DELETE NO ACTION
+  ON UPDATE NO ACTION
 );
 /* linha 44 e 53 feitas com ajuda do código da @vanessaberbidi */
 
