@@ -54,27 +54,27 @@ CREATE TABLE followingArtists(
 );
 /* linha 44 e 53 feitas com ajuda do código da @vanessaberbidi */
 
-INSERT INTO artists(name)
+INSERT INTO artists(artist_name)
 VALUES
 ('Walter Phoenix'),
 ('Peter Strong'),
 ('Lance Day'),
 ('Freedie Shannon');
 
-INSERT INTO monthlyPlans(name, value)
+INSERT INTO monthlyPlans(plan_name, plan_value)
 VALUES
 ('gratuito', 0),
 ('familiar', 7.99),
 ('universitário', 5.99);
 
-INSERT INTO users(name, age, plan_id)
+INSERT INTO users(user_name, age, plan_id)
 VALUES
 ('Thati',	23, 1),
 ('Cintia', 35, 2),
 ('Bill', 20, 3),
 ('Roger', 45, 1);
 
-INSERT INTO albuns(name, artist_id)
+INSERT INTO albuns(album_name, artist_id)
 VALUES
 ('Envious', 1),
 ('Exuberant', 1),
@@ -82,7 +82,7 @@ VALUES
 ('Incandescent', 3),
 ('Temporary Culture', 4);
 
-INSERT INTO songs(name, album_id)
+INSERT INTO songs(song_name, album_id)
 VALUES
 ('Soul For Us', 1),
 ('Reflections Of Magic', 1),
