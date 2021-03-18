@@ -1,23 +1,23 @@
 DROP DATABASE IF EXISTS SpotifyClone;
 
-CREATE DATABASE IF NOT EXISTS SpotifyClone;
+CREATE DATABASE SpotifyClone;
 
 USE SpotifyClone;
 
 CREATE TABLE artists(
   artist_id INT PRIMARY KEY AUTO_INCREMENT,
-  `name` VARCHAR(50)
+  artist_name VARCHAR(50)
 );
 
 CREATE TABLE monthlyPlans(
   plan_id INT PRIMARY KEY AUTO_INCREMENT,
-  `name` VARCHAR(50),
-  `value` DECIMAL(3,2) NOT NULL
+  plan_name VARCHAR(50),
+  plan_value DECIMAL(3,2) NOT NULL
 );
 
 CREATE TABLE users(
   user_id INT PRIMARY KEY AUTO_INCREMENT,
-  `name` VARCHAR(50) NOT NULL,
+  user_name VARCHAR(50) NOT NULL,
   age INT NOT NULL,
   plan_id INT NOT NULL,
   FOREIGN KEY (plan_id) REFERENCES monthlyPlans(plan_id)
@@ -25,32 +25,30 @@ CREATE TABLE users(
 
 CREATE TABLE albuns(
   album_id INT PRIMARY KEY AUTO_INCREMENT,
-  `name` VARCHAR(50) NOT NULL,
-  artist_id INT,
+  album_name VARCHAR(50) NOT NULL,
+  artist_id INT NOT NULL,
   FOREIGN KEY (artist_id) REFERENCES artists(artist_id)
 );
 
 CREATE TABLE songs(
   song_id INT PRIMARY KEY AUTO_INCREMENT,
-  `name` VARCHAR(100) NOT NULL,
-  album_id INT,
+  song_name VARCHAR(100) NOT NULL,
+  album_id INT NOT NULL,
   FOREIGN KEY (album_id) REFERENCES albuns(album_id)
 );
 
 CREATE TABLE playedMusicHistory(
-  history_id INT PRIMARY KEY AUTO_INCREMENT,
-  song_id INT,
-  user_id INT,
-  PRIMARY KEY (history_id, song_id, user_id),
+  song_id INT NOT NULL,
+  user_id INT NOT NULL,
+  PRIMARY KEY (song_id, user_id),
   FOREIGN KEY (song_id) REFERENCES songs(song_id),
   FOREIGN KEY (user_id) REFERENCES users(user_id)
 );
 
 CREATE TABLE followingArtists(
-  follow_id INT PRIMARY KEY AUTO_INCREMENT,
   user_id INT,
   artist_id INT,
-  PRIMARY KEY (follow_id, user_id, artist_id),
+  PRIMARY KEY (user_id, artist_id),
   FOREIGN KEY (artist_id) REFERENCES artists(artist_id),
   FOREIGN KEY (user_id) REFERENCES users(user_id)
 );
