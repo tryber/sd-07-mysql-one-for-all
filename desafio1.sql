@@ -37,7 +37,7 @@ CREATE TABLE albums(
 CREATE TABLE songs(
     cancoes_id INT NOT NULL AUTO_INCREMENT,
     cancao VARCHAR(100),
-	--  artista_id INT NOT NULL,
+    -- artista_id INT NOT NULL,
     album_id INT NOT NULL,
     PRIMARY KEY (cancoes_id),
     -- FOREIGN KEY (artista_id) REFERENCES artists(artista_id)
