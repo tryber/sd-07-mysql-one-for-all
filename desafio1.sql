@@ -1,5 +1,5 @@
-CREATE database IF NOT EXISTS `SpotifyClone` ;
-USE `SpotifyClone`;
+CREATE DATABASE IF NOT EXISTS `SpotifyClone` ;
+USE `SpotifyClone` ;
 
 CREATE TABLE IF NOT EXISTS `SpotifyClone`.`planos` (
   `plano_id` INT NOT NULL,
@@ -57,6 +57,7 @@ ENGINE = InnoDB;
 CREATE TABLE IF NOT EXISTS `SpotifyClone`.`historico` (
   `users_usuario_id` INT NOT NULL,
   `songs_cancoes_id` INT NOT NULL,
+  `cancoes` VARCHAR(45) NOT NULL,
   PRIMARY KEY (`users_usuario_id`, `songs_cancoes_id`),
   INDEX `fk_users_has_songs_songs1_idx` (`songs_cancoes_id` ASC) VISIBLE,
   INDEX `fk_users_has_songs_users1_idx` (`users_usuario_id` ASC) VISIBLE,
@@ -75,6 +76,7 @@ ENGINE = InnoDB;
 CREATE TABLE IF NOT EXISTS `SpotifyClone`.`seguindo` (
   `artistas_artista_id` INT NOT NULL,
   `users_usuario_id` INT NOT NULL,
+  `artista` VARCHAR(45) NOT NULL,
   PRIMARY KEY (`artistas_artista_id`, `users_usuario_id`),
   INDEX `fk_artistas_has_users_users1_idx` (`users_usuario_id` ASC) VISIBLE,
   INDEX `fk_artistas_has_users_artistas1_idx` (`artistas_artista_id` ASC) VISIBLE,
