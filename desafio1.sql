@@ -5,71 +5,71 @@ CREATE DATABASE IF NOT EXISTS SpotifyClone;
 USE SpotifyClone;
 
 CREATE TABLE songs(
-	song_id INT PRIMARY KEY AUTO_INCREMENT,
-    `name` VARCHAR(50)
+song_id INT PRIMARY KEY AUTO_INCREMENT,
+`name` VARCHAR(50)
 ) ENGINE = InnoDB;
 
 CREATE TABLE artist(
-	artist_id INT PRIMARY KEY AUTO_INCREMENT,
-	first_name VARCHAR(20),
-    last_name VARCHAR(30)
+artist_id INT PRIMARY KEY AUTO_INCREMENT,
+first_name VARCHAR(20),
+last_name VARCHAR(30)
 ) ENGINE = InnoDB;
 
 CREATE TABLE album(
-	album_id INT PRIMARY KEY AUTO_INCREMENT,
-	name VARCHAR(50)
+album_id INT PRIMARY KEY AUTO_INCREMENT,
+name VARCHAR(50)
 ) ENGINE = InnoDB;
 
 CREATE TABLE plan(
-	plan_id INT PRIMARY KEY AUTO_INCREMENT,
-	`type` VARCHAR(30),
-    cost REAL
+plan_id INT PRIMARY KEY AUTO_INCREMENT,
+`type` VARCHAR(30),
+cost REAL
 ) ENGINE = InnoDB;
 
 CREATE TABLE `user`(
-	user_id INT PRIMARY KEY AUTO_INCREMENT,
-	`name` VARCHAR(20),
-    age INT
+user_id INT PRIMARY KEY AUTO_INCREMENT,
+`name` VARCHAR(20),
+age INT
 ) ENGINE = InnoDB;
 
 CREATE TABLE user_artist (
-	user_id INT NOT NULL,
-    artist_id INT NOT NULL,
-    FOREIGN KEY (user_id) REFERENCES `user`(user_id),
-    FOREIGN KEY (artist_id) REFERENCES artist(artist_id),
-    CONSTRAINT PK_user_artist PRIMARY KEY (user_id, artist_id)
+user_id INT NOT NULL,
+artist_id INT NOT NULL,
+FOREIGN KEY (user_id) REFERENCES `user`(user_id),
+FOREIGN KEY (artist_id) REFERENCES artist(artist_id),
+CONSTRAINT PK_user_artist PRIMARY KEY (user_id, artist_id)
 ) ENGINE = InnoDB;
 
 CREATE TABLE album_artist (
-	album_id INT NOT NULL,
-    artist_id INT NOT NULL,
-    FOREIGN KEY (album_id) REFERENCES album(album_id),
-    FOREIGN KEY (artist_id) REFERENCES artist(artist_id),
-    CONSTRAINT PK_album_artist PRIMARY KEY (album_id, artist_id)
+album_id INT NOT NULL,
+artist_id INT NOT NULL,
+FOREIGN KEY (album_id) REFERENCES album(album_id),
+FOREIGN KEY (artist_id) REFERENCES artist(artist_id),
+CONSTRAINT PK_album_artist PRIMARY KEY (album_id, artist_id)
 ) ENGINE = InnoDB;
 
 CREATE TABLE album_song (
-	album_id INT NOT NULL,
-    song_id INT NOT NULL,
-    FOREIGN KEY (album_id) REFERENCES album(album_id),
-    FOREIGN KEY (song_id) REFERENCES songs(song_id),
-    CONSTRAINT PK_album_song PRIMARY KEY (album_id, song_id)
+album_id INT NOT NULL,
+song_id INT NOT NULL,
+FOREIGN KEY (album_id) REFERENCES album(album_id),
+FOREIGN KEY (song_id) REFERENCES songs(song_id),
+CONSTRAINT PK_album_song PRIMARY KEY (album_id, song_id)
 ) ENGINE = InnoDB;
 
 CREATE TABLE user_plan (
-	user_id INT NOT NULL,
-    plan_id INT NOT NULL,
-    FOREIGN KEY (user_id) REFERENCES `user`(user_id),
-    FOREIGN KEY (plan_id) REFERENCES plan(plan_id),
-    CONSTRAINT PK_user_plan PRIMARY KEY (user_id, plan_id)
+user_id INT NOT NULL,
+plan_id INT NOT NULL,
+FOREIGN KEY (user_id) REFERENCES `user`(user_id),
+FOREIGN KEY (plan_id) REFERENCES plan(plan_id),
+CONSTRAINT PK_user_plan PRIMARY KEY (user_id, plan_id)
 ) ENGINE = InnoDB;
 
 CREATE TABLE user_songs_reproduction (
-	user_id INT NOT NULL,
-    song_id INT NOT NULL,
-    FOREIGN KEY (user_id) REFERENCES `user`(user_id),
-    FOREIGN KEY (song_id) REFERENCES songs(song_id),
-    CONSTRAINT PK_user_song PRIMARY KEY (user_id, song_id)
+user_id INT NOT NULL,
+song_id INT NOT NULL,
+FOREIGN KEY (user_id) REFERENCES `user`(user_id),
+FOREIGN KEY (song_id) REFERENCES songs(song_id),
+CONSTRAINT PK_user_song PRIMARY KEY (user_id, song_id)
 ) ENGINE = InnoDB;
 
 INSERT INTO songs(song_id, `name`) VALUES
