@@ -4,5 +4,5 @@ FROM artist art
 INNER JOIN user_artist ua ON ua.artist_id = art.artist_id
 INNER JOIN user u ON u.user_id = ua.user_id
 GROUP BY art.artist_id
-ORDER BY 2 DESC
+ORDER BY 2 DESC, 1
 LIMIT 3;
