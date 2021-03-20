@@ -1,4 +1,4 @@
-CREATE VIEW [estatisticas_musicais] AS
+CREATE VIEW estatisticas_musicais AS
 SELECT (
   SELECT count(cancoes_id) as 'cancoes'
   FROM SpotifyClone.songs  
