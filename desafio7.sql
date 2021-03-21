@@ -1,3 +1,5 @@
+USE SpotifyClone;
+
 DELIMITER $$
 CREATE FUNCTION qty_user_artist(artist_idr INT)
 RETURNS INT READS SQL DATA
