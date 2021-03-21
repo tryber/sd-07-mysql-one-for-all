@@ -1,4 +1,4 @@
-CREATE VIEW perfil_artistas AS;
+CREATE VIEW perfil_artistas AS
 SELECT
 CONCAT(art.first_name,' ',art.last_name) AS 'artista', alb.`name` AS 'album',
 COUNT(ua.artist_id) AS 'seguidores'
