@@ -44,7 +44,7 @@ user_id INT NOT NULL,
 artist_id INT NOT NULL,
 FOREIGN KEY (user_id) REFERENCES `user`(user_id),
 FOREIGN KEY (artist_id) REFERENCES artist(artist_id),
-CONSTRAINT PK_user_artist_id PRIMARY KEY (user_id, artist_id)
+PRIMARY KEY (user_id, artist_id)
 ) ENGINE = InnoDB;
 
 CREATE TABLE user_songs_reproduction (
@@ -53,7 +53,7 @@ user_id INT NOT NULL,
 song_id INT NOT NULL,
 FOREIGN KEY (user_id) REFERENCES `user`(user_id),
 FOREIGN KEY (song_id) REFERENCES songs(song_id),
-CONSTRAINT PK_user_song_id PRIMARY KEY (user_id, song_id)
+PRIMARY KEY (user_id, song_id)
 ) ENGINE = InnoDB;
 
 -- CREATE TABLE album_artist (
