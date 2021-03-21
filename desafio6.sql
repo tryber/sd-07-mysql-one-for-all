@@ -1,5 +1,5 @@
 CREATE VIEW faturamento_atual AS
-SELECT MIN(dbs.valor_plano) as faturamento_minimo,
+SELECT FORMAT(MIN(dbs.valor_plano), 2) as faturamento_minimo,
 FORMAT(MAX(dbs.valor_plano), 2) as faturamento_maximo,
 FORMAT(ROUND(SUM(dbs.valor_plano) / COUNT(dbu.plano_id), 2), 2) as faturamento_medio,
 FORMAT(SUM(dbs.valor_plano), 2) as faturamento_total 
