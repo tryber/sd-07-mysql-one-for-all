@@ -8,7 +8,7 @@ dba.artista AS 'artista',
 dbalb.album AS 'album'
 FROM SpotifyClone.artists AS dba
 INNER JOIN SpotifyClone.albuns AS dbalb
-ON dbalb.artista_id = dbalb.artista_id
+ON dba.artista_id = dbalb.artista_id
 HAVING artista = singer
 ORDER BY `album`;
 END $$
