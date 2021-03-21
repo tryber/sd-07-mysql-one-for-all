@@ -7,5 +7,5 @@ INNER JOIN SpotifyClone.seguindo_artistas AS dbf
 ON dbf.artista_id = dba.artista_id
 INNER JOIN SpotifyClone.albums AS dbalb
 ON dbalb.artista_id = dba.artista_id
-GROUP BY `artista`, `album`
+GROUP BY dbalb.album_id
 ORDER BY `seguidores` DESC, `artista` ASC;
