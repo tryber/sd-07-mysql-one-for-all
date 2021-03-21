@@ -2,10 +2,10 @@ DELIMITER $$
 CREATE FUNCTION qty_user_artist(artist_idr INT)
 RETURNS INT READS SQL DATA
 BEGIN
-    DECLARE qty_follows INT;
-    SELECT COUNT(ua.artist_id) FROM SpotifyClone.user_artist ua
-    WHERE ua.artist_id = artist_idr INTO qty_follows;
-    RETURN qty_follows;
+DECLARE qty_follows INT;
+SELECT COUNT(ua.artist_id) FROM SpotifyClone.user_artist ua
+WHERE ua.artist_id = artist_idr INTO qty_follows;
+RETURN qty_follows;
 END $$
 
 DELIMITER ;
