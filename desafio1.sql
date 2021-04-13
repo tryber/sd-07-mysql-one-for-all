@@ -40,7 +40,7 @@ CREATE TABLE artists(
 );
 
 INSERT INTO
-	artists(artist_name)
+  artists(artist_name)
 VALUES
   ("Walter Phoenix"),
   ("Peter Strong"),
@@ -55,7 +55,7 @@ CREATE TABLE albums(
 );
 
 INSERT INTO
-	albums(album_title, artist_id)
+  albums(album_title, artist_id)
 VALUES
   ("Envious", 1),
   ("Exuberant", 1),
