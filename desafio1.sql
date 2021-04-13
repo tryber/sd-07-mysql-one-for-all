@@ -94,8 +94,9 @@ VALUES
   ("Without My Streets", 5, 4);
 
 CREATE TABLE play_history(
-  user_id PRIMARY KEY INT NOT NULL,
-  song_id PRIMARY KEY INT NOT NULL,
+  user_id INT NOT NULL,
+  song_id INT NOT NULL,
+  PRIMARY KEY (user_id, song_id),
   FOREIGN KEY (user_id) REFERENCES users(user_id),
   FOREIGN KEY (song_id) REFERENCES songs(song_id)
 );
