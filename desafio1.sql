@@ -9,11 +9,11 @@ CREATE TABLE plans(
 );
 
 INSERT INTO
-	plans(category_name, `value`)
+	SpotifyClone.plans(category_name, `value`)
 VALUES
-	("gratuito", 0.00),
-	("universitário", 5.99),
-	("familiar", 7.99);
+	('gratuito', 0.00),
+	('universitário', 5.99),
+	('familiar', 7.99);
 
 CREATE TABLE users(
     user_id INT PRIMARY KEY AUTO_INCREMENT NOT NULL,
@@ -24,12 +24,12 @@ CREATE TABLE users(
 );
 
 INSERT INTO
-	users(user_name, age, category_id)
+	SpotifyClone.users(user_name, age, category_id)
 VALUES
-	("Thati", 23, 1),
-    ("Cintia", 35, 3),
-    ("Bill", 20, 2),
-    ("Roger", 45, 1);
+	('Thati', 23, 1),
+    ('Cintia', 35, 3),
+    ('Bill', 20, 2),
+    ('Roger', 45, 1);
 
 CREATE TABLE artists(
     artist_id INT PRIMARY KEY AUTO_INCREMENT,
@@ -37,12 +37,12 @@ CREATE TABLE artists(
 );
 
 INSERT INTO
-	artists(artist_name)
+	SpotifyClone.artists(artist_name)
 VALUES
-	("Walter Phoenix"),
-    ("Peter Strong"),
-    ("Lance Day"),
-    ("Freedle Shannon");
+	('Walter Phoenix'),
+    ('Peter Strong'),
+    ('Lance Day'),
+    ('Freedle Shannon');
 
 CREATE TABLE albums(
     album_id INT PRIMARY KEY AUTO_INCREMENT,
@@ -52,13 +52,13 @@ CREATE TABLE albums(
 );
 
 INSERT INTO
-	albums(album_title, artist_id)
+	SpotifyClone.albums(album_title, artist_id)
 VALUES
-	("Envious", 1),
-    ("Exuberant", 1),
-    ("Hallowed Steam", 2),
-    ("Incandescent", 3),
-    ("Temporary Culture", 4);
+	('Envious', 1),
+    ('Exuberant', 1),
+    ('Hallowed Steam', 2),
+    ('Incandescent', 3),
+    ('Temporary Culture', 4);
 
 CREATE TABLE songs(
     song_id INT PRIMARY KEY AUTO_INCREMENT,
@@ -70,26 +70,26 @@ CREATE TABLE songs(
 );
 
 INSERT INTO
-	songs(song_title, album_id, artist_id)
+	SpotifyClone.songs(song_title, album_id, artist_id)
 VALUES
-	("Soul For Us", 1, 1),
-    ("Reflections Of Magic", 1, 1),
-    ("Dance With Her Own", 1, 1),
-    ("Troubles Of My Inner Fire", 2, 1),
-    ("Time Fireworks", 2, 1),
-    ("Magic Circus", 3, 2),
-    ("Honey, So Do I", 3, 2),
+	('Soul For Us', 1, 1),
+    ('Reflections Of Magic', 1, 1),
+    ('Dance With Her Own', 1, 1),
+    ('Troubles Of My Inner Fire', 2, 1),
+    ('Time Fireworks', 2, 1),
+    ('Magic Circus', 3, 2),
+    ('Honey, So Do I', 3, 2),
     ("Sweetie, Let's Go Wild", 3, 2),
-    ("She Knows", 3, 2),
-    ("Fantasy For Me", 4, 3),
-    ("Celebration Of More", 4, 3),
-    ("Rock His Everything", 4, 3),
-    ("Home Forever", 4, 3),
-    ("Diamond Power", 4, 3),
+    ('She Knows', 3, 2),
+    ('Fantasy For Me', 4, 3),
+    ('Celebration Of More', 4, 3),
+    ('Rock His Everything', 4, 3),
+    ('Home Forever', 4, 3),
+    ('Diamond Power', 4, 3),
     ("Honey, Let's Be Silly", 4, 3),
-    ("Thang Of Thunder", 5, 4),
-    ("Words Of Her Life", 5, 4),
-    ("Without My Streets", 5, 4);
+    ('Thang Of Thunder', 5, 4),
+    ('Words Of Her Life', 5, 4),
+    ('Without My Streets', 5, 4);
 
 CREATE TABLE play_history(
     user_id INT NOT NULL,
@@ -99,7 +99,7 @@ CREATE TABLE play_history(
 );
 
 INSERT INTO
-	play_history(user_id, song_id)
+	SpotifyClone.play_history(user_id, song_id)
 VALUES
 	(1, 1),
     (1, 6),
@@ -124,7 +124,7 @@ CREATE TABLE favorites(
 );
 
 INSERT INTO
-	favorites(user_id, artist_id)
+	SpotifyClone.favorites(user_id, artist_id)
 VALUES
 	(1, 1),
     (1, 4),
