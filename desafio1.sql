@@ -122,6 +122,7 @@ VALUES
 CREATE TABLE favorites(
   user_id INT NOT NULL,
   artist_id INT NOT NULL,
+  PRIMARY KEY (user_id, artist_id),
   FOREIGN KEY (user_id) REFERENCES users(user_id),
   FOREIGN KEY (artist_id) REFERENCES artists(artist_id)
 );
