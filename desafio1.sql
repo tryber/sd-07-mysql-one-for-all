@@ -44,7 +44,7 @@ VALUES
   ("Walter Phoenix"),
   ("Peter Strong"),
   ("Lance Day"),
-  ("Freedle Shannon");
+  ("Freedie Shannon");
 
 CREATE TABLE albums(
   album_id INT PRIMARY KEY AUTO_INCREMENT,
