@@ -4,13 +4,6 @@ CREATE DATABASE SpotifyClone;
 
 USE SpotifyClone;
 
-CREATE TABLE usuario(
-  usuario_id INT PRIMARY KEY AUTO_INCREMENT,
-  nome_usuario VARCHAR(100) NOT NULL,
-  idade INT,
-  FOREIGN KEY (plano_id) REFERENCES plano(plano_id)
-) ENGINE = InnoDB;
-  
 CREATE TABLE plano(
   plano_id INT PRIMARY KEY AUTO_INCREMENT,
   tipo_de_plano VARCHAR(30) NOT NULL,
@@ -22,18 +15,26 @@ CREATE TABLE artista(
   nome_do_artista VARCHAR(100) NOT NULL
 ) ENGINE = InnoDB;
 
-CREATE TABLE cancao(
-  cancao_id INT PRIMARY KEY AUTO_INCREMENT,
-  nome_da_cancao VARCHAR(100) NOT NULL,
-  album_id INT NOT NULL,
-  FOREIGN KEY (album_id) REFERENCES album(album_id)
-) ENGINE = InnoDB;
-
 CREATE TABLE album(
   album_id INT PRIMARY KEY AUTO_INCREMENT,
   nome_do_album VARCHAR(100) NOT NULL,
   artista_id INT NOT NULL,
   FOREIGN KEY (artista_id) REFERENCES artista(artista_id)
+) ENGINE = InnoDB;
+
+CREATE TABLE usuario(
+  usuario_id INT PRIMARY KEY AUTO_INCREMENT,
+  nome_usuario VARCHAR(100) NOT NULL,
+  idade INT NOT NULL,
+  plano_id INT NOT NULL,
+  FOREIGN KEY (plano_id) REFERENCES plano(plano_id)
+) ENGINE = InnoDB;
+
+CREATE TABLE cancao(
+  cancao_id INT PRIMARY KEY AUTO_INCREMENT,
+  nome_da_cancao VARCHAR(100) NOT NULL,
+  album_id INT NOT NULL,
+  FOREIGN KEY (album_id) REFERENCES album(album_id)
 ) ENGINE = InnoDB;
 
 CREATE TABLE seguidores(
@@ -52,13 +53,6 @@ CREATE TABLE historico_de_reproducao(
   FOREIGN KEY (cancao_id) REFERENCES cancao(cancao_id)
 ) ENGINE = InnoDB;
 
-INSERT INTO usuario (nome_do_usuario, idade, plano_id)
-VALUES
-("Thati", 23, 1),
-("Cintia", 35, 3),
-("Bill", 20, 2),
-("Roger", 45, 1);
-
 INSERT INTO plano (tipo_de_plano, valor_do_plano)
 VALUES
 ("gratuito", 0.00),
@@ -71,6 +65,21 @@ VALUES
 ("Lance Day"),
 ("Peter Strong"),
 ("Walter Phoenix");
+
+INSERT INTO album (nome_do_album, artista_id)
+VALUES
+("Envious", 4),
+("Exuberant", 4),
+("Hallowed Steam", 3),
+("Incandescent", 2),
+("Temporary Culture", 1);
+
+INSERT INTO usuario (nome_usuario, idade, plano_id)
+VALUES
+("Thati", 23, 1),
+("Cintia", 35, 3),
+("Bill", 20, 2),
+("Roger", 45, 1);
 
 INSERT INTO cancao (nome_da_cancao, album_id)
 VALUES
@@ -92,14 +101,6 @@ VALUES
 ("Thang Of Thunder", 5),
 ("Words Of Her Life", 5),
 ("Without My Streets", 5);
-
-INSERT INTO album (nome_do_album, artista_id)
-VALUES
-("Envious", 4),
-("Exuberant", 4),
-("Hallowed Steam", 3),
-("Incandescent", 2),
-("Temporary Culture", 1);
 
 INSERT INTO seguidores (artista_id, usuario_id)
 VALUES
