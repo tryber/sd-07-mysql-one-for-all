@@ -7,7 +7,7 @@ CREATE TABLE usuario(
    nome_usuario VARCHAR(100) NOT NULL,
    idade INT,
    FOREIGN KEY (plano_id) REFERENCES plano(plano_id)
-  ) ENGINE = InnoDB;
+) ENGINE = InnoDB;
   
 CREATE TABLE plano(
   plano_id INT PRIMARY KEY AUTO_INCREMENT,
