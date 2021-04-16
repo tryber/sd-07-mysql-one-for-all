@@ -39,6 +39,7 @@ CREATE TABLE album(
 CREATE TABLE seguidores(
   artista_id INT NOT NULL,
   usuario_id INT NOT NULL,
+  PRIMARY KEY(usuario_id, artista_id),
   FOREIGN KEY (artista_id) REFERENCES artista(artista_id),
   FOREIGN KEY (usuario_id) REFERENCES usuario(usuario_id)
 ) ENGINE = InnoDB;
@@ -46,6 +47,7 @@ CREATE TABLE seguidores(
 CREATE TABLE historico_de_reproducao(
   usuario_id INT NOT NULL,
   cancao_id INT NOT NULL,
+  PRIMARY KEY(cancao_id, usuario_id),
   FOREIGN KEY (usuario_id) REFERENCES usuario(usuario_id),
   FOREIGN KEY (cancao_id) REFERENCES cancao(cancao_id)
 ) ENGINE = InnoDB;
