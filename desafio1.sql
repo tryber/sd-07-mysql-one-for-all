@@ -3,10 +3,10 @@ CREATE DATABASE IF NOT EXISTS SpotifyClone;
 USE SpotifyClone;
 
 CREATE TABLE usuario(
-   usuario_id INT PRIMARY KEY AUTO_INCREMENT,
-   nome_usuario VARCHAR(100) NOT NULL,
-   idade INT,
-   FOREIGN KEY (plano_id) REFERENCES plano(plano_id)
+  usuario_id INT PRIMARY KEY AUTO_INCREMENT,
+  nome_usuario VARCHAR(100) NOT NULL,
+  idade INT,
+  FOREIGN KEY (plano_id) REFERENCES plano(plano_id)
 ) ENGINE = InnoDB;
   
 CREATE TABLE plano(
