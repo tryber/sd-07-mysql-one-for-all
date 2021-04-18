@@ -1,12 +1,12 @@
 CREATE VIEW historico_reproducao_usuarios AS
 SELECT
-users.`USER` AS usuario,
-songs.SONG AS nome
+users.USERNAME AS usuario,
+songs.SONGNAME AS nome
 FROM
-SpotifyClone.`history` `history`,
+SpotifyClone.musichistory musichistory,
 SpotifyClone.songs songs,
 SpotifyClone.users users
 WHERE
-`history`.USER_ID = users.USER_ID
-AND `history`.SONG_ID = songs.SONG_ID
+musichistory.USER_ID = users.USER_ID
+AND musichistory.SONG_ID = songs.SONG_ID
 ORDER BY usuario, nome;

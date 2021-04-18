@@ -1,12 +1,12 @@
 CREATE VIEW top_2_hits_do_momento AS
 SELECT
-songs.SONG AS cancao,
+songs.SONGNAME AS cancao,
 COUNT(*) AS reproducoes
 FROM
-SpotifyClone.`history` `history`,
+SpotifyClone.musichistory musichistory,
 SpotifyClone.songs songs
 WHERE
-`history`.SONG_ID = songs.SONG_ID
-GROUP BY `history`.SONG_ID
+musichistory.SONG_ID = songs.SONG_ID
+GROUP BY musichistory.SONG_ID
 ORDER BY reproducoes DESC, cancao
 LIMIT 2;
