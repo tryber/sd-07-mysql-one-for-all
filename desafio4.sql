@@ -3,8 +3,8 @@ SELECT
 artists.ARTIST AS artista,
 COUNT(*) AS seguidores
 FROM
-spotifyclone.artists artists,
-spotifyclone.followers
+SpotifyClone.artists artists,
+SpotifyClone.followers
 WHERE
 artists.ARTIST_ID = followers.ARTIST_ID
 GROUP BY followers.ARTIST_ID

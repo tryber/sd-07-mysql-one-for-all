@@ -3,9 +3,9 @@ SELECT
 users.`USER` AS usuario,
 songs.SONG AS nome
 FROM
-spotifyclone.`history` `history`,
-spotifyclone.songs songs,
-spotifyclone.users users
+SpotifyClone.`history` `history`,
+SpotifyClone.songs songs,
+SpotifyClone.users users
 WHERE
 `history`.USER_ID = users.USER_ID
 AND `history`.SONG_ID = songs.SONG_ID

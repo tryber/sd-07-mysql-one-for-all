@@ -5,8 +5,8 @@ SELECT
 artists.ARTIST AS artista,
 albums.ALBUM AS album
 FROM
-spotifyclone.albums albums,
-spotifyclone.artists artists
+SpotifyClone.albums albums,
+SpotifyClone.artists artists
 WHERE
 albums.ARTIST_ID = artists.ARTIST_ID
 AND ARTIST_NAME = artists.ARTIST

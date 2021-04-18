@@ -3,8 +3,8 @@ SELECT
 songs.SONG AS cancao,
 COUNT(*) AS reproducoes
 FROM
-spotifyclone.`history` `history`,
-spotifyclone.songs songs
+SpotifyClone.`history` `history`,
+SpotifyClone.songs songs
 WHERE
 `history`.SONG_ID = songs.SONG_ID
 GROUP BY `history`.SONG_ID

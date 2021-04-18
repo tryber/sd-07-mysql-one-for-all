@@ -6,7 +6,7 @@ DECLARE LISTENED_MUSICS INT;
 SELECT
 COUNT(*)
 FROM
-spotifyclone.`history` `history`
+SpotifyClone.`history` `history`
 WHERE
 `history`.USER_ID = USER_ID
 GROUP BY `history`.USER_ID

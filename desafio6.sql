@@ -5,7 +5,7 @@ MAX(plans.PLAN_VALUE) AS faturamento_maximo,
 ROUND(AVG(plans.PLAN_VALUE), 2) AS faturamento_medio,
 SUM(plans.PLAN_VALUE) AS faturamento_total
 FROM
-spotifyclone.plans plans,
-spotifyclone.users users
+SpotifyClone.plans plans,
+SpotifyClone.users users
 WHERE
 plans.PLAN_ID = users.PLAN_ID;

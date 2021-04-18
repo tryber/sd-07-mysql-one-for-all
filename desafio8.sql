@@ -1,10 +1,10 @@
 DELIMITER //
 CREATE TRIGGER trigger_usuario_delete
-BEFORE DELETE ON spotifyclone.users
+BEFORE DELETE ON SpotifyClone.users
 FOR EACH ROW
 BEGIN
-DELETE FROM spotifyclone.`history`
+DELETE FROM SpotifyClone.`history`
 WHERE OLD.USER_ID = USER_ID;
-DELETE FROM spotifyclone.followers
+DELETE FROM SpotifyClone.followers
 WHERE OLD.USER_ID = USER_ID;
 END //

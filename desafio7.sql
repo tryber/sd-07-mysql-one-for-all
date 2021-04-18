@@ -4,9 +4,9 @@ artists.ARTIST AS artista,
 albums.ALBUM AS album,
 COUNT(*) AS seguidores
 FROM
-spotifyclone.albums albums,
-spotifyclone.artists artists,
-spotifyclone.followers followers
+SpotifyClone.albums albums,
+SpotifyClone.artists artists,
+SpotifyClone.followers followers
 WHERE
 artists.ARTIST_ID = followers.ARTIST_ID
 AND albums.ARTIST_ID = artists.ARTIST_ID
