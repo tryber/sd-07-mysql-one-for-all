@@ -64,9 +64,9 @@ FOREIGN KEY (ARTIST_ID) REFERENCES artists (ARTIST_ID)
 ) ENGINE = InnoDB;
 
 INSERT INTO plans (PLAN, PLAN_VALUE)
-	VALUES ('gratuito', 0),
-		('familiar', 7.99),
-		('universitário', 5.99);
+VALUES ('gratuito', 0),
+('familiar', 7.99),
+('universitário', 5.99);
 
 INSERT INTO USERS (`USER`, AGE, PLAN_ID) 
 VALUES('Thati', 23, 1),

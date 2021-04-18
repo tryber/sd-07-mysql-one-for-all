@@ -7,4 +7,3 @@ FROM
 spotifyclone.songs songs,
 spotifyclone.artists artists,
 spotifyclone.albums albums;
-  
