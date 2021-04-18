@@ -4,10 +4,10 @@ CREATE DATABASE SpotifyClone;
 
 USE SpotifyClone;
 
-CREATE TABLE IF NOT EXISTS `plans` (
-  `planid` INT PRIMARY KEY AUTO_INCREMENT,
-  `planname` VARCHAR(100) NOT NULL,
-  `planvalue` DECIMAL(5, 2) NOT NULL
+CREATE TABLE IF NOT EXISTS `planos` (
+  `plano_id` INT PRIMARY KEY AUTO_INCREMENT,
+  `nome_plano` VARCHAR(45) NOT NULL,
+  `valor` DECIMAL(5, 2) NOT NULL
 ) ENGINE = InnoDB;
 
 CREATE TABLE IF NOT EXISTS `users` (
@@ -57,7 +57,7 @@ FOREIGN KEY (`user_id`) REFERENCES `users` (`user_id`),
 FOREIGN KEY (`artist_id`) REFERENCES `artists` (`artist_id`)
 ) ENGINE = InnoDB;
 
-INSERT INTO `plans` (`planname`, `planvalue`)
+INSERT INTO `planos` (`nome_plano`, `valor`)
 VALUES ('gratuito', 0),
 ('familiar', 7.99),
 ('universitário', 5.99);
