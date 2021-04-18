@@ -5,9 +5,9 @@ CREATE DATABASE SpotifyClone;
 USE SpotifyClone;
 
 CREATE TABLE IF NOT EXISTS `plans` (
-`planid` INT PRIMARY_KEY AUTO_INCREMENT,
-`plan` VARCHAR(100) NOT NULL,
-`planvalue` DECIMAL(5, 2) NOT NULL
+  `planid` INT PRIMARY KEY AUTO_INCREMENT,
+  `planname` VARCHAR(100) NOT NULL,
+  `planvalue` DECIMAL(5, 2) NOT NULL
 ) ENGINE = InnoDB;
 
 CREATE TABLE IF NOT EXISTS `users` (
