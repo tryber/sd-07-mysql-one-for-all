@@ -4,19 +4,19 @@ CREATE DATABASE SpotifyClone;
 
 USE SpotifyClone;
 
-CREATE TABLE IF NOT EXISTS `planos` (
-  `plano_id` INT PRIMARY KEY AUTO_INCREMENT,
-  `nome_plano` VARCHAR(45) NOT NULL,
-  `valor` DECIMAL(5, 2) NOT NULL
+CREATE TABLE IF NOT EXISTS `plans` (
+  `PLAN_ID` INT PRIMARY KEY AUTO_INCREMENT,
+  `PLAN` VARCHAR(45) NOT NULL,
+  `PLAN_VALUE` DECIMAL(5, 2) NOT NULL
 ) ENGINE = InnoDB;
 
 CREATE TABLE IF NOT EXISTS `users` (
 `user_id` INT NOT NULL AUTO_INCREMENT,
 `username` CHAR(100) NOT NULL,
 `age` INT NOT NULL,
-`plano_id` INT NOT NULL,
+`PLAN_ID` INT NOT NULL,
 PRIMARY KEY (`user_id`),
-FOREIGN KEY (`plano_id`) REFERENCES `planos` (`plano_id`)
+FOREIGN KEY (`PLAN_ID`) REFERENCES `plans` (`PLAN_ID`)
 ) ENGINE = InnoDB;
 
 CREATE TABLE IF NOT EXISTS `artists` (
@@ -57,12 +57,12 @@ FOREIGN KEY (`user_id`) REFERENCES `users` (`user_id`),
 FOREIGN KEY (`artist_id`) REFERENCES `artists` (`artist_id`)
 ) ENGINE = InnoDB;
 
-INSERT INTO `planos` (`nome_plano`, `valor`)
+INSERT INTO `plans` (`PLAN`, `PLAN_VALUE`)
 VALUES ('gratuito', 0),
 ('familiar', 7.99),
 ('universitário', 5.99);
 
-INSERT INTO `users` (`username`, `age`, `plano_id`) 
+INSERT INTO `users` (`username`, `age`, `PLAN_ID`) 
 VALUES('Thati', 23, 1),
 ('Cintia', 35, 2),
 ('Bill', 20, 3),
