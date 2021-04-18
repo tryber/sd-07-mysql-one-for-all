@@ -1,6 +1,6 @@
-DROP SCHEMA IF EXISTS spotifyclone;
-CREATE SCHEMA spotifyclone;
-USE spotifyclone;
+DROP SCHEMA IF EXISTS SpotifyClone;
+CREATE SCHEMA SpotifyClone;
+USE SpotifyClone;
 
 DROP TABLE IF EXISTS plans;
 CREATE TABLE plans (
