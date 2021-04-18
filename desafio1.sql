@@ -103,7 +103,7 @@ VALUES
   ('Words Of Her Life', 5),
   ('Without My Streets', 5);
   
-INSERT INTO `artists_followed` (`artist_id`, `user_id`)
+INSERT INTO `artists_followed` (`user_id`, `artist_id`)
 VALUES
 (1, 1),
 (1, 3),
