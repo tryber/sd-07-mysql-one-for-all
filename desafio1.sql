@@ -14,15 +14,15 @@ CREATE TABLE IF NOT EXISTS `users` (
 `user_id` INT NOT NULL AUTO_INCREMENT,
 `username` CHAR(100) NOT NULL,
 `age` INT NOT NULL,
-`plan_id` INT NOT NULL,
+`plano_id` INT NOT NULL,
 PRIMARY KEY (`user_id`),
-FOREIGN KEY (`plan_id`) REFERENCES `plans` (`plan_id`)
+FOREIGN KEY (`plano_id`) REFERENCES `planos` (`plano_id`)
 ) ENGINE = InnoDB;
 
 CREATE TABLE IF NOT EXISTS `artists` (
 `artist_id` INT NOT NULL AUTO_INCREMENT,
 `artist` CHAR(100) NOT NULL,
-PRIMARY KEY (`artist`)
+PRIMARY KEY (`artist_id`)
 ) ENGINE = InnoDB;
 
 CREATE TABLE IF NOT EXISTS `albums` (
@@ -62,7 +62,7 @@ VALUES ('gratuito', 0),
 ('familiar', 7.99),
 ('universitário', 5.99);
 
-INSERT INTO `users` (`username`, `age`, `plan_id`) 
+INSERT INTO `users` (`username`, `age`, `plano_id`) 
 VALUES('Thati', 23, 1),
 ('Cintia', 35, 2),
 ('Bill', 20, 3),
