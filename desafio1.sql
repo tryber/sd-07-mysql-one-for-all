@@ -5,84 +5,84 @@ CREATE DATABASE SpotifyClone;
 USE SpotifyClone;
 
 CREATE TABLE IF NOT EXISTS `plans` (
-`PLAN_ID` INT NOT NULL AUTO_INCREMENT,
-`PLAN` CHAR(100) NOT NULL,
-`PLAN_VALUE` DECIMAL(5, 2) NOT NULL,
-PRIMARY KEY (`PLAN_ID`)
+`plan_id` INT NOT NULL AUTO_INCREMENT,
+`plan` CHAR(100) NOT NULL,
+`plan_value` DECIMAL(5, 2) NOT NULL,
+PRIMARY KEY (`plan_id`)
 ) ENGINE = InnoDB;
 
 CREATE TABLE IF NOT EXISTS `users` (
-`USER_ID` INT NOT NULL AUTO_INCREMENT,
-`testKeyUser` CHAR(100) NOT NULL,
-`AGE` INT NOT NULL,
-`PLAN_ID` INT NOT NULL,
-PRIMARY KEY (`USER_ID`),
-FOREIGN KEY (`PLAN_ID`) REFERENCES `plans` (`PLAN_ID`)
+`user_id` INT NOT NULL AUTO_INCREMENT,
+`username` CHAR(100) NOT NULL,
+`age` INT NOT NULL,
+`plan_id` INT NOT NULL,
+PRIMARY KEY (`user_id`),
+FOREIGN KEY (`plan_id`) REFERENCES `plans` (`plan_id`)
 ) ENGINE = InnoDB;
 
 CREATE TABLE IF NOT EXISTS `artists` (
-`ARTIST_ID` INT NOT NULL AUTO_INCREMENT,
-`ARTIST` CHAR(100) NOT NULL,
-PRIMARY KEY (`ARTIST_ID`)
+`artist_id` INT NOT NULL AUTO_INCREMENT,
+`artist` CHAR(100) NOT NULL,
+PRIMARY KEY (`artist`)
 ) ENGINE = InnoDB;
 
 CREATE TABLE IF NOT EXISTS `albums` (
-`ALBUM_ID` INT NOT NULL AUTO_INCREMENT,
-`ALBUM` CHAR(100) NOT NULL,
-`ARTIST_ID` INT NOT NULL,
-PRIMARY KEY (`ALBUM_ID`),
-FOREIGN KEY (`ARTIST_ID`) REFERENCES `artists` (`ARTIST_ID`)
+`album_id` INT NOT NULL AUTO_INCREMENT,
+`album` CHAR(100) NOT NULL,
+`artist_id` INT NOT NULL,
+PRIMARY KEY (`album_id`),
+FOREIGN KEY (`artist_id`) REFERENCES `artists` (`artist_id`)
 ) ENGINE = InnoDB;
 
 CREATE TABLE IF NOT EXISTS `songs` (
-`SONG_ID` INT NOT NULL AUTO_INCREMENT,
-`SONG` CHAR(100) NOT NULL,
-`ALBUM_ID` INT NOT NULL,
-PRIMARY KEY (`SONG_ID`),
-FOREIGN KEY (`ALBUM_ID`) REFERENCES `albums` (`ALBUM_ID`)
+`song_id` INT NOT NULL AUTO_INCREMENT,
+`song` CHAR(100) NOT NULL,
+`album_id` INT NOT NULL,
+PRIMARY KEY (`song_id`),
+FOREIGN KEY (`album_id`) REFERENCES `albums` (`album_id`)
 ) ENGINE = InnoDB;
 
-CREATE TABLE IF NOT EXISTS `testKeyHistory` (
-`USER_ID` INT NOT NULL,
-`SONG_ID` INT NOT NULL,
-PRIMARY KEY (`USER_ID`, `SONG_ID`),
-FOREIGN KEY (`USER_ID`) REFERENCES `users` (`USER_ID`),
-FOREIGN KEY (`SONG_ID`) REFERENCES `songs` (`SONG_ID`)
+CREATE TABLE IF NOT EXISTS `musichistory` (
+`user_id` INT NOT NULL,
+`song_id` INT NOT NULL,
+PRIMARY KEY (`user_id`, `song_id`),
+FOREIGN KEY (`user_id`) REFERENCES `users` (`user_id`),
+FOREIGN KEY (`song_id`) REFERENCES `songs` (`song_id`)
 ) ENGINE = InnoDB;
 
 CREATE TABLE IF NOT EXISTS `followers` (
-`USER_ID` INT NOT NULL,
-`ARTIST_ID` INT NOT NULL,
-PRIMARY KEY (`USER_ID`, `ARTIST_ID`),
-FOREIGN KEY (`USER_ID`) REFERENCES `users` (`USER_ID`),
-FOREIGN KEY (`ARTIST_ID`) REFERENCES `artists` (`ARTIST_ID`)
+`user_id` INT NOT NULL,
+`artist_id` INT NOT NULL,
+PRIMARY KEY (`user_id`, `artist_id`),
+FOREIGN KEY (`user_id`) REFERENCES `users` (`user_id`),
+FOREIGN KEY (`artist_id`) REFERENCES `artists` (`artist_id`)
 ) ENGINE = InnoDB;
 
-INSERT INTO `plans` (`PLAN`, `PLAN_VALUE`)
+INSERT INTO `plans` (`plan`, `plan_value`)
 VALUES ('gratuito', 0),
 ('familiar', 7.99),
 ('universitário', 5.99);
 
-INSERT INTO `USERS` (`testKeyUser`, `AGE`, `PLAN_ID`) 
+INSERT INTO `users` (`username`, `age`, `plan_id`) 
 VALUES('Thati', 23, 1),
 ('Cintia', 35, 2),
 ('Bill', 20, 3),
 ('Roger', 45, 1);
 
-INSERT INTO `artists` (`ARTIST`)
+INSERT INTO `artists` (`artist`)
 VALUES ('Walter Phoenix'),
 ('Peter Strong'),
 ('Lance Day'),
 ('Freedie Shannon');
 
-INSERT INTO `albums` (`ALBUM`, `ARTIST_ID`)
+INSERT INTO `albums` (`album`, `artist_id`)
 VALUES ('Envious', 1),
 ('Exuberant', 1),
 ('Hallowed Steam', 2),
 ('Incandescent', 3),
 ('Temporary Culture', 4);
 
-INSERT INTO `songs` (`SONG`, `ALBUM_ID`)
+INSERT INTO `songs` (`song`, `album_id`)
 VALUES ('Soul For Us', 1),
 ('Reflections Of Magic', 1),
 ('Dance With Her Own', 1),
@@ -102,7 +102,7 @@ VALUES ('Soul For Us', 1),
 ('Words Of Her Life', 5),
 ('Without My Streets', 5);
 
-INSERT INTO `testKeyHistory` (`USER_ID`, `SONG_ID`)
+INSERT INTO `musichistory` (`user_id`, `song_id`)
 VALUES (1, 1),
 (1, 6),
 (1, 14),
@@ -118,7 +118,7 @@ VALUES (1, 1),
 (4, 18),
 (4, 11);
 
-INSERT INTO `followers` (`USER_ID`, `ARTIST_ID`)
+INSERT INTO `followers` (`user_id`, `artist_id`)
 VALUES (1, 1),
 (1, 4),
 (1, 3),
