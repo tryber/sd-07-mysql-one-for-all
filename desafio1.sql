@@ -11,50 +11,50 @@ CREATE TABLE IF NOT EXISTS `plans` (
 ) ENGINE = InnoDB;
 
 CREATE TABLE IF NOT EXISTS `users` (
-`user_id` INT NOT NULL AUTO_INCREMENT,
-`username` CHAR(100) NOT NULL,
-`age` INT NOT NULL,
+`USER_ID` INT NOT NULL AUTO_INCREMENT,
+`USERNAME` CHAR(100) NOT NULL,
+`AGE` INT NOT NULL,
 `PLAN_ID` INT NOT NULL,
-PRIMARY KEY (`user_id`),
+PRIMARY KEY (`USER_ID`),
 FOREIGN KEY (`PLAN_ID`) REFERENCES `plans` (`PLAN_ID`)
 ) ENGINE = InnoDB;
 
 CREATE TABLE IF NOT EXISTS `artists` (
-`artist_id` INT NOT NULL AUTO_INCREMENT,
-`artist` CHAR(100) NOT NULL,
-PRIMARY KEY (`artist_id`)
+`ARTIST_ID` INT NOT NULL AUTO_INCREMENT,
+`ARTISTNAME` CHAR(100) NOT NULL,
+PRIMARY KEY (`ARTIST_ID`)
 ) ENGINE = InnoDB;
 
 CREATE TABLE IF NOT EXISTS `albums` (
-`album_id` INT NOT NULL AUTO_INCREMENT,
-`album` CHAR(100) NOT NULL,
-`artist_id` INT NOT NULL,
-PRIMARY KEY (`album_id`),
-FOREIGN KEY (`artist_id`) REFERENCES `artists` (`artist_id`)
+`ALBUM_ID` INT NOT NULL AUTO_INCREMENT,
+`ALBUMNAME` CHAR(100) NOT NULL,
+`ARTIST_ID` INT NOT NULL,
+PRIMARY KEY (`ALBUM_ID`),
+FOREIGN KEY (`ARTIST_ID`) REFERENCES `artists` (`ARTIST_ID`)
 ) ENGINE = InnoDB;
 
 CREATE TABLE IF NOT EXISTS `songs` (
-`song_id` INT NOT NULL AUTO_INCREMENT,
-`song` CHAR(100) NOT NULL,
-`album_id` INT NOT NULL,
-PRIMARY KEY (`song_id`),
-FOREIGN KEY (`album_id`) REFERENCES `albums` (`album_id`)
+`SONG_ID` INT NOT NULL AUTO_INCREMENT,
+`SONGNAME` CHAR(100) NOT NULL,
+`ALBUM_ID` INT NOT NULL,
+PRIMARY KEY (`SONG_ID`),
+FOREIGN KEY (`ALBUM_ID`) REFERENCES `albums` (`ALBUM_ID`)
 ) ENGINE = InnoDB;
 
 CREATE TABLE IF NOT EXISTS `musichistory` (
-`user_id` INT NOT NULL,
-`song_id` INT NOT NULL,
-PRIMARY KEY (`user_id`, `song_id`),
-FOREIGN KEY (`user_id`) REFERENCES `users` (`user_id`),
-FOREIGN KEY (`song_id`) REFERENCES `songs` (`song_id`)
+`USER_ID` INT NOT NULL,
+`SONG_ID` INT NOT NULL,
+PRIMARY KEY (`USER_ID`, `SONG_ID`),
+FOREIGN KEY (`USER_ID`) REFERENCES `users` (`USER_ID`),
+FOREIGN KEY (`SONG_ID`) REFERENCES `songs` (`SONG_ID`)
 ) ENGINE = InnoDB;
 
 CREATE TABLE IF NOT EXISTS `followers` (
-`user_id` INT NOT NULL,
-`artist_id` INT NOT NULL,
-PRIMARY KEY (`user_id`, `artist_id`),
-FOREIGN KEY (`user_id`) REFERENCES `users` (`user_id`),
-FOREIGN KEY (`artist_id`) REFERENCES `artists` (`artist_id`)
+`USER_ID` INT NOT NULL,
+`ARTIST_ID` INT NOT NULL,
+PRIMARY KEY (`USER_ID`, `ARTIST_ID`),
+FOREIGN KEY (`USER_ID`) REFERENCES `users` (`USER_ID`),
+FOREIGN KEY (`ARTIST_ID`) REFERENCES `artists` (`ARTIST_ID`)
 ) ENGINE = InnoDB;
 
 INSERT INTO `plans` (`PLAN`, `PLAN_VALUE`)
@@ -62,26 +62,26 @@ VALUES ('gratuito', 0),
 ('familiar', 7.99),
 ('universitário', 5.99);
 
-INSERT INTO `users` (`username`, `age`, `PLAN_ID`) 
+INSERT INTO `users` (`USERNAME`, `age`, `PLAN_ID`) 
 VALUES('Thati', 23, 1),
 ('Cintia', 35, 2),
 ('Bill', 20, 3),
 ('Roger', 45, 1);
 
-INSERT INTO `artists` (`artist`)
+INSERT INTO `artists` (`ARTISTNAME`)
 VALUES ('Walter Phoenix'),
 ('Peter Strong'),
 ('Lance Day'),
 ('Freedie Shannon');
 
-INSERT INTO `albums` (`album`, `artist_id`)
+INSERT INTO `albums` (`ALBUMNAME`, `ARTIST_ID`)
 VALUES ('Envious', 1),
 ('Exuberant', 1),
 ('Hallowed Steam', 2),
 ('Incandescent', 3),
 ('Temporary Culture', 4);
 
-INSERT INTO `songs` (`song`, `album_id`)
+INSERT INTO `songs` (`SONGNAME`, `ALBUM_ID`)
 VALUES ('Soul For Us', 1),
 ('Reflections Of Magic', 1),
 ('Dance With Her Own', 1),
@@ -101,7 +101,7 @@ VALUES ('Soul For Us', 1),
 ('Words Of Her Life', 5),
 ('Without My Streets', 5);
 
-INSERT INTO `musichistory` (`user_id`, `song_id`)
+INSERT INTO `musichistory` (`USER_ID`, `SONG_ID`)
 VALUES (1, 1),
 (1, 6),
 (1, 14),
@@ -117,7 +117,7 @@ VALUES (1, 1),
 (4, 18),
 (4, 11);
 
-INSERT INTO `followers` (`user_id`, `artist_id`)
+INSERT INTO `followers` (`USER_ID`, `ARTIST_ID`)
 VALUES (1, 1),
 (1, 4),
 (1, 3),
