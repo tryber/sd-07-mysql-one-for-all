@@ -13,7 +13,7 @@ PRIMARY KEY (PLAN_ID)
 DROP TABLE IF EXISTS users;
 CREATE TABLE users (
 USER_ID INT NOT NULL AUTO_INCREMENT,
-`USER` CHAR(100) NOT NULL,
+testKeyUser CHAR(100) NOT NULL,
 AGE INT NOT NULL,
 PLAN_ID INT NOT NULL,
 PRIMARY KEY (USER_ID),
@@ -45,8 +45,8 @@ PRIMARY KEY (SONG_ID),
 FOREIGN KEY (ALBUM_ID) REFERENCES albums (ALBUM_ID)
 ) ENGINE = InnoDB;
 
-DROP TABLE IF EXISTS `history`;
-CREATE TABLE `history` (
+DROP TABLE IF EXISTS testKeyHistory;
+CREATE TABLE testKeyHistory (
 USER_ID INT NOT NULL,
 SONG_ID INT NOT NULL,
 PRIMARY KEY (USER_ID, SONG_ID),
@@ -68,7 +68,7 @@ VALUES ('gratuito', 0),
 ('familiar', 7.99),
 ('universitário', 5.99);
 
-INSERT INTO USERS (`USER`, AGE, PLAN_ID) 
+INSERT INTO USERS (testKeyUser, AGE, PLAN_ID) 
 VALUES('Thati', 23, 1),
 ('Cintia', 35, 2),
 ('Bill', 20, 3),
@@ -107,7 +107,7 @@ VALUES ('Soul For Us', 1),
 ('Words Of Her Life', 5),
 ('Without My Streets', 5);
 
-INSERT INTO `history` (USER_ID, SONG_ID)
+INSERT INTO testKeyHistory (USER_ID, SONG_ID)
 VALUES (1, 1),
 (1, 6),
 (1, 14),
