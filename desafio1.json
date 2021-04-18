@@ -2,7 +2,7 @@
   "coluna_usuario": "testKeyUser",
   "tabela_que_contem_usuario": "users",
   "coluna_plano": "PLAN",
-  "tabela_que_contem_plano": "plans",
+  "tabela_que_contem_plano": "PLANS",
   "coluna_historico_de_reproducoes": "USER_ID",
   "tabela_que_contem_historico_de_reproducoes": "testKeyHistory",
   "coluna_seguindo_artistas": "ARTIST_ID",
