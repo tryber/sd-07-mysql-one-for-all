@@ -129,4 +129,4 @@ VALUES
   (4, 3),
   (4, 18),
   (4, 11);
-  
+--   esse codeclimate tá me deixando louco
