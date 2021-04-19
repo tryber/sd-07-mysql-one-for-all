@@ -6,3 +6,4 @@ INNER JOIN SpotifyClone.historico_de_reproducao as hr
 ON u.usuario_id = hr.usuario_id
 INNER JOIN SpotifyClone.cancao as c
 ON hr.cancao_id = c.cancao_id
+ORDER BY 1, 2;
