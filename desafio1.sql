@@ -29,7 +29,7 @@ CREATE TABLE usuario(
   plano_id INT NOT NULL,
   FOREIGN KEY (plano_id) REFERENCES plano(plano_id)
 ) ENGINE = InnoDB;
- 
+
 CREATE TABLE cancao(
   cancao_id INT PRIMARY KEY AUTO_INCREMENT,
   nome_da_cancao VARCHAR(100) NOT NULL,
