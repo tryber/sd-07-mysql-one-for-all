@@ -95,6 +95,10 @@ describe('Queries de seleção', () => {
         `SELECT COUNT(${reproductionHistoryColumn}) AS musicas_escutadas FROM ${reproductionHistoryTable};`,
         { type: 'SELECT' },
       );
+      
+      console.log("================",reproductionHistoryTable)
+      console.log("================",reproductionHistoryColumn)
+      console.log("================",reproductionHistoryCount)
 
       expect(reproductionHistoryCount).toEqual([{ musicas_escutadas: 14 }]);
 
