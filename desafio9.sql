@@ -1,10 +1,12 @@
 DELIMITER $$
-
-CREATE PROCEDURE albuns_do_artista(IN nomeUsuario VARCHAR(50))
+CREATE PROCEDURE SpotifyClone.albuns_do_artista(IN nome VARCHAR(100))
 BEGIN
-SELECT a.nome AS artista, al.nome AS album FROM SpotifyClone.artistas AS a
-RIGHT JOIN SpotifyClone.albuns AS al ON a.id = al.artista_id
-WHERE a.nome = nomeUsuario ORDER BY album;
+SELECT
+t1.nome AS artista,
+t2.title AS album
+FROM SpotifyClone.Artista AS t1
+INNER JOIN SpotifyClone.Album t2 ON t2.artista_id = t1.id
+WHERE t1.nome = nome
+ORDER BY t2.title ASC;
 END $$
-
 DELIMITER ;
