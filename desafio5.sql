@@ -1,3 +1,4 @@
+CREATE VIEW top_2_hits_do_momento AS
 SELECT c.nome_da_cancao AS cancao, COUNT(hr.cancao_id) as reproducoes
 FROM SpotifyClone.cancao c
 INNER JOIN SpotifyClone.historico_de_reproducao hr
