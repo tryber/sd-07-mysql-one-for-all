@@ -351,7 +351,7 @@ describe('Queries de seleção', () => {
     });
   });
 
-  describe('Crie uma `VIEW` chamada `cancoes_premium` que exiba o nome e a quantidade de vezes que cada canção foi tocada por pessoas usuárias do plano familiar ou universitário', () => {
+  describe.skip('Crie uma `VIEW` chamada `cancoes_premium` que exiba o nome e a quantidade de vezes que cada canção foi tocada por pessoas usuárias do plano familiar ou universitário', () => {
     it('Verifica o desafio 11', async () => {
       const createViewQuery = readFileSync('desafio11.sql', 'utf8').trim();
 
