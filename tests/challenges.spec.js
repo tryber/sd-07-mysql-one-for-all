@@ -4,7 +4,6 @@ const Importer = require('mysql-import');
 
 describe('Queries de seleção', () => {
   let sequelize;
-
   beforeAll(async () => {
     const importer = new Importer(
       { user: process.env.MYSQL_USER, password: process.env.MYSQL_PASSWORD, host: process.env.HOSTNAME },
